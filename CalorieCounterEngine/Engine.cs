@@ -1,7 +1,6 @@
 ﻿namespace CalorieCounterEngine
 {
     using System.Collections.Generic;
-    using System.Runtime.Remoting.Channels;
     using System.Windows.Input;
     using Contracts;
     using global::CalorieCounterEngine.Factories;
@@ -17,7 +16,7 @@
         public Engine()
         {
             // TODO: Set proper can execute conditions.
-            this.createProduct = new RelayCommand(this.CreateProduct, () => true);
+            this.createProduct = new RelayCommand(this.CreateProduct, (arg) => true);
             this.productFactory = new ProductFactory();
             this.products = new Dictionary<string, IProduct>();
             //TODO: Deserialize and load all products from the local directory into the list.

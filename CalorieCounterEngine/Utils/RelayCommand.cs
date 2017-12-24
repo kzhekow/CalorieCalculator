@@ -12,8 +12,8 @@
         }
 
         private readonly Action<object> methodToExecute;
-        private readonly Func<bool> canExecuteEvaluator;
-        public RelayCommand(Action<object> methodToExecute, Func<bool> canExecuteEvaluator)
+        private readonly Func<object, bool> canExecuteEvaluator;
+        public RelayCommand(Action<object> methodToExecute, Func<object, bool> canExecuteEvaluator)
         {
             this.methodToExecute = methodToExecute;
             this.canExecuteEvaluator = canExecuteEvaluator;
@@ -30,7 +30,7 @@
             }
             else
             {
-                bool result = this.canExecuteEvaluator.Invoke();
+                bool result = this.canExecuteEvaluator.Invoke(parameter);
                 return result;
             }
         }
