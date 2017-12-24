@@ -13,6 +13,7 @@ namespace CalorieCounterEngine.Models
         {
             //TODO: Validations
 
+            // Building the meal.
             foreach (var product in products)
             {
                 this.Name += product.Name + " ";

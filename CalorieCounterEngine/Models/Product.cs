@@ -16,6 +16,7 @@ namespace CalorieCounterEngine.Models
 
         public static IProduct operator +(Product left, Product right)
         {
+            // TODO: Custom meal instances should be created from a factory.
             var collection = new List<IProduct> {left, right};
             return new CustomMeal(collection);
         }
