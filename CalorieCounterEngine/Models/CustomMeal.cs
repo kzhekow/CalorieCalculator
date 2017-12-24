@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CalorieCounterEngine.Models
+﻿namespace CalorieCounterEngine.Models
 {
+    using System.Collections.Generic;
     using CalorieCounterEngine.Contracts;
+
     public sealed class CustomMeal : Meal, IMeal, IProduct
     {
         public CustomMeal(ICollection<IProduct> products) : base(products)

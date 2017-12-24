@@ -30,6 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,13 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Engine.cs" />
+    <Compile Include="Contracts\IEngine.cs" />
     <Compile Include="Contracts\IMeal.cs" />
+    <Compile Include="Contracts\IProductFactory.cs" />
+    <Compile Include="Factories\ProductFactory.cs" />
     <Compile Include="Models\CustomMeal.cs" />
     <Compile Include="Models\CustomProduct.cs" />
     <Compile Include="Contracts\IProduct.cs" />
     <Compile Include="Models\Meal.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\RelayCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Models\Architecture.cd" />

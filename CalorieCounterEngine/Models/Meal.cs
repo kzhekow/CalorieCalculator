@@ -1,7 +1,7 @@
 ﻿namespace CalorieCounterEngine.Models
 {
     using System.Collections.Generic;
-    using CalorieCounterEngine.Contracts;
+    using global::CalorieCounterEngine.Contracts;
 
     public abstract class Meal : Product, IMeal, IProduct
     {
