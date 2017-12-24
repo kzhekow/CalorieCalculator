@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CalorieCounterEngine.Models.Product" Collapsed="true">
+    <Position X="6" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAgIAAAAAAQAAAAAQCABAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Product.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CalorieCounterEngine.Models.CustomProduct" Collapsed="true">
+    <Position X="3.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAgIAAAAAAAAAAAAQCABAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\CustomProduct.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CalorieCounterEngine.Models.CustomMeal" Collapsed="true">
+    <Position X="4.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAgIAAAAAAAAAAAAQCABAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\CustomMeal.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="CalorieCounterEngine.Contracts.IProduct" Collapsed="true">
+    <Position X="7.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAgIAAAAAAAAAAAAQCABAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IProduct.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CalorieCounterEngine.Contracts.IMeal" Collapsed="true">
+    <Position X="7.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Contracts\IMeal.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
