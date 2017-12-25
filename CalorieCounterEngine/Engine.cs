@@ -55,12 +55,13 @@
             //unboxing the values
             var args = parameter as object[];
             string name = (string) args[0];
-            int protein = (int) args[1];
-            int carbs = (int) args[2];
-            int fats = (int) args[3];
-            int calories = (int) args[4];
-            int sugar = (int)args[5];
-            int fiber = (int)args[6];
+            decimal weight = (decimal)args[1];
+            int protein = (int) args[2];
+            int carbs = (int) args[3];
+            int fats = (int) args[4];
+            int calories = (int) args[5];
+            int sugar = (int)args[6];
+            int fiber = (int)args[7];
 
             var product = this.productFactory.CreateProduct(name, protein, carbs, fats, calories, sugar, fiber);
             this.products.Add(product.Name, product);

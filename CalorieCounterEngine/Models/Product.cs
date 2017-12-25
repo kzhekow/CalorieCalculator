@@ -62,15 +62,15 @@ namespace CalorieCounterEngine.Models
 
         public int Fat => this.fat * (int)(this.Weight / 100);
 
-        public int Sugar => this.calories * (int)(this.Weight / 100);
+        public int Sugar => this.sugar * (int)(this.Weight / 100);
 
-        public int Fiber => this.calories * (int)(this.Weight / 100);
+        public int Fiber => this.fiber * (int)(this.Weight / 100);
 
-        public static IProduct operator +(Product left, Product right)
-        {
-            // TODO: Custom meal instances should be created from a factory.
-            var collection = new List<IProduct> { left, right };
-            return new CustomMeal(collection);
-        }
+        //public static IProduct operator +(Product left, Product right)
+        //{
+        //    // TODO: Custom meal instances should be created from a factory.
+        //    var collection = new List<IProduct> { left, right };
+        //    return new CustomMeal(collection);
+        //}
     }
 }

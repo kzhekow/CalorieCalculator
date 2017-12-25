@@ -3,6 +3,8 @@ using CalorieCounterEngine.Models.Contracts;
 
 namespace CalorieCounterEngine.Models.Food
 {
+    using Bytes2you.Validation;
+
     public class Water : IWater
     {
         private const string DrinkName = "Water";
@@ -10,7 +12,7 @@ namespace CalorieCounterEngine.Models.Food
 
         public Water(decimal weightInMl)
         {
-            if (weightInMl < 0) throw new ArgumentException("Weight can not be a negative number!");
+            Guard.WhenArgument(weightInMl, "Weight can not be a negative number!").IsLessThan(0).Throw();
             this.weight = weightInMl;
         }
 

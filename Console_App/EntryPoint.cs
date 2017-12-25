@@ -10,6 +10,7 @@
 
             //boxing the arguments
             string name = "Banan";
+            decimal weight = 100;
             int protein = 1;
             int carbs = 20;
             int fat = 2;

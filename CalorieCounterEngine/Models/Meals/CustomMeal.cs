@@ -5,21 +5,21 @@
 
     public sealed class CustomMeal : Meal
     {
-        public CustomMeal(ICollection<IProduct> products, MealType type) : base(products, type)
+        public CustomMeal(ICollection<IProduct> products, MealType type, string name) : base(products, type, name)
         {
             //TODO: Validations
 
             // Building the meal.
-            foreach (var product in products)
-            {
-                this.Name += product.Name + " ";
-                this.Calories += product.Calories;
-                this.Carbs += product.Carbs;
-                this.Fat += product.Fat;
-                this.Fiber += product.Fiber;
-                this.Protein += product.Protein;
-                this.Sugar += product.Sugar;
-            }
+            //foreach (var product in products)
+            //{
+            //    this.Name += product.Name + " ";
+            //    this.Calories += product.Calories;
+            //    this.Carbs += product.Carbs;
+            //    this.Fat += product.Fat;
+            //    this.Fiber += product.Fiber;
+            //    this.Protein += product.Protein;
+            //    this.Sugar += product.Sugar;
+            //}
         }
     }
 }
