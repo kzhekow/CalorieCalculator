@@ -3,9 +3,9 @@
     using System.Collections.Generic;
     using CalorieCounterEngine.Contracts;
 
-    public sealed class CustomMeal : Meal, IMeal, IProduct
+    public sealed class CustomMeal : Meal
     {
-        public CustomMeal(ICollection<IProduct> products) : base(products)
+        public CustomMeal(ICollection<IProduct> products, MealType type) : base(products, type)
         {
             //TODO: Validations
 
@@ -21,13 +21,5 @@
                 this.Sugar += product.Sugar;
             }
         }
-
-        public override string Name { get; }
-        public override int Protein { get; }
-        public override int Carbs { get; }
-        public override int Fat { get; }
-        public override int Calories { get; }
-        public override int Sugar { get; }
-        public override int Fiber { get; }
     }
 }
