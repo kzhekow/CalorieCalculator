@@ -11,6 +11,7 @@
             this.Products = products;
         }
 
-        public ICollection<IProduct> Products { get; }
+        public ICollection<IProduct
+            > Products { get; }
     }
 }
