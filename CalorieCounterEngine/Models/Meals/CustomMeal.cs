@@ -5,7 +5,7 @@
 
     public sealed class CustomMeal : Meal, IMeal, IProduct
     {
-        public CustomMeal(ICollection<IProduct> products) : base(products)
+        public CustomMeal(ICollection<IFood> products) : base(products)
         {
             //TODO: Validations
 

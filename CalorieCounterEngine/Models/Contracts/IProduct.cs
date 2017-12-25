@@ -30,5 +30,9 @@
         /// Sugar contained in the product.
         /// </summary>
         int Sugar { get; }
+        /// <summary>
+        /// Name of the product.
+        /// </summary>
+        int Fiber { get; }
     }
 }

@@ -3,14 +3,14 @@
     using System.Collections.Generic;
     using global::CalorieCounterEngine.Contracts;
 
-    public abstract class Meal : Product, IMeal, IProduct
+    public abstract class Meal : IMeal
     {
-        protected Meal(ICollection<IProduct> products)
+        protected Meal(ICollection<IFood> products)
         {
             // TODO: Validations
             this.Products = products;
         }
 
-        public ICollection<IProduct> Products { get; }
+        public ICollection<IFood> Products { get; }
     }
 }
