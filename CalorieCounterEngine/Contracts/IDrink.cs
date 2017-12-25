@@ -8,10 +8,16 @@ namespace CalorieCounterEngine.Contracts
 {
     abstract class IDrink : IProduct
     {
-        public IDrink()
+        private readonly string name;
+        private readonly decimal weight;
+
+        public IDrink(string name, decimal weight)
         {
 
+            this.name = name;
+            this.weight = weight;
         }
+
         public string Name => throw new NotImplementedException();
 
         public decimal Weight => throw new NotImplementedException();
