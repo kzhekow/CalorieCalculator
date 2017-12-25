@@ -1,19 +1,13 @@
-﻿using CalorieCounterEngine.Contracts;
+﻿using CalorieCounterEngine.Models.Drinks;
 
 namespace CalorieCounterEngine.Models.Food
 {
-    public class Water : IProduct
+    public class Water : Drink
     {
         private const string DrinkName = "Water";
-        private readonly decimal weightInMl;
 
-        public Water(decimal weightInMl)
+        public Water(decimal weightInMl) : base(DrinkName, weightInMl)
         {
-            this.weightInMl = weightInMl;
         }
-
-        public string Name => DrinkName;
-
-        public decimal Weight => this.weightInMl;
     }
 }

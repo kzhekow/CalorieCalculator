@@ -12,7 +12,10 @@ namespace CalorieCounterEngine.Models
         /// </summary>
         private readonly string name;
         private readonly decimal weight;
-
+        
+        /// <summary>
+        /// Product constructor. Every Product must have a name and weight.
+        /// </summary>
         public Product(string name, decimal weight)
         {
             Guard.WhenArgument(name, "Name can not be null!").IsNotNullOrEmpty().Throw();
