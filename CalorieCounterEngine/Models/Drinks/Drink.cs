@@ -1,8 +1,8 @@
-﻿using CalorieCounterEngine.Contracts;
+﻿using CalorieCounterEngine.Models.Contracts;
 
 namespace CalorieCounterEngine.Models.Drinks
 {
-    public abstract class Drink : IProduct
+    public abstract class Drink : IWater
     {
         private readonly string name;
         private readonly decimal weightInMl;

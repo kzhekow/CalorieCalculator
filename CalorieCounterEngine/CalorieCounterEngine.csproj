@@ -50,9 +50,11 @@
     <Compile Include="Models\Contracts\IMeal.cs" />
     <Compile Include="Contracts\IProductFactory.cs" />
     <Compile Include="Factories\ProductFactory.cs" />
+    <Compile Include="Models\Contracts\IWater.cs" />
     <Compile Include="Models\Drinks\CustomDrink.cs" />
     <Compile Include="Models\Drinks\Drink.cs" />
     <Compile Include="Models\Drinks\Water.cs" />
+    <Compile Include="Models\Food\Food.cs" />
     <Compile Include="Models\Meals\CustomMeal.cs" />
     <Compile Include="Models\CustomProduct.cs" />
     <Compile Include="Models\Contracts\IProduct.cs" />
@@ -65,8 +67,6 @@
     <None Include="Models\Architecture.cd" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\Food\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

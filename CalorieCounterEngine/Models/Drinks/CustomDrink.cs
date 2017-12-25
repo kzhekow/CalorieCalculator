@@ -6,7 +6,7 @@ namespace CalorieCounterEngine.Models.Drinks
     /// <summary>
     /// CustomDrink class inherits from IFood, because custom drink can have nutrition values.
     /// </summary>
-    public class CustomDrink : Drink, IFood
+    public class CustomDrink : Drink, IProduct
     {
         private readonly string name;
         private readonly decimal weight;
@@ -34,14 +34,14 @@ namespace CalorieCounterEngine.Models.Drinks
             this.sugar = sugar;
         }
 
-        public int Calories => this.calories;
+        public int Calories => this.calories * (int)(this.Weight / 100);
 
-        public int Protein => this.protein;
+        public int Protein => this.protein * (int)(this.Weight / 100);
 
-        public int Carbs => this.carbs;
+        public int Carbs => this.carbs * (int)(this.Weight / 100);
 
-        public int Fat => this.fat;
+        public int Fat => this.fat * (int)(this.Weight / 100);
 
-        public int Sugar => this.sugar;
+        public int Sugar => this.sugar * (int)(this.Weight / 100);
     }
 }
