@@ -5,12 +5,12 @@
 
     public abstract class Meal : IMeal
     {
-        protected Meal(ICollection<IFood> products)
+        protected Meal(ICollection<IProduct> products)
         {
             // TODO: Validations
             this.Products = products;
         }
 
-        public ICollection<IFood> Products { get; }
+        public ICollection<IProduct> Products { get; }
     }
 }

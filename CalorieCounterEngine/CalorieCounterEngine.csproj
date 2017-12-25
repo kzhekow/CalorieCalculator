@@ -44,6 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\ActivityType.cs" />
+    <Compile Include="Common\GoalType.cs" />
+    <Compile Include="Common\MealType.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Contracts\IEngine.cs" />
     <Compile Include="Models\Contracts\IMeal.cs" />
@@ -52,8 +55,8 @@
     <Compile Include="Models\Contracts\IWater.cs" />
     <Compile Include="Models\Drinks\CustomDrink.cs" />
     <Compile Include="Models\Drinks\Water.cs" />
-    <Compile Include="Models\Food\Product.cs" />
-    <Compile Include="Models\Food\CustomProduct.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Food\CustomFoodProduct.cs" />
     <Compile Include="Models\Meals\CustomMeal.cs" />
     <Compile Include="Models\Contracts\IProduct.cs" />
     <Compile Include="Models\Meals\Meal.cs" />

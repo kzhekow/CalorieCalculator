@@ -1,6 +1,4 @@
-﻿using CalorieCounterEngine.Models.Food;
-
-namespace CalorieCounterEngine.Models.Drinks
+﻿namespace CalorieCounterEngine.Models.Drinks
 {
     /// <summary>
     /// CustomDrink class inherits from IFood, because custom drink can have nutrition values.

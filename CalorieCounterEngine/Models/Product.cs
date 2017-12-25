@@ -2,7 +2,7 @@
 using CalorieCounterEngine.Contracts;
 using System.Collections.Generic;
 
-namespace CalorieCounterEngine.Models.Food
+namespace CalorieCounterEngine.Models
 {
     /// <summary>
     /// Food class implements IFood as long as it can contain fibers.

@@ -1,4 +1,5 @@
-﻿using CalorieCounterEngine.Models.Contracts;
+﻿using System;
+using CalorieCounterEngine.Models.Contracts;
 
 namespace CalorieCounterEngine.Models.Food
 {
@@ -9,6 +10,7 @@ namespace CalorieCounterEngine.Models.Food
 
         public Water(decimal weightInMl)
         {
+            if (weightInMl < 0) throw new ArgumentException("Weight can not be a negative number!");
             this.weight = weightInMl;
         }
 
