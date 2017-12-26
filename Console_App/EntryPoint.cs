@@ -18,7 +18,7 @@
             int sugar = 15;
             int fiber = 3;
             object[] parameters = new object[]{name, protein, carbs, fat, calories, sugar, fiber} ;
-            engine.CreateProductCommand.Execute(parameters);
+            engine.GetCreateProductCommand().Execute(parameters);
         }
     }
 }

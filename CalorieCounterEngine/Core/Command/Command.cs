@@ -6,7 +6,7 @@ using Bytes2you.Validation;
 
 namespace CalorieCounterEngine.Core.Command
 {
-    class Command : ICommand
+    public class Command : ICommand
     {
         private const char SplitCommandSymbol = ' ';
         private string name;
