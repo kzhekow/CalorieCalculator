@@ -50,6 +50,7 @@
     <Compile Include="Core\Command\Command.cs" />
     <Compile Include="Core\Contracts\ICommand.cs" />
     <Compile Include="Core\Engine\CalorieCalculatorEngine.cs" />
+    <Compile Include="DailyIntake.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Core\Contracts\IEngine.cs" />
     <Compile Include="Models\Activity\Activity.cs" />
