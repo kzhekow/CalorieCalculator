@@ -1,8 +1,7 @@
 ﻿using CalorieCounterEngine.Core.Contracts;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Bytes2you.Validation;
 using System.Threading.Tasks;
 
 namespace CalorieCounterEngine.Core.Command
@@ -24,10 +23,9 @@ namespace CalorieCounterEngine.Core.Command
             {
                 return this.name;
             }
-            set
+            private set
             {
-                if (string.IsNullOrEmpty(value))
-                { throw new ArgumentNullException("Command name cannot be null or empty."); }
+                Guard.WhenArgument(value, "Name cannot be null or empty.").IsNullOrEmpty().Throw();
 
                 this.name = value;
             }
@@ -41,7 +39,8 @@ namespace CalorieCounterEngine.Core.Command
             }
             private set
             {
-                this.parameters = value ?? throw new ArgumentNullException("List of strings cannot be null.");
+                Guard.WhenArgument(value, "List of strings cannot be null.").IsNull().Throw();
+                this.parameters = value;
             }
         }
 
