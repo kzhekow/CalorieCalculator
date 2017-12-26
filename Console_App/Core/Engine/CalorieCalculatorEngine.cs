@@ -11,19 +11,18 @@ using CalorieCounterEngine.Core.Contracts;
 
 namespace CalorieCounterEngine.Core.Engine
 {
-    public sealed class CalorieCalculatorEngine : IEngine
+    public sealed class CalorieCalculatorEngine 
     {
         private static readonly CalorieCalculatorEngine SingleInstance = new CalorieCalculatorEngine();
         private readonly ProductFactory factory;
         private readonly IDictionary<string, IProduct> products;
         private readonly IDictionary<string, IActivity> activities;
-        private readonly DailyIntake dailyIntake;
+        
         
         
         private CalorieCalculatorEngine()
         {
             this.factory = new ProductFactory();
-            this.dailyIntake = new DailyIntake();
             this.products = new Dictionary<string, IProduct>();
             this.activities = new Dictionary<string, IActivity>();
         }

@@ -1,12 +1,9 @@
-﻿using CalorieCounterEngine.Core.Contracts;
+﻿using System.Windows.Input;
 
 namespace CalorieCounterEngine.Contracts
 {
-    
-    
-
     public interface IEngine
     {
-      void start();
+        ICommand CreateProductCommand { get; }
     }
 }
