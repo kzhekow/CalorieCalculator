@@ -7,10 +7,6 @@
         /// </summary>
         string Name { get; }
         /// <summary>
-        /// Weight of the product - in grams or milliliters.
-        /// </summary>
-        decimal Weight { get; }
-        /// <summary>
         /// Approximate amount of energy in the product.
         /// </summary>
         int Calories { get; }

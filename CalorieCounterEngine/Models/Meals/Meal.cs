@@ -28,8 +28,6 @@ namespace CalorieCounterEngine.Models
 
         public string Name => this.name;
 
-        public decimal Weight => throw new NotImplementedException();
-
         public int Calories => throw new NotImplementedException();
 
         public int Protein => throw new NotImplementedException();

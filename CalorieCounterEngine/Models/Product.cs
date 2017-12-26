@@ -1,13 +1,13 @@
 ﻿using Bytes2you.Validation;
 using CalorieCounterEngine.Contracts;
-using System.Collections.Generic;
+using CalorieCounterEngine.Models.Contracts;
 
 namespace CalorieCounterEngine.Models
 {
     /// <summary>
-    /// Food class implements IFood as long as it can contain fibers.
+    /// Product class implements IProduct.
     /// </summary>
-    public abstract class Product : IProduct
+    public abstract class Product : IProduct, IWeight
     {
         private readonly string name;
         private readonly decimal weightInGrams;
@@ -19,7 +19,7 @@ namespace CalorieCounterEngine.Models
         private readonly int fiber;
 
         /// <summary>
-        /// Food constructor. Every new instantiated product must have a name and weight. New products ca also contain calories, protein, carbs, fat, sugar and fiber.
+        /// Product constructor. Every new instantiated product must have a name and weight. New products ca also contain calories, protein, carbs, fat, sugar and fiber.
         /// </summary>
         /// <param name="name"></param> Name must be between 3 and 20 symbols!
         /// <param name="weightInGrams"></param> Weight can not be a negative number!

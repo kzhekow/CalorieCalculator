@@ -53,6 +53,7 @@
     <Compile Include="Contracts\IProductFactory.cs" />
     <Compile Include="Factories\ProductFactory.cs" />
     <Compile Include="Models\Contracts\IWater.cs" />
+    <Compile Include="Models\Contracts\IWeight.cs" />
     <Compile Include="Models\Drinks\CustomDrink.cs" />
     <Compile Include="Models\Drinks\Water.cs" />
     <Compile Include="Models\Product.cs" />
