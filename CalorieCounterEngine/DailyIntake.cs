@@ -11,7 +11,16 @@ namespace CalorieCounterEngine
     {
         private readonly ICollection<IProduct> productList;
         private readonly ICollection<IMeal> mealList;
-        
+
+        public DailyIntake()
+        {
+            this.productList = new List<IProduct>();
+            this.mealList = new List<IMeal>();
+        }
+
+        public ICollection<IProduct> ProductList => productList;
+        public ICollection<IMeal> MealList => mealList;
+
 
 
     }
