@@ -57,7 +57,10 @@ namespace CalorieCounterEngine.Core.Command
             this.Name = input.Substring(0, indexOfFirstSeparator);
             this.Parameters = input.Substring(indexOfFirstSeparator + 1).Split(new[] { SplitCommandSymbol }, StringSplitOptions.RemoveEmptyEntries);
         }
-
+        public static Command Parse(string input)
+        {
+            return new Command(input);
+        }
 
 
         
