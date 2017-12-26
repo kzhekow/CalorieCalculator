@@ -5,7 +5,7 @@
         /// <summary>
         /// Type of physical activity.
         /// </summary>
-        ActivityType Activity { get; }
+        ActivityType Type { get; }
         /// <summary>
         /// Tracks time of physical activity in minutes.
         /// </summary>
