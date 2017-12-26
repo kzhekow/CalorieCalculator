@@ -47,6 +47,7 @@
     <Compile Include="Common\ActivityType.cs" />
     <Compile Include="Common\GoalType.cs" />
     <Compile Include="Common\MealType.cs" />
+    <Compile Include="Core\Command\Command.cs" />
     <Compile Include="Core\Contracts\ICommand.cs" />
     <Compile Include="Core\Engine\CalorieCalculatorEngine.cs" />
     <Compile Include="Engine.cs" />
