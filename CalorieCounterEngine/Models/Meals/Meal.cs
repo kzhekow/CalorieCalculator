@@ -12,6 +12,12 @@ namespace CalorieCounterEngine.Models
         private readonly ICollection<IProduct> products;
         private readonly MealType type;
         private readonly string name;
+        private readonly int calories;
+        private readonly int protein;
+        private readonly int carbs;
+        private readonly int fat;
+        private readonly int sugar;
+        private readonly int fiber;
 
         protected Meal(ICollection<IProduct> products, MealType type, string name)
         {
@@ -28,16 +34,16 @@ namespace CalorieCounterEngine.Models
 
         public string Name => this.name;
 
-        public int Calories => throw new NotImplementedException();
+        public int Calories => this.calories;
 
-        public int Protein => throw new NotImplementedException();
+        public int Protein => this.protein;
 
-        public int Carbs => throw new NotImplementedException();
+        public int Carbs => this.carbs;
 
-        public int Fat => throw new NotImplementedException();
+        public int Fat => this.fat;
 
-        public int Sugar => throw new NotImplementedException();
+        public int Sugar => this.sugar;
 
-        public int Fiber => throw new NotImplementedException();
+        public int Fiber => this.fiber;
     }
 }
