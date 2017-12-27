@@ -7,13 +7,17 @@
         /// </summary>
         double StartingWeight { get; }
         /// <summary>
-        ///     This is the current weight of the user. 
-        /// </summary>
-        double CurrentWeight { get; }
-        /// <summary>
         ///     This is the weight that the user is trying to reach. 
         /// </summary>
         double GoalWeight { get; }
+        /// <summary>
+        ///    This is the geight of the user in centimeters.
+        /// </summary>
+        double Height { get; }
+        /// <summary>
+        /// This is the gender of the user.
+        /// </summary>
+        GenderType Gender { get; }
         /// <summary>
         ///     Goals can be 3 types - lost weight, maintain weight and gain weight.
         /// </summary>

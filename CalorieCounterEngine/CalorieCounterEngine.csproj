@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\ActivityType.cs" />
+    <Compile Include="Common\GenderType.cs" />
     <Compile Include="Common\GoalType.cs" />
     <Compile Include="Common\MealType.cs" />
     <Compile Include="Contracts\IEngine.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Models\Contracts\IWeight.cs" />
     <Compile Include="Models\Drinks\CustomDrink.cs" />
     <Compile Include="Models\Drinks\Water.cs" />
+    <Compile Include="Models\Goal\Goal.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Food\CustomFoodProduct.cs" />
     <Compile Include="Models\Meals\CustomMeal.cs" />
@@ -73,8 +75,6 @@
     <None Include="Models\Architecture.cd" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\Goal\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
