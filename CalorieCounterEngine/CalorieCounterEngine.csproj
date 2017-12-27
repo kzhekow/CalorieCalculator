@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\ActivityLevel.cs" />
     <Compile Include="Common\ActivityType.cs" />
     <Compile Include="Common\GenderType.cs" />
     <Compile Include="Common\GoalType.cs" />

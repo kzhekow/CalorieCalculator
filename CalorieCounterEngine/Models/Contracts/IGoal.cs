@@ -35,20 +35,20 @@
         /// <returns>
         ///     Returns integer of the number.
         /// </returns>
-        int CalculateSuggestedDailyCalorieIntake();
+        double CalculateSuggestedDailyCalorieIntake();
         /// <summary>
         ///     Calculates the suggested daily water intake of the user.
         /// </summary>
         /// <returns>
-        ///     Returns integer of the number.
+        ///     Returns a double of the number.
         /// </returns>
         int CalculateSuggestedWaterIntake();
         /// <summary>
         ///     Calculates resting calories of the user - energy his body expends just to keep him alive.
         /// </summary>
         /// <returns>
-        ///     Returns integer of the number.
+        ///     Returns a double of the number.
         /// </returns>
-        int CalculateRestingEnergy();
+        double CalculateRestingEnergy();
     }
 }
