@@ -47,18 +47,18 @@ namespace CalorieCounterEngine.Models.Goal
 
         public double CalculateRestingEnergy()
         {
-            double bmi = 0;
+            double bmr = 0;
 
             switch (this.Gender)
             {
-                case GenderType.Male: bmi = (11.936 * this.StartingWeight) + (586.728 * this.Height) + 191.027 + 29.279;
+                case GenderType.Male: bmr = (11.936 * this.StartingWeight) + (586.728 * this.Height) + 191.027 + 29.279;
                     break;
-                case GenderType.Female: bmi = (11.936 * this.StartingWeight) + (586.728 * this.Height) + 29.279;
+                case GenderType.Female: bmr = (11.936 * this.StartingWeight) + (586.728 * this.Height) + 29.279;
                     break;
                 default:
                     break;
             }
-            return bmi;
+            return bmr;
         }
 
         public double CalculateSuggestedDailyCalorieIntake()
