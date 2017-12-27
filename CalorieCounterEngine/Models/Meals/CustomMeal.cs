@@ -1,8 +1,8 @@
-﻿namespace CalorieCounterEngine.Models
-{
-    using System.Collections.Generic;
-    using CalorieCounterEngine.Contracts;
+﻿using System.Collections.Generic;
+using CalorieCounter.Contracts;
 
+namespace CalorieCounter.Models
+{
     public sealed class CustomMeal : Meal
     {
         public CustomMeal(ICollection<IProduct> products, MealType type, string name) : base(products, type, name)

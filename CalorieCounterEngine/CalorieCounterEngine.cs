@@ -1,22 +1,22 @@
-﻿namespace CalorieCounterEngine
-{
-    using System.Collections.Generic;
-    using System.Windows.Input;
-    using Contracts;
-    using global::CalorieCounterEngine.Factories;
-    using Utils;
+﻿using System.Collections.Generic;
+using System.Windows.Input;
+using CalorieCounter.Contracts;
+using CalorieCounter.Factories;
+using CalorieCounter.Utils;
 
-    public sealed class Engine : IEngine
+namespace CalorieCounter
+{
+    public sealed class CalorieCounterEngine : IEngine
     {
         private static IEngine instance;
-        private ICommand createProduct;
-        private readonly IDictionary<string, IProduct> products;
         private readonly IProductFactory productFactory;
+        private readonly IDictionary<string, IProduct> products;
+        private ICommand createProduct;
 
-        public Engine()
+        public CalorieCounterEngine()
         {
             // TODO: Set proper can execute conditions.
-            this.createProduct = new RelayCommand(this.CreateProduct, (arg) => true);
+            this.createProduct = new RelayCommand(CreateProduct, arg => true);
             this.productFactory = new ProductFactory();
             this.products = new Dictionary<string, IProduct>();
             //TODO: Deserialize and load all products from the local directory into the list.
@@ -26,10 +26,7 @@
         {
             get
             {
-                if (instance == null)
-                {
-                    instance = new Engine();
-                }
+                if (instance == null) instance = new CalorieCounterEngine();
 
                 return instance;
             }
@@ -39,10 +36,7 @@
         {
             get
             {
-                if (this.createProduct == null)
-                {
-                    this.createProduct = new RelayCommand(this.CreateProduct);
-                }
+                if (this.createProduct == null) this.createProduct = new RelayCommand(CreateProduct);
 
                 return this.createProduct;
             }
@@ -54,19 +48,17 @@
 
             //unboxing the values
             var args = parameter as object[];
-            string name = (string) args[0];
-            decimal weight = (decimal)args[1];
-            int protein = (int) args[2];
-            int carbs = (int) args[3];
-            int fats = (int) args[4];
-            int calories = (int) args[5];
-            int sugar = (int)args[6];
-            int fiber = (int)args[7];
+            var name = (string) args[0];
+            var weight = (decimal) args[1];
+            var protein = (int) args[2];
+            var carbs = (int) args[3];
+            var fats = (int) args[4];
+            var calories = (int) args[5];
+            var sugar = (int) args[6];
+            var fiber = (int) args[7];
 
             var product = this.productFactory.CreateProduct(name, protein, carbs, fats, calories, sugar, fiber);
             this.products.Add(product.Name, product);
         }
-
-        
     }
 }

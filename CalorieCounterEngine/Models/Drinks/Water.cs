@@ -1,23 +1,20 @@
-﻿using System;
-using CalorieCounterEngine.Models.Contracts;
+﻿using Bytes2you.Validation;
+using CalorieCounter.Models.Contracts;
 
-namespace CalorieCounterEngine.Models.Food
+namespace CalorieCounter.Models.Food
 {
-    using Bytes2you.Validation;
-
     public class Water : IWater
     {
         private const string DrinkName = "Water";
-        private readonly decimal weight;
 
         public Water(decimal weightInMl)
         {
             Guard.WhenArgument(weightInMl, "Weight can not be a negative number!").IsLessThan(0).Throw();
-            this.weight = weightInMl;
+            this.Weight = weightInMl;
         }
 
-        public string Name => Water.DrinkName;
+        public string Name => DrinkName;
 
-        public decimal Weight => this.weight;
+        public decimal Weight { get; }
     }
 }

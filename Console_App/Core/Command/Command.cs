@@ -1,10 +1,9 @@
-﻿using CalorieCounterEngine.Core.Contracts;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Bytes2you.Validation;
+using Console_App.Core.Contracts;
 
-
-namespace CalorieCounterEngine.Core.Command
+namespace Console_App.Core.Command
 {
     public class Command : ICommand
     {
@@ -14,15 +13,12 @@ namespace CalorieCounterEngine.Core.Command
 
         private Command(string input)
         {
-            this.TransalteInput(input);
+            TransalteInput(input);
         }
 
         public string Name
         {
-            get
-            {
-                return this.name;
-            }
+            get => this.name;
             private set
             {
                 Guard.WhenArgument(value, "Name cannot be null or empty.").IsNullOrEmpty().Throw();
@@ -33,10 +29,7 @@ namespace CalorieCounterEngine.Core.Command
 
         public IList<string> Parameters
         {
-            get
-            {
-                return this.parameters;
-            }
+            get => this.parameters;
             private set
             {
                 Guard.WhenArgument(value, "List of strings cannot be null.").IsNull().Throw();
@@ -48,21 +41,20 @@ namespace CalorieCounterEngine.Core.Command
         {
             var indexOfFirstSeparator = input.IndexOf(SplitCommandSymbol);
 
-            if (indexOfFirstSeparator <0)
+            if (indexOfFirstSeparator < 0)
             {
                 this.Name = input;
                 return;
             }
 
             this.Name = input.Substring(0, indexOfFirstSeparator);
-            this.Parameters = input.Substring(indexOfFirstSeparator + 1).Split(new[] { SplitCommandSymbol }, StringSplitOptions.RemoveEmptyEntries);
+            this.Parameters = input.Substring(indexOfFirstSeparator + 1)
+                .Split(new[] {SplitCommandSymbol}, StringSplitOptions.RemoveEmptyEntries);
         }
+
         public static Command Parse(string input)
         {
             return new Command(input);
         }
-
-
-        
     }
 }

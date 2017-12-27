@@ -1,33 +1,39 @@
-﻿namespace CalorieCounterEngine.Contracts
+﻿namespace CalorieCounter.Contracts
 {
     public interface IProduct
     {
         /// <summary>
-        /// Name of the product.
+        ///     Name of the product.
         /// </summary>
         string Name { get; }
+
         /// <summary>
-        /// Approximate amount of energy in the product.
+        ///     Approximate amount of energy in the product.
         /// </summary>
         int Calories { get; }
+
         /// <summary>
-        /// Protein contained in the product.
+        ///     Protein contained in the product.
         /// </summary>
         int Protein { get; }
+
         /// <summary>
-        /// Carbohydrates contained in the product.
+        ///     Carbohydrates contained in the product.
         /// </summary>
         int Carbs { get; }
+
         /// <summary>
-        /// Fats contained in the product.
+        ///     Fats contained in the product.
         /// </summary>
         int Fat { get; }
+
         /// <summary>
-        /// Sugar contained in the product.
+        ///     Sugar contained in the product.
         /// </summary>
         int Sugar { get; }
+
         /// <summary>
-        /// Name of the product.
+        ///     Name of the product.
         /// </summary>
         int Fiber { get; }
     }

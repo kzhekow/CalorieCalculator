@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace CalorieCounterEngine.Core.Contracts
+namespace Console_App.Core.Contracts
 {
-    interface ICommand
+    internal interface ICommand
     {
         string Name { get; }
 

@@ -1,10 +1,10 @@
 ﻿using Bytes2you.Validation;
-using CalorieCounterEngine.Models.Contracts;
+using CalorieCounter.Models.Contracts;
 
-namespace CalorieCounterEngine.Models.Weight
+namespace CalorieCounter.Models.Weight
 {
     /// <summary>
-    /// This class stores the individual body weight.
+    ///     This class stores the individual body weight.
     /// </summary>
     public class Weight : IWeight
     {
@@ -15,6 +15,7 @@ namespace CalorieCounterEngine.Models.Weight
             Guard.WhenArgument(weight, "Weight can not be a negative nubmer!").IsLessThan(0).Throw();
             this.weight = weight;
         }
+
         decimal IWeight.Weight => this.weight;
     }
 }

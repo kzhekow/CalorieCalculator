@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 
-namespace CalorieCounterEngine.Contracts
+namespace CalorieCounter.Contracts
 {
     public interface IEngine
     {
