@@ -11,8 +11,9 @@ namespace CalorieCounterEngine.Models.Goal
         private readonly double height;
         private readonly GenderType gender;
         private readonly GoalType type;
+        private readonly ActivityLevel level;
 
-        public Goal(double startingWeight, double goalWeight, double height, GenderType gender, GoalType type)
+        public Goal(double startingWeight, double goalWeight, double height, GenderType gender, GoalType type, ActivityLevel level)
         {
             Guard.WhenArgument(startingWeight, "Starting weight can not be a negative number!").IsLessThan(0).Throw();
             Guard.WhenArgument(goalWeight, "Goal weight can not be a negative number!").IsLessThan(0).Throw();
@@ -21,12 +22,15 @@ namespace CalorieCounterEngine.Models.Goal
                 throw new ArgumentException("The provided gender type is not valid!");
             if (!Enum.IsDefined(typeof(GoalType), type))
                 throw new ArgumentException("The provided goal type is not valid!");
+            if (!Enum.IsDefined(typeof(ActivityLevel), level))
+                throw new ArgumentException("The provided activity level is not valid!");
 
             this.startingWeight = startingWeight;
             this.goalWeight = goalWeight;
             this.height = height;
             this.gender = gender;
             this.type = type;
+            this.level = level;
         }
 
         public double StartingWeight => this.startingWeight;
@@ -38,6 +42,8 @@ namespace CalorieCounterEngine.Models.Goal
         public GenderType Gender => this.gender;
 
         public GoalType Type => this.type;
+
+        public ActivityLevel Level => this.level;
 
         public double CalculateRestingEnergy()
         {
@@ -53,17 +59,54 @@ namespace CalorieCounterEngine.Models.Goal
 
         public double CalculateSuggestedDailyCalorieIntake()
         {
+            double dailyCalorieIntake = this.CalculateRestingEnergy();
 
+            switch (this.Level)
+            {
+                case ActivityLevel.Light: dailyCalorieIntake *= 1.375;
+                    break;
+                case ActivityLevel.Moderate: dailyCalorieIntake *= 1.55;
+                    break;
+                case ActivityLevel.Heavy: dailyCalorieIntake *= 1.725;
+                    break;
+                default:
+                    break;
+            }
+            return dailyCalorieIntake;
         }
 
         public string CalculateSuggestedMacrosRatio()
         {
-            throw new NotImplementedException();
+            var macrosRatio = string.Empty;
+
+            switch (this.Type)
+            {
+                case GoalType.LoseWeight: macrosRatio = "Carbs:Protein:Fat = 25:40:35";
+                    break;
+                case GoalType.MaintainWeight: macrosRatio = "Carbs:Protein:Fat = 40:30:30";
+                    break;
+                case GoalType.GainWeight: macrosRatio = "Carbs:Protein:Fat = 50:30:20";
+                    break;
+                default:
+                    break;
+            }
+            return macrosRatio;
         }
 
         public int CalculateSuggestedWaterIntake()
         {
-            throw new NotImplementedException();
+            int dailyWaterIntake = 0;
+
+            switch (this.Gender)
+            {
+                case GenderType.Male: dailyWaterIntake = 3700;
+                    break;
+                case GenderType.Female: dailyWaterIntake = 2600;
+                    break;
+                default:
+                    break;
+            }
+            return dailyWaterIntake;
         }
     }
 }

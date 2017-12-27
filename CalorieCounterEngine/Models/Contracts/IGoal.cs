@@ -23,11 +23,16 @@
         /// </summary>
         GoalType Type { get; }
         /// <summary>
+        ///     Activity can have 3 types: light, moderate, heavy.
+        /// </summary>
+        ActivityLevel Level { get; }
+        /// <summary>
         ///     Calcultates the suggested macros ratio of the user, taking in mind his goal.
         /// </summary>
         /// <returns>
         ///     Returns a string - "Carbs:Protein:Fat 50:20:30".
         /// </returns>
+        /// 
         string CalculateSuggestedMacrosRatio();
         /// <summary>
         ///     Calculates the suggested daily calorie intake of the user, taking in mind his goal.
