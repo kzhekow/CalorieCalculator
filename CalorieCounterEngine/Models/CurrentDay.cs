@@ -82,12 +82,6 @@ namespace CalorieCounterEngine.Models
 
         public int Fiber { get; private set; }
 
-        public void AddProducts(IProduct product)
-        {
-            Guard.WhenArgument(product, "Product can not be null!").IsNull().Throw();
-            this.Products.Add(product);
-        }
-
         public double CalculateDailyIntake()
         {
             foreach (var product in this.Products)
@@ -125,12 +119,31 @@ namespace CalorieCounterEngine.Models
             return $"Carbs:Protein:Fat = {carbsRatio}:{proteinRatio}:{fatRatio}";
         }
 
+        public void AddProducts(IProduct product)
+        {
+            Guard.WhenArgument(product, "Product can not be null!").IsNull().Throw();
+            this.Products.Add(product);
+        }
+
         public void RemoveProducts(IProduct product)
         {
             Guard.WhenArgument(product, "Product can not be null!").IsNull().Throw();
             Guard.WhenArgument(this.Products, "The list of products is empty!").IsNull().Throw();
 
             this.Products.Remove(product);
+        }
+
+        public void AddMeal(IMeal meal)
+        {
+            Guard.WhenArgument(meal, "Meal can not be null!").IsNull().Throw();
+            this.Meals.Add(meal);
+        }
+
+        public void RemoveMeal(IMeal meal)
+        {
+            Guard.WhenArgument(meal, "Meal can not be null!").IsNull().Throw();
+            Guard.WhenArgument(this.Meals, "The list of meals is empty!").IsNull().Throw();
+            this.Meals.Remove(meal);
         }
     }
 }

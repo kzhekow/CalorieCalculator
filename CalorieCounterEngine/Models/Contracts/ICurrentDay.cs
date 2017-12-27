@@ -22,5 +22,9 @@ namespace CalorieCounterEngine.Models.Contracts
         void AddProducts(IProduct product);
 
         void RemoveProducts(IProduct product);
+
+        void AddMeal(IMeal meal);
+
+        void RemoveMeal(IMeal meal);
     }
 }
