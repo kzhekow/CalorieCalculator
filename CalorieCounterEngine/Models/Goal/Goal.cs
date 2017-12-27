@@ -9,15 +9,17 @@ namespace CalorieCounterEngine.Models.Goal
         private readonly double startingWeight;
         private readonly double goalWeight;
         private readonly double height;
+        private readonly int age;
         private readonly GenderType gender;
         private readonly GoalType type;
         private readonly ActivityLevel level;
 
-        public Goal(double startingWeight, double goalWeight, double height, GenderType gender, GoalType type, ActivityLevel level)
+        public Goal(double startingWeight, double goalWeight, double height, int age, GenderType gender, GoalType type, ActivityLevel level)
         {
             Guard.WhenArgument(startingWeight, "Starting weight can not be a negative number!").IsLessThan(0).Throw();
             Guard.WhenArgument(goalWeight, "Goal weight can not be a negative number!").IsLessThan(0).Throw();
             Guard.WhenArgument(height, "Height can not be a negative number!").IsLessThan(0).Throw();
+            Guard.WhenArgument(age, "Age can not be a negative number!").IsLessThan(0).Throw();
             if (!Enum.IsDefined(typeof(GenderType), gender))
                 throw new ArgumentException("The provided gender type is not valid!");
             if (!Enum.IsDefined(typeof(GoalType), type))
@@ -28,6 +30,7 @@ namespace CalorieCounterEngine.Models.Goal
             this.startingWeight = startingWeight;
             this.goalWeight = goalWeight;
             this.height = height;
+            this.age = age;
             this.gender = gender;
             this.type = type;
             this.level = level;
@@ -38,6 +41,8 @@ namespace CalorieCounterEngine.Models.Goal
         public double GoalWeight => this.goalWeight;
 
         public double Height => this.height;
+
+        public int Age => this.age;
 
         public GenderType Gender => this.gender;
 
@@ -51,9 +56,9 @@ namespace CalorieCounterEngine.Models.Goal
 
             switch (this.Gender)
             {
-                case GenderType.Male: bmr = (11.936 * this.StartingWeight) + (586.728 * this.Height) + 191.027 + 29.279;
+                case GenderType.Male: bmr = (10 * this.StartingWeight) + (6.25 * this.Height) - (5 * this.Age) + 5;
                     break;
-                case GenderType.Female: bmr = (11.936 * this.StartingWeight) + (586.728 * this.Height) + 29.279;
+                case GenderType.Female: bmr = (10 * this.StartingWeight) + (6.25 * this.Height) - (5 * this.Age) - 161;
                     break;
                 default:
                     break;

@@ -11,9 +11,13 @@
         /// </summary>
         double GoalWeight { get; }
         /// <summary>
-        ///    This is the geight of the user in centimeters.
+        ///    This is the height of the user in centimeters.
         /// </summary>
         double Height { get; }
+        /// <summary>
+        ///    This is the age of the user in kilograms.
+        /// </summary>
+        int Age { get; }
         /// <summary>
         /// This is the gender of the user.
         /// </summary>
