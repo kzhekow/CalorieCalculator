@@ -19,7 +19,7 @@ namespace CalorieCounterEngine.Models
             this.burnedCaloriesFromExercise = burnedCaloriesFromExercise;
         }
 
-        public CurrentDay(double restingEnergy)
+        public CurrentDay(double restingEnergy, double suggestedDailyCalorieIntake)
         {
             this.RestingEnergy = restingEnergy;
             this.SuggestedDailyCalorieIntake = suggestedDailyCalorieIntake;
