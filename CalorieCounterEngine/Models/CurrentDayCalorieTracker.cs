@@ -1,4 +1,5 @@
-﻿using CalorieCounter.Contracts;
+﻿using Bytes2you.Validation;
+using CalorieCounter.Contracts;
 using CalorieCounter.Models.Contracts;
 using CalorieCounterEngine.Models.Contracts;
 using System.Collections.Generic;
@@ -12,6 +13,46 @@ namespace CalorieCounterEngine.Models
         public ICollection<IProduct> ProductsConsumed { get; private set;}
 
         public ICollection<IActivity> ActivitiesPerformed { get; private set; }
+
+        public void AddWater(int water)
+        {
+            Guard.WhenArgument(water, "Water can not be a negative number!").IsLessThan(0).Throw();
+            this.Water += water;
+        }
+
+        public void RemoveWater(int water)
+        {
+            Guard.WhenArgument(water, "Water can not be a negative number!").IsLessThan(0).Throw();
+            this.Water -= water;
+        }
+
+        public void AddProducts(IProduct product)
+        {
+            Guard.WhenArgument(product, "Product can not be null!").IsNull().Throw();
+            this.ProductsConsumed.Add(product);
+        }
+
+        public void RemoveProducts(IProduct product)
+        {
+            Guard.WhenArgument(product, "Product can not be null!").IsNull().Throw();
+            Guard.WhenArgument(this.ProductsConsumed, "The list of products is empty!").IsNull().Throw();
+
+            this.ProductsConsumed.Remove(product);
+        }
+
+        public void AddActivity(IActivity activity)
+        {
+            Guard.WhenArgument(activity, "Activity can not be null!").IsNull().Throw();
+            this.ActivitiesPerformed.Add(activity);
+        }
+
+        public void RemoveActivity(IActivity activity)
+        {
+            Guard.WhenArgument(activity, "Activity can not be null!").IsNull().Throw();
+            Guard.WhenArgument(this.ActivitiesPerformed, "The list of activities is empty!").IsNull().Throw();
+
+            this.ActivitiesPerformed.Remove(activity);
+        }
 
         //    private double restingEnergy;
         //    private double suggestedDailyCalorieIntake;
@@ -118,31 +159,6 @@ namespace CalorieCounterEngine.Models
         //        return $"Carbs:Protein:Fat = {carbsRatio}:{proteinRatio}:{fatRatio}";
         //    }
 
-        //    public void AddProducts(IProduct product)
-        //    {
-        //        Guard.WhenArgument(product, "Product can not be null!").IsNull().Throw();
-        //        this.Products.Add(product);
-        //    }
 
-        //    public void RemoveProducts(IProduct product)
-        //    {
-        //        Guard.WhenArgument(product, "Product can not be null!").IsNull().Throw();
-        //        Guard.WhenArgument(this.Products, "The list of products is empty!").IsNull().Throw();
-
-        //        this.Products.Remove(product);
-        //    }
-
-        //    public void AddMeal(IMeal meal)
-        //    {
-        //        Guard.WhenArgument(meal, "Meal can not be null!").IsNull().Throw();
-        //        this.Meals.Add(meal);
-        //    }
-
-        //    public void RemoveMeal(IMeal meal)
-        //    {
-        //        Guard.WhenArgument(meal, "Meal can not be null!").IsNull().Throw();
-        //        Guard.WhenArgument(this.Meals, "The list of meals is empty!").IsNull().Throw();
-        //        this.Meals.Remove(meal);
-        //    }
     }
 }
