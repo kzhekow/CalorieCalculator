@@ -61,8 +61,7 @@ namespace Console_App.Core.Engine
         }
 
         private string
-            ProcessSingleCommand(
-                ICommand command) /////////Here we should add all the commands that we intend our program to have. - Add meal to day etc.
+            ProcessSingleCommand(ICommand command) /////////Here we should add all the commands that we intend our program to have. - Add meal to day etc.
         {
             var output = new StringBuilder();
             switch (command.Name)

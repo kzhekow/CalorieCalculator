@@ -13,10 +13,7 @@ namespace CalorieCounterEngine.Models
 
         public ICollection<IActivity> ActivitiesPerformed { get; set; }
 
-        public static int RemainingProteinIntake(int suggestedProteinDailyIntake,ICollection<IProduct> ProductsConsumed)
-        {
-            return suggestedProteinDailyIntake -DailyNutriCalc.CalculateCurrentProteins(ProductsConsumed);
-        }
+        
 
         //    private double restingEnergy;
         //    private double suggestedDailyCalorieIntake;
