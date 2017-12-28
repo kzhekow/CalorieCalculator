@@ -6,47 +6,30 @@ namespace CalorieCounter.Models
 {
     public static class DailyNutriCalc
     {
-        public ICollection<IProduct> ProductList { get; }
-
-
-        public void AddProduct(IProduct product)
+        public static int CalculateCurrentCalories(ICollection<IProduct> productsConsumed)
         {
-            this.ProductList.Add(product);
+            return  productsConsumed.Sum(x => x.Calories);
+        }
+        public static int CalculateCurrentProteins(ICollection<IProduct> productsConsumed)
+        {
+            return productsConsumed.Sum(x => x.Protein);
+        }
+        public static int CalculateCurrentCarbs(ICollection<IProduct> productsConsumed)
+        {
+            return productsConsumed.Sum(x => x.Carbs);
+        }
+        public static int CalculateCurrentSugars(ICollection<IProduct> productsConsumed)
+        {
+            return productsConsumed.Sum(x => x.Sugar);
+        }
+        public static int CalculateCurrentFibers(ICollection<IProduct> productsConsumed)
+        {
+            return productsConsumed.Sum(x => x.Fiber);
+        }
+        public static int CalculateCurrentFats(ICollection<IProduct> productsConsumed)
+        {
+            return productsConsumed.Sum(x => x.Fat);
         }
 
-        public void RemoveProduct(IProduct product)
-        {
-            this.ProductList.Remove(product);
-        }
-
-        public int TotalDailyCalories()
-        {
-            return this.ProductList.Sum(x => x.Calories);
-        }
-
-        public int TotalDailyProteins()
-        {
-            return this.ProductList.Sum(x => x.Protein);
-        }
-
-        public int TotalDailyCarbs()
-        {
-            return this.ProductList.Sum(x => x.Carbs);
-        }
-
-        public int TotalDailyFats()
-        {
-            return this.ProductList.Sum(x => x.Fat);
-        }
-
-        public int TotalDailySugars()
-        {
-            return this.ProductList.Sum(x => x.Sugar);
-        }
-
-        public int TotalDailyFibers()
-        {
-            return this.ProductList.Sum(x => x.Fiber);
-        }
     }
 }
