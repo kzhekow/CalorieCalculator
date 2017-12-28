@@ -51,7 +51,7 @@
     <Compile Include="Common\MealType.cs" />
     <Compile Include="Contracts\IEngine.cs" />
     <Compile Include="Contracts\IProductFactory.cs" />
-    <Compile Include="Models\Contracts\ICurrentDay.cs" />
+    <Compile Include="Models\Contracts\ICurrentDayCalorieTracker.cs" />
     <Compile Include="Models\Contracts\IGoal.cs" />
     <Compile Include="Models\CurrentDayCalorieTracker.cs" />
     <Compile Include="Models\DailyNutriCalc.cs" />

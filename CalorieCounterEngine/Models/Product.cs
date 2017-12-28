@@ -62,7 +62,8 @@ namespace CalorieCounter.Models
 
         public string Name { get; }
 
-        public int Calories => this.calories * (int) (this.Weight / 100);
+        public
+            int Calories => this.calories * (int) (this.Weight / 100);
 
         public int Protein => this.protein * (int) (this.Weight / 100);
 
