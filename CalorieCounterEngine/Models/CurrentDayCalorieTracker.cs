@@ -7,11 +7,11 @@ namespace CalorieCounterEngine.Models
 {
     public class CurrentDayCalorieTracker : ICurrentDayCalorieTracker
     {
-        public int Water { get; set; }
+        public int Water { get; private set; }
 
-        public ICollection<IProduct> ProductsConsumed { get; set;}
+        public ICollection<IProduct> ProductsConsumed { get; private set;}
 
-        public ICollection<IActivity> ActivitiesPerformed { get; set; }
+        public ICollection<IActivity> ActivitiesPerformed { get; private set; }
 
         //    private double restingEnergy;
         //    private double suggestedDailyCalorieIntake;
