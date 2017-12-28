@@ -150,14 +150,7 @@ namespace CalorieCounterEngine.Models
         //        return (this.SuggestedDailyCalorieIntake + this.BurnedCaloriesFromExercise) - this.Calories;
         //    }
 
-        //    public string CalculateMacros()
-        //    {
-        //        var carbsRatio = Math.Round(((double)(this.Carbs * 4) / this.Calories) * 100);
-        //        var proteinRatio = Math.Round(((double)(this.Protein * 4) / this.Calories) * 100);
-        //        var fatRatio = Math.Round(((double)(this.Fat * 9) / this.Calories) * 100);
 
-        //        return $"Carbs:Protein:Fat = {carbsRatio}:{proteinRatio}:{fatRatio}";
-        //    }
 
 
     }
