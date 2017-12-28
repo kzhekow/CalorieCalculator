@@ -37,11 +37,11 @@ namespace CalorieCounter.Models
             return suggestedFatsDailyIntake - currentFatIntake;
         }
 
-        public static int RemainingCaloriesIntake(int suggestedCaloriesDailyIntake, ICollection<IProduct> productsConsumed)
+        public static int RemainingCaloriesIntake(int suggestedCaloriesDailyIntake, int burnedCaloriesFromExercise = 0, ICollection<IProduct> productsConsumed)
         {
             int currentCaloriesIntake = productsConsumed.Sum(p => p.Calories);
 
-            return suggestedCaloriesDailyIntake - currentCaloriesIntake;
+            return (suggestedCaloriesDailyIntake + burnedCaloriesFromExercise) - currentCaloriesIntake;
         }
 
         public static int RemainingWaterIntake(int suggestedDailyWaterIntake, int waterConsumed)
@@ -62,6 +62,7 @@ namespace CalorieCounter.Models
 
             return $"Carbs:Protein:Fat = {carbsRatio}:{proteinRatio}:{fatRatio}";
         }
+
         //public static int CalculateCurrentCalories(ICollection<IProduct> productsConsumed)
         //{
         //    return  productsConsumed.Sum(p => p.Calories);

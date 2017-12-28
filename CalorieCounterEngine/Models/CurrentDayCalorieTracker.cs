@@ -149,9 +149,5 @@ namespace CalorieCounterEngine.Models
 
         //        return (this.SuggestedDailyCalorieIntake + this.BurnedCaloriesFromExercise) - this.Calories;
         //    }
-
-
-
-
     }
 }
