@@ -53,8 +53,8 @@
     <Compile Include="Contracts\IProductFactory.cs" />
     <Compile Include="Models\Contracts\ICurrentDay.cs" />
     <Compile Include="Models\Contracts\IGoal.cs" />
-    <Compile Include="Models\CurrentDay.cs" />
-    <Compile Include="Models\DailyIntake.cs" />
+    <Compile Include="Models\CurrentDayCalorieTracker.cs" />
+    <Compile Include="Models\DailyNutriCalc.cs" />
     <Compile Include="CalorieCounterEngine.cs" />
     <Compile Include="Factories\ProductFactory.cs" />
     <Compile Include="Models\Activity\Activity.cs" />

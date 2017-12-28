@@ -4,13 +4,8 @@ using CalorieCounter.Contracts;
 
 namespace CalorieCounter.Models
 {
-    internal class DailyIntake
+    public static class DailyNutriCalc
     {
-        public DailyIntake()
-        {
-            this.ProductList = new List<IProduct>();
-        }
-
         public ICollection<IProduct> ProductList { get; }
 
 

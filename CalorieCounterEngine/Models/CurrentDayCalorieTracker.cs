@@ -6,13 +6,13 @@ using System.Collections.Generic;
 
 namespace CalorieCounterEngine.Models
 {
-    public class CurrentDay : ICurrentDay, IProduct
+    public class CurrentDayCalorieTracker : ICurrentDay, IProduct
     {
         private double restingEnergy;
         private double suggestedDailyCalorieIntake;
         private int burnedCaloriesFromExercise;
 
-        public CurrentDay(double restingEnergy, double suggestedDailyCalorieIntake, int burnedCaloriesFromExercise = 0)
+        public CurrentDayCalorieTracker(double restingEnergy, double suggestedDailyCalorieIntake, int burnedCaloriesFromExercise = 0)
         {
             this.RestingEnergy = restingEnergy;
             this.SuggestedDailyCalorieIntake = suggestedDailyCalorieIntake;
