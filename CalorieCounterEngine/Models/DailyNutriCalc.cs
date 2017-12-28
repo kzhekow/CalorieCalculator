@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using CalorieCounter.Contracts;
+using CalorieCounter.Models.Contracts;
 
 namespace CalorieCounter.Models
 {
@@ -37,11 +38,16 @@ namespace CalorieCounter.Models
             return suggestedFatsDailyIntake - currentFatIntake;
         }
 
-        public static int RemainingCaloriesIntake(int suggestedCaloriesDailyIntake, ICollection<IProduct> productsConsumed, int burnedCaloriesFromExercise = 0)
+        public static int RemainingCaloriesIntake(int suggestedCaloriesDailyIntake, ICollection<IProduct> productsConsumed, ICollection<IActivity> activitiesPerformed = null)
         {
             int currentCaloriesIntake = productsConsumed.Sum(p => p.Calories);
+            if (activitiesPerformed != null)
+            {
+                int burnedCaloriesFromActivities = activitiesPerformed.Sum(a => a.CalculateBurnedCalories());
 
-            return (suggestedCaloriesDailyIntake + burnedCaloriesFromExercise) - currentCaloriesIntake;
+                return (suggestedCaloriesDailyIntake + burnedCaloriesFromActivities) - currentCaloriesIntake;
+            }
+            return suggestedCaloriesDailyIntake - currentCaloriesIntake;
         }
 
         public static int RemainingWaterIntake(int suggestedDailyWaterIntake, int waterConsumed)
