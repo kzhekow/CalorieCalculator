@@ -12,17 +12,11 @@ namespace CalorieCounterEngine.Models
         private double suggestedDailyCalorieIntake;
         private int burnedCaloriesFromExercise;
 
-        public CurrentDay(double restingEnergy, double suggestedDailyCalorieIntake, int burnedCaloriesFromExercise)
+        public CurrentDay(double restingEnergy, double suggestedDailyCalorieIntake, int burnedCaloriesFromExercise = 0)
         {
             this.RestingEnergy = restingEnergy;
             this.SuggestedDailyCalorieIntake = suggestedDailyCalorieIntake;
             this.burnedCaloriesFromExercise = burnedCaloriesFromExercise;
-        }
-
-        public CurrentDay(double restingEnergy, double suggestedDailyCalorieIntake)
-        {
-            this.RestingEnergy = restingEnergy;
-            this.SuggestedDailyCalorieIntake = suggestedDailyCalorieIntake;
         }
 
         public double RestingEnergy

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using CalorieCounter;
 using Console_App.Core.Contracts;
 
 namespace Console_App.Core.Engine
 {
+    using global::CalorieCounter;
     /// <summary>
     ///     Parser class with the sole purpose of capturing user input and delegating it to the calorie counter engine.
     /// </summary>

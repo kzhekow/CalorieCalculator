@@ -11,12 +11,14 @@ namespace CalorieCounter
         private static IEngine instance;
         private readonly IProductFactory productFactory;
         private readonly IDictionary<string, IProduct> products;
-        private ICommand createProduct;
+        private ICommand createProductCommand;
+        private ICommand createMealCommand;
+        private ICommand createDrinkCommand;
 
         public CalorieCounterEngine()
         {
             // TODO: Set proper can execute conditions.
-            this.createProduct = new RelayCommand(CreateProduct, arg => true);
+            this.createProductCommand = new RelayCommand(CreateProduct, arg => true);
             this.productFactory = new ProductFactory();
             this.products = new Dictionary<string, IProduct>();
             //TODO: Deserialize and load all products from the local directory into the list.
@@ -36,9 +38,12 @@ namespace CalorieCounter
         {
             get
             {
-                if (this.createProduct == null) this.createProduct = new RelayCommand(CreateProduct);
+                if (this.createProductCommand == null)
+                {
+                    this.createProductCommand = new RelayCommand(CreateProduct);
+                }
 
-                return this.createProduct;
+                return this.createProductCommand;
             }
         }
 
@@ -57,8 +62,46 @@ namespace CalorieCounter
             var sugar = (int) args[6];
             var fiber = (int) args[7];
 
-            var product = this.productFactory.CreateProduct(name, protein, carbs, fats, calories, sugar, fiber);
+            var product = this.productFactory.CreateProduct(name, weight, protein, carbs, fats, calories, sugar, fiber);
             this.products.Add(product.Name, product);
+        }
+
+        public ICommand CreateDrinkCommand
+        {
+            get
+            {
+                if (this.createDrinkCommand == null)
+                {
+                    this.createDrinkCommand = new RelayCommand(CreateDrink);
+                }
+
+                return this.createDrinkCommand;
+            }
+        }
+
+        private void CreateDrink(object parameter)
+        {
+            // TODO: Validations, dissection of the passed arguments and creation of the new drink (using the factory)
+            
+        }
+
+        public ICommand CreateMealCommand
+        {
+            get
+            {
+                if (this.createMealCommand == null)
+                {
+                    this.createMealCommand = new RelayCommand(CreateMeal);
+                }
+
+                return this.createMealCommand;
+            }
+        }
+
+        private void CreateMeal(object parameter)
+        {
+            // TODO: Validations, dissection of the passed arguments and creation of the new meal (using the factory)
+            
         }
     }
 }
