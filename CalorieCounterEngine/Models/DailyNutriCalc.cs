@@ -37,7 +37,7 @@ namespace CalorieCounter.Models
             return suggestedFatsDailyIntake - currentFatIntake;
         }
 
-        public static int RemainingCaloriesIntake(int suggestedCaloriesDailyIntake, int burnedCaloriesFromExercise = 0, ICollection<IProduct> productsConsumed)
+        public static int RemainingCaloriesIntake(int suggestedCaloriesDailyIntake, ICollection<IProduct> productsConsumed, int burnedCaloriesFromExercise = 0)
         {
             int currentCaloriesIntake = productsConsumed.Sum(p => p.Calories);
 
