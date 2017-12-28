@@ -56,9 +56,11 @@ namespace CalorieCounterEngine.Models.Goal
 
             switch (this.Gender)
             {
-                case GenderType.Male: bmr = (10 * this.StartingWeight) + (6.25 * this.Height) - (5 * this.Age) + 5;
+                case GenderType.Male:
+                    bmr = (10 * this.StartingWeight) + (6.25 * this.Height) - (5 * this.Age) + 5;
                     break;
-                case GenderType.Female: bmr = (10 * this.StartingWeight) + (6.25 * this.Height) - (5 * this.Age) - 161;
+                case GenderType.Female:
+                    bmr = (10 * this.StartingWeight) + (6.25 * this.Height) - (5 * this.Age) - 161;
                     break;
                 default:
                     break;
@@ -72,16 +74,82 @@ namespace CalorieCounterEngine.Models.Goal
 
             switch (this.Level)
             {
-                case ActivityLevel.Light: dailyCalorieIntake *= 1.375;
+                case ActivityLevel.Light:
+                    dailyCalorieIntake *= 1.375;
                     break;
-                case ActivityLevel.Moderate: dailyCalorieIntake *= 1.55;
+                case ActivityLevel.Moderate:
+                    dailyCalorieIntake *= 1.55;
                     break;
-                case ActivityLevel.Heavy: dailyCalorieIntake *= 1.725;
+                case ActivityLevel.Heavy:
+                    dailyCalorieIntake *= 1.725;
                     break;
                 default:
                     break;
             }
             return dailyCalorieIntake;
+        }
+
+        public double CalculateSuggestedDailyCarbsIntake()
+        {
+            double suggestCarbsIntake = 0;
+
+            switch (this.Type)
+            {
+                case GoalType.LoseWeight:
+                    suggestCarbsIntake = (0.25 * CalculateSuggestedDailyCalorieIntake() / 4);
+                    break;
+                case GoalType.MaintainWeight:
+                    suggestCarbsIntake = (0.4 * CalculateSuggestedDailyCalorieIntake() / 4);
+                    break;
+                case GoalType.GainWeight:
+                    suggestCarbsIntake = (0.5 * CalculateSuggestedDailyCalorieIntake() / 4);
+                    break;
+                default:
+                    break;
+            }
+            return suggestCarbsIntake;
+        }
+
+        public double CalculateSuggestedDailyProteinIntake()
+        {
+            double suggestProteinIntake = 0;
+
+            switch (this.Type)
+            {
+                case GoalType.LoseWeight:
+                    suggestProteinIntake = (0.4 * CalculateSuggestedDailyCalorieIntake() / 4);
+                    break;
+                case GoalType.MaintainWeight:
+                    suggestProteinIntake = (0.3 * CalculateSuggestedDailyCalorieIntake() / 4);
+                    break;
+                case GoalType.GainWeight:
+                    suggestProteinIntake = (0.3 * CalculateSuggestedDailyCalorieIntake() / 4);
+                    break;
+                default:
+                    break;
+            }
+            return suggestProteinIntake;
+        }
+
+        public double CalculateSuggestedDailyFatIntake()
+        {
+            double suggestFatIntake = 0;
+
+            switch (this.Type)
+            {
+                case GoalType.LoseWeight:
+                    suggestFatIntake = (0.35 * CalculateSuggestedDailyCalorieIntake() / 9);
+                    break;
+                case GoalType.MaintainWeight:
+                    suggestFatIntake = (0.3 * CalculateSuggestedDailyCalorieIntake() / 9);
+                    break;
+                case GoalType.GainWeight:
+                    suggestFatIntake = (0.2 * CalculateSuggestedDailyCalorieIntake() / 9);
+                    break;
+                default:
+                    break;
+            }
+            return suggestFatIntake;
         }
 
         public string CalculateSuggestedMacrosRatio()
@@ -90,11 +158,14 @@ namespace CalorieCounterEngine.Models.Goal
 
             switch (this.Type)
             {
-                case GoalType.LoseWeight: macrosRatio = "Carbs:Protein:Fat = 25:40:35";
+                case GoalType.LoseWeight:
+                    macrosRatio = "Carbs:Protein:Fat = 25:40:35";
                     break;
-                case GoalType.MaintainWeight: macrosRatio = "Carbs:Protein:Fat = 40:30:30";
+                case GoalType.MaintainWeight:
+                    macrosRatio = "Carbs:Protein:Fat = 40:30:30";
                     break;
-                case GoalType.GainWeight: macrosRatio = "Carbs:Protein:Fat = 50:30:20";
+                case GoalType.GainWeight:
+                    macrosRatio = "Carbs:Protein:Fat = 50:30:20";
                     break;
                 default:
                     break;
@@ -108,9 +179,11 @@ namespace CalorieCounterEngine.Models.Goal
 
             switch (this.Gender)
             {
-                case GenderType.Male: dailyWaterIntake = 3700;
+                case GenderType.Male:
+                    dailyWaterIntake = 3700;
                     break;
-                case GenderType.Female: dailyWaterIntake = 2600;
+                case GenderType.Female:
+                    dailyWaterIntake = 2600;
                     break;
                 default:
                     break;
