@@ -1,4 +1,5 @@
 ﻿using CalorieCounter.Contracts;
+using CalorieCounter.Models;
 using CalorieCounter.Models.Contracts;
 using System.Collections.Generic;
 
@@ -11,6 +12,11 @@ namespace CalorieCounterEngine.Models
         public ICollection<IProduct> ProductsConsumed { get; set;}
 
         public ICollection<IActivity> ActivitiesPerformed { get; set; }
+
+        public static int RemainingProteinIntake(int suggestedProteinDailyIntake,ICollection<IProduct> ProductsConsumed)
+        {
+            return suggestedProteinDailyIntake -DailyNutriCalc.CalculateCurrentProteins(ProductsConsumed);
+        }
 
         //    private double restingEnergy;
         //    private double suggestedDailyCalorieIntake;
