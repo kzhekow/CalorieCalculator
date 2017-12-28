@@ -62,8 +62,8 @@ namespace CalorieCounter
             var sugar = (int) args[6];
             var fiber = (int) args[7];
 
-            var product = this.productFactory.CreateProduct(name, weight, protein, carbs, fats, calories, sugar, fiber);
-            this.products.Add(product.Name, product);
+            //var product = this.productFactory.CreateProduct(name, weight, protein, carbs, fats, calories, sugar, fiber);
+            //this.products.Add(product.Name, product);
         }
 
         public ICommand CreateDrinkCommand
