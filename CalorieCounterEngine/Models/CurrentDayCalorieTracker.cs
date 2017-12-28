@@ -1,22 +1,17 @@
 ﻿using CalorieCounter.Contracts;
-using CalorieCounter.Models;
 using CalorieCounter.Models.Contracts;
+using CalorieCounterEngine.Models.Contracts;
 using System.Collections.Generic;
 
 namespace CalorieCounterEngine.Models
 {
-    public class CurrentDayCalorieTracker
+    public class CurrentDayCalorieTracker : ICurrentDayCalorieTracker
     {
         public int Water { get; set; }
 
         public ICollection<IProduct> ProductsConsumed { get; set;}
 
         public ICollection<IActivity> ActivitiesPerformed { get; set; }
-
-        public static int RemainingProteinIntake(int suggestedProteinDailyIntake,ICollection<IProduct> ProductsConsumed)
-        {
-            return suggestedProteinDailyIntake -DailyNutriCalc.CalculateCurrentProteins(ProductsConsumed);
-        }
 
         //    private double restingEnergy;
         //    private double suggestedDailyCalorieIntake;
