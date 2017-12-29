@@ -80,8 +80,17 @@ namespace CalorieCounter
 
         private void CreateDrink(object parameter)
         {
-            // TODO: Validations, dissection of the passed arguments and creation of the new drink (using the factory)
-            
+            var args = parameter as object[];
+            var name = (string)args[0];
+            var caloriesPer100g = (int)args[1];
+            var proteinPer100g = (int)args[2];
+            var carbsPer100g = (int)args[3];
+            var fatsPer100g = (int)args[4];
+            var sugar = (int)args[5];
+            var fiber = (int)args[6];
+
+            var drink = this.productFactory.CreateProduct(name, caloriesPer100g, proteinPer100g, caloriesPer100g, fatsPer100g, sugar, fiber);
+            this.products.Add(drink.Name, drink);
         }
 
         public ICommand CreateMealCommand
