@@ -36,13 +36,12 @@ namespace CalorieCounter.Models
         /// Sugar can not be a negative number!
         /// <param name="fiber"></param>
         /// Fiber can not be a negative number!
-        public Product(string name, decimal weightInGrams, int calories, int protein, int carbs, int fat, int sugar,
+        public Product(string name, int calories, int protein, int carbs, int fat, int sugar,
             int fiber)
         {
             Guard.WhenArgument(name, "Name can not be null!").IsNotNullOrEmpty().Throw();
             Guard.WhenArgument(name.Length, "Name must be between 3 and 20 symbols!").IsLessThan(3).IsGreaterThan(20)
                 .Throw();
-            Guard.WhenArgument(weightInGrams, "Weight can not be a negative number!").IsLessThan(0).Throw();
             Guard.WhenArgument(calories, "Calories can not be a negative number!").IsLessThan(0).Throw();
             Guard.WhenArgument(protein, "Protein can not be a negative number!").IsLessThan(0).Throw();
             Guard.WhenArgument(carbs, "Carbs can not be a negative number!").IsLessThan(0).Throw();
@@ -51,7 +50,6 @@ namespace CalorieCounter.Models
             Guard.WhenArgument(fiber, "Fiber can not be a negative number!").IsLessThan(0).Throw();
 
             this.Name = name;
-            this.Weight = weightInGrams;
             this.calories = calories;
             this.protein = protein;
             this.carbs = carbs;
