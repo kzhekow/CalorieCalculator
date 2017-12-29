@@ -108,8 +108,9 @@ namespace CalorieCounter
 
         private void CreateMeal(object parameter)
         {
-            // TODO: Validations, dissection of the passed arguments and creation of the new meal (using the factory)
-            
+            /// not implemented
         }
+
+
     }
 }

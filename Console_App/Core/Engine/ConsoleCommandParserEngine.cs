@@ -71,15 +71,42 @@ namespace Console_App.Core.Engine
 
                     //boxing the arguments
                     var name = command.Parameters[0];
-                    var protein = int.Parse(command.Parameters[1]);
-                    var carbs = int.Parse(command.Parameters[2]);
-                    var fat = int.Parse(command.Parameters[3]);
-                    var calories = int.Parse(command.Parameters[4]);
+                    var calories = int.Parse(command.Parameters[1]);
+                    var protein = int.Parse(command.Parameters[2]);
+                    var carbs = int.Parse(command.Parameters[3]);
+                    var fat = int.Parse(command.Parameters[4]);
                     var sugar = int.Parse(command.Parameters[5]);
                     var fiber = int.Parse(command.Parameters[6]);
-                    object parameters = new object[]{name,protein, carbs, fat, calories, sugar, fiber};
+                    object parameters = new object[] { name, calories, protein, carbs, fat, sugar, fiber };
                     this.calorieCounterCalorieCounterEngineInstance.CreateProductCommand.Execute(parameters);
                     break;
+                case "CreateDrink":
+                    var nameOfDrink = command.Parameters[0];
+                    var caloriesOfDrink = int.Parse(command.Parameters[1]);
+                    var proteinOfDrink = int.Parse(command.Parameters[2]);
+                    var carbsOfDrink = int.Parse(command.Parameters[3]);
+                    var fatOfDrink = int.Parse(command.Parameters[4]);
+                    var sugarOfDrink = int.Parse(command.Parameters[5]);
+                    var fiberOfDrink = int.Parse(command.Parameters[6]);
+                    object parametersOfDrink = new object[] { nameOfDrink, caloriesOfDrink, proteinOfDrink, carbsOfDrink, fatOfDrink, sugarOfDrink, fiberOfDrink };
+                    this.calorieCounterCalorieCounterEngineInstance.CreateProductCommand.Execute(parametersOfDrink);
+                    break;
+                case "CreateMeal":
+                    throw new NotImplementedException();
+                case "AddWater":
+                    throw new NotImplementedException();
+                case "AddConsumedProduct":
+                    throw new NotImplementedException();
+                case "RemoveProduct":
+                    throw new NotImplementedException();
+                case "AddActivity":
+                    throw new NotImplementedException();
+                case "ShowAllProducts":
+                    throw new NotImplementedException();
+                case "ShowRemaningNutrients":
+                    throw new NotImplementedException();
+                case "CreateGoal":
+                    throw new NotImplementedException();
 
                 default:
                     output.Append("Not Implemented");
