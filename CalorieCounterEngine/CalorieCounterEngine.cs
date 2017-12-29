@@ -54,16 +54,15 @@ namespace CalorieCounter
             //unboxing the values
             var args = parameter as object[];
             var name = (string) args[0];
-            var weight = (decimal) args[1];
-            var protein = (int) args[2];
-            var carbs = (int) args[3];
-            var fats = (int) args[4];
-            var calories = (int) args[5];
-            var sugar = (int) args[6];
-            var fiber = (int) args[7];
+            var caloriesPer100g = (int)args[1];
+            var proteinPer100g = (int) args[2];
+            var carbsPer100g = (int) args[3];
+            var fatsPer100g = (int) args[4];
+            var sugar = (int) args[5];
+            var fiber = (int) args[6];
 
-            //var product = this.productFactory.CreateProduct(name, weight, protein, carbs, fats, calories, sugar, fiber);
-            //this.products.Add(product.Name, product);
+            var product = this.productFactory.CreateProduct(name, caloriesPer100g,proteinPer100g,caloriesPer100g,fatsPer100g, sugar, fiber);
+            this.products.Add(product.Name, product);
         }
 
         public ICommand CreateDrinkCommand

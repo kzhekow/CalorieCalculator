@@ -71,14 +71,13 @@ namespace Console_App.Core.Engine
 
                     //boxing the arguments
                     var name = command.Parameters[0];
-                    var weight = decimal.Parse(command.Parameters[1]);
-                    var protein = int.Parse(command.Parameters[2]);
-                    var carbs = int.Parse(command.Parameters[3]);
-                    var fat = int.Parse(command.Parameters[4]);
-                    var calories = int.Parse(command.Parameters[5]);
-                    var sugar = int.Parse(command.Parameters[6]);
-                    var fiber = int.Parse(command.Parameters[7]);
-                    object parameters = new object[]{name, weight, protein, carbs, fat, calories, sugar, fiber};
+                    var protein = int.Parse(command.Parameters[1]);
+                    var carbs = int.Parse(command.Parameters[2]);
+                    var fat = int.Parse(command.Parameters[3]);
+                    var calories = int.Parse(command.Parameters[4]);
+                    var sugar = int.Parse(command.Parameters[5]);
+                    var fiber = int.Parse(command.Parameters[6]);
+                    object parameters = new object[]{name,protein, carbs, fat, calories, sugar, fiber};
                     this.calorieCounterCalorieCounterEngineInstance.CreateProductCommand.Execute(parameters);
                     break;
 
