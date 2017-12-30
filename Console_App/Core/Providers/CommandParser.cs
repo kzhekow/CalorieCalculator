@@ -10,15 +10,27 @@ using System.Reflection;
 
 namespace Console_App.Core.Providers
 {
-    class CommandParser :IParser
+    class CommandParser : IParser
     {
         public ICommand ParseCommand(string fullCommand)
         {
             var commandName = fullCommand.Split(' ')[0];
             var commandTypeInfo = this.FindCommand(commandName);
-            var command = Activator.CreateInstance(commandTypeInfo, ProductFactory.Instance,GoalFactory.Instance,ActivityFactory.Instance, CommandParserEngine.Instance) as ICommand;
 
-            return command;
+            if (!commandTypeInfo.Name.ToLower().Contains("goal") && !commandTypeInfo.Name.ToLower().Contains("activity"))
+            {
+                return Activator.CreateInstance(commandTypeInfo, ProductFactory.Instance, CommandParserEngine.Instance) as ICommand;
+            }
+            else if (!commandTypeInfo.Name.ToLower().Contains("goal") && !commandTypeInfo.Name.ToLower().Contains("drink") && !commandTypeInfo.Name.ToLower().Contains("food"))
+            {
+                return Activator.CreateInstance(commandTypeInfo, ActivityFactory.Instance, CommandParserEngine.Instance) as ICommand;
+            }
+            else
+            {
+                return Activator.CreateInstance(commandTypeInfo, GoalFactory.Instance, CommandParserEngine.Instance) as ICommand;
+            }
+
+
         }
         public IList<string> ParseParameters(string fullCommand)
         {
