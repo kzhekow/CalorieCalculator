@@ -1,5 +1,6 @@
 ﻿using CalorieCounter.Factories.Contracts;
 using Console_App.Core.Contracts;
+using Console_App.Core.Engine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,14 +9,17 @@ using System.Threading.Tasks;
 
 namespace Console_App.Core.Commands.Creating
 {
-    class CreateProductCommand : ICommand
+    public abstract class CreateProductCommand : ICommand
     {
         private readonly IProductFactory factory;
-        private readonly IEngine engine;
+        private readonly ICommandParserEngine engine;
 
-        public string Execute(IList<string> parameters)
+        public CreateProductCommand(IProductFactory factory, ICommandParserEngine engine)
         {
-
+            this.factory = factory;
+            this.engine = engine;
         }
+
+        public abstract string Execute(IList<string> parameters);
     }
 }

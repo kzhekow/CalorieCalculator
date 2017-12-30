@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Console_App.Core.Engine
 {
-    interface ICommandParserEngine
+    public interface ICommandParserEngine
     {
         void Start();
 
