@@ -52,10 +52,10 @@
     <Compile Include="Common\GenderType.cs" />
     <Compile Include="Common\GoalType.cs" />
     <Compile Include="Common\MealType.cs" />
-    <Compile Include="Factories\Contracts\IActivityFactory.cs" />
+    <Compile Include="Contracts\IActivityFactory.cs" />
     <Compile Include="Contracts\ICalorieCounterEngine.cs" />
-    <Compile Include="Factories\Contracts\IGoalFactory.cs" />
-    <Compile Include="Factories\Contracts\IProductFactory.cs" />
+    <Compile Include="Contracts\IGoalFactory.cs" />
+    <Compile Include="Contracts\IProductFactory.cs" />
     <Compile Include="Factories\ActivityFactory.cs" />
     <Compile Include="Factories\GoalFactory.cs" />
     <Compile Include="Models\Contracts\ICurrentDayCalorieTracker.cs" />
