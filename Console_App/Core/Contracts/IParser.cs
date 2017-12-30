@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Console_App.Core.Contracts
 {
-    interface IParser
+    public interface IParser
     {
         ICommand ParseCommand(string fullCommand);
 

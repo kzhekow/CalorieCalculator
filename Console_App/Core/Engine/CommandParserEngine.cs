@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Console_App.Core.Contracts;
 
 namespace Console_App.Core.Engine
 {
-    public class CommandParserEngine 
+    public class CommandParserEngine :ICommandParserEngine
     {
         private static CommandParserEngine instanceHolder;
 
@@ -26,5 +27,13 @@ namespace Console_App.Core.Engine
             }
         }
 
+        public IReader Reader { get ; set ; }
+        public IWriter Writer { get ; set ; }
+        public IParser Parser { get; set ; }
+
+        public void Start()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

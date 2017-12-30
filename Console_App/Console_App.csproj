@@ -57,9 +57,13 @@
     <Compile Include="Core\Commands\Creating\CreateMeal.cs" />
     <Compile Include="Core\Commands\Showing\ShowAllProducts.cs" />
     <Compile Include="Core\Commands\Showing\ShowRemainingNutritients.cs" />
+    <Compile Include="Core\Contracts\IParser.cs" />
+    <Compile Include="Core\Contracts\IReader.cs" />
+    <Compile Include="Core\Contracts\IWriter.cs" />
     <Compile Include="Core\Engine\CommandParserEngine.cs" />
     <Compile Include="Core\Engine\ConsoleCommandParserEngine.cs" />
     <Compile Include="Core\Engine\EngineConstants.cs" />
+    <Compile Include="Core\Engine\ICommandParserEngine.cs" />
     <Compile Include="Core\Providers\CommandParser.cs" />
     <Compile Include="Core\Providers\ConsoleReader.cs" />
     <Compile Include="Core\Providers\ConsoleWriter.cs" />
