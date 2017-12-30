@@ -40,8 +40,9 @@ namespace Console_App.Core.Commands.Creating
                 throw new ArgumentException("Failed to parse CreateDrink command parameters.");
             }
 
-            var drink = 
-            return $"Vehicle with ID {engine.Vehicles.Count - 1} was created.";
+            var drink = this.Factory.CreateDrink(name, calories, protein, carbs, fat, sugar, fiber);
+
+            return $"Drink was created!";
         }
     }
 }

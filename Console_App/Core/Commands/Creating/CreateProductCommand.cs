@@ -20,6 +20,10 @@ namespace Console_App.Core.Commands.Creating
             this.engine = engine;
         }
 
+        public IProductFactory Factory => factory;
+
+        public ICommandParserEngine Engine => engine;
+
         public abstract string Execute(IList<string> parameters);
     }
 }
