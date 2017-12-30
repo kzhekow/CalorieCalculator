@@ -47,6 +47,7 @@ namespace Console_App.Core.Engine
             var reports = new List<string>();
 
             foreach (var command in commands)
+            {
                 try
                 {
                     var report = ProcessSingleCommand(command);
@@ -56,6 +57,7 @@ namespace Console_App.Core.Engine
                 {
                     reports.Add(ex.Message);
                 }
+            }
 
             return reports;
         }

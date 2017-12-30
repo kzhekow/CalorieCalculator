@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Windows.Input;
 using Bytes2you.Validation;
 using CalorieCounter.Contracts;
 using CalorieCounter.Factories;
+using CalorieCounter.Models;
 using CalorieCounter.Utils;
 using CalorieCounterEngine.Models;
 using CalorieCounterEngine.Models.Contracts;
+using CalorieCounterEngine.Utils;
+using Newtonsoft.Json;
 
 namespace CalorieCounter
 {
@@ -15,8 +20,10 @@ namespace CalorieCounter
         private static ICalorieCounterEngine instance;
         private readonly IProductFactory productFactory;
         private readonly IActivityFactory activityFactory;
-        private readonly ICurrentDayCalorieTracker currentDayCalorieTracker;
-        private readonly IDictionary<string, IProduct> products;
+        private ICurrentDayCalorieTracker currentDayCalorieTracker;
+        private IDictionary<string, IProduct> products;
+        private readonly DirectoryInfo dailyProgressDirectory;
+        private readonly DirectoryInfo productsDirectory;
         private ICommand createProductCommand;
         private ICommand createMealCommand;
         private ICommand createDrinkCommand;
@@ -27,10 +34,12 @@ namespace CalorieCounter
 
         public CalorieCounterEngine()
         {
+            this.dailyProgressDirectory = Directory.CreateDirectory(EngineConstants.DailyProgressDirectoryName);
+            this.productsDirectory = Directory.CreateDirectory(EngineConstants.ProductsDirectoryName);
             // TODO: Set proper can execute conditions.
 
             // TODO: JSON deserialization for current date.
-            this.currentDayCalorieTracker = new CurrentDayCalorieTracker();
+            this.LoadProgress();
             this.createProductCommand = new RelayCommand(CreateProduct, arg => true);
             this.productFactory = new ProductFactory();
             this.activityFactory = new ActivityFactory();
@@ -77,6 +86,8 @@ namespace CalorieCounter
 
             var product = this.productFactory.CreateProduct(name, caloriesPer100g,proteinPer100g,caloriesPer100g,fatsPer100g, sugar, fiber);
             this.products.Add(product.Name, product);
+
+            this.SaveProgress();
         }
 
         public ICommand CreateDrinkCommand
@@ -105,6 +116,7 @@ namespace CalorieCounter
 
             var drink = this.productFactory.CreateDrink(name, caloriesPer100g, proteinPer100g, carbsPer100g, fatsPer100g, sugar, fiber);
             this.products.Add(drink.Name, drink);
+            this.SaveProgress();
         }
 
         public ICommand CreateMealCommand
@@ -148,6 +160,7 @@ namespace CalorieCounter
             var productCopy = this.products[name].Clone();
             productCopy.Weight = weightVolume;
             this.currentDayCalorieTracker.AddProduct(productCopy);
+            this.SaveProgress();
         }
 
         public ICommand AddWaterCommand
@@ -227,6 +240,49 @@ namespace CalorieCounter
             foreach (var product in this.products)
             {
                 listToBeFilled.Add(product.Value);
+            }
+        }
+
+        private void LoadProgress()
+        {
+            if (File.Exists(this.dailyProgressDirectory.FullName + "/" + DateTime.Now.Date))
+            {
+                var curDay =
+                    (CurrentDayCalorieTracker) JsonConvert.DeserializeObject(
+                        this.dailyProgressDirectory.FullName + "/" + DateTime.Now.Date);
+                this.currentDayCalorieTracker = curDay;
+            }
+            else
+            {
+                this.currentDayCalorieTracker = new CurrentDayCalorieTracker();
+            }
+
+            // Iterate through all the files in the product directory, unserialize and add to collection.
+            var files = this.productsDirectory.GetFiles("*.*");
+            foreach (var fileInfo in files)
+            {
+                var product = (IProduct) JsonConvert.DeserializeObject(fileInfo.DirectoryName);
+                this.products.Add(product.Name, product);
+            }
+        }
+
+        private void SaveProgress()
+        {
+            var curDay = JsonConvert.SerializeObject(this.currentDayCalorieTracker);
+            File.WriteAllText(this.dailyProgressDirectory.FullName + "/" + DateTime.Now.Date, curDay);
+
+            // Iterate through all the products and serialize those that are not saved already.
+            var files = this.productsDirectory.GetFiles("*.*");
+            foreach (var product in this.products)
+            {
+                //Not a new product, skip it.
+                if (files.Any(file => string.Compare(file.Name, product.Key, StringComparison.OrdinalIgnoreCase) == 0))
+                {
+                    continue;
+                }
+
+                var productJson = JsonConvert.SerializeObject(product.Value);
+                File.WriteAllText(this.productsDirectory.FullName + "/" + product.Key, productJson);
             }
         }
     }
