@@ -89,7 +89,7 @@ namespace Console_App.Core.Engine
                     var sugarOfDrink = int.Parse(command.Parameters[5]);
                     var fiberOfDrink = int.Parse(command.Parameters[6]);
                     object parametersOfDrink = new object[] { nameOfDrink, caloriesOfDrink, proteinOfDrink, carbsOfDrink, fatOfDrink, sugarOfDrink, fiberOfDrink };
-                    this.calorieCounterCalorieCounterEngineInstance.CreateProductCommand.Execute(parametersOfDrink);
+                    this.calorieCounterCalorieCounterEngineInstance.CreateDrinkCommand.Execute(parametersOfDrink);
                     break;
                 case "CreateMeal":
                     throw new NotImplementedException();

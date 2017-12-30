@@ -26,13 +26,13 @@ namespace CalorieCounterEngine.Models
             this.Water -= water;
         }
 
-        public void AddProducts(IProduct product)
+        public void AddProduct(IProduct product)
         {
             Guard.WhenArgument(product, "Product can not be null!").IsNull().Throw();
             this.ProductsConsumed.Add(product);
         }
 
-        public void RemoveProducts(IProduct product)
+        public void RemoveProduct(IProduct product)
         {
             Guard.WhenArgument(product, "Product can not be null!").IsNull().Throw();
             Guard.WhenArgument(this.ProductsConsumed, "The list of products is empty!").IsNull().Throw();

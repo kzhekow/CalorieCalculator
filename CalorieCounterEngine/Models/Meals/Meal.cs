@@ -22,6 +22,7 @@ namespace CalorieCounter.Models
         public MealType Type { get; }
 
         public string Name { get; }
+        public decimal Weight { get; set; }
 
         public int Calories { get; }
 
@@ -34,5 +35,11 @@ namespace CalorieCounter.Models
         public int Sugar { get; }
 
         public int Fiber { get; }
+
+        //TODO: Remove duplication.
+        public IProduct Clone()
+        {
+            return (IProduct)this.MemberwiseClone();
+        }
     }
 }

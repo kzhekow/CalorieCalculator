@@ -7,7 +7,7 @@ namespace CalorieCounter.Models
     /// <summary>
     ///     Product class implements IProduct.
     /// </summary>
-    public abstract class Product : IProduct, IWeight
+    public abstract class Product : IProduct
     {
         private readonly int calories;
         private readonly int carbs;
@@ -58,6 +58,11 @@ namespace CalorieCounter.Models
             this.fiber = fiber;
         }
 
+        public IProduct Clone()
+        {
+            return (IProduct)this.MemberwiseClone();
+        }
+
         public string Name { get; }
 
         public
@@ -73,7 +78,7 @@ namespace CalorieCounter.Models
 
         public int Fiber => this.fiber * (int) (this.Weight / 100);
 
-        public decimal Weight { get; }
+        public decimal Weight { get; set; }
 
         //public static IProduct operator +(Product left, Product right)
         //{
