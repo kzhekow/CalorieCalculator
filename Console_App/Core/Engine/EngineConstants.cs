@@ -3,7 +3,7 @@
     public static class EngineConstants
     {
         // Commands
-        internal const string CreateProduct = "CreateProduct";
+        internal const string CreateFoodProduct = "CreateFoodProduct";
         internal const string CreateMeal = "CreateMeal";
         internal const string CreateDrink = "CreateDrink";
         internal const string AddConsumedProduct = "AddConsumedProduct";
@@ -40,8 +40,8 @@
 
         // Error messages
         internal const string InvalidCommandErrorMessage = "Invalid command name: {0}";
-        internal const string ProductExistsErrorMessage = "Product {0} already exists";
-        internal const string ProductNotFoundErrorMessage = "Product {0} not found";
+        internal const string FoodProductExistsErrorMessage = "Food product {0} already exists";
+        internal const string FoodProductNotFoundErrorMessage = "Food product {0} not found";
         internal const string MealExistsErrorMessage = "Meal {0} already exists";
         internal const string MealNotFoundErrorMessage = "Meal {0} not found";
         internal const string DrinkExistsErrorMessage = "Drink {0} already exists";
@@ -55,7 +55,7 @@
         internal const string ShowProductsErrorMessage = "No products have been created";
 
         // Success messages
-        internal const string ProductCreatedSuccessMessage = "Product {0} created";
+        internal const string FoodProductCreatedSuccessMessage = "Food product {0} created";
         internal const string MealCreatedSuccessMessage = "Meal {0} created";
         internal const string DrinkCreatedSuccessMessage = "Drink {0} created";
         internal const string ConsumedProductAddedSuccessMessage = "Product {0} successfully added to current day {1}";

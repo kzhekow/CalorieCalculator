@@ -11,7 +11,7 @@ namespace CalorieCounter.Models
         {
             if (!Enum.IsDefined(typeof(MealType), type))
                 throw new ArgumentException("The provided meal type is not valid!");
-            this.Products = products ?? throw new ArgumentNullException("You must add some products");
+            this.Products = products ?? throw new ArgumentNullException("You must add some products!");
             this.Type = type;
             Guard.WhenArgument(name, "Name cannot be null or empty").IsNullOrWhiteSpace().Throw();
             this.Name = name;

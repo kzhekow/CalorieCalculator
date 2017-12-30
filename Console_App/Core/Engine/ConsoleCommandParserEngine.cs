@@ -68,7 +68,7 @@ namespace Console_App.Core.Engine
             var output = new StringBuilder();
             switch (command.Name)
             {
-                case "CreateProduct":
+                case "CreateFoodProduct":
                     //TODO: Validations if this is legit command call.
 
                     //boxing the arguments
