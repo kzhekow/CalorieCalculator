@@ -45,8 +45,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\Command\Command.cs" />
-    <Compile Include="Core\Contracts\ICommand.cs" />
+    <Compile Include="Core\Commands\Adding\AddActivity.cs" />
+    <Compile Include="Core\Commands\Adding\AddConsumedProduct.cs" />
+    <Compile Include="Core\Commands\Adding\AddWater.cs" />
+    <Compile Include="Core\Commands\Command.cs" />
+    <Compile Include="Core\Commands\Contracts\ICommand.cs" />
+    <Compile Include="Core\Commands\Creating\CreateProductCommand.cs" />
+    <Compile Include="Core\Commands\Creating\CreateDrink.cs" />
+    <Compile Include="Core\Commands\Creating\CreateFoodProduct.cs" />
+    <Compile Include="Core\Commands\Creating\CreateGoal.cs" />
+    <Compile Include="Core\Commands\Creating\CreateMeal.cs" />
+    <Compile Include="Core\Commands\Showing\ShowAllProducts.cs" />
+    <Compile Include="Core\Commands\Showing\ShowRemainingNutritients.cs" />
     <Compile Include="Core\Engine\CommandParserEngine.cs" />
     <Compile Include="Core\Engine\ConsoleCommandParserEngine.cs" />
     <Compile Include="Core\Engine\EngineConstants.cs" />
@@ -66,5 +76,6 @@
       <Name>CalorieCounterEngine</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
