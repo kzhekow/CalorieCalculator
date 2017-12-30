@@ -1,5 +1,4 @@
-﻿using System;
-using CalorieCounter.Contracts;
+﻿using CalorieCounter.Contracts;
 using CalorieCounter.Models.Activity;
 using CalorieCounter.Models.Contracts;
 

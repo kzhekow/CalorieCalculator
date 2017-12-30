@@ -48,6 +48,7 @@
     <Compile Include="Core\Command\Command.cs" />
     <Compile Include="Core\Contracts\ICommand.cs" />
     <Compile Include="Core\Engine\ConsoleCommandParserEngine.cs" />
+    <Compile Include="Core\Engine\EngineConstants.cs" />
     <Compile Include="EntryPoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
