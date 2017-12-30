@@ -84,7 +84,7 @@ namespace CalorieCounter
             var sugar = (int) args[5];
             var fiber = (int) args[6];
 
-            var product = this.productFactory.CreateProduct(name, caloriesPer100g,proteinPer100g,caloriesPer100g,fatsPer100g, sugar, fiber);
+            var product = this.productFactory.CreateFoodProduct(name, caloriesPer100g,proteinPer100g,caloriesPer100g,fatsPer100g, sugar, fiber);
             this.products.Add(product.Name, product);
 
             this.SaveProgress();

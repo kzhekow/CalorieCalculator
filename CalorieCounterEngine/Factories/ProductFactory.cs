@@ -40,7 +40,7 @@ namespace CalorieCounter.Factories
             return new CustomMeal(products, type, name);
         }
 
-        public IProduct CreateProduct(string name, int caloriesPer100g, int proteinPer100g, int carbsPer100g, int fatPer100g, int sugar = 0, int fiber = 0)
+        public IProduct CreateFoodProduct(string name, int caloriesPer100g, int proteinPer100g, int carbsPer100g, int fatPer100g, int sugar = 0, int fiber = 0)
         {
             return new CustomFoodProduct(name, caloriesPer100g, proteinPer100g, carbsPer100g, fatPer100g, sugar, fiber);
         }

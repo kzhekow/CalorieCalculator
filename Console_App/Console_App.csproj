@@ -53,8 +53,8 @@
     <Compile Include="Core\Commands\Creating\CreateProductCommand.cs" />
     <Compile Include="Core\Commands\Creating\CreateDrinkCommand.cs" />
     <Compile Include="Core\Commands\Creating\CreateFoodProduct.cs" />
-    <Compile Include="Core\Commands\Creating\CreateGoal.cs" />
-    <Compile Include="Core\Commands\Creating\CreateMeal.cs" />
+    <Compile Include="Core\Commands\Creating\CreateGoalCommand.cs" />
+    <Compile Include="Core\Commands\Creating\CreateMealCommand.cs" />
     <Compile Include="Core\Commands\Showing\ShowAllProducts.cs" />
     <Compile Include="Core\Commands\Showing\ShowRemainingNutritients.cs" />
     <Compile Include="Core\Contracts\IParser.cs" />
