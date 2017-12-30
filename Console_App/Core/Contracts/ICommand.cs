@@ -4,8 +4,11 @@ namespace Console_App.Core.Contracts
 {
     internal interface ICommand
     {
-        string Name { get; }
+        string Execute(IList<string> parameters);
 
-        IList<string> Parameters { get; }
+
+        //string Name { get; }
+
+        //IList<string> Parameters { get; }
     }
 }

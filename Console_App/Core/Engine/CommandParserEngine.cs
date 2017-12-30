@@ -13,6 +13,18 @@ namespace Console_App.Core.Engine
         private const string TerminationCommand = "Exit";
         private const string NullProvidersExceptionMessage = "cannot be null.";
 
+        public static CommandParserEngine Instance
+        {
+            get
+            {
+                if (instanceHolder == null)
+                {
+                    instanceHolder = new CommandParserEngine();
+                }
+
+                return instanceHolder;
+            }
+        }
 
     }
 }
