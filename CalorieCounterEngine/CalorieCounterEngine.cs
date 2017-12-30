@@ -10,9 +10,9 @@ using CalorieCounterEngine.Models.Contracts;
 
 namespace CalorieCounter
 {
-    public sealed class CalorieCounterEngine : IEngine
+    public sealed class CalorieCounterEngine : ICalorieCounterEngine
     {
-        private static IEngine instance;
+        private static ICalorieCounterEngine instance;
         private readonly IProductFactory productFactory;
         private readonly IActivityFactory activityFactory;
         private readonly ICurrentDayCalorieTracker currentDayCalorieTracker;
@@ -24,7 +24,6 @@ namespace CalorieCounter
         private ICommand addWaterCommand;
         private ICommand addActivityCommand;
         private ICommand getAllProductsCommand;
-        private ICommand showRemainingNutrientsCommand;
 
         public CalorieCounterEngine()
         {
@@ -39,7 +38,7 @@ namespace CalorieCounter
             //TODO: Deserialize and load all products from the local directory into the list.
         }
 
-        public static IEngine Instance
+        public static ICalorieCounterEngine Instance
         {
             get
             {
@@ -212,6 +211,11 @@ namespace CalorieCounter
 
                 return this.getAllProductsCommand;
             }
+        }
+
+        public string GetDailyReport()
+        {
+            throw new NotImplementedException();
         }
 
         private void GetAllProducts(object parameter)

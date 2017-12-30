@@ -50,7 +50,7 @@
     <Compile Include="Common\GoalType.cs" />
     <Compile Include="Common\MealType.cs" />
     <Compile Include="Contracts\IActivityFactory.cs" />
-    <Compile Include="Contracts\IEngine.cs" />
+    <Compile Include="Contracts\ICalorieCounterEngine.cs" />
     <Compile Include="Contracts\IProductFactory.cs" />
     <Compile Include="Factories\ActivityFactory.cs" />
     <Compile Include="Models\Contracts\ICurrentDayCalorieTracker.cs" />
