@@ -47,7 +47,7 @@ namespace Console_App.Core.Commands.Creating
 
             var goal = this.factory.CreateGoal(startingWeight, goalWeight, height, age, gender, type, level);
 
-            return $"Goal was created!";
+            return $"Goal {type.ToString()} was created!";
         }
     }
 }

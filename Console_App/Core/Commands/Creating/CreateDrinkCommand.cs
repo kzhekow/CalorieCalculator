@@ -42,7 +42,7 @@ namespace Console_App.Core.Commands.Creating
 
             var drink = this.Factory.CreateDrink(name, calories, protein, carbs, fat, sugar, fiber);
 
-            return $"Drink was created!";
+            return $"Drink {name} was created!";
         }
     }
 }
