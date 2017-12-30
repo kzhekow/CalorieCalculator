@@ -6,8 +6,7 @@ namespace Console_App
     {
         private static void Main(string[] args)
         {
-            var engine = ConsoleCommandParserEngine.Instance;
-            engine.Start();
+            
         }
     }
 }

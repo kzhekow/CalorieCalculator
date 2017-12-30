@@ -11,7 +11,7 @@ namespace CalorieCounter.Factories
     {
         private static ProductFactory instanceHolder = new ProductFactory();
 
-        private ProductFactory()
+        public ProductFactory()
         {
 
         }
