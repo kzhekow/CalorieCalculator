@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Console_App.Core.Contracts;
+using Console_App.Core.Providers;
 
 namespace Console_App.Core.Engine
 {
@@ -13,6 +14,14 @@ namespace Console_App.Core.Engine
 
         private const string TerminationCommand = "Exit";
         private const string NullProvidersExceptionMessage = "cannot be null.";
+
+        public CommandParserEngine()
+        {
+            this.Reader = new ConsoleReader();
+            this.Writer = new ConsoleWriter();
+            this.Parser = new CommandParser();
+
+        }
 
         public static CommandParserEngine Instance
         {
