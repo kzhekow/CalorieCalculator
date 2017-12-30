@@ -1,6 +1,6 @@
 ﻿using CalorieCounterEngine.Models.Contracts;
 
-namespace CalorieCounterEngine.Contracts
+namespace CalorieCounter.Factories.Contracts
 {
     public interface IGoalFactory
     {

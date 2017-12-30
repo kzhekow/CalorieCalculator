@@ -1,4 +1,4 @@
-﻿using CalorieCounterEngine.Contracts;
+﻿using CalorieCounter.Factories.Contracts;
 using CalorieCounterEngine.Models.Contracts;
 using CalorieCounterEngine.Models.Goal;
 

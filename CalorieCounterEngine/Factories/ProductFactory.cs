@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using CalorieCounter.Contracts;
+using CalorieCounter.Factories.Contracts;
 using CalorieCounter.Models;
 using CalorieCounter.Models.Drinks;
 using CalorieCounter.Models.Food;

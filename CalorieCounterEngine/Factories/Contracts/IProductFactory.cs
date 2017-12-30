@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using CalorieCounter.Contracts;
+using System.Collections.Generic;
 
-namespace CalorieCounter.Contracts
+namespace CalorieCounter.Factories.Contracts
 {
     public interface IProductFactory
     {

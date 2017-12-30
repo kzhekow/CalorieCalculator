@@ -6,7 +6,7 @@ using System.Windows.Input;
 using Bytes2you.Validation;
 using CalorieCounter.Contracts;
 using CalorieCounter.Factories;
-using CalorieCounter.Models;
+using CalorieCounter.Factories.Contracts;
 using CalorieCounter.Utils;
 using CalorieCounterEngine.Models;
 using CalorieCounterEngine.Models.Contracts;

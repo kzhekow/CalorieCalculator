@@ -1,6 +1,6 @@
 ﻿using CalorieCounter.Models.Contracts;
 
-namespace CalorieCounter.Contracts
+namespace CalorieCounter.Factories.Contracts
 {
     public interface IActivityFactory
     {
