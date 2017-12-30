@@ -1,4 +1,5 @@
-﻿using CalorieCounter.Factories.Contracts;
+﻿using CalorieCounter.Contracts;
+using CalorieCounter.Factories.Contracts;
 using Console_App.Core.Contracts;
 using Console_App.Core.Engine;
 using System;
@@ -13,11 +14,13 @@ namespace Console_App.Core.Commands.Creating
     {
         private readonly IGoalFactory factory;
         private readonly ICommandParserEngine engine;
+        private readonly ICalorieCounterEngine calorieCounterEngine;
 
-        public CreateGoalCommand(IGoalFactory factory, ICommandParserEngine engine)
+        public CreateGoalCommand(IGoalFactory factory, ICommandParserEngine engine, ICalorieCounterEngine calorieCounterEngine)
         {
             this.factory = factory;
             this.engine = engine;
+            this.calorieCounterEngine = calorieCounterEngine;
         }
 
         public string Execute(IList<string> parameters)

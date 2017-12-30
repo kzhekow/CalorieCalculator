@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CalorieCounter.Contracts;
 using CalorieCounter.Factories.Contracts;
 using Console_App.Core.Engine;
 
@@ -10,8 +11,8 @@ namespace Console_App.Core.Commands.Creating
 {
     class CreateDrinkCommand : CreateProductCommand
     {
-        public CreateDrinkCommand(IProductFactory factory, ICommandParserEngine engine)
-            : base(factory, engine)
+        public CreateDrinkCommand(IProductFactory factory, ICommandParserEngine engine, ICalorieCounterEngine calorieCounterEngine) 
+            : base(factory, engine, calorieCounterEngine)
         {
         }
 

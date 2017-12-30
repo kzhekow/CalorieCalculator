@@ -1,4 +1,5 @@
-﻿using CalorieCounter.Factories.Contracts;
+﻿using CalorieCounter.Contracts;
+using CalorieCounter.Factories.Contracts;
 using Console_App.Core.Contracts;
 using Console_App.Core.Engine;
 using System;
@@ -11,8 +12,8 @@ namespace Console_App.Core.Commands.Creating
 {
     class CreateMeal : CreateProductCommand
     {
-        public CreateMeal(IProductFactory factory, ICommandParserEngine engine) 
-            : base(factory, engine)
+        public CreateMeal(IProductFactory factory, ICommandParserEngine engine, ICalorieCounterEngine calorieCounterEngine) 
+            : base(factory, engine, calorieCounterEngine)
         {
         }
 
