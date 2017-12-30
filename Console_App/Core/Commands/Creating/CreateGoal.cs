@@ -22,7 +22,7 @@ namespace Console_App.Core.Commands.Creating
 
         public string Execute(IList<string> parameters)
         {
-
+            return "a";
         }
     }
 }
