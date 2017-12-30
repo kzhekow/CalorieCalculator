@@ -10,7 +10,7 @@ using System.Reflection;
 
 namespace Console_App.Core.Providers
 {
-    class CommandParser
+    class CommandParser :IParser
     {
         public ICommand ParseCommand(string fullCommand)
         {
