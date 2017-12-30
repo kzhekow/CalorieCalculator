@@ -16,16 +16,21 @@ namespace CalorieCounterEngine.Models.Goal
 
         public Goal(double startingWeight, double goalWeight, double height, int age, GenderType gender, GoalType type, ActivityLevel level)
         {
-            Guard.WhenArgument(startingWeight, "Starting weight can not be a negative number!").IsLessThan(0).Throw();
-            Guard.WhenArgument(goalWeight, "Goal weight can not be a negative number!").IsLessThan(0).Throw();
-            Guard.WhenArgument(height, "Height can not be a negative number!").IsLessThan(0).Throw();
-            Guard.WhenArgument(age, "Age can not be a negative number!").IsLessThan(0).Throw();
+            if (startingWeight < 0) throw new ArgumentException("Starting weight can not be a negative number!");
+            if (goalWeight < 0) throw new ArgumentException("Goal weight can not be a negative number!");
+            if (height < 0) throw new ArgumentException("Height can not be a negative number!");
+            if (age < 0) throw new ArgumentException("Age can not be a negative number!");
             if (!Enum.IsDefined(typeof(GenderType), gender))
                 throw new ArgumentException("The provided gender type is not valid!");
             if (!Enum.IsDefined(typeof(GoalType), type))
                 throw new ArgumentException("The provided goal type is not valid!");
             if (!Enum.IsDefined(typeof(ActivityLevel), level))
                 throw new ArgumentException("The provided activity level is not valid!");
+
+            //Guard.WhenArgument(startingWeight, "Starting weight can not be a negative number!").IsLessThan(0).Throw();
+            //Guard.WhenArgument(goalWeight, "Goal weight can not be a negative number!").IsLessThan(0).Throw();
+            //Guard.WhenArgument(height, "Height can not be a negative number!").IsLessThan(0).Throw();
+            //Guard.WhenArgument(age, "Age can not be a negative number!").IsLessThan(0).Throw();
 
             this.startingWeight = startingWeight;
             this.goalWeight = goalWeight;

@@ -2,6 +2,7 @@
 using CalorieCounter.Contracts;
 using CalorieCounter.Models.Contracts;
 using CalorieCounterEngine.Models.Contracts;
+using System;
 using System.Collections.Generic;
 
 namespace CalorieCounterEngine.Models
@@ -10,46 +11,64 @@ namespace CalorieCounterEngine.Models
     {
         public int Water { get; private set; }
 
-        public ICollection<IProduct> ProductsConsumed { get; private set;}
+        public ICollection<IProduct> ProductsConsumed { get; private set; }
 
         public ICollection<IActivity> ActivitiesPerformed { get; private set; }
 
         public void AddWater(int water)
         {
-            Guard.WhenArgument(water, "Water can not be a negative number!").IsLessThan(0).Throw();
+            if (water < 0)
+                throw new ArgumentException("Water can not be a negative number!");
+            //Guard.WhenArgument(water, "Water can not be a negative number!").IsLessThan(0).Throw();
             this.Water += water;
         }
 
         public void RemoveWater(int water)
         {
-            Guard.WhenArgument(water, "Water can not be a negative number!").IsLessThan(0).Throw();
+            if (water < 0)
+                throw new ArgumentException("Water can not be a negative number!");
+            //Guard.WhenArgument(water, "Water can not be a negative number!").IsLessThan(0).Throw();
             this.Water -= water;
         }
 
         public void AddProduct(IProduct product)
         {
-            Guard.WhenArgument(product, "Product can not be null!").IsNull().Throw();
+            if (product == null)
+                throw new ArgumentException("Product can not be null!");
+            //Guard.WhenArgument(product, "Product can not be null!").IsNull().Throw();
             this.ProductsConsumed.Add(product);
         }
 
         public void RemoveProduct(IProduct product)
         {
-            Guard.WhenArgument(product, "Product can not be null!").IsNull().Throw();
-            Guard.WhenArgument(this.ProductsConsumed, "The list of products is empty!").IsNull().Throw();
+            if (product == null)
+                throw new ArgumentException("Product can not be null!");
+            if (this.ProductsConsumed == null)
+                throw new ArgumentException("The list of products is empty!");
+            //Guard.WhenArgument(product, "Product can not be null!").IsNull().Throw();
+            //Guard.WhenArgument(this.ProductsConsumed, "The list of products is empty!").IsNull().Throw();
 
             this.ProductsConsumed.Remove(product);
         }
 
         public void AddActivity(IActivity activity)
         {
-            Guard.WhenArgument(activity, "Activity can not be null!").IsNull().Throw();
+            if (activity == null)
+                throw new ArgumentException("Activity can not be null!");
+            //Guard.WhenArgument(activity, "Activity can not be null!").IsNull().Throw();
             this.ActivitiesPerformed.Add(activity);
         }
 
         public void RemoveActivity(IActivity activity)
         {
-            Guard.WhenArgument(activity, "Activity can not be null!").IsNull().Throw();
-            Guard.WhenArgument(this.ActivitiesPerformed, "The list of activities is empty!").IsNull().Throw();
+            if (activity == null)
+                throw new ArgumentException("Activity can not be null!");
+            if (this.ActivitiesPerformed == null)
+            {
+                throw new ArgumentException("The list of activities is empty!");
+            }
+            //Guard.WhenArgument(activity, "Activity can not be null!").IsNull().Throw();
+            //Guard.WhenArgument(this.ActivitiesPerformed, "The list of activities is empty!").IsNull().Throw();
 
             this.ActivitiesPerformed.Remove(activity);
         }

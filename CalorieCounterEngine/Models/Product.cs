@@ -40,14 +40,22 @@ namespace CalorieCounter.Models
         public Product(string name, int calories, int protein, int carbs, int fat, int sugar,
             int fiber)
         {
-            if (name == null) throw new ArgumentNullException("Name can not be null!");
-            if (name.Length < 3 || name.Length > 20) throw new ArgumentException("Name must be between 3 and 20 symbols!");
-            if (calories < 0) throw new ArgumentException("Calories can not be a negative number!");
-            if (protein < 0) throw new ArgumentException("Protein can not be a negative number!");
-            if (carbs < 0) throw new ArgumentException("Carbs can not be a negative number!");
-            if (fat < 0) throw new ArgumentException("Fat can not be a negative number!");
-            if (sugar < 0) throw new ArgumentException("Sugar can not be a negative number!");
-            if (fiber < 0) throw new ArgumentException("Fiber can not be a negative number!");
+            if (name == null)
+                throw new ArgumentNullException("Name can not be null!");
+            if (name.Length < 3 || name.Length > 20)
+                throw new ArgumentException("Name must be between 3 and 20 symbols!");
+            if (calories < 0)
+                throw new ArgumentException("Calories can not be a negative number!");
+            if (protein < 0)
+                throw new ArgumentException("Protein can not be a negative number!");
+            if (carbs < 0)
+                throw new ArgumentException("Carbs can not be a negative number!");
+            if (fat < 0)
+                throw new ArgumentException("Fat can not be a negative number!");
+            if (sugar < 0)
+                throw new ArgumentException("Sugar can not be a negative number!");
+            if (fiber < 0)
+                throw new ArgumentException("Fiber can not be a negative number!");
             //Guard.WhenArgument(name, "Name can not be null!").IsNotNullOrEmpty().Throw();
             //Guard.WhenArgument(name.Length, "Name must be between 3 and 20 symbols!").IsLessThan(3).IsGreaterThan(20)
             //    .Throw();
@@ -75,17 +83,17 @@ namespace CalorieCounter.Models
         public string Name { get; }
 
         public
-            int Calories => this.calories * (int) (this.Weight / 100);
+            int Calories => this.calories * (int)(this.Weight / 100);
 
-        public int Protein => this.protein * (int) (this.Weight / 100);
+        public int Protein => this.protein * (int)(this.Weight / 100);
 
-        public int Carbs => this.carbs * (int) (this.Weight / 100);
+        public int Carbs => this.carbs * (int)(this.Weight / 100);
 
-        public int Fat => this.fat * (int) (this.Weight / 100);
+        public int Fat => this.fat * (int)(this.Weight / 100);
 
-        public int Sugar => this.sugar * (int) (this.Weight / 100);
+        public int Sugar => this.sugar * (int)(this.Weight / 100);
 
-        public int Fiber => this.fiber * (int) (this.Weight / 100);
+        public int Fiber => this.fiber * (int)(this.Weight / 100);
 
         public decimal Weight { get; set; }
 

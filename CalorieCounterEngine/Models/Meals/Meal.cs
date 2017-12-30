@@ -13,8 +13,8 @@ namespace CalorieCounter.Models
                 throw new ArgumentException("The provided meal type is not valid!");
             this.Products = products ?? throw new ArgumentNullException("You must add some products!");
             this.Type = type;
-            Guard.WhenArgument(name, "Name cannot be null or empty").IsNullOrWhiteSpace().Throw();
-            this.Name = name;
+            //Guard.WhenArgument(name, "Name cannot be null or empty").IsNullOrWhiteSpace().Throw();
+            this.Name = name ?? throw new ArgumentNullException("Name cannot be null or empty");
         }
 
         public ICollection<IProduct> Products { get; }

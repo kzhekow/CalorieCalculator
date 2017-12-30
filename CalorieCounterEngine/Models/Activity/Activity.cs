@@ -8,7 +8,9 @@ namespace CalorieCounter.Models.Activity
     {
         public Activity(int time, ActivityType type)
         {
-            Guard.WhenArgument(time, "Time can not be a negative number!").IsLessThan(0);
+            if (time < 0)
+                throw new ArgumentException("Time can not be a negative number!");
+            //Guard.WhenArgument(time, "Time can not be a negative number!").IsLessThan(0);
             if (!Enum.IsDefined(typeof(ActivityType), type))
                 throw new ArgumentException("The provided activity type is not valid!");
 

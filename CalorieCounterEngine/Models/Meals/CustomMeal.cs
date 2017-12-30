@@ -5,7 +5,8 @@ namespace CalorieCounter.Models
 {
     public sealed class CustomMeal : Meal
     {
-        public CustomMeal(ICollection<IProduct> products, MealType type, string name) : base(products, type, name)
+        public CustomMeal(ICollection<IProduct> products, MealType type, string name) 
+            : base(products, type, name)
         {
             //TODO: Validations
 

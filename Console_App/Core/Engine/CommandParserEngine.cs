@@ -8,7 +8,7 @@ using Console_App.Core.Providers;
 
 namespace Console_App.Core.Engine
 {
-    public class CommandParserEngine :ICommandParserEngine
+    public class CommandParserEngine : ICommandParserEngine
     {
         private static CommandParserEngine instanceHolder;
 
@@ -36,9 +36,9 @@ namespace Console_App.Core.Engine
             }
         }
 
-        public IReader Reader { get ; set ; }
-        public IWriter Writer { get ; set ; }
-        public IParser Parser { get; set ; }
+        public IReader Reader { get; set; }
+        public IWriter Writer { get; set; }
+        public IParser Parser { get; set; }
 
         public void Start()
         {

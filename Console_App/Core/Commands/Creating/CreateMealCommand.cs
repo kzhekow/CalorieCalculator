@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Console_App.Core.Commands.Creating
 {
-    class CreateMealCommand : CreateProductCommand
+    class CreateMeal : CreateProductCommand
     {
-        public CreateMealCommand(IProductFactory factory, ICommandParserEngine engine) 
+        public CreateMeal(IProductFactory factory, ICommandParserEngine engine) 
             : base(factory, engine)
         {
         }
