@@ -63,7 +63,7 @@
     <Compile Include="Core\Engine\CommandParserEngine.cs" />
     <Compile Include="Core\Engine\ConsoleCommandParserEngine.cs" />
     <Compile Include="Core\Engine\EngineConstants.cs" />
-    <Compile Include="Core\Engine\ICommandParserEngine.cs" />
+    <Compile Include="Core\Contracts\ICommandParserEngine.cs" />
     <Compile Include="Core\Providers\CommandParser.cs" />
     <Compile Include="Core\Providers\ConsoleReader.cs" />
     <Compile Include="Core\Providers\ConsoleWriter.cs" />

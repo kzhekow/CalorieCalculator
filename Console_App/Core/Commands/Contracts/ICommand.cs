@@ -2,7 +2,7 @@
 
 namespace Console_App.Core.Contracts
 {
-    internal interface ICommand
+    public interface ICommand
     {
         string Execute(IList<string> parameters);
 
