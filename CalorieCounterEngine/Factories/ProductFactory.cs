@@ -37,7 +37,8 @@ namespace CalorieCounter.Factories
 
         public IProduct CreateMeal(ICollection<IProduct> products, MealType type, string name)
         {
-            return new CustomMeal(products, type, name);
+            var productssStr = string.Join(", ", products);
+            return new CustomMeal(productssStr, type, name);
         }
 
         public IProduct CreateFoodProduct(string name, int caloriesPer100g, int proteinPer100g, int carbsPer100g, int fatPer100g, int sugar = 0, int fiber = 0)

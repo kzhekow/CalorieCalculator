@@ -19,7 +19,24 @@ namespace Console_App.Core.Commands.Creating
 
         public override string Execute(IList<string> parameters)
         {
-            throw new NotImplementedException();
+            ICollection<IProduct> products;
+            MealType type;
+            string name;
+
+            try
+            {
+                products = (ICollection<IProduct>)parameters[0].Split(", ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
+                type = (MealType)Enum.Parse(typeof(MealType), parameters[1]);
+                name = parameters[2];
+            }
+            catch (Exception)
+            {
+                throw new ArgumentException("Failed to parse CreateMeal command parameters.");
+            }
+
+            var meal = this.Factory.CreateMeal(products, type, name);
+
+            return $"Meal {name} was created!";
         }
     }
 }

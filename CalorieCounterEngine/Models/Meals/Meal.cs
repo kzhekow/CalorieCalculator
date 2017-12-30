@@ -7,7 +7,7 @@ namespace CalorieCounter.Models
 {
     public abstract class Meal : IMeal, IProduct
     {
-        protected Meal(ICollection<IProduct> products, MealType type, string name)
+        protected Meal(string products, MealType type, string name)
         {
             if (!Enum.IsDefined(typeof(MealType), type))
                 throw new ArgumentException("The provided meal type is not valid!");
@@ -17,7 +17,7 @@ namespace CalorieCounter.Models
             this.Name = name ?? throw new ArgumentNullException("Name cannot be null or empty");
         }
 
-        public ICollection<IProduct> Products { get; }
+        public string Products { get; }
 
         public MealType Type { get; }
 

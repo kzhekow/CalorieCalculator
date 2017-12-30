@@ -7,7 +7,7 @@ namespace CalorieCounter.Contracts
         /// <summary>
         ///     Collection of all the products, contained in the meal.
         /// </summary>
-        ICollection<IProduct> Products { get; }
+        string Products { get; }
 
         /// <summary>
         ///     Meal can have a type - breakfast, lunch, dinner or snack.
