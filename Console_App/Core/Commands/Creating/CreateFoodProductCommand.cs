@@ -11,8 +11,8 @@ namespace Console_App.Core.Commands.Creating
 {
     class CreateFoodProductCommand : CreateProductCommand
     {
-        public CreateFoodProductCommand(IProductFactory factory, ICommandParserEngine engine, ICalorieCounterEngine calorieCounterEngine) 
-            : base(factory, engine, calorieCounterEngine)
+        public CreateFoodProductCommand(ICalorieCounterEngine calorieCounterEngine) 
+            : base(calorieCounterEngine)
         {
         }
 
@@ -41,7 +41,7 @@ namespace Console_App.Core.Commands.Creating
                 throw new ArgumentException("Failed to parse CreateFoodProduct command parameters.");
             }
 
-            var foodProduct = this.Factory.CreateFoodProduct(name, calories, protein, carbs, fat, sugar, fiber);
+            //var foodProduct = this.Factory.CreateFoodProduct(name, calories, protein, carbs, fat, sugar, fiber);
 
             return $"Food {name} product was created!";
         }

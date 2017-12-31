@@ -12,22 +12,14 @@ namespace Console_App.Core.Commands.Creating
 {
     public abstract class CreateProductCommand : ICommand
     {
-        private readonly IProductFactory factory;
-        private readonly ICommandParserEngine engine;
         private readonly ICalorieCounterEngine calorieCounterEngine;
 
-        public CreateProductCommand(IProductFactory factory, ICommandParserEngine engine, ICalorieCounterEngine calorieCounterEngine)
+        public CreateProductCommand(ICalorieCounterEngine calorieCounterEngine)
         {
-            this.factory = factory;
-            this.engine = engine;
             this.calorieCounterEngine = calorieCounterEngine;
         }
 
-        public IProductFactory Factory => factory;
-
-        public ICommandParserEngine Engine => engine;
-
-        public ICalorieCounterEngine CalorieCounterEngine => calorieCounterEngine;
+        protected ICalorieCounterEngine CalorieCounterEngine => this.calorieCounterEngine;
 
         public abstract string Execute(IList<string> parameters);
     }

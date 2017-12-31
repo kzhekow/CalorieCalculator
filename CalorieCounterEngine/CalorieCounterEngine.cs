@@ -7,6 +7,9 @@ using Bytes2you.Validation;
 using CalorieCounter.Contracts;
 using CalorieCounter.Factories;
 using CalorieCounter.Factories.Contracts;
+using CalorieCounter.Models;
+using CalorieCounter.Models.Drinks;
+using CalorieCounter.Models.Food;
 using CalorieCounter.Utils;
 using CalorieCounterEngine.Models;
 using CalorieCounterEngine.Models.Contracts;
@@ -34,8 +37,9 @@ namespace CalorieCounter
         private ICommand getAllProductsCommand;
         private ICommand createGoal;
 
-        public CalorieCounterEngine()
+        private CalorieCounterEngine()
         {
+            this.products = new Dictionary<string, IProduct>(StringComparer.InvariantCultureIgnoreCase);
             this.dailyProgressDirectory = Directory.CreateDirectory(EngineConstants.DailyProgressDirectoryName);
             this.productsDirectory = Directory.CreateDirectory(EngineConstants.ProductsDirectoryName);
             // TODO: Set proper can execute conditions.
@@ -45,7 +49,6 @@ namespace CalorieCounter
             this.createProductCommand = new RelayCommand(CreateProduct, arg => true);
             this.productFactory = new ProductFactory();
             this.activityFactory = new ActivityFactory();
-            this.products = new Dictionary<string, IProduct>(StringComparer.InvariantCultureIgnoreCase);
             //TODO: Deserialize and load all products from the local directory into the list.
         }
 
@@ -53,7 +56,10 @@ namespace CalorieCounter
         {
             get
             {
-                if (instance == null) instance = new CalorieCounterEngine();
+                if (instance == null)
+                {
+                    instance = new CalorieCounterEngine();
+                }
 
                 return instance;
             }
@@ -247,12 +253,12 @@ namespace CalorieCounter
 
         private void LoadProgress()
         {
-            if (File.Exists(this.dailyProgressDirectory.FullName + "/" + DateTime.Now.Date))
+            if (File.Exists(this.dailyProgressDirectory.FullName + "\\\\" + DateTime.Now.Date.ToString("dd-MM-yyyy")))
             {
-                var curDay =
-                    (CurrentDayCalorieTracker) JsonConvert.DeserializeObject(
-                        this.dailyProgressDirectory.FullName + "/" + DateTime.Now.Date);
-                this.currentDayCalorieTracker = curDay;
+                var jsonVal = File.ReadAllText(this.dailyProgressDirectory.FullName + "\\\\" +
+                                               DateTime.Now.Date.ToString("dd-MM-yyyy"));
+                var curDay = JsonConvert.DeserializeObject(jsonVal);
+                this.currentDayCalorieTracker = curDay as CurrentDayCalorieTracker;
             }
             else
             {
@@ -263,7 +269,11 @@ namespace CalorieCounter
             var files = this.productsDirectory.GetFiles("*.*");
             foreach (var fileInfo in files)
             {
-                var product = (IProduct) JsonConvert.DeserializeObject(fileInfo.DirectoryName);
+                var jsonVal = File.ReadAllText(fileInfo.DirectoryName + "\\\\" + fileInfo.Name);
+                var settings = new JsonSerializerSettings();
+                settings.TypeNameHandling = TypeNameHandling.Auto;
+                var qqq = (CustomDrink) JsonConvert.DeserializeObject(jsonVal, settings) ;
+                IProduct product = (IProduct) JsonConvert.DeserializeObject(jsonVal, settings);
                 this.products.Add(product.Name, product);
             }
         }
@@ -271,10 +281,11 @@ namespace CalorieCounter
         private void SaveProgress()
         {
             var curDay = JsonConvert.SerializeObject(this.currentDayCalorieTracker);
-            File.WriteAllText(this.dailyProgressDirectory.FullName + "/" + DateTime.Now.Date, curDay);
+            File.WriteAllText(this.dailyProgressDirectory.FullName + "\\\\" + DateTime.Now.Date.ToString("dd-MM-yyyy"), curDay);
 
             // Iterate through all the products and serialize those that are not saved already.
             var files = this.productsDirectory.GetFiles("*.*");
+            var settings = new JsonSerializerSettings();
             foreach (var product in this.products)
             {
                 //Not a new product, skip it.
@@ -283,8 +294,9 @@ namespace CalorieCounter
                     continue;
                 }
 
-                var productJson = JsonConvert.SerializeObject(product.Value);
-                File.WriteAllText(this.productsDirectory.FullName + "/" + product.Key, productJson);
+                settings.TypeNameHandling = TypeNameHandling.Auto;
+                var productJson = JsonConvert.SerializeObject(product.Value, typeof(IProduct), settings);
+                File.WriteAllText(this.productsDirectory.FullName + "\\\\" + product.Key, productJson);
             }
         }
     }

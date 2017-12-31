@@ -12,13 +12,11 @@ namespace Console_App.Core.Commands.Creating
 {
     class CreateGoalCommand : ICommand
     {
-        private readonly IGoalFactory factory;
         private readonly ICommandParserEngine engine;
         private readonly ICalorieCounterEngine calorieCounterEngine;
 
-        public CreateGoalCommand(IGoalFactory factory, ICommandParserEngine engine, ICalorieCounterEngine calorieCounterEngine)
+        public CreateGoalCommand( ICommandParserEngine engine, ICalorieCounterEngine calorieCounterEngine)
         {
-            this.factory = factory;
             this.engine = engine;
             this.calorieCounterEngine = calorieCounterEngine;
         }
@@ -48,7 +46,7 @@ namespace Console_App.Core.Commands.Creating
                 throw new ArgumentException("Failed to parse CreateGoal command parameters.");
             }
 
-            var goal = this.factory.CreateGoal(startingWeight, goalWeight, height, age, gender, type, level);
+            //var goal = this.factory.CreateGoal(startingWeight, goalWeight, height, age, gender, type, level);
 
             return $"Goal {type.ToString()} was created!";
         }
