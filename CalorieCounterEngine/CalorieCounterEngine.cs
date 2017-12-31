@@ -278,7 +278,6 @@ namespace CalorieCounter
                 var jsonVal = File.ReadAllText(fileInfo.DirectoryName + "\\\\" + fileInfo.Name);
                 var settings = new JsonSerializerSettings();
                 settings.TypeNameHandling = TypeNameHandling.Auto;
-                var qqq = (CustomDrink) JsonConvert.DeserializeObject(jsonVal, settings);
                 var product = (IProduct) JsonConvert.DeserializeObject(jsonVal, settings);
                 this.products.Add(product.Name, product);
             }
