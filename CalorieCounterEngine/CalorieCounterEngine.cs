@@ -56,7 +56,7 @@ namespace CalorieCounter
                 return instance;
             }
         }
-
+        
         public ICommand CreateProductCommand
         {
             get
@@ -102,6 +102,8 @@ namespace CalorieCounter
                 return this.createDrinkCommand;
             }
         }
+       
+        
 
         private void CreateDrink(object parameter)
         {
@@ -284,6 +286,20 @@ namespace CalorieCounter
                 var productJson = JsonConvert.SerializeObject(product.Value);
                 File.WriteAllText(this.productsDirectory.FullName + "/" + product.Key, productJson);
             }
+            
+
+        }
+        public void GetNewDrinkFromConsole(IProduct drink)
+        {
+            
+            AddNewDrinkToProducts(drink);
+            
+        }
+
+        public void AddNewDrinkToProducts(IProduct drink)
+        {
+            
+            this.products.Add(drink.Name, drink);
         }
     }
 }

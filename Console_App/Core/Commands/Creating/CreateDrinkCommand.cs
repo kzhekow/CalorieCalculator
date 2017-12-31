@@ -13,7 +13,7 @@ namespace Console_App.Core.Commands.Creating
     {
         public CreateDrinkCommand(IProductFactory factory, ICommandParserEngine engine, ICalorieCounterEngine calorieCounterEngine) 
             : base(factory, engine, calorieCounterEngine)
-        {
+        {   
         }
 
         public override string Execute(IList<string> parameters)
@@ -28,6 +28,7 @@ namespace Console_App.Core.Commands.Creating
 
             try
             {
+                
                 name = parameters[0];
                 calories = int.Parse(parameters[1]);
                 protein = int.Parse(parameters[2]);
@@ -40,8 +41,9 @@ namespace Console_App.Core.Commands.Creating
             {
                 throw new ArgumentException("Failed to parse CreateDrink command parameters.");
             }
-
+            
             var drink = this.Factory.CreateDrink(name, calories, protein, carbs, fat, sugar, fiber);
+            CalorieCounter.CalorieCounterEngine.Instance.GetNewDrinkFromConsole(drink);
 
             return $"Drink {name} was created!";
         }
