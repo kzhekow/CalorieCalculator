@@ -12,5 +12,6 @@ namespace CalorieCounter.Contracts
         ICommand AddActivityCommand { get; }
         ICommand GetAllProductsCommand { get; }
         string GetDailyReport();
+        void GetNewDrinkFromConsole(IProduct drink);
     }
 }
