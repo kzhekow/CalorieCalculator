@@ -237,7 +237,7 @@ namespace CalorieCounter
         {
             var args = parameter as object[];
             var listToBeFilled = (ICollection<IProduct>)args[0];
-
+    
             listToBeFilled.Clear();
             foreach (var product in this.products)
             {

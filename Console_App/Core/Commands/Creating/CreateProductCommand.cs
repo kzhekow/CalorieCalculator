@@ -23,11 +23,11 @@ namespace Console_App.Core.Commands.Creating
             this.calorieCounterEngine = calorieCounterEngine;
         }
 
-        public IProductFactory Factory => factory;
+        protected IProductFactory Factory => factory;
 
-        public ICommandParserEngine Engine => engine;
+        protected ICommandParserEngine Engine => engine;
 
-        public ICalorieCounterEngine CalorieCounterEngine => calorieCounterEngine;
+        protected ICalorieCounterEngine CalorieCounterEngine => calorieCounterEngine;
 
         public abstract string Execute(IList<string> parameters);
     }
