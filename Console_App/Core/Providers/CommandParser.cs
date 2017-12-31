@@ -1,5 +1,4 @@
-﻿
-using CalorieCounter.Factories;
+﻿using CalorieCounter.Factories;
 using CalorieCounterEngine.Factories;
 using Console_App.Core.Contracts;
 using Console_App.Core.Engine;

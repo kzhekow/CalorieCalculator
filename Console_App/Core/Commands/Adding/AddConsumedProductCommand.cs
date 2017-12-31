@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Console_App.Core.Commands.Adding
 {
-    class AddActivity
+    class AddConsumedProductCommand
     {
     }
 }
