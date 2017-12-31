@@ -20,6 +20,7 @@ namespace CalorieCounter
         private static ICalorieCounterEngine instance;
         private readonly IProductFactory productFactory;
         private readonly IActivityFactory activityFactory;
+        private readonly IGoalFactory goalFactory;
         private ICurrentDayCalorieTracker currentDayCalorieTracker;
         private IDictionary<string, IProduct> products;
         private readonly DirectoryInfo dailyProgressDirectory;
@@ -31,6 +32,7 @@ namespace CalorieCounter
         private ICommand addWaterCommand;
         private ICommand addActivityCommand;
         private ICommand getAllProductsCommand;
+        private ICommand createGoal;
 
         public CalorieCounterEngine()
         {

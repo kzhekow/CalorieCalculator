@@ -9,9 +9,9 @@ using Console_App.Core.Engine;
 
 namespace Console_App.Core.Commands.Creating
 {
-    class CreateFoodProduct : CreateProductCommand
+    class CreateFoodProductCommand : CreateProductCommand
     {
-        public CreateFoodProduct(IProductFactory factory, ICommandParserEngine engine, ICalorieCounterEngine calorieCounterEngine) 
+        public CreateFoodProductCommand(IProductFactory factory, ICommandParserEngine engine, ICalorieCounterEngine calorieCounterEngine) 
             : base(factory, engine, calorieCounterEngine)
         {
         }
