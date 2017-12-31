@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace CalorieCounter.Contracts
+﻿namespace CalorieCounter.Contracts
 {
     public interface IMeal
     {

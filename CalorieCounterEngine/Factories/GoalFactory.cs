@@ -1,8 +1,8 @@
 ﻿using CalorieCounter.Factories.Contracts;
-using CalorieCounterEngine.Models.Contracts;
-using CalorieCounterEngine.Models.Goal;
+using CalorieCounter.Models.Contracts;
+using CalorieCounter.Models.Goal;
 
-namespace CalorieCounterEngine.Factories
+namespace CalorieCounter.Factories
 {
     public class GoalFactory : IGoalFactory
     {
@@ -10,8 +10,8 @@ namespace CalorieCounterEngine.Factories
 
         private GoalFactory()
         {
-
         }
+
         public static IGoalFactory Instance
         {
             get
@@ -26,7 +26,8 @@ namespace CalorieCounterEngine.Factories
         }
 
 
-        public IGoal CreateGoal(double startingWeight, double goalWeight, double height, int age, GenderType gender, GoalType type, ActivityLevel level)
+        public IGoal CreateGoal(double startingWeight, double goalWeight, double height, int age, GenderType gender,
+            GoalType type, ActivityLevel level)
         {
             return new Goal(startingWeight, goalWeight, height, age, gender, type, level);
         }

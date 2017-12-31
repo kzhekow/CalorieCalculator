@@ -1,8 +1,7 @@
-﻿using CalorieCounter.Contracts;
-using CalorieCounter.Models.Contracts;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using CalorieCounter.Contracts;
 
-namespace CalorieCounterEngine.Models.Contracts
+namespace CalorieCounter.Models.Contracts
 {
     public interface ICurrentDayCalorieTracker
     {

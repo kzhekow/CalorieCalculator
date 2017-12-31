@@ -8,12 +8,9 @@ using CalorieCounter.Contracts;
 using CalorieCounter.Factories;
 using CalorieCounter.Factories.Contracts;
 using CalorieCounter.Models;
+using CalorieCounter.Models.Contracts;
 using CalorieCounter.Models.Drinks;
-using CalorieCounter.Models.Food;
 using CalorieCounter.Utils;
-using CalorieCounterEngine.Models;
-using CalorieCounterEngine.Models.Contracts;
-using CalorieCounterEngine.Utils;
 using Newtonsoft.Json;
 
 namespace CalorieCounter
@@ -21,21 +18,21 @@ namespace CalorieCounter
     public sealed class CalorieCounterEngine : ICalorieCounterEngine
     {
         private static ICalorieCounterEngine instance;
-        private readonly IProductFactory productFactory;
         private readonly IActivityFactory activityFactory;
-        private readonly IGoalFactory goalFactory;
-        private ICurrentDayCalorieTracker currentDayCalorieTracker;
-        private IDictionary<string, IProduct> products;
         private readonly DirectoryInfo dailyProgressDirectory;
+        private readonly IGoalFactory goalFactory;
+        private readonly IProductFactory productFactory;
         private readonly DirectoryInfo productsDirectory;
-        private ICommand createProductCommand;
-        private ICommand createMealCommand;
-        private ICommand createDrinkCommand;
+        private ICommand addActivityCommand;
         private ICommand addConsumedProductCommand;
         private ICommand addWaterCommand;
-        private ICommand addActivityCommand;
-        private ICommand getAllProductsCommand;
+        private ICommand createDrinkCommand;
         private ICommand createGoal;
+        private ICommand createMealCommand;
+        private ICommand createProductCommand;
+        private ICurrentDayCalorieTracker currentDayCalorieTracker;
+        private ICommand getAllProductsCommand;
+        private readonly IDictionary<string, IProduct> products;
 
         private CalorieCounterEngine()
         {
@@ -45,7 +42,7 @@ namespace CalorieCounter
             // TODO: Set proper can execute conditions.
 
             // TODO: JSON deserialization for current date.
-            this.LoadProgress();
+            LoadProgress();
             this.createProductCommand = new RelayCommand(CreateProduct, arg => true);
             this.productFactory = new ProductFactory();
             this.activityFactory = new ActivityFactory();
@@ -64,7 +61,7 @@ namespace CalorieCounter
                 return instance;
             }
         }
-        
+
         public ICommand CreateProductCommand
         {
             get
@@ -78,26 +75,6 @@ namespace CalorieCounter
             }
         }
 
-        private void CreateProduct(object parameter)
-        {
-            // TODO: Validations, dissection of the passed arguments and creation of the new product (using the factory)
-
-            //unboxing the values
-            var args = parameter as object[];
-            var name = (string) args[0];
-            var caloriesPer100g = (int)args[1];
-            var proteinPer100g = (int) args[2];
-            var carbsPer100g = (int) args[3];
-            var fatsPer100g = (int) args[4];
-            var sugar = (int) args[5];
-            var fiber = (int) args[6];
-
-            var product = this.productFactory.CreateFoodProduct(name, caloriesPer100g,proteinPer100g,caloriesPer100g,fatsPer100g, sugar, fiber);
-            this.products.Add(product.Name, product);
-
-            this.SaveProgress();
-        }
-
         public ICommand CreateDrinkCommand
         {
             get
@@ -109,24 +86,6 @@ namespace CalorieCounter
 
                 return this.createDrinkCommand;
             }
-        }
-       
-        
-
-        private void CreateDrink(object parameter)
-        {
-            var args = parameter as object[];
-            var name = (string)args[0];
-            var caloriesPer100g = (int)args[1];
-            var proteinPer100g = (int)args[2];
-            var carbsPer100g = (int)args[3];
-            var fatsPer100g = (int)args[4];
-            var sugar = (int)args[5];
-            var fiber = (int)args[6];
-
-            var drink = this.productFactory.CreateDrink(name, caloriesPer100g, proteinPer100g, carbsPer100g, fatsPer100g, sugar, fiber);
-            this.products.Add(drink.Name, drink);
-            this.SaveProgress();
         }
 
         public ICommand CreateMealCommand
@@ -142,11 +101,6 @@ namespace CalorieCounter
             }
         }
 
-        private void CreateMeal(object parameter)
-        {
-            throw new NotImplementedException();
-        }
-
         public ICommand AddConsumedProductCommand
         {
             get
@@ -158,19 +112,6 @@ namespace CalorieCounter
 
                 return this.addConsumedProductCommand;
             }
-        }
-
-        private void AddConsumedProduct(object parameter)
-        {
-            var args = parameter as object[];
-            var name = (string)args[0];
-            var weightVolume = (int)args[1]; //grams or mililiters (depending on the product type)
-
-            Guard.WhenArgument(this.products.ContainsKey(name), "There is no product with that name.").IsFalse().Throw();
-            var productCopy = this.products[name].Clone();
-            productCopy.Weight = weightVolume;
-            this.currentDayCalorieTracker.AddProduct(productCopy);
-            this.SaveProgress();
         }
 
         public ICommand AddWaterCommand
@@ -186,14 +127,6 @@ namespace CalorieCounter
             }
         }
 
-        private void AddWater(object parameter)
-        {
-            var args = parameter as object[];
-            var weightVolume = (int)args[0]; //grams or mililiters (depending on the product type)
-            
-            this.currentDayCalorieTracker.AddWater(weightVolume);
-        }
-
         public ICommand AddActivityCommand
         {
             get
@@ -205,22 +138,6 @@ namespace CalorieCounter
 
                 return this.addActivityCommand;
             }
-        }
-
-        private void AddActivity(object parameter)
-        {
-            var args = parameter as object[];
-            var activityTypeString = (string)args[0];
-            var time = (int) args[1];
-
-            Guard.WhenArgument(time, "Time cannot be negative value.").IsLessThan(0).Throw();
-            if (!Enum.TryParse(activityTypeString, true, out ActivityType activityType))
-            {
-                throw new ArgumentException("Invalid activity type");
-            }
-
-            var activity = this.activityFactory.CreateActivity(time, activityType);
-            this.currentDayCalorieTracker.AddActivity(activity);
         }
 
         public ICommand GetAllProductsCommand
@@ -241,11 +158,98 @@ namespace CalorieCounter
             throw new NotImplementedException();
         }
 
+        public void GetNewDrinkFromConsole(IProduct drink)
+        {
+            AddNewDrinkToProducts(drink);
+        }
+
+        private void CreateProduct(object parameter)
+        {
+            // TODO: Validations, dissection of the passed arguments and creation of the new product (using the factory)
+
+            //unboxing the values
+            var args = parameter as object[];
+            var name = (string) args[0];
+            var caloriesPer100g = (int) args[1];
+            var proteinPer100g = (int) args[2];
+            var carbsPer100g = (int) args[3];
+            var fatsPer100g = (int) args[4];
+            var sugar = (int) args[5];
+            var fiber = (int) args[6];
+
+            var product = this.productFactory.CreateFoodProduct(name, caloriesPer100g, proteinPer100g, caloriesPer100g,
+                fatsPer100g, sugar, fiber);
+            this.products.Add(product.Name, product);
+
+            SaveProgress();
+        }
+
+
+        private void CreateDrink(object parameter)
+        {
+            var args = parameter as object[];
+            var name = (string) args[0];
+            var caloriesPer100g = (int) args[1];
+            var proteinPer100g = (int) args[2];
+            var carbsPer100g = (int) args[3];
+            var fatsPer100g = (int) args[4];
+            var sugar = (int) args[5];
+            var fiber = (int) args[6];
+
+            var drink = this.productFactory.CreateDrink(name, caloriesPer100g, proteinPer100g, carbsPer100g,
+                fatsPer100g, sugar, fiber);
+            this.products.Add(drink.Name, drink);
+            SaveProgress();
+        }
+
+        private void CreateMeal(object parameter)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AddConsumedProduct(object parameter)
+        {
+            var args = parameter as object[];
+            var name = (string) args[0];
+            var weightVolume = (int) args[1]; //grams or mililiters (depending on the product type)
+
+            Guard.WhenArgument(this.products.ContainsKey(name), "There is no product with that name.").IsFalse()
+                .Throw();
+            var productCopy = this.products[name].Clone();
+            productCopy.Weight = weightVolume;
+            this.currentDayCalorieTracker.AddProduct(productCopy);
+            SaveProgress();
+        }
+
+        private void AddWater(object parameter)
+        {
+            var args = parameter as object[];
+            var weightVolume = (int) args[0]; //grams or mililiters (depending on the product type)
+
+            this.currentDayCalorieTracker.AddWater(weightVolume);
+        }
+
+        private void AddActivity(object parameter)
+        {
+            var args = parameter as object[];
+            var activityTypeString = (string) args[0];
+            var time = (int) args[1];
+
+            Guard.WhenArgument(time, "Time cannot be negative value.").IsLessThan(0).Throw();
+            if (!Enum.TryParse(activityTypeString, true, out ActivityType activityType))
+            {
+                throw new ArgumentException("Invalid activity type");
+            }
+
+            var activity = this.activityFactory.CreateActivity(time, activityType);
+            this.currentDayCalorieTracker.AddActivity(activity);
+        }
+
         private void GetAllProducts(object parameter)
         {
             var args = parameter as object[];
-            var listToBeFilled = (ICollection<IProduct>)args[0];
-    
+            var listToBeFilled = (ICollection<IProduct>) args[0];
+
             listToBeFilled.Clear();
             foreach (var product in this.products)
             {
@@ -274,8 +278,8 @@ namespace CalorieCounter
                 var jsonVal = File.ReadAllText(fileInfo.DirectoryName + "\\\\" + fileInfo.Name);
                 var settings = new JsonSerializerSettings();
                 settings.TypeNameHandling = TypeNameHandling.Auto;
-                var qqq = (CustomDrink) JsonConvert.DeserializeObject(jsonVal, settings) ;
-                IProduct product = (IProduct) JsonConvert.DeserializeObject(jsonVal, settings);
+                var qqq = (CustomDrink) JsonConvert.DeserializeObject(jsonVal, settings);
+                var product = (IProduct) JsonConvert.DeserializeObject(jsonVal, settings);
                 this.products.Add(product.Name, product);
             }
         }
@@ -283,7 +287,8 @@ namespace CalorieCounter
         private void SaveProgress()
         {
             var curDay = JsonConvert.SerializeObject(this.currentDayCalorieTracker);
-            File.WriteAllText(this.dailyProgressDirectory.FullName + "\\\\" + DateTime.Now.Date.ToString("dd-MM-yyyy"), curDay);
+            File.WriteAllText(this.dailyProgressDirectory.FullName + "\\\\" + DateTime.Now.Date.ToString("dd-MM-yyyy"),
+                curDay);
 
             // Iterate through all the products and serialize those that are not saved already.
             var files = this.productsDirectory.GetFiles("*.*");
@@ -300,19 +305,10 @@ namespace CalorieCounter
                 var productJson = JsonConvert.SerializeObject(product.Value, typeof(IProduct), settings);
                 File.WriteAllText(this.productsDirectory.FullName + "\\\\" + product.Key, productJson);
             }
-            
-
-        }
-        public void GetNewDrinkFromConsole(IProduct drink)
-        {
-            
-            AddNewDrinkToProducts(drink);
-            
         }
 
         public void AddNewDrinkToProducts(IProduct drink)
         {
-            
             this.products.Add(drink.Name, drink);
         }
     }

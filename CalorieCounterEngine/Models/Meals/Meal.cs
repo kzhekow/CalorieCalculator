@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using Bytes2you.Validation;
 using CalorieCounter.Contracts;
 
 namespace CalorieCounter.Models
@@ -10,7 +8,10 @@ namespace CalorieCounter.Models
         protected Meal(string products, MealType type, string name)
         {
             if (!Enum.IsDefined(typeof(MealType), type))
+            {
                 throw new ArgumentException("The provided meal type is not valid!");
+            }
+
             this.Products = products ?? throw new ArgumentNullException("You must add some products!");
             this.Type = type;
             //Guard.WhenArgument(name, "Name cannot be null or empty").IsNullOrWhiteSpace().Throw();
@@ -39,7 +40,7 @@ namespace CalorieCounter.Models
         //TODO: Remove duplication.
         public IProduct Clone()
         {
-            return (IProduct)this.MemberwiseClone();
+            return (IProduct) MemberwiseClone();
         }
     }
 }

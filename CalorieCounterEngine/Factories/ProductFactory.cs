@@ -11,11 +11,6 @@ namespace CalorieCounter.Factories
     {
         private static ProductFactory instanceHolder = new ProductFactory();
 
-        public ProductFactory()
-        {
-
-        }
-
         public static ProductFactory Instance
         {
             get
@@ -30,7 +25,8 @@ namespace CalorieCounter.Factories
         }
 
 
-        public IProduct CreateDrink(string name, int caloriesPer100g, int proteinPer100g, int carbsPer100g, int fatPer100g, int sugar = 0, int fiber = 0)
+        public IProduct CreateDrink(string name, int caloriesPer100g, int proteinPer100g, int carbsPer100g,
+            int fatPer100g, int sugar = 0, int fiber = 0)
         {
             return new CustomDrink(name, caloriesPer100g, proteinPer100g, carbsPer100g, fatPer100g, sugar, fiber);
         }
@@ -41,11 +37,10 @@ namespace CalorieCounter.Factories
             return new CustomMeal(productssStr, type, name);
         }
 
-        public IProduct CreateFoodProduct(string name, int caloriesPer100g, int proteinPer100g, int carbsPer100g, int fatPer100g, int sugar = 0, int fiber = 0)
+        public IProduct CreateFoodProduct(string name, int caloriesPer100g, int proteinPer100g, int carbsPer100g,
+            int fatPer100g, int sugar = 0, int fiber = 0)
         {
             return new CustomFoodProduct(name, caloriesPer100g, proteinPer100g, carbsPer100g, fatPer100g, sugar, fiber);
         }
-
-
     }
 }

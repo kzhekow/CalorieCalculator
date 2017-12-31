@@ -1,20 +1,18 @@
-﻿using CalorieCounter.Factories;
-using CalorieCounterEngine.Factories;
-using Console_App.Core.Contracts;
-using Console_App.Core.Engine;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using CalorieCounter;
+using Console_App.Core.Contracts;
 
 namespace Console_App.Core.Providers
 {
-    class CommandParser : IParser
+    internal class CommandParser : IParser
     {
         public ICommand ParseCommand(string fullCommand)
         {
             var commandName = fullCommand.Split(' ')[0];
-            var commandTypeInfo = this.FindCommand(commandName);
+            var commandTypeInfo = FindCommand(commandName);
 
             //if (!commandTypeInfo.Name.ToLower().Contains("goal") && !commandTypeInfo.Name.ToLower().Contains("activity"))
             //{
@@ -29,8 +27,9 @@ namespace Console_App.Core.Providers
             //    return Activator.CreateInstance(commandTypeInfo, CalorieCounter.CalorieCounterEngine.Instance) as ICommand;
             //}
 
-            return Activator.CreateInstance(commandTypeInfo, CalorieCounter.CalorieCounterEngine.Instance) as ICommand;
+            return Activator.CreateInstance(commandTypeInfo, CalorieCounterEngine.Instance) as ICommand;
         }
+
         public IList<string> ParseParameters(string fullCommand)
         {
             var commandParts = fullCommand.Split(' ').ToList();
@@ -43,12 +42,13 @@ namespace Console_App.Core.Providers
 
             return commandParts;
         }
+
         private TypeInfo FindCommand(string commandName)
         {
-            Assembly currentAssembly = this.GetType().GetTypeInfo().Assembly;
+            var currentAssembly = GetType().GetTypeInfo().Assembly;
             var commandTypeInfo = currentAssembly.DefinedTypes
                 .Where(type => type.ImplementedInterfaces.Any(inter => inter == typeof(ICommand)))
-                .Where(type => type.Name.ToLower() == (commandName.ToLower() + "command"))
+                .Where(type => type.Name.ToLower() == commandName.ToLower() + "command")
                 .SingleOrDefault();
 
             if (commandTypeInfo == null)

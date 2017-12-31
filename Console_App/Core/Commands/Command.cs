@@ -1,6 +1,4 @@
-﻿
-
-//using System;
+﻿//using System;
 //using System.Collections.Generic;
 //using Bytes2you.Validation;
 //using Console_App.Core.Contracts;
@@ -60,3 +58,4 @@
 //        }
 //    }
 //}
+

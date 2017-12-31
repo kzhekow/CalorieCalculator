@@ -1,6 +1,5 @@
-﻿using Bytes2you.Validation;
+﻿using System;
 using CalorieCounter.Models.Contracts;
-using System;
 
 namespace CalorieCounter.Models.Food
 {
@@ -11,8 +10,11 @@ namespace CalorieCounter.Models.Food
         public Water(decimal weightInMl)
         {
             if (weightInMl < 0)
+            {
                 throw new ArgumentException("Ml of water can not be a negative number!");
-           // Guard.WhenArgument(weightInMl, "Weight can not be a negative number!").IsLessThan(0).Throw();
+            }
+
+            // Guard.WhenArgument(weightInMl, "Weight can not be a negative number!").IsLessThan(0).Throw();
             this.Weight = weightInMl;
         }
 

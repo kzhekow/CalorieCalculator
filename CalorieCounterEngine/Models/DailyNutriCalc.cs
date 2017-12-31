@@ -18,35 +18,40 @@ namespace CalorieCounter.Models
             return productsConsumed.Sum(p => p.Fiber);
         }
 
-        public static double RemainingProteinIntake(double suggestedProteinDailyIntake, ICollection<IProduct> productsConsumed)
+        public static double RemainingProteinIntake(double suggestedProteinDailyIntake,
+            ICollection<IProduct> productsConsumed)
         {
             double currentProteinIntake = productsConsumed.Sum(p => p.Protein);
 
             return suggestedProteinDailyIntake - currentProteinIntake;
         }
 
-        public static double RemainingCarbsIntake(double suggestedCarbsDailyIntake, ICollection<IProduct> productsConsumed)
+        public static double RemainingCarbsIntake(double suggestedCarbsDailyIntake,
+            ICollection<IProduct> productsConsumed)
         {
             double currentCarbIntake = productsConsumed.Sum(p => p.Carbs);
 
             return suggestedCarbsDailyIntake - currentCarbIntake;
         }
 
-        public static double RemainingFatsIntake(double suggestedFatsDailyIntake, ICollection<IProduct> productsConsumed)
+        public static double RemainingFatsIntake(double suggestedFatsDailyIntake,
+            ICollection<IProduct> productsConsumed)
         {
             double currentFatIntake = productsConsumed.Sum(p => p.Fat);
             return suggestedFatsDailyIntake - currentFatIntake;
         }
 
-        public static int RemainingCaloriesIntake(int suggestedCaloriesDailyIntake, ICollection<IProduct> productsConsumed, ICollection<IActivity> activitiesPerformed = null)
+        public static int RemainingCaloriesIntake(int suggestedCaloriesDailyIntake,
+            ICollection<IProduct> productsConsumed, ICollection<IActivity> activitiesPerformed = null)
         {
-            int currentCaloriesIntake = productsConsumed.Sum(p => p.Calories);
+            var currentCaloriesIntake = productsConsumed.Sum(p => p.Calories);
             if (activitiesPerformed != null)
             {
-                int burnedCaloriesFromActivities = activitiesPerformed.Sum(a => a.CalculateBurnedCalories());
+                var burnedCaloriesFromActivities = activitiesPerformed.Sum(a => a.CalculateBurnedCalories());
 
-                return (suggestedCaloriesDailyIntake + burnedCaloriesFromActivities) - currentCaloriesIntake;
+                return suggestedCaloriesDailyIntake + burnedCaloriesFromActivities - currentCaloriesIntake;
             }
+
             return suggestedCaloriesDailyIntake - currentCaloriesIntake;
         }
 
@@ -62,9 +67,9 @@ namespace CalorieCounter.Models
             var totalProteins = productsConsumed.Sum(p => p.Protein);
             var totalFat = productsConsumed.Sum(p => p.Fat);
 
-            var carbsRatio = Math.Round(((double)(totalCarbs * 4) / totalCalories) * 100);
-            var proteinRatio = Math.Round(((double)(totalProteins * 4) / totalCalories) * 100);
-            var fatRatio = Math.Round(((double)(totalFat * 9) / totalCalories) * 100);
+            var carbsRatio = Math.Round((double) (totalCarbs * 4) / totalCalories * 100);
+            var proteinRatio = Math.Round((double) (totalProteins * 4) / totalCalories * 100);
+            var fatRatio = Math.Round((double) (totalFat * 9) / totalCalories * 100);
 
             return $"Carbs:Protein:Fat = {carbsRatio}:{proteinRatio}:{fatRatio}";
         }

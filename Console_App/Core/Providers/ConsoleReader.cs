@@ -1,13 +1,9 @@
-﻿using Console_App.Core.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using Console_App.Core.Contracts;
 
 namespace Console_App.Core.Providers
 {
-    class ConsoleReader : IReader
+    internal class ConsoleReader : IReader
     {
         public string ReadLine()
         {

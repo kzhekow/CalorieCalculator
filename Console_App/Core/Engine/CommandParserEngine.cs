@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Console_App.Core.Contracts;
 using Console_App.Core.Providers;
 
@@ -10,17 +6,15 @@ namespace Console_App.Core.Engine
 {
     public class CommandParserEngine : ICommandParserEngine
     {
-        private static CommandParserEngine instanceHolder;
-
         private const string TerminationCommand = "Exit";
         private const string NullProvidersExceptionMessage = "cannot be null.";
+        private static CommandParserEngine instanceHolder;
 
         public CommandParserEngine()
         {
             this.Reader = new ConsoleReader();
             this.Writer = new ConsoleWriter();
             this.Parser = new CommandParser();
-
         }
 
         public static CommandParserEngine Instance
@@ -53,15 +47,15 @@ namespace Console_App.Core.Engine
                         break;
                     }
 
-                    this.ProcessCommand(commandAsString);
+                    ProcessCommand(commandAsString);
                 }
                 catch (Exception ex)
                 {
                     this.Writer.WriteLine(ex.Message);
-
                 }
             }
         }
+
         private void ProcessCommand(string commandAsString)
         {
             if (string.IsNullOrWhiteSpace(commandAsString))
@@ -74,7 +68,6 @@ namespace Console_App.Core.Engine
 
             var executionResult = command.Execute(parameters);
             this.Writer.WriteLine(executionResult);
-
         }
     }
 }

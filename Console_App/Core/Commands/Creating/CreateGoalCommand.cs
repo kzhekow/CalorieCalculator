@@ -1,21 +1,17 @@
-﻿using CalorieCounter.Contracts;
-using CalorieCounter.Factories.Contracts;
+﻿using System;
+using System.Collections.Generic;
+using CalorieCounter.Contracts;
 using Console_App.Core.Contracts;
 using Console_App.Core.Engine;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Console_App.Core.Commands.Creating
 {
-    class CreateGoalCommand : ICommand
+    internal class CreateGoalCommand : ICommand
     {
-        private readonly ICommandParserEngine engine;
         private readonly ICalorieCounterEngine calorieCounterEngine;
+        private readonly ICommandParserEngine engine;
 
-        public CreateGoalCommand( ICommandParserEngine engine, ICalorieCounterEngine calorieCounterEngine)
+        public CreateGoalCommand(ICommandParserEngine engine, ICalorieCounterEngine calorieCounterEngine)
         {
             this.engine = engine;
             this.calorieCounterEngine = calorieCounterEngine;
@@ -37,9 +33,9 @@ namespace Console_App.Core.Commands.Creating
                 goalWeight = double.Parse(parameters[1]);
                 height = double.Parse(parameters[2]);
                 age = int.Parse(parameters[3]);
-                gender = (GenderType)Enum.Parse(typeof(GenderType), parameters[4]);
-                type = (GoalType)Enum.Parse(typeof(GoalType), parameters[5]);
-                level = (ActivityLevel)Enum.Parse(typeof(ActivityLevel), parameters[6]);
+                gender = (GenderType) Enum.Parse(typeof(GenderType), parameters[4]);
+                type = (GoalType) Enum.Parse(typeof(GoalType), parameters[5]);
+                level = (ActivityLevel) Enum.Parse(typeof(ActivityLevel), parameters[6]);
             }
             catch (Exception)
             {

@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CalorieCounter.Contracts;
-using CalorieCounter.Factories.Contracts;
-using Console_App.Core.Engine;
 
 namespace Console_App.Core.Commands.Creating
 {
-    class CreateDrinkCommand : CreateProductCommand
+    internal class CreateDrinkCommand : CreateProductCommand
     {
-        public CreateDrinkCommand(ICalorieCounterEngine calorieCounterEngine) 
+        public CreateDrinkCommand(ICalorieCounterEngine calorieCounterEngine)
             : base(calorieCounterEngine)
         {
         }
@@ -41,7 +36,7 @@ namespace Console_App.Core.Commands.Creating
                 throw new ArgumentException("Failed to parse CreateDrink command parameters.");
             }
 
-            object[] args = {name,calories,protein,carbs,fat,sugar,fiber};
+            object[] args = {name, calories, protein, carbs, fat, sugar, fiber};
             if (this.CalorieCounterEngine.CreateDrinkCommand.CanExecute(args))
             {
                 this.CalorieCounterEngine.CreateDrinkCommand.Execute(args);

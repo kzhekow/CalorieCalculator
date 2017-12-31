@@ -8,11 +8,6 @@ namespace CalorieCounter.Factories
     {
         private static IActivityFactory instanceHolder = new ActivityFactory();
 
-        public ActivityFactory()
-        {
-
-        }
-
         public static IActivityFactory Instance
         {
             get

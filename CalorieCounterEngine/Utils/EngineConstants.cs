@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CalorieCounterEngine.Utils
+﻿namespace CalorieCounter.Utils
 {
     internal static class EngineConstants
     {
         /// <summary>
-        /// Directories
+        ///     Directories
         /// </summary>
         internal const string DailyProgressDirectoryName = "DailyProgress";
+
         internal const string ProductsDirectoryName = "Products";
     }
 }

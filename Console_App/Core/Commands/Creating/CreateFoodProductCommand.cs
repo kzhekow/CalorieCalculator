@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CalorieCounter.Contracts;
-using CalorieCounter.Factories.Contracts;
-using Console_App.Core.Engine;
 
 namespace Console_App.Core.Commands.Creating
 {
-    class CreateFoodProductCommand : CreateProductCommand
+    internal class CreateFoodProductCommand : CreateProductCommand
     {
-        public CreateFoodProductCommand(ICalorieCounterEngine calorieCounterEngine) 
+        public CreateFoodProductCommand(ICalorieCounterEngine calorieCounterEngine)
             : base(calorieCounterEngine)
         {
         }

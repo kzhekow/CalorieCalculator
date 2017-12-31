@@ -1,5 +1,4 @@
 ﻿using System;
-using Bytes2you.Validation;
 using CalorieCounter.Models.Contracts;
 
 namespace CalorieCounter.Models.Activity
@@ -9,10 +8,15 @@ namespace CalorieCounter.Models.Activity
         public Activity(int time, ActivityType type)
         {
             if (time < 0)
+            {
                 throw new ArgumentException("Time can not be a negative number!");
+            }
+
             //Guard.WhenArgument(time, "Time can not be a negative number!").IsLessThan(0);
             if (!Enum.IsDefined(typeof(ActivityType), type))
+            {
                 throw new ArgumentException("The provided activity type is not valid!");
+            }
 
             this.Time = time;
             this.Type = type;
