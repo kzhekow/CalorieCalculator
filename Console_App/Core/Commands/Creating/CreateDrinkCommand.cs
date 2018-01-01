@@ -33,7 +33,7 @@ namespace Console_App.Core.Commands.Creating
             }
             catch
             {
-                throw new ArgumentException("Failed to parse CreateDrink command parameters.");
+                throw new ArgumentException("The correct format for CreateDrink is {name}{caloriePer100g}{proteinPer100g}{carbsPer100g}{fatPer100g}{sugar}{fiber}");
             }
 
             object[] args = {name, calories, protein, carbs, fat, sugar, fiber};

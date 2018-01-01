@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CalorieCounter.CalorieCounterEngine" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IACIAAGQANCBAAgQIZAJgAAgYADIAAAAUAAAhBCBUAA=</HashCode>
+      <FileName>CalorieCounterEngine.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CalorieCounter.Factories.ActivityFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Factories\ActivityFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CalorieCounter.Factories.GoalFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Factories\GoalFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CalorieCounter.Factories.ProductFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAACAAAAAAAAAAQAAAABAAAAA=</HashCode>
+      <FileName>Factories\ProductFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CalorieCounter.Models.Activity.Activity" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAQAAAAAAAQA=</HashCode>
+      <FileName>Models\Activity\Activity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CalorieCounter.Models.CurrentDayCalorieTracker" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAABAACAAAAAAAAJQEAAAAAgAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Models\CurrentDayCalorieTracker.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CalorieCounter.Models.DailyNutriCalc" Collapsed="true">
+    <Position X="8.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAABACAAAAAAAAAAAAAIAAAAABAEAAQACAAAA=</HashCode>
+      <FileName>Models\DailyNutriCalc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CalorieCounter.Models.CustomMeal" Collapsed="true">
+    <Position X="3.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Meals\CustomMeal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CalorieCounter.Models.Meal" Collapsed="true">
+    <Position X="3.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAgIAAAAAAAAAAAAQCADAAAIAAAQAAAAAAABQ=</HashCode>
+      <FileName>Models\Meals\Meal.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CalorieCounter.Models.Product" Collapsed="true">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IACAgAAAgIAAAAAAAAIAAAQCADAAAIAQAACAACAAABA=</HashCode>
+      <FileName>Models\Product.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CalorieCounter.Models.Drinks.CustomDrink" Collapsed="true">
+    <Position X="3.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Drinks\CustomDrink.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CalorieCounter.Models.Food.CustomFoodProduct" Collapsed="true">
+    <Position X="6" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Food\CustomFoodProduct.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CalorieCounter.Models.Goal.Goal" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIpAAAAABAAAAACABEAAAAIACAAAAIEBAQAAAAAAAAA=</HashCode>
+      <FileName>Models\Goal\Goal.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CalorieCounter.Utils.EngineConstants" Collapsed="true">
+    <Position X="10.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAEAAAAAAAAAAA=</HashCode>
+      <FileName>Utils\EngineConstants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CalorieCounter.Utils.RelayCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAACAAQAAEAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Utils\RelayCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Struct Name="CalorieCounter.Models.Food.Water" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAwAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Drinks\Water.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Struct>
+  <Interface Name="CalorieCounter.Contracts.ICalorieCounterEngine" Collapsed="true">
+    <Position X="12" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAEAAIABAAAQABAIAAAgQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\ICalorieCounterEngine.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CalorieCounter.Contracts.IMeal" Collapsed="true">
+    <Position X="12" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAQ=</HashCode>
+      <FileName>Models\Contracts\IMeal.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CalorieCounter.Contracts.IProduct" Collapsed="true">
+    <Position X="13.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAgIAAAAAAAAAAAAQCADAAAIAAAAAAAAAAABA=</HashCode>
+      <FileName>Models\Contracts\IProduct.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CalorieCounter.Factories.Contracts.IActivityFactory" Collapsed="true">
+    <Position X="10.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Factories\Contracts\IActivityFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CalorieCounter.Factories.Contracts.IGoalFactory" Collapsed="true">
+    <Position X="10.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Factories\Contracts\IGoalFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CalorieCounter.Factories.Contracts.IProductFactory" Collapsed="true">
+    <Position X="8.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAACAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Factories\Contracts\IProductFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CalorieCounter.Models.Contracts.IActivity" Collapsed="true">
+    <Position X="8.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAQAAAAAAAQA=</HashCode>
+      <FileName>Models\Contracts\IActivity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CalorieCounter.Models.Contracts.ICurrentDayCalorieTracker" Collapsed="true">
+    <Position X="13.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAABAACAAAAAAAAJQEAAAAAgAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Models\Contracts\ICurrentDayCalorieTracker.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CalorieCounter.Models.Contracts.IGoal" Collapsed="true">
+    <Position X="8.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIgAAAAABAAAAACABEAAAAIACAAAAAEBAQAAAAAAAAA=</HashCode>
+      <FileName>Models\Contracts\IGoal.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CalorieCounter.Models.Contracts.IWater" Collapsed="true">
+    <Position X="10.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Contracts\IWater.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="ActivityLevel" Collapsed="true">
+    <Position X="8.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAQAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\ActivityLevel.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ActivityType" Collapsed="true">
+    <Position X="10.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\ActivityType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="GenderType" Collapsed="true">
+    <Position X="12" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Common\GenderType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="GoalType" Collapsed="true">
+    <Position X="13.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Common\GoalType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MealType" Collapsed="true">
+    <Position X="8.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAEAAAAAAABAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Common\MealType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

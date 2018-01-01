@@ -26,7 +26,7 @@ namespace Console_App.Core.Commands.Adding
             }
             catch (Exception)
             {
-                throw new ArgumentException("Failed to parse AddConsumedProduct command parameters.");
+                throw new ArgumentException("The correct format for AddConsumedProduct is {name} {weight}.");
             }
 
             object[] args = { name, weight };

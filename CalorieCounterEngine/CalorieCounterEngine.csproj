@@ -81,6 +81,7 @@
     <Compile Include="Utils\RelayCommand.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="CalorieCounterEngineClassDiagram.cd" />
     <None Include="Models\Architecture.cd" />
     <None Include="packages.config" />
   </ItemGroup>
