@@ -169,32 +169,31 @@ namespace CalorieCounter
 
             //unboxing the values
             var args = parameter as object[];
-            var name = (string) args[0];
-            var caloriesPer100g = (int) args[1];
-            var proteinPer100g = (int) args[2];
-            var carbsPer100g = (int) args[3];
-            var fatsPer100g = (int) args[4];
-            var sugar = (int) args[5];
-            var fiber = (int) args[6];
+            var name = (string)args[0];
+            var caloriesPer100g = (int)args[1];
+            var proteinPer100g = (int)args[2];
+            var carbsPer100g = (int)args[3];
+            var fatsPer100g = (int)args[4];
+            var sugar = args.Length > 5 ? (int)args[5] : 0;
+            var fiber = args.Length > 6 ? (int)args[6] : 0;
 
-            var product = this.productFactory.CreateFoodProduct(name, caloriesPer100g, proteinPer100g, caloriesPer100g,
+            var product = this.productFactory.CreateFoodProduct(name, caloriesPer100g, proteinPer100g, carbsPer100g,
                 fatsPer100g, sugar, fiber);
             this.products.Add(product.Name, product);
 
             SaveProgress();
         }
 
-
         private void CreateDrink(object parameter)
         {
             var args = parameter as object[];
-            var name = (string) args[0];
-            var caloriesPer100g = (int) args[1];
-            var proteinPer100g = (int) args[2];
-            var carbsPer100g = (int) args[3];
-            var fatsPer100g = (int) args[4];
-            var sugar = (int) args[5];
-            var fiber = (int) args[6];
+            var name = (string)args[0];
+            var caloriesPer100g = (int)args[1];
+            var proteinPer100g = (int)args[2];
+            var carbsPer100g = (int)args[3];
+            var fatsPer100g = (int)args[4];
+            var sugar = (int)args[5];
+            var fiber = (int)args[6];
 
             var drink = this.productFactory.CreateDrink(name, caloriesPer100g, proteinPer100g, carbsPer100g,
                 fatsPer100g, sugar, fiber);
@@ -210,8 +209,8 @@ namespace CalorieCounter
         private void AddConsumedProduct(object parameter)
         {
             var args = parameter as object[];
-            var name = (string) args[0];
-            var weightVolume = (int) args[1]; //grams or mililiters (depending on the product type)
+            var name = (string)args[0];
+            var weightVolume = (int)args[1]; //grams or mililiters (depending on the product type)
 
             Guard.WhenArgument(this.products.ContainsKey(name), "There is no product with that name.").IsFalse()
                 .Throw();
@@ -224,7 +223,7 @@ namespace CalorieCounter
         private void AddWater(object parameter)
         {
             var args = parameter as object[];
-            var weightVolume = (int) args[0]; //grams or mililiters (depending on the product type)
+            var weightVolume = (int)args[0]; //grams or mililiters (depending on the product type)
 
             this.currentDayCalorieTracker.AddWater(weightVolume);
         }
@@ -232,8 +231,8 @@ namespace CalorieCounter
         private void AddActivity(object parameter)
         {
             var args = parameter as object[];
-            var activityTypeString = (string) args[0];
-            var time = (int) args[1];
+            var activityTypeString = (string)args[0];
+            var time = (int)args[1];
 
             Guard.WhenArgument(time, "Time cannot be negative value.").IsLessThan(0).Throw();
             if (!Enum.TryParse(activityTypeString, true, out ActivityType activityType))
@@ -248,7 +247,7 @@ namespace CalorieCounter
         private void GetAllProducts(object parameter)
         {
             var args = parameter as object[];
-            var listToBeFilled = (ICollection<IProduct>) args[0];
+            var listToBeFilled = (ICollection<IProduct>)args[0];
 
             listToBeFilled.Clear();
             foreach (var product in this.products)
@@ -278,7 +277,7 @@ namespace CalorieCounter
                 var jsonVal = File.ReadAllText(fileInfo.DirectoryName + "\\\\" + fileInfo.Name);
                 var settings = new JsonSerializerSettings();
                 settings.TypeNameHandling = TypeNameHandling.Auto;
-                var product = (IProduct) JsonConvert.DeserializeObject(jsonVal, settings);
+                var product = (IProduct)JsonConvert.DeserializeObject(jsonVal, settings);
                 this.products.Add(product.Name, product);
             }
         }
