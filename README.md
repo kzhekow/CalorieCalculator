@@ -6,9 +6,9 @@
 The calorie counter application that helps you track your personal daily nutrition goals.
 ## Team Members
 
--Alek Hristov
--Kristiyan Zhekov
--Nikolay Nikolov
+*Alek Hristov
+*Kristiyan Zhekov
+*Nikolay Nikolov
 
 ## App Description
 
