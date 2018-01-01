@@ -33,10 +33,14 @@ namespace Console_App.Core.Commands.Creating
             }
             catch
             {
-                throw new ArgumentException("Failed to parse CreateFoodProduct command parameters.");
+                throw new ArgumentException("The correct format for AddConsumedProduct is {name}{caloriePer100g}{proteinPer100g}{carbsPer100g}{fatPer100g}{sugar}{fiber}");
             }
 
-            //var foodProduct = this.Factory.CreateFoodProduct(name, calories, protein, carbs, fat, sugar, fiber);
+            object[] args = { name, calories, protein, carbs, fat, sugar, fiber };
+            if (this.CalorieCounterEngine.CreateProductCommand.CanExecute(args))
+            {
+                this.CalorieCounterEngine.CreateProductCommand.Execute(args);
+            }
 
             return $"Food {name} product was created!";
         }

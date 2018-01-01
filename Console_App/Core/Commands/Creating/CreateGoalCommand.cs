@@ -39,7 +39,7 @@ namespace Console_App.Core.Commands.Creating
             }
             catch (Exception)
             {
-                throw new ArgumentException("Failed to parse CreateGoal command parameters.");
+                throw new ArgumentException("The correct format for AddGoal is {startingWeight}{goalWeight}{height}{height}{age}{gender}{typeOfDailyActivity}{levelOfActivity}");
             }
 
             //var goal = this.factory.CreateGoal(startingWeight, goalWeight, height, age, gender, type, level);

@@ -27,7 +27,7 @@ namespace Console_App.Core.Commands.Adding
             }
             catch (Exception)
             {
-                throw new ArgumentException("Failed to parse AddActivity command parameters.");
+                throw new ArgumentException("The correct format for AddActivity is {ActivityType}{time}");
             }
 
             object[] args = { activityType, time };

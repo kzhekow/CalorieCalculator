@@ -25,7 +25,7 @@ namespace Console_App.Core.Commands.Adding
             }
             catch (Exception)
             {
-                throw new ArgumentException("Failed to parse AddWaterCommand command parameters.");
+                throw new ArgumentException("The correct format for AddWater is {volume}.");
             }
 
             object[] args = { waterVolume };
