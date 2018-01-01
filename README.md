@@ -12,7 +12,7 @@ The calorie counter application that helps you track your personal daily nutriti
 
 ## App Description
 
-### The calorie counter is an application has the following functionalities:
+### The calorie counter has the following functionalities:
 
 #### Create Product
 
