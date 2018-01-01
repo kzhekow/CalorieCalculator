@@ -14,19 +14,6 @@ namespace Console_App.Core.Providers
             var commandName = fullCommand.Split(' ')[0];
             var commandTypeInfo = FindCommand(commandName);
 
-            //if (!commandTypeInfo.Name.ToLower().Contains("goal") && !commandTypeInfo.Name.ToLower().Contains("activity"))
-            //{
-            //    return Activator.CreateInstance(commandTypeInfo, CalorieCounter.CalorieCounterEngine.Instance) as ICommand;
-            //}
-            //else if (!commandTypeInfo.Name.ToLower().Contains("goal") && !commandTypeInfo.Name.ToLower().Contains("drink") && !commandTypeInfo.Name.ToLower().Contains("food"))
-            //{
-            //    return Activator.CreateInstance(commandTypeInfo, CalorieCounter.CalorieCounterEngine.Instance) as ICommand;
-            //}
-            //else
-            //{
-            //    return Activator.CreateInstance(commandTypeInfo, CalorieCounter.CalorieCounterEngine.Instance) as ICommand;
-            //}
-
             return Activator.CreateInstance(commandTypeInfo, CalorieCounterEngine.Instance) as ICommand;
         }
 
