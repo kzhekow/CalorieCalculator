@@ -3,7 +3,7 @@ using CalorieCounter.Models.Contracts;
 
 namespace CalorieCounter.Models.Food
 {
-    public class Water : IWater
+    public struct Water : IWater
     {
         private const string DrinkName = "Water";
 
