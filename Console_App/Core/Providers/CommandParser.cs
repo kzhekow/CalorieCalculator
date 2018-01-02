@@ -36,6 +36,7 @@ namespace Console_App.Core.Providers
             var commandTypeInfo = currentAssembly.DefinedTypes
                 .Where(type => type.ImplementedInterfaces.Any(inter => inter == typeof(ICommand)))
                 .Where(type => type.Name.ToLower() == commandName.ToLower() + "command")
+                .Where(type => type.IsAbstract == false)
                 .SingleOrDefault();
 
             if (commandTypeInfo == null)
