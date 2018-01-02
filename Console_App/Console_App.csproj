@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomException\CommandParseЕxception.cs" />
     <Compile Include="Core\Commands\Adding\AddActivityCommand.cs" />
     <Compile Include="Core\Commands\Adding\AddConsumedProductCommand.cs" />
     <Compile Include="Core\Commands\Adding\AddWaterCommand.cs" />

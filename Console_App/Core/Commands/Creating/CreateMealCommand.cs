@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using CalorieCounter.Contracts;
+using CalorieCounterEngine.CustomException;
 
 namespace Console_App.Core.Commands.Creating
 {
@@ -27,7 +28,7 @@ namespace Console_App.Core.Commands.Creating
             }
             catch (Exception)
             {
-                throw new ArgumentException("Failed to parse CreateMeal command parameters.");
+                throw new CommandParseЕxception("Failed to parse CreateMeal command parameters.");
             }
 
             //var meal = this.Factory.CreateMeal(products, type, name);

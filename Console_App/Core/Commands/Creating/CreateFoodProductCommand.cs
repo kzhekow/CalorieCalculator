@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CalorieCounter.Contracts;
+using CalorieCounterEngine.CustomException;
 
 namespace Console_App.Core.Commands.Creating
 {
@@ -33,7 +34,7 @@ namespace Console_App.Core.Commands.Creating
             }
             catch
             {
-                throw new ArgumentException("The correct format for CreateFoodProduct is {name}{caloriePer100g}{proteinPer100g}{carbsPer100g}{fatPer100g}{sugar}{fiber}");
+                throw new CommandParseЕxception("The correct format for CreateFoodProduct is {name}{caloriePer100g}{proteinPer100g}{carbsPer100g}{fatPer100g}{sugar}{fiber}");
             }
 
             object[] args = { name, calories, protein, carbs, fat, sugar, fiber };

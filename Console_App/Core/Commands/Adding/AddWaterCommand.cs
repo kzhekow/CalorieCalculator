@@ -1,4 +1,5 @@
 ﻿using CalorieCounter.Contracts;
+using CalorieCounterEngine.CustomException;
 using Console_App.Core.Contracts;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace Console_App.Core.Commands.Adding
             }
             catch (Exception)
             {
-                throw new ArgumentException("The correct format for AddWater is {volume}.");
+                throw new CommandParseЕxception("The correct format for AddWater is {volume}.");
             }
 
             object[] args = { waterVolume };

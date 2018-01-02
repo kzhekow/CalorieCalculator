@@ -2,6 +2,7 @@
 using Console_App.Core.Contracts;
 using CalorieCounter.Contracts;
 using System;
+using CalorieCounterEngine.CustomException;
 
 namespace Console_App.Core.Commands.Adding
 {
@@ -26,7 +27,7 @@ namespace Console_App.Core.Commands.Adding
             }
             catch (Exception)
             {
-                throw new ArgumentException("The correct format for AddConsumedProduct is {name} {weight}.");
+                throw new CommandParseЕxception("The correct format for AddConsumedProduct is {name} {weight}.");
             }
 
             object[] args = { name, weight };

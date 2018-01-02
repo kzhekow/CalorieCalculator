@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CalorieCounter.Contracts;
+using CalorieCounterEngine.CustomException;
 using Console_App.Core.Contracts;
 using Console_App.Core.Engine;
 
@@ -39,7 +40,7 @@ namespace Console_App.Core.Commands.Creating
             }
             catch (Exception)
             {
-                throw new ArgumentException("The correct format for AddGoal is {startingWeight}{goalWeight}{height}{height}{age}{gender}{typeOfDailyActivity}{levelOfActivity}");
+                throw new CommandParseЕxception("The correct format for AddGoal is {startingWeight}{goalWeight}{height}{height}{age}{gender}{typeOfDailyActivity}{levelOfActivity}");
             }
 
             //var goal = this.factory.CreateGoal(startingWeight, goalWeight, height, age, gender, type, level);
