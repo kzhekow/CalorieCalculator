@@ -53,25 +53,25 @@ Creates a goal once, and it contains the following:
 #### ● Add Consumed Products
 
 Adds a product to the current day
-Calculates current daily calorie intake
-Calculates macros ratio
+- Calculates current daily calorie intake
+- Calculates macros ratio
 
 #### ● Add Water  
 Adds water in milliliters to the current day
-Calculates current daily water intake
+- Calculates current daily water intake
 
 #### ● Add Activity
 Adds an activity to the current day
-Activity can be 2 types: Cardio and Strength training
-It calculates burned calories depending on type of activity and duration
-Recalculates the daily calorie intake, taking in mind burned calories during performing the activity
+- Activity can be 2 types: Cardio and Strength training
+- It calculates burned calories depending on type of activity and duration
+- Recalculates the daily calorie intake, taking in mind burned calories during performing the activity
 
 #### ● Show remaning nutrients 
 
 Shows remaining nutrients for the current day
-Calculates current and remaining daily calorie intake, considering activity performing
-Calculates macros ratio
-Calculates current daily water intake
+- Calculates current and remaining daily calorie intake, considering activity performing
+- Calculates macros ratio
+- Calculates current daily water intake
 
 ## Link
 https://github.com/kzhekow/CalorieCalculator
