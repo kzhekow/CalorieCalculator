@@ -1,9 +1,9 @@
 # Calorie Calculator
 
-## Project – Calorie Counter
+## Project – CalorieCounter
 
 ## Short Description:
-The calorie counter application that helps you track your personal daily nutrition goals.
+CalorieCounter application helps you track your personal daily nutrition goals.
 ## Team Members
 
 * Alek Hristov
@@ -12,7 +12,7 @@ The calorie counter application that helps you track your personal daily nutriti
 
 ## App Description
 
-### The calorie counter has the following functionalities:
+### CalorieCounter has the following functionalities:
 
 #### Create Product
 
