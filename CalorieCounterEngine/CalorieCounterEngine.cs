@@ -20,14 +20,14 @@ namespace CalorieCounter
         private static ICalorieCounterEngine instance;
         private readonly IActivityFactory activityFactory;
         private readonly DirectoryInfo dailyProgressDirectory;
-        private readonly IGoalFactory goalFactory;
+        //private readonly IGoalFactory goalFactory;
         private readonly IProductFactory productFactory;
         private readonly DirectoryInfo productsDirectory;
         private ICommand addActivityCommand;
         private ICommand addConsumedProductCommand;
         private ICommand addWaterCommand;
         private ICommand createDrinkCommand;
-        private ICommand createGoal;
+        //private ICommand createGoal;
         private ICommand createMealCommand;
         private ICommand createProductCommand;
         private ICurrentDayCalorieTracker currentDayCalorieTracker;
