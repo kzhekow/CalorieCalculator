@@ -9,9 +9,9 @@ namespace CalorieCounter.Models
     {
         public int Water { get; private set; }
 
-        public ICollection<IProduct> ProductsConsumed { get; private set; }
+        public ICollection<IProduct> ProductsConsumed { get; private set; } = new List<IProduct>();
 
-        public ICollection<IActivity> ActivitiesPerformed { get; private set; }
+        public ICollection<IActivity> ActivitiesPerformed { get; private set; } = new List<IActivity>();
 
         public void AddWater(int water)
         {

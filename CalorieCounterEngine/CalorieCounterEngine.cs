@@ -263,12 +263,14 @@ namespace CalorieCounter
 
         private void LoadProgress()
         {
+            var settings = new JsonSerializerSettings();
+            settings.TypeNameHandling = TypeNameHandling.Auto;
             if (File.Exists(this.dailyProgressDirectory.FullName + "\\\\" + DateTime.Now.Date.ToString("dd-MM-yyyy")))
             {
                 var jsonVal = File.ReadAllText(this.dailyProgressDirectory.FullName + "\\\\" +
                                                DateTime.Now.Date.ToString("dd-MM-yyyy"));
-                var curDay = JsonConvert.DeserializeObject(jsonVal);
-                this.currentDayCalorieTracker = curDay as CurrentDayCalorieTracker;
+                var curDay = JsonConvert.DeserializeObject(jsonVal, settings);
+                this.currentDayCalorieTracker = (ICurrentDayCalorieTracker) curDay;
             }
             else
             {
@@ -280,8 +282,6 @@ namespace CalorieCounter
             foreach (var fileInfo in files)
             {
                 var jsonVal = File.ReadAllText(fileInfo.DirectoryName + "\\\\" + fileInfo.Name);
-                var settings = new JsonSerializerSettings();
-                settings.TypeNameHandling = TypeNameHandling.Auto;
                 var product = (IProduct)JsonConvert.DeserializeObject(jsonVal, settings);
                 this.products.Add(product.Name, product);
             }
@@ -289,13 +289,14 @@ namespace CalorieCounter
 
         private void SaveProgress()
         {
+            var settings = new JsonSerializerSettings();
+            settings.TypeNameHandling = TypeNameHandling.Auto;
             var curDay = JsonConvert.SerializeObject(this.currentDayCalorieTracker);
             File.WriteAllText(this.dailyProgressDirectory.FullName + "\\\\" + DateTime.Now.Date.ToString("dd-MM-yyyy"),
                 curDay);
 
             // Iterate through all the products and serialize those that are not saved already.
             var files = this.productsDirectory.GetFiles("*.*");
-            var settings = new JsonSerializerSettings();
             foreach (var product in this.products)
             {
                 //Not a new product, skip it.
@@ -304,7 +305,6 @@ namespace CalorieCounter
                     continue;
                 }
 
-                settings.TypeNameHandling = TypeNameHandling.Auto;
                 var productJson = JsonConvert.SerializeObject(product.Value, typeof(IProduct), settings);
                 File.WriteAllText(this.productsDirectory.FullName + "\\\\" + product.Key, productJson);
             }
