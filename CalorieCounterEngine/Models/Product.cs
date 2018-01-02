@@ -123,5 +123,10 @@ namespace CalorieCounter.Models
         //    var collection = new List<IProduct> { left, right };
         //    return new CustomMeal(collection);
         //}
+
+        public override string ToString()
+        {
+            return $"{this.Name} {this.Calories} kcal {(this.Weight == 0 ? 100 : this.Weight)} gr/ml {this.Protein} protein {this.Carbs} carbs {this.Fat} fat {this.Sugar} sugar {this.Fiber} fiber";
+        }
     }
 }

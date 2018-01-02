@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows.Input;
 using Bytes2you.Validation;
 using CalorieCounter.Contracts;
@@ -160,12 +161,22 @@ namespace CalorieCounter
 
         public string GetDailyReport()
         {
-            throw new NotImplementedException();
-        }
+            var sb = new StringBuilder();
+            sb.AppendLine("----Products Consumed----");
+            foreach (var product in this.currentDayCalorieTracker.ProductsConsumed)
+            {
+                sb.AppendLine(product.ToString());
+            }
 
-        public void GetNewDrinkFromConsole(IProduct drink)
-        {
-            this.AddNewDrinkToProducts(drink);
+            sb.AppendLine("----Activities----");
+            foreach (var activity in this.currentDayCalorieTracker.ActivitiesPerformed)
+            {
+                sb.AppendLine($"{activity.Type} - {activity.Time}");
+            }
+
+            sb.AppendLine($"Water consumed: {this.currentDayCalorieTracker.Water} ml");
+
+            return sb.ToString();
         }
 
         private void CreateProduct(object parameter)
@@ -265,6 +276,15 @@ namespace CalorieCounter
         {
             var settings = new JsonSerializerSettings();
             settings.TypeNameHandling = TypeNameHandling.Auto;
+            // Iterate through all the files in the product directory, unserialize and add to collection.
+            var files = this.productsDirectory.GetFiles("*.*");
+            foreach (var fileInfo in files)
+            {
+                var jsonVal = File.ReadAllText(fileInfo.DirectoryName + "\\\\" + fileInfo.Name);
+                var product = (IProduct)JsonConvert.DeserializeObject(jsonVal, settings);
+                this.products.Add(product.Name, product);
+            }
+
             if (File.Exists(this.dailyProgressDirectory.FullName + "\\\\" + DateTime.Now.Date.ToString("dd-MM-yyyy")))
             {
                 var jsonVal = File.ReadAllText(this.dailyProgressDirectory.FullName + "\\\\" +
@@ -275,15 +295,6 @@ namespace CalorieCounter
             else
             {
                 this.currentDayCalorieTracker = new CurrentDayCalorieTracker();
-            }
-
-            // Iterate through all the files in the product directory, unserialize and add to collection.
-            var files = this.productsDirectory.GetFiles("*.*");
-            foreach (var fileInfo in files)
-            {
-                var jsonVal = File.ReadAllText(fileInfo.DirectoryName + "\\\\" + fileInfo.Name);
-                var product = (IProduct)JsonConvert.DeserializeObject(jsonVal, settings);
-                this.products.Add(product.Name, product);
             }
         }
 
@@ -308,11 +319,6 @@ namespace CalorieCounter
                 var productJson = JsonConvert.SerializeObject(product.Value, typeof(IProduct), settings);
                 File.WriteAllText(this.productsDirectory.FullName + "\\\\" + product.Key, productJson);
             }
-        }
-
-        public void AddNewDrinkToProducts(IProduct drink)
-        {
-            this.products.Add(drink.Name, drink);
         }
     }
 }

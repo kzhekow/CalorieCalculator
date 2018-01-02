@@ -25,8 +25,7 @@ namespace Console_App.Core.Commands.Showing
 
             foreach (var product in list)
             {
-                sb.AppendLine(
-                    $"{product.Name} {product.Calories} kcal {(product.Weight == 0 ? 100 : product.Weight)} gr/ml {product.Protein} protein {product.Carbs} carbs {product.Fat} fat {product.Sugar} sugar {product.Fiber} fiber");
+                sb.AppendLine(product.ToString());
             }
 
             if (string.IsNullOrEmpty(sb.ToString()))
@@ -34,7 +33,8 @@ namespace Console_App.Core.Commands.Showing
                 sb.Append("No products added.");
             }
 
-            return sb.ToString();
+            //Trim the last end line.
+            return sb.ToString().Substring(0, sb.ToString().Length -1);
         }
     }
 }
