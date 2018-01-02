@@ -40,7 +40,7 @@ namespace CalorieCounter.Models
         //TODO: Remove duplication.
         public IProduct Clone()
         {
-            return (IProduct) MemberwiseClone();
+            return (IProduct) this.MemberwiseClone();
         }
     }
 }

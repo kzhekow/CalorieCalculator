@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CalorieCounterEngine.CustomException
+namespace CalorieCounter.CustomException
 {
     public class CommandParseЕxception : Exception
     {
@@ -8,16 +8,14 @@ namespace CalorieCounterEngine.CustomException
         {
         }
 
-        public CommandParseЕxception(string message) 
+        public CommandParseЕxception(string message)
             : base(message)
         {
-
         }
 
         public CommandParseЕxception(string message, Exception innerException)
             : base(message, innerException)
         {
-
         }
     }
 }

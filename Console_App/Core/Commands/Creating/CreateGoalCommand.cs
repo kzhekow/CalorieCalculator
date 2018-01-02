@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CalorieCounter.Contracts;
-using CalorieCounterEngine.CustomException;
+using CalorieCounter.CustomException;
 using Console_App.Core.Contracts;
 using Console_App.Core.Engine;
 
@@ -34,13 +34,14 @@ namespace Console_App.Core.Commands.Creating
                 goalWeight = double.Parse(parameters[1]);
                 height = double.Parse(parameters[2]);
                 age = int.Parse(parameters[3]);
-                gender = (GenderType) Enum.Parse(typeof(GenderType), parameters[4]);
-                type = (GoalType) Enum.Parse(typeof(GoalType), parameters[5]);
-                level = (ActivityLevel) Enum.Parse(typeof(ActivityLevel), parameters[6]);
+                gender = (GenderType)Enum.Parse(typeof(GenderType), parameters[4]);
+                type = (GoalType)Enum.Parse(typeof(GoalType), parameters[5]);
+                level = (ActivityLevel)Enum.Parse(typeof(ActivityLevel), parameters[6]);
             }
             catch (Exception)
             {
-                throw new CommandParseЕxception("The correct format for AddGoal is {startingWeight}{goalWeight}{height}{height}{age}{gender}{typeOfDailyActivity}{levelOfActivity}");
+                throw new CommandParseЕxception(
+                    "The correct format for AddGoal is {startingWeight}{goalWeight}{height}{height}{age}{gender}{typeOfDailyActivity}{levelOfActivity}");
             }
 
             //var goal = this.factory.CreateGoal(startingWeight, goalWeight, height, age, gender, type, level);

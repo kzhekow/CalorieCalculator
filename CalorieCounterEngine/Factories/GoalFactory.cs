@@ -25,7 +25,6 @@ namespace CalorieCounter.Factories
             }
         }
 
-
         public IGoal CreateGoal(double startingWeight, double goalWeight, double height, int age, GenderType gender,
             GoalType type, ActivityLevel level)
         {

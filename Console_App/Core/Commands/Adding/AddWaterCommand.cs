@@ -1,8 +1,8 @@
-﻿using CalorieCounter.Contracts;
-using CalorieCounterEngine.CustomException;
-using Console_App.Core.Contracts;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using CalorieCounter.Contracts;
+using CalorieCounter.CustomException;
+using Console_App.Core.Contracts;
 
 namespace Console_App.Core.Commands.Adding
 {
@@ -22,14 +22,13 @@ namespace Console_App.Core.Commands.Adding
             try
             {
                 waterVolume = int.Parse(parameters[0]);
-                
             }
             catch (Exception)
             {
                 throw new CommandParseЕxception("The correct format for AddWater is {volume}.");
             }
 
-            object[] args = { waterVolume };
+            object[] args = {waterVolume};
 
             if (this.CalorieCounterEngine.AddWaterCommand.CanExecute(args))
             {

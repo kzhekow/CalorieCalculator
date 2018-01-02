@@ -1,14 +1,13 @@
-﻿using CalorieCounter.Contracts;
-using CalorieCounterEngine.CustomException;
-using Console_App.Core.Contracts;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using CalorieCounter.Contracts;
+using CalorieCounter.CustomException;
+using Console_App.Core.Contracts;
 
 namespace Console_App.Core.Commands.Adding
 {
     internal class AddActivityCommand : ICommand
     {
- 
         public AddActivityCommand(ICalorieCounterEngine calorieCounterEngine)
         {
             this.CalorieCounterEngine = calorieCounterEngine;
@@ -31,7 +30,7 @@ namespace Console_App.Core.Commands.Adding
                 throw new CommandParseЕxception("The correct format for AddActivity is {ActivityType}{time}");
             }
 
-            object[] args = { activityType, time };
+            object[] args = {activityType, time};
 
             if (this.CalorieCounterEngine.AddConsumedProductCommand.CanExecute(args))
             {

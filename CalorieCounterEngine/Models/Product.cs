@@ -98,7 +98,7 @@ namespace CalorieCounter.Models
 
         public IProduct Clone()
         {
-            return (IProduct) MemberwiseClone();
+            return (IProduct) this.MemberwiseClone();
         }
 
         public string Name { get; }

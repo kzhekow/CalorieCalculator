@@ -92,7 +92,7 @@ namespace CalorieCounter.Models.Goal
 
         public double CalculateSuggestedDailyCalorieIntake()
         {
-            var dailyCalorieIntake = CalculateRestingEnergy();
+            var dailyCalorieIntake = this.CalculateRestingEnergy();
 
             switch (this.Level)
             {
@@ -160,13 +160,13 @@ namespace CalorieCounter.Models.Goal
             switch (this.Type)
             {
                 case GoalType.LoseWeight:
-                    suggestCarbsIntake = 0.25 * CalculateSuggestedDailyCalorieIntake() / 4;
+                    suggestCarbsIntake = 0.25 * this.CalculateSuggestedDailyCalorieIntake() / 4;
                     break;
                 case GoalType.MaintainWeight:
-                    suggestCarbsIntake = 0.4 * CalculateSuggestedDailyCalorieIntake() / 4;
+                    suggestCarbsIntake = 0.4 * this.CalculateSuggestedDailyCalorieIntake() / 4;
                     break;
                 case GoalType.GainWeight:
-                    suggestCarbsIntake = 0.5 * CalculateSuggestedDailyCalorieIntake() / 4;
+                    suggestCarbsIntake = 0.5 * this.CalculateSuggestedDailyCalorieIntake() / 4;
                     break;
                 default:
                     break;
@@ -182,13 +182,13 @@ namespace CalorieCounter.Models.Goal
             switch (this.Type)
             {
                 case GoalType.LoseWeight:
-                    suggestProteinIntake = 0.4 * CalculateSuggestedDailyCalorieIntake() / 4;
+                    suggestProteinIntake = 0.4 * this.CalculateSuggestedDailyCalorieIntake() / 4;
                     break;
                 case GoalType.MaintainWeight:
-                    suggestProteinIntake = 0.3 * CalculateSuggestedDailyCalorieIntake() / 4;
+                    suggestProteinIntake = 0.3 * this.CalculateSuggestedDailyCalorieIntake() / 4;
                     break;
                 case GoalType.GainWeight:
-                    suggestProteinIntake = 0.3 * CalculateSuggestedDailyCalorieIntake() / 4;
+                    suggestProteinIntake = 0.3 * this.CalculateSuggestedDailyCalorieIntake() / 4;
                     break;
                 default:
                     break;
@@ -204,13 +204,13 @@ namespace CalorieCounter.Models.Goal
             switch (this.Type)
             {
                 case GoalType.LoseWeight:
-                    suggestFatIntake = 0.35 * CalculateSuggestedDailyCalorieIntake() / 9;
+                    suggestFatIntake = 0.35 * this.CalculateSuggestedDailyCalorieIntake() / 9;
                     break;
                 case GoalType.MaintainWeight:
-                    suggestFatIntake = 0.3 * CalculateSuggestedDailyCalorieIntake() / 9;
+                    suggestFatIntake = 0.3 * this.CalculateSuggestedDailyCalorieIntake() / 9;
                     break;
                 case GoalType.GainWeight:
-                    suggestFatIntake = 0.2 * CalculateSuggestedDailyCalorieIntake() / 9;
+                    suggestFatIntake = 0.2 * this.CalculateSuggestedDailyCalorieIntake() / 9;
                     break;
                 default:
                     break;

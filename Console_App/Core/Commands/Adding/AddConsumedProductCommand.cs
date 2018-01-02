@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using Console_App.Core.Contracts;
+﻿using System;
+using System.Collections.Generic;
 using CalorieCounter.Contracts;
-using System;
-using CalorieCounterEngine.CustomException;
+using CalorieCounter.CustomException;
+using Console_App.Core.Contracts;
 
 namespace Console_App.Core.Commands.Adding
 {
@@ -30,11 +30,11 @@ namespace Console_App.Core.Commands.Adding
                 throw new CommandParseЕxception("The correct format for AddConsumedProduct is {name} {weight}.");
             }
 
-            object[] args = { name, weight };
+            object[] args = {name, weight};
 
             if (this.CalorieCounterEngine.AddConsumedProductCommand.CanExecute(args))
             {
-               this.CalorieCounterEngine.AddConsumedProductCommand.Execute(args);
+                this.CalorieCounterEngine.AddConsumedProductCommand.Execute(args);
             }
 
             return $"Product {name} was added to your daily consumption";

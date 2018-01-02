@@ -9,7 +9,6 @@ using CalorieCounter.Factories;
 using CalorieCounter.Factories.Contracts;
 using CalorieCounter.Models;
 using CalorieCounter.Models.Contracts;
-using CalorieCounter.Models.Drinks;
 using CalorieCounter.Utils;
 using Newtonsoft.Json;
 
@@ -19,20 +18,26 @@ namespace CalorieCounter
     {
         private static ICalorieCounterEngine instance;
         private readonly IActivityFactory activityFactory;
+
         private readonly DirectoryInfo dailyProgressDirectory;
+
         //private readonly IGoalFactory goalFactory;
         private readonly IProductFactory productFactory;
+
+        private readonly IDictionary<string, IProduct> products;
         private readonly DirectoryInfo productsDirectory;
         private ICommand addActivityCommand;
         private ICommand addConsumedProductCommand;
         private ICommand addWaterCommand;
+
         private ICommand createDrinkCommand;
+
         //private ICommand createGoal;
         private ICommand createMealCommand;
+
         private ICommand createProductCommand;
         private ICurrentDayCalorieTracker currentDayCalorieTracker;
         private ICommand getAllProductsCommand;
-        private readonly IDictionary<string, IProduct> products;
 
         private CalorieCounterEngine()
         {
@@ -42,8 +47,8 @@ namespace CalorieCounter
             // TODO: Set proper can execute conditions.
 
             // TODO: JSON deserialization for current date.
-            LoadProgress();
-            this.createProductCommand = new RelayCommand(CreateProduct, arg => true);
+            this.LoadProgress();
+            this.createProductCommand = new RelayCommand(this.CreateProduct, arg => true);
             this.productFactory = new ProductFactory();
             this.activityFactory = new ActivityFactory();
             //TODO: Deserialize and load all products from the local directory into the list.
@@ -68,7 +73,7 @@ namespace CalorieCounter
             {
                 if (this.createProductCommand == null)
                 {
-                    this.createProductCommand = new RelayCommand(CreateProduct);
+                    this.createProductCommand = new RelayCommand(this.CreateProduct);
                 }
 
                 return this.createProductCommand;
@@ -81,7 +86,7 @@ namespace CalorieCounter
             {
                 if (this.createDrinkCommand == null)
                 {
-                    this.createDrinkCommand = new RelayCommand(CreateDrink);
+                    this.createDrinkCommand = new RelayCommand(this.CreateDrink);
                 }
 
                 return this.createDrinkCommand;
@@ -94,7 +99,7 @@ namespace CalorieCounter
             {
                 if (this.createMealCommand == null)
                 {
-                    this.createMealCommand = new RelayCommand(CreateMeal);
+                    this.createMealCommand = new RelayCommand(this.CreateMeal);
                 }
 
                 return this.createMealCommand;
@@ -107,7 +112,7 @@ namespace CalorieCounter
             {
                 if (this.addConsumedProductCommand == null)
                 {
-                    this.addConsumedProductCommand = new RelayCommand(AddConsumedProduct);
+                    this.addConsumedProductCommand = new RelayCommand(this.AddConsumedProduct);
                 }
 
                 return this.addConsumedProductCommand;
@@ -120,7 +125,7 @@ namespace CalorieCounter
             {
                 if (this.addWaterCommand == null)
                 {
-                    this.addWaterCommand = new RelayCommand(AddWater);
+                    this.addWaterCommand = new RelayCommand(this.AddWater);
                 }
 
                 return this.addWaterCommand;
@@ -133,7 +138,7 @@ namespace CalorieCounter
             {
                 if (this.addActivityCommand == null)
                 {
-                    this.addActivityCommand = new RelayCommand(AddActivity);
+                    this.addActivityCommand = new RelayCommand(this.AddActivity);
                 }
 
                 return this.addActivityCommand;
@@ -146,7 +151,7 @@ namespace CalorieCounter
             {
                 if (this.getAllProductsCommand == null)
                 {
-                    this.getAllProductsCommand = new RelayCommand(GetAllProducts);
+                    this.getAllProductsCommand = new RelayCommand(this.GetAllProducts);
                 }
 
                 return this.getAllProductsCommand;
@@ -160,7 +165,7 @@ namespace CalorieCounter
 
         public void GetNewDrinkFromConsole(IProduct drink)
         {
-            AddNewDrinkToProducts(drink);
+            this.AddNewDrinkToProducts(drink);
         }
 
         private void CreateProduct(object parameter)
@@ -181,7 +186,7 @@ namespace CalorieCounter
                 fatsPer100g, sugar, fiber);
             this.products.Add(product.Name, product);
 
-            SaveProgress();
+            this.SaveProgress();
         }
 
         private void CreateDrink(object parameter)
@@ -198,7 +203,7 @@ namespace CalorieCounter
             var drink = this.productFactory.CreateDrink(name, caloriesPer100g, proteinPer100g, carbsPer100g,
                 fatsPer100g, sugar, fiber);
             this.products.Add(drink.Name, drink);
-            SaveProgress();
+            this.SaveProgress();
         }
 
         private void CreateMeal(object parameter)
@@ -217,7 +222,7 @@ namespace CalorieCounter
             var productCopy = this.products[name].Clone();
             productCopy.Weight = weightVolume;
             this.currentDayCalorieTracker.AddProduct(productCopy);
-            SaveProgress();
+            this.SaveProgress();
         }
 
         private void AddWater(object parameter)

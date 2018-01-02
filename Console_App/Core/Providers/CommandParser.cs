@@ -12,9 +12,9 @@ namespace Console_App.Core.Providers
         public ICommand ParseCommand(string fullCommand)
         {
             var commandName = fullCommand.Split(' ')[0];
-            var commandTypeInfo = FindCommand(commandName);
+            var commandTypeInfo = this.FindCommand(commandName);
 
-            return Activator.CreateInstance(commandTypeInfo, CalorieCounter.CalorieCounterEngine.Instance) as ICommand;
+            return Activator.CreateInstance(commandTypeInfo, CalorieCounterEngine.Instance) as ICommand;
         }
 
         public IList<string> ParseParameters(string fullCommand)
@@ -32,7 +32,7 @@ namespace Console_App.Core.Providers
 
         private TypeInfo FindCommand(string commandName)
         {
-            var currentAssembly = GetType().GetTypeInfo().Assembly;
+            var currentAssembly = this.GetType().GetTypeInfo().Assembly;
             var commandTypeInfo = currentAssembly.DefinedTypes
                 .Where(type => type.ImplementedInterfaces.Any(inter => inter == typeof(ICommand)))
                 .Where(type => type.Name.ToLower() == commandName.ToLower() + "command")

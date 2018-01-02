@@ -47,7 +47,7 @@ namespace Console_App.Core.Engine
                         break;
                     }
 
-                    ProcessCommand(commandAsString);
+                    this.ProcessCommand(commandAsString);
                 }
                 catch (Exception ex)
                 {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using CalorieCounter.Contracts;
-using CalorieCounterEngine.CustomException;
+using CalorieCounter.CustomException;
 
 namespace Console_App.Core.Commands.Creating
 {
@@ -21,9 +21,9 @@ namespace Console_App.Core.Commands.Creating
 
             try
             {
-                products = (ICollection<IProduct>) parameters[0]
+                products = (ICollection<IProduct>)parameters[0]
                     .Split(", ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
-                type = (MealType) Enum.Parse(typeof(MealType), parameters[1]);
+                type = (MealType)Enum.Parse(typeof(MealType), parameters[1]);
                 name = parameters[2];
             }
             catch (Exception)
