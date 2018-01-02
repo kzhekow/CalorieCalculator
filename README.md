@@ -17,12 +17,12 @@ CalorieCounter application helps you track your personal daily nutrition goals.
 #### ● Create Product
 
 Creates a food product/drink with nutrient info:
-Calories per 100 grams
-Proteins per 100 grams
-Carbs per 100 grams
-Fat per 100 grams
-Sugar per 100 grams
-Fiber per 100 grams
+- Calories per 100 grams
+- Proteins per 100 grams
+- Carbs per 100 grams
+- Fat per 100 grams
+- Sugar per 100 grams
+- Fiber per 100 grams
 
 Which is then stored locally using JSON serilization and can be later reused.
 
@@ -30,25 +30,25 @@ Which is then stored locally using JSON serilization and can be later reused.
 
 Creates a meal that can be reused in the future, it consists of a few products.
 It contains the following info:
-Total calories
-Total proteins
-Total carbs
-Total fat
-Total sugar
-Total fiber
+- Total calories
+- Total proteins
+- Total carbs
+- Total fat
+- Total sugar
+- Total fiber
 
 Which is then stored locally using JSON and can be reused in the future
 
 #### ● Create Goal
 
 Creates a goal once, and it contains the following:
-Initial weight
-Goal weight
-Goal type: lose weight, maintain weight, gain weight
-Calculates resting energy
-Calculates daily calorie intake
-Calculates suggested macros ratio
-Calculates suggest daily water intake
+- Initial weight
+- Goal weight
+- Goal type: lose weight, maintain weight, gain weight
+- Calculates resting energy
+- Calculates daily calorie intake
+- Calculates suggested macros ratio
+- Calculates suggest daily water intake
 
 #### ● Add Consumed Products
 
