@@ -80,7 +80,7 @@
 //                    var sugar = int.Parse(command.Parameters[5]);
 //                    var fiber = int.Parse(command.Parameters[6]);
 //                    object parameters = new object[] { name, calories, protein, carbs, fat, sugar, fiber };
-//                    this.calorieCounterCalorieCounterEngineInstance.CreateProductCommand.Execute(parameters);
+//                    this.calorieCounterCalorieCounterEngineInstance.BaseCommand.Execute(parameters);
 //                    break;
 //                case "CreateDrink":
 //                    var nameOfDrink = command.Parameters[0];

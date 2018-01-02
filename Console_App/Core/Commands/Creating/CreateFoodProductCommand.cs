@@ -4,7 +4,7 @@ using CalorieCounter.CustomException;
 
 namespace Console_App.Core.Commands.Creating
 {
-    internal class CreateFoodProductCommand : CreateProductCommand
+    internal class CreateFoodProductCommand : BaseCommand
     {
         public CreateFoodProductCommand(ICalorieCounterEngine calorieCounterEngine)
             : base(calorieCounterEngine)
