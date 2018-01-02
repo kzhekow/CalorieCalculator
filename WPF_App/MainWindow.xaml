@@ -6,5 +6,57 @@
         xmlns:local="clr-namespace:WPF_App"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid />
+    <Window.DataContext>
+        <local:MainWindowViewModel />
+    </Window.DataContext>
+    <Window.Resources>
+        <local:CommandSimpleMultiConverter x:Key="CommandSimpleMultiConverter"></local:CommandSimpleMultiConverter>
+    </Window.Resources>
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel>
+                    <Label Content="Name" />
+                    <TextBox Text="{Binding Name}" />
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="Calories" />
+                    <TextBox Text="{Binding Calories}" />
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="Protein" />
+                    <TextBox  Text="{Binding Protein}"></TextBox>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="Carbs" />
+                    <TextBox  Text="{Binding Carbs}"></TextBox>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="Fat" />
+                    <TextBox  Text="{Binding Fat}"></TextBox>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="Sugar" />
+                    <TextBox Text="{Binding Sugar}"></TextBox>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="Fiber" />
+                    <TextBox Text="{Binding Fiber}"></TextBox>
+                </StackPanel>
+            </StackPanel>
+            <Button Content="Create Product" Command="{Binding CalorieCounterEngineInstance.CreateProductCommand}">
+                <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource CommandSimpleMultiConverter}">
+                        <Binding Path="Name" />
+                        <Binding Path="Calories" />
+                        <Binding Path="Protein" />
+                        <Binding Path="Carbs" />
+                        <Binding Path="Fat" />
+                        <Binding Path="Sugar" />
+                        <Binding Path="Fiber" />
+                    </MultiBinding>
+                </Button.CommandParameter>
+            </Button>
+        </StackPanel>
+    </Grid>
 </Window>
