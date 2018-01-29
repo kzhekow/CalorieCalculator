@@ -251,7 +251,7 @@ namespace CalorieCounter
             var time = (int)args[1];
 
             Guard.WhenArgument(time, "Time cannot be negative value.").IsLessThan(0).Throw();
-            if (!Enum.TryParse(activityTypeString, true, out ActivityType activityType))
+            if (!Enum.TryParse(activityTypeString.ToLower(), true, out ActivityType activityType))
             {
                 throw new ArgumentException("Invalid activity type");
             }

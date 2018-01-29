@@ -32,9 +32,9 @@ namespace Console_App.Core.Commands.Adding
 
             object[] args = {activityType, time};
 
-            if (this.CalorieCounterEngine.AddConsumedProductCommand.CanExecute(args))
+            if (this.CalorieCounterEngine.AddActivityCommand.CanExecute(args))
             {
-                this.CalorieCounterEngine.AddConsumedProductCommand.Execute(args);
+                this.CalorieCounterEngine.AddActivityCommand.Execute(args);
             }
 
             return $"Your activity was added";

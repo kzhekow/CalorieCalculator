@@ -3,6 +3,6 @@
     /// <summary>
     ///     On the right side of the equation we have approximately burned calories for that activity for a 60-minute workout.
     /// </summary>
-    Cardio = 606,
-    StrengthTraining = 455
+    cardio = 606,
+    strength = 455
 }

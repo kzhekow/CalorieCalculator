@@ -8,7 +8,8 @@ namespace Console_App.Core.Commands.Showing
 {
     internal class ShowAllProductsCommand : BaseCommand
     {
-        public ShowAllProductsCommand(ICalorieCounterEngine calorieCounterEngine) : base(calorieCounterEngine)
+        public ShowAllProductsCommand(ICalorieCounterEngine calorieCounterEngine)
+            : base(calorieCounterEngine)
         {
         }
 

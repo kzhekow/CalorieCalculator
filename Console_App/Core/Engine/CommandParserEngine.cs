@@ -37,7 +37,6 @@ namespace Console_App.Core.Engine
 
         public void Start()
         {
-            //Help command
             PrintHelp();
 
             while (true)
@@ -55,9 +54,8 @@ namespace Console_App.Core.Engine
                 }
                 catch (Exception ex)
                 {
-                    //Help command
-                    PrintHelp();
                     this.Writer.WriteLine(ex.Message);
+                    PrintHelp();
                 }
             }
         }
