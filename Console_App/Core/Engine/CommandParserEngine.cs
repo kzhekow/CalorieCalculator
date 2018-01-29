@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using Console_App.Core.Contracts;
 using Console_App.Core.Providers;
 
@@ -36,6 +37,9 @@ namespace Console_App.Core.Engine
 
         public void Start()
         {
+            //Help command
+            PrintHelp();
+
             while (true)
             {
                 try
@@ -51,9 +55,30 @@ namespace Console_App.Core.Engine
                 }
                 catch (Exception ex)
                 {
+                    //Help command
+                    PrintHelp();
                     this.Writer.WriteLine(ex.Message);
                 }
             }
+        }
+
+        private void PrintHelp()
+        {
+            var sb = new StringBuilder();
+
+            sb.AppendLine("Please enter one of the following commands: ");
+            sb.AppendLine();
+            sb.AppendLine($"- {EngineConstants.CreateFoodProduct} [name] [protPer100g] [carbPer100g] [fatPer100g] [sugarPer100g] [fiberPer100g]");
+            sb.AppendLine($"- {EngineConstants.CreateDrink} [name] [protPer100g] [carbPer100g] [fatPer100g] [sugarPer100g] [fiberPer100g]");
+            sb.AppendLine($"- {EngineConstants.CreateGoal} [startingWeight] [goalWeight] [height] [age] [gender] [goalType] [activityLevel]");
+            sb.AppendLine($"- {EngineConstants.CreateMeal} [product1] [prod1Weight] [product2] [prod2Weight] ... [productn] [prodnWeight]");
+            sb.AppendLine($"- {EngineConstants.AddConsumedProduct} [name] [weight/ml]");
+            sb.AppendLine($"- {EngineConstants.AddWater} [ml]");
+            sb.AppendLine($"- {EngineConstants.AddActivity} [cardio/strength] [time]");
+            sb.AppendLine($"- {EngineConstants.ShowAllProducts}");
+            sb.Append($"- {EngineConstants.ShowRemainingNutrients}");
+
+            Console.WriteLine(sb);
         }
 
         private void ProcessCommand(string commandAsString)

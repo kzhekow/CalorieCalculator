@@ -1,4 +1,6 @@
-﻿namespace Console_App.Core.Engine
+﻿using System;
+
+namespace Console_App.Core.Engine
 {
     public static class EngineConstants
     {
@@ -14,6 +16,8 @@
         internal const string ShowAllProducts = "ShowAllProducts";
         internal const string ShowRemainingNutrients = "ShowRemainingNutrients";
         internal const string CreateGoal = "CreateGoal";
+
+        internal const string HelpMenu = "Available commands: \r\n"  +  CreateMeal;
 
         // Activity levels
         internal const string Light = "Light";
@@ -71,5 +75,7 @@
         internal const string ProductRemovedSuccessMessage = "Product {0} successfully removed from current day {1}";
         internal const string ActivityAddedSuccessMessage = "Activity {0} successfully added to current day {1}";
         internal const string GoalCreatedSuccessMessage = "New goal {0} successfully created";
+
+
     }
 }
