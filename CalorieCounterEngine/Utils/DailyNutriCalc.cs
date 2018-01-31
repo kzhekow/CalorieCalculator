@@ -4,7 +4,7 @@ using System.Linq;
 using CalorieCounter.Contracts;
 using CalorieCounter.Models.Contracts;
 
-namespace CalorieCounter.Models
+namespace CalorieCounter.Models.Utils
 {
     public static class DailyNutriCalc
     {
@@ -60,7 +60,7 @@ namespace CalorieCounter.Models
             return suggestedDailyWaterIntake - waterConsumed;
         }
 
-        public static string CalculateMacros(ICollection<IProduct> productsConsumed)
+        public static string CurrentDayMacrosRatio(ICollection<IProduct> productsConsumed)
         {
             var totalCalories = productsConsumed.Sum(p => p.Calories);
             var totalCarbs = productsConsumed.Sum(p => p.Carbs);

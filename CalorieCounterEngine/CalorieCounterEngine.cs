@@ -19,6 +19,7 @@ namespace CalorieCounter
     {
         private static ICalorieCounterEngine instance;
         private readonly IActivityFactory activityFactory;
+        private readonly IGoalFactory goalFactory;
 
         private readonly DirectoryInfo dailyProgressDirectory;
 
@@ -37,8 +38,9 @@ namespace CalorieCounter
         private ICommand createMealCommand;
 
         private ICommand createProductCommand;
-        private ICurrentDayCalorieTracker currentDayCalorieTracker;
+        private IDailyIntake currentDayCalorieTracker;
         private ICommand getAllProductsCommand;
+        private ICommand setGoalCommand;
 
         private CalorieCounterEngine()
         {
@@ -52,6 +54,7 @@ namespace CalorieCounter
             this.createProductCommand = new RelayCommand(this.CreateProduct, arg => true);
             this.productFactory = new ProductFactory();
             this.activityFactory = new ActivityFactory();
+            this.goalFactory = new GoalFactory();
             //TODO: Deserialize and load all products from the local directory into the list.
         }
 
@@ -68,7 +71,7 @@ namespace CalorieCounter
             }
         }
 
-        public ICommand CreateProductCommand
+        public ICommand CreateFoodProductCommand
         {
             get
             {
@@ -156,6 +159,19 @@ namespace CalorieCounter
                 }
 
                 return this.getAllProductsCommand;
+            }
+        }
+
+        public ICommand SetGoalCommand
+        {
+            get
+            {
+                if (this.setGoalCommand == null)
+                {
+                    this.setGoalCommand = new RelayCommand(this.GetAllProducts);
+                }
+
+                return this.setGoalCommand;
             }
         }
 
@@ -272,6 +288,21 @@ namespace CalorieCounter
             }
         }
 
+        private void SetGoal(object parameter)
+        {
+            var args = parameter as object[];
+            var startingWeight = (double)args[0];
+            var goalWeight = (double)args[1];
+            var height = (double)args[2];
+            var age = (int)args[3];
+            var gender = (GenderType)args[4];
+            var goalType = (GoalType)args[5];
+            var activityLevel = (ActivityLevel)args[6];
+
+            var goal = goalFactory.CreateGoal(startingWeight, goalWeight, height, age, gender, goalType, activityLevel);
+            this.currentDayCalorieTracker.Goal = goal;
+        }
+
         private void LoadProgress()
         {
             var settings = new JsonSerializerSettings();
@@ -290,11 +321,11 @@ namespace CalorieCounter
                 var jsonVal = File.ReadAllText(this.dailyProgressDirectory.FullName + "\\\\" +
                                                DateTime.Now.Date.ToString("dd-MM-yyyy"));
                 var curDay = JsonConvert.DeserializeObject(jsonVal, settings);
-                this.currentDayCalorieTracker = (ICurrentDayCalorieTracker) curDay;
+                this.currentDayCalorieTracker = (Models.Contracts.IDailyIntake)curDay;
             }
             else
             {
-                this.currentDayCalorieTracker = new CurrentDayCalorieTracker();
+                this.currentDayCalorieTracker = new Models.DailyIntake();
             }
         }
 

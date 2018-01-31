@@ -54,7 +54,7 @@
     <Compile Include="Core\Commands\BaseCommand.cs" />
     <Compile Include="Core\Commands\Creating\CreateDrinkCommand.cs" />
     <Compile Include="Core\Commands\Creating\CreateFoodProductCommand.cs" />
-    <Compile Include="Core\Commands\Creating\CreateGoalCommand.cs" />
+    <Compile Include="Core\Commands\Creating\SetGoalCommand.cs" />
     <Compile Include="Core\Commands\Creating\CreateMealCommand.cs" />
     <Compile Include="Core\Commands\Showing\ShowAllProductsCommand.cs" />
     <Compile Include="Core\Commands\Showing\ShowRemainingNutritientsCommand.cs" />

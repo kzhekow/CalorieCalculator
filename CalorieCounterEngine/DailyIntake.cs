@@ -5,13 +5,15 @@ using CalorieCounter.Models.Contracts;
 
 namespace CalorieCounter.Models
 {
-    public class CurrentDayCalorieTracker : ICurrentDayCalorieTracker
+    public class DailyIntake : IDailyIntake
     {
         public int Water { get; private set; }
 
         public ICollection<IProduct> ProductsConsumed { get; private set; } = new List<IProduct>();
 
         public ICollection<IActivity> ActivitiesPerformed { get; private set; } = new List<IActivity>();
+
+        public IGoal Goal { get; set; }
 
         public void AddWater(int water)
         {

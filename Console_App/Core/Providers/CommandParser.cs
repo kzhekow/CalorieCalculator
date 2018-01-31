@@ -14,7 +14,7 @@ namespace Console_App.Core.Providers
             var commandName = fullCommand.Split(' ')[0];
             var commandTypeInfo = this.FindCommand(commandName);
 
-            return Activator.CreateInstance(commandTypeInfo, CalorieCounterEngine.Instance) as ICommand;
+            return Activator.CreateInstance(commandTypeInfo, CalorieCounter.CalorieCounterEngine.Instance) as ICommand;
         }
 
         public IList<string> ParseParameters(string fullCommand)

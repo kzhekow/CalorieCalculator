@@ -4,9 +4,10 @@ namespace CalorieCounter.Contracts
 {
     public interface ICalorieCounterEngine
     {
-        ICommand CreateProductCommand { get; }
+        ICommand CreateFoodProductCommand { get; }
         ICommand CreateDrinkCommand { get; }
         ICommand CreateMealCommand { get; }
+        ICommand SetGoalCommand { get; }
         ICommand AddConsumedProductCommand { get; }
         ICommand AddWaterCommand { get; }
         ICommand AddActivityCommand { get; }

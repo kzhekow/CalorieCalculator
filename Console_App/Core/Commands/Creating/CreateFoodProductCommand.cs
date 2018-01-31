@@ -38,9 +38,9 @@ namespace Console_App.Core.Commands.Creating
             }
 
             object[] args = { name, calories, protein, carbs, fat, sugar, fiber };
-            if (this.CalorieCounterEngine.CreateProductCommand.CanExecute(args))
+            if (this.CalorieCounterEngine.CreateFoodProductCommand.CanExecute(args))
             {
-                this.CalorieCounterEngine.CreateProductCommand.Execute(args);
+                this.CalorieCounterEngine.CreateFoodProductCommand.Execute(args);
             }
 
             return $"Food {name} product was created!";
