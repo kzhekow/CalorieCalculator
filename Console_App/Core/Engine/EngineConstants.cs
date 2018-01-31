@@ -15,7 +15,7 @@ namespace Console_App.Core.Engine
         internal const string AddActivity = "AddActivity";
         internal const string ShowAllProducts = "ShowAllProducts";
         internal const string ShowRemainingNutrients = "ShowRemainingNutrients";
-        internal const string CreateGoal = "CreateGoal";
+        internal const string SetGoal = "SetGoal";
 
         internal const string HelpMenu = "Available commands: \r\n"  +  CreateMeal;
 

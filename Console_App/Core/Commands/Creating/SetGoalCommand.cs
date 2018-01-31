@@ -41,7 +41,7 @@ namespace Console_App.Core.Commands.Creating
             catch
             {
                 throw new CommandParseЕxception(
-                    "The correct format for SetGoal is {name}{caloriePer100g}{proteinPer100g}{carbsPer100g}{fatPer100g}{sugar}{fiber}");
+                    "[startingWeight] [goalWeight] [height] [age] [gender: male/female] [goalType: LoseWeight/MaintainWeight/GainWeight] [activityLevel: Light/Moderate/Heavy]");
             }
 
             object[] args = { startingWeight, goalWeight, height, age, gender, goalType, acitvityLevel };

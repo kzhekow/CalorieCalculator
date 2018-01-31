@@ -5,7 +5,7 @@
     ///     Moderate: 3-5 days a week.
     ///     Heavy: 6-7 days a week.
     /// </summary>
-    Light,
-    Moderate,
-    Heavy
+    light,
+    moderate,
+    heavy
 }

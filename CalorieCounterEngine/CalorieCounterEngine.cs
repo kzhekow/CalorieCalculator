@@ -8,7 +8,6 @@ using Bytes2you.Validation;
 using CalorieCounter.Contracts;
 using CalorieCounter.Factories;
 using CalorieCounter.Factories.Contracts;
-using CalorieCounter.Models;
 using CalorieCounter.Models.Contracts;
 using CalorieCounter.Utils;
 using Newtonsoft.Json;
@@ -168,7 +167,7 @@ namespace CalorieCounter
             {
                 if (this.setGoalCommand == null)
                 {
-                    this.setGoalCommand = new RelayCommand(this.GetAllProducts);
+                    this.setGoalCommand = new RelayCommand(this.SetGoal);
                 }
 
                 return this.setGoalCommand;
@@ -316,7 +315,7 @@ namespace CalorieCounter
                 this.products.Add(product.Name, product);
             }
 
-            if (File.Exists(this.dailyProgressDirectory.FullName + "\\\\" + DateTime.Now.Date.ToString("dd-MM-yyyy")))
+            if (File.Exists(this.dailyProgressDirectory.FullName + "\\\\" + DateTime.Now.Date.ToString("dd-MM-yyyy")) && false)
             {
                 var jsonVal = File.ReadAllText(this.dailyProgressDirectory.FullName + "\\\\" +
                                                DateTime.Now.Date.ToString("dd-MM-yyyy"));

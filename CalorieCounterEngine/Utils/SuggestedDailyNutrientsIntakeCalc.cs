@@ -1,11 +1,5 @@
 ﻿using CalorieCounter.Models.Contracts;
-using CalorieCounter.Models.Goal;
 using CalorieCounterEngine.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CalorieCounterEngine.Utils
 {
@@ -24,10 +18,10 @@ namespace CalorieCounterEngine.Utils
 
             switch (this.currentGoal.Gender)
             {
-                case GenderType.Male:
+                case GenderType.male:
                     bmr = 10 * this.currentGoal.StartingWeight + 6.25 * this.currentGoal.Height - 5 * this.currentGoal.Age + 5;
                     break;
-                case GenderType.Female:
+                case GenderType.female:
                     bmr = 10 * this.currentGoal.StartingWeight + 6.25 * this.currentGoal.Height - 5 * this.currentGoal.Age - 161;
                     break;
                 default:
@@ -43,13 +37,13 @@ namespace CalorieCounterEngine.Utils
 
             switch (this.currentGoal.Level)
             {
-                case ActivityLevel.Light:
+                case ActivityLevel.light:
                     dailyCalorieIntake *= 1.375;
                     break;
-                case ActivityLevel.Moderate:
+                case ActivityLevel.moderate:
                     dailyCalorieIntake *= 1.55;
                     break;
-                case ActivityLevel.Heavy:
+                case ActivityLevel.heavy:
                     dailyCalorieIntake *= 1.725;
                     break;
                 default:
@@ -87,10 +81,10 @@ namespace CalorieCounterEngine.Utils
 
             switch (this.currentGoal.Gender)
             {
-                case GenderType.Male:
+                case GenderType.male:
                     dailyWaterIntake = 3700;
                     break;
-                case GenderType.Female:
+                case GenderType.female:
                     dailyWaterIntake = 2600;
                     break;
                 default:
