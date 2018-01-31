@@ -1,18 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using CalorieCounter.Contracts;
 
 namespace Console_App.Core.Commands.Showing
 {
-    internal class ShowRemainingNutritientsCommand : BaseCommand
+    internal class ShowRemainingNutrientsCommand : BaseCommand
     {
-        public ShowRemainingNutritientsCommand(ICalorieCounterEngine calorieCounterEngine) : base(calorieCounterEngine)
+        public ShowRemainingNutrientsCommand(ICalorieCounterEngine calorieCounterEngine)
+            : base(calorieCounterEngine)
         {
         }
 
         public override string Execute(IList<string> parameters)
         {
-            return this.CalorieCounterEngine.GetDailyReport();
+            var dailyNutrientsReport = this.CalorieCounterEngine.GetRemainingNutrients();
+
+            return dailyNutrientsReport;
         }
+
     }
 }

@@ -29,6 +29,7 @@ namespace Console_App.Core.Commands.Creating
             //sb.AppendLine($"- {EngineConstants.CreateGoal} [startingWeight] [goalWeight] [height] [age] [gender] [goalType] [activityLevel]");
             
             try
+
             {
                 startingWeight = double.Parse(parameters[0]);
                 goalWeight = double.Parse(parameters[1]);

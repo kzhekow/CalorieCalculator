@@ -33,5 +33,29 @@
         ///     Returns a double of the number.
         /// </returns>
         double CalculateRestingEnergy();
+
+        /// <summary>
+        ///     Calculates Suggested daily protein intake.
+        /// </summary>
+        /// <returns>
+        ///     Returns a double of the number.
+        /// </returns>
+        double CalculateSuggestedDailyProteinIntake();
+
+        /// <summary>
+        ///     Calculates Suggested daily carbs intake.
+        /// </summary>
+        /// <returns>
+        ///     Returns a double of the number.
+        /// </returns>
+        double CalculateSuggestedDailyCarbsIntake();
+
+        /// <summary>
+        ///     Calculates Suggested daily fat intake.
+        /// </summary>
+        /// <returns>
+        ///     Returns a double of the number.
+        /// </returns>
+        double CalculateSuggestedDailyFatIntake();
     }
 }
