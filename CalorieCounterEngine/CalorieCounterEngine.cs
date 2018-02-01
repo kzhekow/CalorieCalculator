@@ -184,21 +184,25 @@ namespace CalorieCounter
         public string GetDailyReport()
         {
             var sb = new StringBuilder();
+
+            sb.AppendLine();
             sb.AppendLine("----Products Consumed----");
             foreach (var product in this.currentDayCalorieTracker.ProductsConsumed)
             {
                 sb.AppendLine(product.ToString());
             }
 
+            sb.AppendLine();
             sb.AppendLine("----Activities----");
             foreach (var activity in this.currentDayCalorieTracker.ActivitiesPerformed)
             {
-                sb.AppendLine($"{activity.Type} - {activity.Time}");
+                sb.AppendLine($"{activity.Type.ToString().ToUpper()} - {activity.Time} minutes");
             }
 
-            sb.AppendLine($"Water consumed: {this.currentDayCalorieTracker.Water} ml");
+            sb.AppendLine();
+            sb.Append($"Water consumed: {this.currentDayCalorieTracker.Water} ml");
 
-            return sb.ToString();
+            return sb.ToString().TrimEnd();
         }
 
         private void CreateProduct(object parameter)

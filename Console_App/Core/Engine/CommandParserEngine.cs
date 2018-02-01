@@ -51,14 +51,15 @@ namespace Console_App.Core.Engine
 
             sb.AppendLine("Please enter one of the following commands: ");
             sb.AppendLine();
+            sb.AppendLine($"- {EngineConstants.SetGoal} [startingWeight] [goalWeight] [height] [age] [gender: male/female] [goalType: LoseWeight/MaintainWeight/GainWeight] [activityLevel: Light/Moderate/Heavy]");
             sb.AppendLine($"- {EngineConstants.CreateFoodProduct} [name] [caloriesPer100g] [protPer100g] [carbPer100g] [fatPer100g] [sugarPer100g] [fiberPer100g]");
             sb.AppendLine($"- {EngineConstants.CreateDrink} [name] [caloriesPer100g] [protPer100g] [carbPer100g] [fatPer100g] [sugarPer100g] [fiberPer100g]");
-            sb.AppendLine($"- {EngineConstants.SetGoal} [startingWeight] [goalWeight] [height] [age] [gender: male/female] [goalType: LoseWeight/MaintainWeight/GainWeight] [activityLevel: Light/Moderate/Heavy]");
             sb.AppendLine($"- {EngineConstants.CreateMeal} [product1] [prod1Weight] [product2] [prod2Weight] ... [productn] [prodnWeight]");
             sb.AppendLine($"- {EngineConstants.AddConsumedProduct} [name] [weight/ml]");
             sb.AppendLine($"- {EngineConstants.AddWater} [ml]");
             sb.AppendLine($"- {EngineConstants.AddActivity} [cardio/strength] [time]");
             sb.AppendLine($"- {EngineConstants.ShowAllProducts}");
+            sb.AppendLine($"- {EngineConstants.ShowDailyReport}");
             sb.Append($"- {EngineConstants.ShowRemainingNutrients}");
 
             Console.WriteLine(sb);
