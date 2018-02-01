@@ -1,4 +1,4 @@
-﻿namespace CalorieCounterEngine.Contracts
+﻿namespace CalorieCounter.Contracts
 {
     public interface ISuggestedDailyNutrientsIntakeCalc
     {

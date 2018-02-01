@@ -2,19 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using CalorieCounter;
+using CalorieCounter.Contracts;
 using Console_App.Core.Contracts;
 
 namespace Console_App.Core.Providers
 {
-    internal class CommandParser : IParser
+    internal class CommandParser : IConsoleParser
     {
+        private ICalorieCounterEngine calorieCounterEngine;
+
+        public CommandParser(ICalorieCounterEngine calorieCounterEngine)
+        {
+            this.calorieCounterEngine = calorieCounterEngine;
+        }
+
         public ICommand ParseCommand(string fullCommand)
         {
             var commandName = fullCommand.Split(' ')[0];
             var commandTypeInfo = this.FindCommand(commandName);
 
-            return Activator.CreateInstance(commandTypeInfo, CalorieCounter.CalorieCounterEngine.Instance) as ICommand;
+            return Activator.CreateInstance(commandTypeInfo, this.calorieCounterEngine) as ICommand;
         }
 
         public IList<string> ParseParameters(string fullCommand)

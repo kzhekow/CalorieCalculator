@@ -1,19 +1,16 @@
-﻿using System;
+﻿using Bytes2you.Validation;
+using CalorieCounter.Contracts;
+using CalorieCounter.Factories.Contracts;
+using CalorieCounter.Models.Contracts;
+using CalorieCounter.Models.Utils;
+using CalorieCounter.Utils;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Input;
-using Bytes2you.Validation;
-using CalorieCounter.Contracts;
-using CalorieCounter.Factories;
-using CalorieCounter.Factories.Contracts;
-using CalorieCounter.Models.Contracts;
-using CalorieCounter.Models.Utils;
-using CalorieCounter.Utils;
-using CalorieCounterEngine.Contracts;
-using CalorieCounterEngine.Utils;
-using Newtonsoft.Json;
 
 namespace CalorieCounter
 {

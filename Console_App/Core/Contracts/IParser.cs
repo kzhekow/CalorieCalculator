@@ -2,7 +2,7 @@
 
 namespace Console_App.Core.Contracts
 {
-    public interface IParser
+    public interface IConsoleParser
     {
         ICommand ParseCommand(string fullCommand);
 

@@ -1,7 +1,7 @@
 ﻿using CalorieCounter.Models.Contracts;
-using CalorieCounterEngine.Contracts;
+using CalorieCounter.Contracts;
 
-namespace CalorieCounterEngine.Utils
+namespace CalorieCounter.Utils
 {
     public class SuggestedDailyNutrientsIntakeCalc : ISuggestedDailyNutrientsIntakeCalc
     {

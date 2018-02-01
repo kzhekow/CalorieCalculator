@@ -1,4 +1,8 @@
-﻿using Console_App.Core.Engine;
+﻿using Autofac;
+using CalorieCounter;
+using CalorieCounter.Contracts;
+using Console_App.ConfigModules;
+using Console_App.Core.Engine;
 
 namespace Console_App
 {
@@ -6,8 +10,15 @@ namespace Console_App
     {
         private static void Main(string[] args)
         {
-            var engine = CommandParserEngine.Instance;
-            engine.Start();
+            var builder = new ContainerBuilder();
+           // builder.RegisterModule<CalorieCounterEngineConfigModule>();
+            builder.RegisterModule<CommandParserEngineConfigModule>();
+
+            var container = builder.Build();
+            var calorieCounterEngine = container.Resolve<ICalorieCounterEngine>();
+            var commandParserEngine = container.Resolve<ICommandParserEngine>();
+
+            commandParserEngine.Start();
         }
     }
 }

@@ -99,7 +99,7 @@ namespace WPF_App
 
         public MainWindowViewModel()
         {
-            this.CalorieCounterEngineInstance = CalorieCounter.CalorieCounterEngine.Instance;
+            this.CalorieCounterEngineInstance = CalorieCounterEngine.Instance;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

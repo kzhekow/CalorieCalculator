@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Text;
 using Console_App.Core.Contracts;
-using Console_App.Core.Providers;
 
 namespace Console_App.Core.Engine
 {
@@ -9,19 +8,18 @@ namespace Console_App.Core.Engine
     {
         private const string TerminationCommand = "Exit";
         private const string NullProvidersExceptionMessage = "cannot be null.";
-        private static CommandParserEngine instanceHolder;
-        private IReader reader;
-        private IWriter writer;
-        private IParser parser;
+        private IConsoleReader reader;
+        private IConsoleWriter writer;
+        private IConsoleParser parser;
 
-        public CommandParserEngine(IReader reader, IWriter writer, IParser parser)
+        public CommandParserEngine(IConsoleReader reader, IConsoleWriter writer, IConsoleParser parser)
         {
             this.Reader = reader;
             this.Writer = writer;
             this.Parser = parser;
         }
 
-        public IReader Reader
+        public IConsoleReader Reader
         {
 
             get
@@ -37,7 +35,7 @@ namespace Console_App.Core.Engine
                 this.reader = value;
             }
         }
-        public IWriter Writer
+        public IConsoleWriter Writer
         {
 
             get
@@ -53,7 +51,7 @@ namespace Console_App.Core.Engine
                 this.writer = value;
             }
         }
-        public IParser Parser
+        public IConsoleParser Parser
         {
 
             get

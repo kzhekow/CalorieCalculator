@@ -3,7 +3,7 @@ using Console_App.Core.Contracts;
 
 namespace Console_App.Core.Providers
 {
-    internal class ConsoleWriter : IWriter
+    internal class ConsoleWriter : IConsoleWriter
     {
         public void Write(string message)
         {
