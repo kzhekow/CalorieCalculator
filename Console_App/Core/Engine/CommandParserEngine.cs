@@ -26,10 +26,6 @@ namespace Console_App.Core.Engine
 
             get
             {
-                if (reader == null )
-                {
-                   return reader = new ConsoleReader();
-                }
                 return reader;
             }
             set
@@ -45,11 +41,7 @@ namespace Console_App.Core.Engine
         {
 
             get
-            {
-                if (writer == null)
-                {
-                    return writer = new ConsoleWriter();
-                }
+            {      
                 return writer;
             }
             set
@@ -66,10 +58,6 @@ namespace Console_App.Core.Engine
 
             get
             {
-                if (parser == null)
-                {
-                    return parser = new CommandParser();
-                }
                 return parser;
             }
             set
