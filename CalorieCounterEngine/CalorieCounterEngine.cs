@@ -19,7 +19,6 @@ namespace CalorieCounter
 {
     public sealed class CalorieCounterEngine : ICalorieCounterEngine
     {
-        private static ICalorieCounterEngine instance;
         private readonly IActivityFactory activityFactory;
         private readonly IGoalFactory goalFactory;
         private ISuggestedDailyNutrientsIntakeCalc suggestedDailyNutrientsIntakeCalc;
@@ -35,16 +34,14 @@ namespace CalorieCounter
         private ICommand addWaterCommand;
 
         private ICommand createDrinkCommand;
-
-        //private ICommand createGoal;
         private ICommand createMealCommand;
-
         private ICommand createProductCommand;
-        private IDailyIntake currentDayCalorieTracker;
-        private ICommand getAllProductsCommand;
         private ICommand setGoalCommand;
 
-        private CalorieCounterEngine()
+        private IDailyIntake currentDayCalorieTracker;
+        private ICommand getAllProductsCommand;
+
+        private CalorieCounterEngine(IProductFactory productFactory, IActivityFactory activityFactory, IGoalFactory goalFactory)
         {
             this.products = new Dictionary<string, IProduct>(StringComparer.InvariantCultureIgnoreCase);
             this.dailyProgressDirectory = Directory.CreateDirectory(EngineConstants.DailyProgressDirectoryName);
@@ -53,24 +50,10 @@ namespace CalorieCounter
 
             // TODO: JSON deserialization for current date.
             this.LoadProgress();
-            this.createProductCommand = new RelayCommand(this.CreateProduct, arg => true);
-            this.productFactory = new ProductFactory();
-            this.activityFactory = new ActivityFactory();
-            this.goalFactory = new GoalFactory();
+            this.productFactory = productFactory;
+            this.activityFactory = activityFactory;
+            this.goalFactory = goalFactory;
             //TODO: Deserialize and load all products from the local directory into the list.
-        }
-
-        public static ICalorieCounterEngine Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new CalorieCounterEngine();
-                }
-
-                return instance;
-            }
         }
 
         public ICommand CreateFoodProductCommand
@@ -179,6 +162,11 @@ namespace CalorieCounter
 
         public string GetRemainingNutrients()
         {
+            if (this.currentDayCalorieTracker.Goal == null)
+            {
+                return "Goal has not been set!";
+            }
+
             var sb = new StringBuilder();
             sb.Append("Remaining calories intake: ");
             sb.AppendLine(((int)DailyNutriCalc.RemainingCaloriesIntake(this.suggestedDailyNutrientsIntakeCalc.CalculateSuggestedDailyCalorieIntake(), this.currentDayCalorieTracker.ProductsConsumed, this.currentDayCalorieTracker.ActivitiesPerformed)).ToString());

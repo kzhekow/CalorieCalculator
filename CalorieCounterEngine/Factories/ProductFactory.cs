@@ -9,22 +9,6 @@ namespace CalorieCounter.Factories
 {
     public class ProductFactory : IProductFactory
     {
-        private static ProductFactory instanceHolder = new ProductFactory();
-
-        public static ProductFactory Instance
-        {
-            get
-            {
-                if (instanceHolder == null)
-                {
-                    instanceHolder = new ProductFactory();
-                }
-
-                return instanceHolder;
-            }
-        }
-
-
         public IProduct CreateDrink(string name, int caloriesPer100g, int proteinPer100g, int carbsPer100g,
             int fatPer100g, int sugar = 0, int fiber = 0)
         {
