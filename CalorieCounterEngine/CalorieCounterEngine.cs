@@ -38,7 +38,7 @@ namespace CalorieCounter
         private IDailyIntake currentDayCalorieTracker;
         private ICommand getAllProductsCommand;
 
-        private CalorieCounterEngine(IProductFactory productFactory, IActivityFactory activityFactory, IGoalFactory goalFactory)
+        public CalorieCounterEngine(IProductFactory productFactory, IActivityFactory activityFactory, IGoalFactory goalFactory)
         {
             this.products = new Dictionary<string, IProduct>(StringComparer.InvariantCultureIgnoreCase);
             this.dailyProgressDirectory = Directory.CreateDirectory(EngineConstants.DailyProgressDirectoryName);

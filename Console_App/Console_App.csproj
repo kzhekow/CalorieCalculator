@@ -58,7 +58,6 @@
     <Compile Include="Core\Commands\Adding\AddActivityCommand.cs" />
     <Compile Include="Core\Commands\Adding\AddConsumedProductCommand.cs" />
     <Compile Include="Core\Commands\Adding\AddWaterCommand.cs" />
-    <Compile Include="Core\Commands\Command.cs" />
     <Compile Include="Core\Commands\Contracts\ICommand.cs" />
     <Compile Include="Core\Commands\BaseCommand.cs" />
     <Compile Include="Core\Commands\Creating\CreateDrinkCommand.cs" />

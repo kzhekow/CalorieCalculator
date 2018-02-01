@@ -14,59 +14,11 @@ namespace Console_App.Core.Engine
 
         public CommandParserEngine(IConsoleReader reader, IConsoleWriter writer, IConsoleParser parser)
         {
-            this.Reader = reader;
-            this.Writer = writer;
-            this.Parser = parser;
+            this.reader = reader;
+            this.writer = writer;
+            this.parser = parser;
         }
 
-        public IConsoleReader Reader
-        {
-
-            get
-            {
-                return reader;
-            }
-            set
-            {
-                if (this.reader == null)
-                {
-                    throw new NullReferenceException();
-                }
-                this.reader = value;
-            }
-        }
-        public IConsoleWriter Writer
-        {
-
-            get
-            {      
-                return writer;
-            }
-            set
-            {
-                if (this.writer == null)
-                {
-                    throw new NullReferenceException();
-                }
-                this.writer = value;
-            }
-        }
-        public IConsoleParser Parser
-        {
-
-            get
-            {
-                return parser;
-            }
-            set
-            {
-                if (this.parser == null)
-                {
-                    throw new NullReferenceException();
-                }
-                this.parser = value;
-            }
-        }
 
         public void Start()
         {
@@ -76,7 +28,7 @@ namespace Console_App.Core.Engine
             {
                 try
                 {
-                    var commandAsString = this.Reader.ReadLine();
+                    var commandAsString = this.reader.ReadLine();
 
                     if (commandAsString.ToLower() == TerminationCommand.ToLower())
                     {
@@ -87,7 +39,7 @@ namespace Console_App.Core.Engine
                 }
                 catch (Exception ex)
                 {
-                    this.Writer.WriteLine(ex.Message);
+                    this.writer.WriteLine(ex.Message);
                     PrintHelp();
                 }
             }
@@ -119,11 +71,11 @@ namespace Console_App.Core.Engine
                 throw new ArgumentNullException("Command cannot be null or empty.");
             }
 
-            var command = this.Parser.ParseCommand(commandAsString);
-            var parameters = this.Parser.ParseParameters(commandAsString);
+            var command = this.parser.ParseCommand(commandAsString);
+            var parameters = this.parser.ParseParameters(commandAsString);
 
             var executionResult = command.Execute(parameters);
-            this.Writer.WriteLine(executionResult);
+            this.writer.WriteLine(executionResult);
         }
     }
 }
