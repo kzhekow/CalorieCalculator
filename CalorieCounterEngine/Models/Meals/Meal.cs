@@ -23,6 +23,7 @@ namespace CalorieCounter.Models
         public MealType Type { get; }
 
         public string Name { get; }
+
         public decimal Weight { get; set; }
 
         public int Calories { get; }
