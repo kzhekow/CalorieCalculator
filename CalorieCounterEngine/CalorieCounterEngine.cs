@@ -176,7 +176,15 @@ namespace CalorieCounter
             sb.Append("Remaining water intake: ");
             sb.AppendLine(((int)DailyNutriCalc.RemainingWaterIntake(this.suggestedDailyNutrientsIntakeCalc.CalculateSuggestedWaterIntake(), this.currentDayCalorieTracker.Water)).ToString());
             sb.Append("Current day macros ratio: ");
-            sb.AppendLine(DailyNutriCalc.CurrentDayMacrosRatio(this.currentDayCalorieTracker.ProductsConsumed));
+
+            if (this.currentDayCalorieTracker.ProductsConsumed.Count == 0)
+            {
+                sb.AppendLine(this.suggestedDailyNutrientsIntakeCalc.CalculateSuggestedMacrosRatio());
+            }
+            else
+            {
+                sb.AppendLine(DailyNutriCalc.CurrentDayMacrosRatio(this.currentDayCalorieTracker.ProductsConsumed));
+            }
 
             return sb.ToString().TrimEnd();
         }

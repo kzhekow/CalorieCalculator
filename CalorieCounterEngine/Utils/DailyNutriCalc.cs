@@ -72,22 +72,5 @@ namespace CalorieCounter.Models.Utils
 
             return $"Carbs:Protein:Fat = {carbsRatio}:{proteinRatio}:{fatRatio}";
         }
-
-        //public static int CalculateCurrentCalories(ICollection<IProduct> productsConsumed)
-        //{
-        //    return  productsConsumed.Sum(p => p.Calories);
-        //}
-        //public static int CalculateCurrentProteins(ICollection<IProduct> productsConsumed)
-        //{
-        //    return productsConsumed.Sum(p => p.Protein);
-        //}
-        //public static int CalculateCurrentCarbs(ICollection<IProduct> productsConsumed)
-        //{
-        //    return productsConsumed.Sum(p => p.Carbs);
-        //}
-        //public static int CalculateCurrentFats(ICollection<IProduct> productsConsumed)
-        //{
-        //    return productsConsumed.Sum(p => p.Fat);
-        //}
     }
 }
