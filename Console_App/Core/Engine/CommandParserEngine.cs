@@ -10,30 +10,77 @@ namespace Console_App.Core.Engine
         private const string TerminationCommand = "Exit";
         private const string NullProvidersExceptionMessage = "cannot be null.";
         private static CommandParserEngine instanceHolder;
+        private IReader reader;
+        private IWriter writer;
+        private IParser parser;
 
-        public CommandParserEngine()
+        public CommandParserEngine(IReader reader, IWriter writer, IParser parser)
         {
-            this.Reader = new ConsoleReader();
-            this.Writer = new ConsoleWriter();
-            this.Parser = new CommandParser();
+            this.Reader = reader;
+            this.Writer = writer;
+            this.Parser = parser;
         }
 
-        public static CommandParserEngine Instance
+        public IReader Reader
         {
+
             get
             {
-                if (instanceHolder == null)
+                if (reader == null )
                 {
-                    instanceHolder = new CommandParserEngine();
+                   return reader = new ConsoleReader();
                 }
-
-                return instanceHolder;
+                return reader;
+            }
+            set
+            {
+                if (this.reader == null)
+                {
+                    throw new NullReferenceException();
+                }
+                this.reader = value;
             }
         }
+        public IWriter Writer
+        {
 
-        public IReader Reader { get; set; }
-        public IWriter Writer { get; set; }
-        public IParser Parser { get; set; }
+            get
+            {
+                if (writer == null)
+                {
+                    return writer = new ConsoleWriter();
+                }
+                return writer;
+            }
+            set
+            {
+                if (this.writer == null)
+                {
+                    throw new NullReferenceException();
+                }
+                this.writer = value;
+            }
+        }
+        public IParser Parser
+        {
+
+            get
+            {
+                if (parser == null)
+                {
+                    return parser = new CommandParser();
+                }
+                return parser;
+            }
+            set
+            {
+                if (this.parser == null)
+                {
+                    throw new NullReferenceException();
+                }
+                this.parser = value;
+            }
+        }
 
         public void Start()
         {
