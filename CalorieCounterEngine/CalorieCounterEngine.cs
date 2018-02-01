@@ -179,6 +179,11 @@ namespace CalorieCounter
 
         public string GetRemainingNutrients()
         {
+            if (this.currentDayCalorieTracker.Goal == null)
+            {
+                return "Goal has not been set!";
+            }
+
             var sb = new StringBuilder();
             sb.Append("Remaining calories intake: ");
             sb.AppendLine(((int)DailyNutriCalc.RemainingCaloriesIntake(this.suggestedDailyNutrientsIntakeCalc.CalculateSuggestedDailyCalorieIntake(), this.currentDayCalorieTracker.ProductsConsumed, this.currentDayCalorieTracker.ActivitiesPerformed)).ToString());
