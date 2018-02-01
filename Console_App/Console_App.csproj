@@ -32,11 +32,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="Bytes2you.Validation, Version=2.0.0.0, Culture=neutral, PublicKeyToken=a7d501dd757e0442, processorArchitecture=MSIL">
       <HintPath>..\packages\Bytes2you.Validation.2.0.0.0\lib\portable-win+net40+sl40+wp+Xbox40\Bytes2you.Validation.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,6 +52,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigModules\CalorieCounterEngineConfigModule.cs" />
+    <Compile Include="ConfigModules\CommandParserEngineConfigModule.cs" />
     <Compile Include="CustomException\CommandParseЕxception.cs" />
     <Compile Include="Core\Commands\Adding\AddActivityCommand.cs" />
     <Compile Include="Core\Commands\Adding\AddConsumedProductCommand.cs" />
@@ -62,7 +71,6 @@
     <Compile Include="Core\Contracts\IReader.cs" />
     <Compile Include="Core\Contracts\IWriter.cs" />
     <Compile Include="Core\Engine\CommandParserEngine.cs" />
-    <Compile Include="Core\Engine\ConsoleCommandParserEngine.cs" />
     <Compile Include="Core\Engine\EngineConstants.cs" />
     <Compile Include="Core\Contracts\ICommandParserEngine.cs" />
     <Compile Include="Core\Providers\CommandParser.cs" />
