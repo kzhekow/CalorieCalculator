@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using CalorieCounter.Contracts;
 using CalorieCounter.Models.Contracts;
@@ -62,14 +61,14 @@ namespace CalorieCounter.Models.Utils
 
         public static string CurrentDayMacrosRatio(ICollection<IProduct> productsConsumed)
         {
-            var totalCalories = productsConsumed.Sum(p => p.Calories);
-            var totalCarbs = productsConsumed.Sum(p => p.Carbs);
-            var totalProteins = productsConsumed.Sum(p => p.Protein);
-            var totalFat = productsConsumed.Sum(p => p.Fat);
+            double totalCarbsCalories = productsConsumed.Sum(p => p.Carbs) * 4;
+            double totalProteinsCalories = productsConsumed.Sum(p => p.Protein) * 4;
+            double totalFatCalories = productsConsumed.Sum(p => p.Fat) * 9;
+            double totalCalories = totalCarbsCalories + totalProteinsCalories + totalFatCalories;
 
-            var carbsRatio = Math.Round((double) (totalCarbs * 4) / totalCalories * 100);
-            var proteinRatio = Math.Round((double) (totalProteins * 4) / totalCalories * 100);
-            var fatRatio = Math.Round((double) (totalFat * 9) / totalCalories * 100);
+            var carbsRatio = (int)((totalCarbsCalories / totalCalories) * 100);
+            var proteinRatio = (int)((totalProteinsCalories / totalCalories) * 100);
+            var fatRatio = (int)((totalFatCalories / totalCalories) * 100);
 
             return $"Carbs:Protein:Fat = {carbsRatio}:{proteinRatio}:{fatRatio}";
         }
