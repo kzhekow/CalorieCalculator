@@ -336,7 +336,7 @@ namespace CalorieCounter
                 this.products.Add(product.Name, product);
             }
 
-            if (File.Exists(this.dailyProgressDirectory.FullName + "\\\\" + DateTime.Now.Date.ToString("dd-MM-yyyy")) && false)
+            if (File.Exists(this.dailyProgressDirectory.FullName + "\\\\" + DateTime.Now.Date.ToString("dd-MM-yyyy")))
             {
                 var jsonVal = File.ReadAllText(this.dailyProgressDirectory.FullName + "\\\\" +
                                                DateTime.Now.Date.ToString("dd-MM-yyyy"));
@@ -353,7 +353,7 @@ namespace CalorieCounter
         {
             var settings = new JsonSerializerSettings();
             settings.TypeNameHandling = TypeNameHandling.Auto;
-            var curDay = JsonConvert.SerializeObject(this.currentDayCalorieTracker);
+            var curDay = JsonConvert.SerializeObject(this.currentDayCalorieTracker, typeof(IDailyIntake), settings);
             File.WriteAllText(this.dailyProgressDirectory.FullName + "\\\\" + DateTime.Now.Date.ToString("dd-MM-yyyy"),
                 curDay);
 
