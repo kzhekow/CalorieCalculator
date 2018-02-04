@@ -9,9 +9,9 @@ namespace Console_App.Core.Providers
 {
     internal class CommandParser : IConsoleParser
     {
-        private ICalorieCounterEngine calorieCounterEngine;
+        private IEngine calorieCounterEngine;
 
-        public CommandParser(ICalorieCounterEngine calorieCounterEngine)
+        public CommandParser(IEngine calorieCounterEngine)
         {
             this.calorieCounterEngine = calorieCounterEngine;
         }

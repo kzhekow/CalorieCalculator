@@ -2,7 +2,7 @@
 
 namespace CalorieCounter.Contracts
 {
-    public interface ICalorieCounterEngine
+    public interface IEngine
     {
         ICommand CreateFoodProductCommand { get; }
         ICommand CreateDrinkCommand { get; }

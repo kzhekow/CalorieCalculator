@@ -5,7 +5,7 @@ namespace Console_App.Core.Commands.Showing
 {
     internal class ShowRemainingNutrientsCommand : BaseCommand
     {
-        public ShowRemainingNutrientsCommand(ICalorieCounterEngine calorieCounterEngine)
+        public ShowRemainingNutrientsCommand(IEngine calorieCounterEngine)
             : base(calorieCounterEngine)
         {
         }

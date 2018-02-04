@@ -8,7 +8,7 @@ namespace Console_App.Core.Commands.Creating
 {
     internal class CreateMeal : BaseCommand
     {
-        public CreateMeal(ICalorieCounterEngine calorieCounterEngine)
+        public CreateMeal(IEngine calorieCounterEngine)
             : base(calorieCounterEngine)
         {
         }

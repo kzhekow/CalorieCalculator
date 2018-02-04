@@ -4,6 +4,7 @@ using CalorieCounter.Factories.Contracts;
 using CalorieCounter.Models.Contracts;
 using CalorieCounter.Models.Utils;
 using CalorieCounter.Utils;
+using CalorieCounterEngine.Contracts;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -14,10 +15,11 @@ using System.Windows.Input;
 
 namespace CalorieCounter
 {
-    public sealed class CalorieCounterEngine : ICalorieCounterEngine
+    public sealed class Engine : IEngine
     {
         private readonly IActivityFactory activityFactory;
         private readonly IGoalFactory goalFactory;
+        private readonly IDailyNutriCalc dailyNutriCalc;
         private ISuggestedDailyNutrientsIntakeCalc suggestedDailyNutrientsIntakeCalc;
         private readonly DirectoryInfo dailyProgressDirectory;
 
@@ -38,7 +40,11 @@ namespace CalorieCounter
         private IDailyIntake currentDayCalorieTracker;
         private ICommand getAllProductsCommand;
 
-        public CalorieCounterEngine(IProductFactory productFactory, IActivityFactory activityFactory, IGoalFactory goalFactory)
+        public Engine(
+            IProductFactory productFactory, 
+            IActivityFactory activityFactory, 
+            IGoalFactory goalFactory,
+            IDailyNutriCalc dailyNutriCalc)
         {
             this.products = new Dictionary<string, IProduct>(StringComparer.InvariantCultureIgnoreCase);
             this.dailyProgressDirectory = Directory.CreateDirectory(EngineConstants.DailyProgressDirectoryName);
@@ -50,6 +56,7 @@ namespace CalorieCounter
             this.productFactory = productFactory;
             this.activityFactory = activityFactory;
             this.goalFactory = goalFactory;
+            this.dailyNutriCalc = dailyNutriCalc;
             //TODO: Deserialize and load all products from the local directory into the list.
         }
 
@@ -166,15 +173,15 @@ namespace CalorieCounter
 
             var sb = new StringBuilder();
             sb.Append("Remaining calories intake: ");
-            sb.AppendLine(((int)DailyNutriCalc.RemainingCaloriesIntake(this.suggestedDailyNutrientsIntakeCalc.CalculateSuggestedDailyCalorieIntake(), this.currentDayCalorieTracker.ProductsConsumed, this.currentDayCalorieTracker.ActivitiesPerformed)).ToString());
+            sb.AppendLine(((int)dailyNutriCalc.RemainingCaloriesIntake(this.suggestedDailyNutrientsIntakeCalc.CalculateSuggestedDailyCalorieIntake(), this.currentDayCalorieTracker.ProductsConsumed, this.currentDayCalorieTracker.ActivitiesPerformed)).ToString());
             sb.Append("Remaining protein intake: ");
-            sb.AppendLine(((int)DailyNutriCalc.RemainingProteinIntake(this.suggestedDailyNutrientsIntakeCalc.CalculateSuggestedDailyProteinIntake(), this.currentDayCalorieTracker.ProductsConsumed)).ToString());
+            sb.AppendLine(((int)dailyNutriCalc.RemainingProteinIntake(this.suggestedDailyNutrientsIntakeCalc.CalculateSuggestedDailyProteinIntake(), this.currentDayCalorieTracker.ProductsConsumed)).ToString());
             sb.Append("Remaining carbs intake: ");
-            sb.AppendLine(((int)DailyNutriCalc.RemainingCarbsIntake(this.suggestedDailyNutrientsIntakeCalc.CalculateSuggestedDailyCarbsIntake(), this.currentDayCalorieTracker.ProductsConsumed)).ToString());
+            sb.AppendLine(((int)dailyNutriCalc.RemainingCarbsIntake(this.suggestedDailyNutrientsIntakeCalc.CalculateSuggestedDailyCarbsIntake(), this.currentDayCalorieTracker.ProductsConsumed)).ToString());
             sb.Append("Remaining fat intake: ");
-            sb.AppendLine(((int)DailyNutriCalc.RemainingFatsIntake(this.suggestedDailyNutrientsIntakeCalc.CalculateSuggestedDailyFatIntake(), this.currentDayCalorieTracker.ProductsConsumed)).ToString());
+            sb.AppendLine(((int)dailyNutriCalc.RemainingFatsIntake(this.suggestedDailyNutrientsIntakeCalc.CalculateSuggestedDailyFatIntake(), this.currentDayCalorieTracker.ProductsConsumed)).ToString());
             sb.Append("Remaining water intake: ");
-            sb.AppendLine(((int)DailyNutriCalc.RemainingWaterIntake(this.suggestedDailyNutrientsIntakeCalc.CalculateSuggestedWaterIntake(), this.currentDayCalorieTracker.Water)).ToString());
+            sb.AppendLine(((int)dailyNutriCalc.RemainingWaterIntake(this.suggestedDailyNutrientsIntakeCalc.CalculateSuggestedWaterIntake(), this.currentDayCalorieTracker.Water)).ToString());
             sb.Append("Current day macros ratio: ");
 
             if (this.currentDayCalorieTracker.ProductsConsumed.Count == 0)
@@ -183,7 +190,7 @@ namespace CalorieCounter
             }
             else
             {
-                sb.AppendLine(DailyNutriCalc.CurrentDayMacrosRatio(this.currentDayCalorieTracker.ProductsConsumed));
+                sb.AppendLine(dailyNutriCalc.CurrentDayMacrosRatio(this.currentDayCalorieTracker.ProductsConsumed));
             }
 
             return sb.ToString().TrimEnd();

@@ -6,12 +6,12 @@ namespace Console_App.Core.Commands
 {
     public abstract class BaseCommand : ICommand
     {
-        public BaseCommand(ICalorieCounterEngine calorieCounterEngine)
+        public BaseCommand(IEngine calorieCounterEngine)
         {
             this.CalorieCounterEngine = calorieCounterEngine;
         }
 
-        protected ICalorieCounterEngine CalorieCounterEngine
+        protected IEngine CalorieCounterEngine
         {
             get;
         }

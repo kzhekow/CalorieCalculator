@@ -2,22 +2,23 @@
 using System.Linq;
 using CalorieCounter.Contracts;
 using CalorieCounter.Models.Contracts;
+using CalorieCounterEngine.Contracts;
 
 namespace CalorieCounter.Models.Utils
 {
-    public static class DailyNutriCalc
+    public class DailyNutriCalc : IDailyNutriCalc
     {
-        public static int CalculateCurrentSugars(ICollection<IProduct> productsConsumed)
+        public int CalculateCurrentSugars(ICollection<IProduct> productsConsumed)
         {
             return productsConsumed.Sum(p => p.Sugar);
         }
 
-        public static int CalculateCurrentFibers(ICollection<IProduct> productsConsumed)
+        public int CalculateCurrentFibers(ICollection<IProduct> productsConsumed)
         {
             return productsConsumed.Sum(p => p.Fiber);
         }
 
-        public static double RemainingProteinIntake(double suggestedProteinDailyIntake,
+        public double RemainingProteinIntake(double suggestedProteinDailyIntake,
             ICollection<IProduct> productsConsumed)
         {
             double currentProteinIntake = productsConsumed.Sum(p => p.Protein);
@@ -25,7 +26,7 @@ namespace CalorieCounter.Models.Utils
             return suggestedProteinDailyIntake - currentProteinIntake;
         }
 
-        public static double RemainingCarbsIntake(double suggestedCarbsDailyIntake,
+        public double RemainingCarbsIntake(double suggestedCarbsDailyIntake,
             ICollection<IProduct> productsConsumed)
         {
             double currentCarbIntake = productsConsumed.Sum(p => p.Carbs);
@@ -33,14 +34,14 @@ namespace CalorieCounter.Models.Utils
             return suggestedCarbsDailyIntake - currentCarbIntake;
         }
 
-        public static double RemainingFatsIntake(double suggestedFatsDailyIntake,
+        public double RemainingFatsIntake(double suggestedFatsDailyIntake,
             ICollection<IProduct> productsConsumed)
         {
             double currentFatIntake = productsConsumed.Sum(p => p.Fat);
             return suggestedFatsDailyIntake - currentFatIntake;
         }
 
-        public static double RemainingCaloriesIntake(double suggestedCaloriesDailyIntake,
+        public double RemainingCaloriesIntake(double suggestedCaloriesDailyIntake,
             ICollection<IProduct> productsConsumed, ICollection<IActivity> activitiesPerformed = null)
         {
             var currentCaloriesIntake = productsConsumed.Sum(p => p.Calories);
@@ -54,12 +55,12 @@ namespace CalorieCounter.Models.Utils
             return suggestedCaloriesDailyIntake - currentCaloriesIntake;
         }
 
-        public static int RemainingWaterIntake(int suggestedDailyWaterIntake, int waterConsumed)
+        public int RemainingWaterIntake(int suggestedDailyWaterIntake, int waterConsumed)
         {
             return suggestedDailyWaterIntake - waterConsumed;
         }
 
-        public static string CurrentDayMacrosRatio(ICollection<IProduct> productsConsumed)
+        public string CurrentDayMacrosRatio(ICollection<IProduct> productsConsumed)
         {
             double totalCarbsCalories = productsConsumed.Sum(p => p.Carbs) * 4;
             double totalProteinsCalories = productsConsumed.Sum(p => p.Protein) * 4;

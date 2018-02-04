@@ -1,8 +1,10 @@
 ﻿using Autofac;
-using CalorieCounter;
 using CalorieCounter.Contracts;
 using CalorieCounter.Factories;
 using CalorieCounter.Factories.Contracts;
+using CalorieCounter;
+using CalorieCounter.Models.Utils;
+using CalorieCounterEngine.Contracts;
 
 namespace Console_App.ConfigModules
 {
@@ -13,7 +15,8 @@ namespace Console_App.ConfigModules
             builder.RegisterType<GoalFactory>().As<IGoalFactory>().SingleInstance();
             builder.RegisterType<ProductFactory>().As<IProductFactory>().SingleInstance();
             builder.RegisterType<ActivityFactory>().As<IActivityFactory>().SingleInstance();
-            builder.RegisterType<CalorieCounterEngine>().As<ICalorieCounterEngine>().SingleInstance();
+            builder.RegisterType<DailyNutriCalc>().As<IDailyNutriCalc>().SingleInstance();
+            builder.RegisterType<Engine>().As<IEngine>().SingleInstance();
         }
     }
 }

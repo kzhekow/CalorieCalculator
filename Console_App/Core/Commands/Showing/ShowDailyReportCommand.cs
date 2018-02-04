@@ -5,7 +5,7 @@ namespace Console_App.Core.Commands.Showing
 {
     internal class ShowDailyReportCommand : BaseCommand
     {
-        public ShowDailyReportCommand(ICalorieCounterEngine calorieCounterEngine)
+        public ShowDailyReportCommand(IEngine calorieCounterEngine)
             : base(calorieCounterEngine)
         {
         }

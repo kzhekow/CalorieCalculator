@@ -8,12 +8,12 @@ namespace Console_App.Core.Commands.Adding
 {
     internal class AddActivityCommand : ICommand
     {
-        public AddActivityCommand(ICalorieCounterEngine calorieCounterEngine)
+        public AddActivityCommand(IEngine calorieCounterEngine)
         {
             this.CalorieCounterEngine = calorieCounterEngine;
         }
 
-        protected ICalorieCounterEngine CalorieCounterEngine { get; }
+        protected IEngine CalorieCounterEngine { get; }
 
         public string Execute(IList<string> parameters)
         {

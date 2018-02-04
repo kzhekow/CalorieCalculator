@@ -6,7 +6,7 @@ namespace Console_App.Core.Commands.Creating
 {
     internal class CreateDrinkCommand : BaseCommand
     {
-        public CreateDrinkCommand(ICalorieCounterEngine calorieCounterEngine)
+        public CreateDrinkCommand(IEngine calorieCounterEngine)
             : base(calorieCounterEngine)
         {
         }

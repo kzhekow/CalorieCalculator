@@ -10,7 +10,7 @@ namespace Console_App.Core.Commands.Creating
     internal class SetGoalCommand : BaseCommand
     {
 
-        public SetGoalCommand(ICalorieCounterEngine calorieCounterEngine) 
+        public SetGoalCommand(IEngine calorieCounterEngine) 
             : base(calorieCounterEngine)
         {
 
