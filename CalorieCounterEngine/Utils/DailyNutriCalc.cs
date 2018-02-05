@@ -21,38 +21,56 @@ namespace CalorieCounter.Models.Utils
         public double RemainingProteinIntake(double suggestedProteinDailyIntake,
             ICollection<IProduct> productsConsumed)
         {
-            double currentProteinIntake = productsConsumed.Sum(p => p.Protein);
+            if (productsConsumed != null)
+            {
+                double currentProteinIntake = productsConsumed.Sum(p => p.Protein);
 
-            return suggestedProteinDailyIntake - currentProteinIntake;
+                return suggestedProteinDailyIntake - currentProteinIntake;
+            }
+
+            return suggestedProteinDailyIntake;
         }
 
         public double RemainingCarbsIntake(double suggestedCarbsDailyIntake,
             ICollection<IProduct> productsConsumed)
         {
-            double currentCarbIntake = productsConsumed.Sum(p => p.Carbs);
+            if (productsConsumed != null)
+            {
+                double currentCarbIntake = productsConsumed.Sum(p => p.Carbs);
 
-            return suggestedCarbsDailyIntake - currentCarbIntake;
+                return suggestedCarbsDailyIntake - currentCarbIntake;
+            }
+            return suggestedCarbsDailyIntake;
         }
 
         public double RemainingFatsIntake(double suggestedFatsDailyIntake,
             ICollection<IProduct> productsConsumed)
         {
-            double currentFatIntake = productsConsumed.Sum(p => p.Fat);
-            return suggestedFatsDailyIntake - currentFatIntake;
+            if (productsConsumed != null)
+            {
+                double currentFatIntake = productsConsumed.Sum(p => p.Fat);
+                return suggestedFatsDailyIntake - currentFatIntake;
+            }
+            return suggestedFatsDailyIntake;
         }
 
         public double RemainingCaloriesIntake(double suggestedCaloriesDailyIntake,
             ICollection<IProduct> productsConsumed, ICollection<IActivity> activitiesPerformed = null)
         {
-            var currentCaloriesIntake = productsConsumed.Sum(p => p.Calories);
-            if (activitiesPerformed != null)
+            if (productsConsumed != null)
             {
-                var burnedCaloriesFromActivities = activitiesPerformed.Sum(a => a.CalculateBurnedCalories());
+                var currentCaloriesIntake = productsConsumed.Sum(p => p.Calories);
 
-                return suggestedCaloriesDailyIntake + burnedCaloriesFromActivities - currentCaloriesIntake;
+                if (activitiesPerformed != null)
+                {
+                    var burnedCaloriesFromActivities = activitiesPerformed.Sum(a => a.CalculateBurnedCalories());
+
+                    return suggestedCaloriesDailyIntake + burnedCaloriesFromActivities - currentCaloriesIntake;
+                }
+
+                return suggestedCaloriesDailyIntake - currentCaloriesIntake;
             }
-
-            return suggestedCaloriesDailyIntake - currentCaloriesIntake;
+            return suggestedCaloriesDailyIntake;
         }
 
         public int RemainingWaterIntake(int suggestedDailyWaterIntake, int waterConsumed)

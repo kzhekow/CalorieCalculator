@@ -39,6 +39,7 @@
       <HintPath>..\packages\Bytes2you.Validation.2.0.0.0\lib\portable-win+net40+sl40+wp+Xbox40\Bytes2you.Validation.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression.FileSystem" />
@@ -52,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Commands\Decorators\LoggerCommandDecorator.cs" />
     <Compile Include="Factories\CommandFactory.cs" />
     <Compile Include="ConfigModules\CalorieCounterEngineConfigModule.cs" />
     <Compile Include="ConfigModules\CommandParserEngineConfigModule.cs" />
@@ -61,7 +63,7 @@
     <Compile Include="Core\Commands\Adding\AddActivityCommand.cs" />
     <Compile Include="Core\Commands\Adding\AddConsumedProductCommand.cs" />
     <Compile Include="Core\Commands\Adding\AddWaterCommand.cs" />
-    <Compile Include="Core\Commands\Contracts\ICommand.cs" />
+    <Compile Include="Core\Contracts\ICommand.cs" />
     <Compile Include="Core\Commands\BaseCommand.cs" />
     <Compile Include="Core\Commands\Creating\CreateDrinkCommand.cs" />
     <Compile Include="Core\Commands\Creating\CreateFoodProductCommand.cs" />

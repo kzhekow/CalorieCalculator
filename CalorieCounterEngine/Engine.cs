@@ -56,6 +56,11 @@ namespace CalorieCounter
             this.activityFactory = activityFactory;
             this.goalFactory = goalFactory;
             this.dailyNutriCalc = dailyNutriCalc;
+
+            if (suggestedDailyNutrientsIntakeCalc == null && currentDayCalorieTracker.Goal != null)
+            {
+                suggestedDailyNutrientsIntakeCalc = new SuggestedDailyNutrientsIntakeCalc(currentDayCalorieTracker.Goal);
+            }
             //TODO: Deserialize and load all products from the local directory into the list.
         }
 
