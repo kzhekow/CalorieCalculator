@@ -52,6 +52,12 @@ namespace CalorieCounter
 
             // TODO: JSON deserialization for current date.
             this.LoadProgress();
+
+            Guard.WhenArgument(productFactory, "Product factory can not be null").IsNull().Throw();
+            Guard.WhenArgument(activityFactory, "Activity factory can not be null").IsNull().Throw();
+            Guard.WhenArgument(goalFactory, "Goal factory can not be null").IsNull().Throw();
+            Guard.WhenArgument(dailyNutriCalc, "DailyNutriCalc can not be null").IsNull().Throw();
+
             this.productFactory = productFactory;
             this.activityFactory = activityFactory;
             this.goalFactory = goalFactory;

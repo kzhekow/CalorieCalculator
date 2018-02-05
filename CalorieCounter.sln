@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console_App", "Console_App\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_App", "WPF_App\WPF_App.csproj", "{8D08CDA1-8CB8-4F3B-8F9B-20133622353C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalorieCounter.UnitTests", "CalorieCounter.UnitTests\CalorieCounter.UnitTests.csproj", "{256F73F9-AE21-4845-A0AE-B5442EA15849}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{8D08CDA1-8CB8-4F3B-8F9B-20133622353C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D08CDA1-8CB8-4F3B-8F9B-20133622353C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D08CDA1-8CB8-4F3B-8F9B-20133622353C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{256F73F9-AE21-4845-A0AE-B5442EA15849}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{256F73F9-AE21-4845-A0AE-B5442EA15849}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{256F73F9-AE21-4845-A0AE-B5442EA15849}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{256F73F9-AE21-4845-A0AE-B5442EA15849}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
