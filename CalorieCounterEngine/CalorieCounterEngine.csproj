@@ -58,6 +58,7 @@
     <Compile Include="Common\MealType.cs" />
     <Compile Include="Contracts\IDailyNutriCalc.cs" />
     <Compile Include="Contracts\ISuggestedDailyNutrientsIntakeCalc.cs" />
+    <Compile Include="Engine.cs" />
     <Compile Include="Factories\Contracts\IActivityFactory.cs" />
     <Compile Include="Contracts\ICalorieCounterEngine.cs" />
     <Compile Include="Factories\Contracts\IGoalFactory.cs" />
@@ -68,7 +69,6 @@
     <Compile Include="Models\Contracts\IGoal.cs" />
     <Compile Include="DailyIntake.cs" />
     <Compile Include="Utils\DailyNutriCalc.cs" />
-    <Compile Include="CalorieCounterEngine.cs" />
     <Compile Include="Factories\ProductFactory.cs" />
     <Compile Include="Models\Activity\Activity.cs" />
     <Compile Include="Models\Contracts\IActivity.cs" />

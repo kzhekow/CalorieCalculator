@@ -52,8 +52,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factories\CommandFactory.cs" />
     <Compile Include="ConfigModules\CalorieCounterEngineConfigModule.cs" />
     <Compile Include="ConfigModules\CommandParserEngineConfigModule.cs" />
+    <Compile Include="Core\Contracts\ICommandFactory.cs" />
     <Compile Include="Core\Commands\Showing\ShowDailyReportCommand.cs" />
     <Compile Include="CustomException\CommandParseЕxception.cs" />
     <Compile Include="Core\Commands\Adding\AddActivityCommand.cs" />

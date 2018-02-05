@@ -2,7 +2,6 @@
 using CalorieCounter.Contracts;
 using CalorieCounter.Factories.Contracts;
 using CalorieCounter.Models.Contracts;
-using CalorieCounter.Models.Utils;
 using CalorieCounter.Utils;
 using CalorieCounterEngine.Contracts;
 using Newtonsoft.Json;

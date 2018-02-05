@@ -10,9 +10,9 @@ namespace Console_App.Core.Engine
         private const string NullProvidersExceptionMessage = "cannot be null.";
         private IConsoleReader reader;
         private IConsoleWriter writer;
-        private IConsoleParser parser;
+        private ICommandParser parser;
 
-        public CommandParserEngine(IConsoleReader reader, IConsoleWriter writer, IConsoleParser parser)
+        public CommandParserEngine(IConsoleReader reader, IConsoleWriter writer, ICommandParser parser)
         {
             this.reader = reader;
             this.writer = writer;
