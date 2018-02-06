@@ -60,7 +60,7 @@
     <Compile Include="Contracts\ISuggestedDailyNutrientsIntakeCalc.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Factories\Contracts\IActivityFactory.cs" />
-    <Compile Include="Contracts\ICalorieCounterEngine.cs" />
+    <Compile Include="Contracts\IEngine.cs" />
     <Compile Include="Factories\Contracts\IGoalFactory.cs" />
     <Compile Include="Factories\Contracts\IProductFactory.cs" />
     <Compile Include="Factories\ActivityFactory.cs" />

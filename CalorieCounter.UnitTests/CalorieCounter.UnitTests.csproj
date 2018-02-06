@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalorieCounterEngineTests\EngineTests\Constructor_Should.cs" />
+    <Compile Include="CalorieCounterEngineTests\EngineTests\GetRemainingNutrients_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
