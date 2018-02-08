@@ -63,6 +63,10 @@
   <ItemGroup>
     <Compile Include="CalorieCounterEngineTests\EngineTests\Constructor_Should.cs" />
     <Compile Include="CalorieCounterEngineTests\EngineTests\GetRemainingNutrients_Should.cs" />
+    <Compile Include="Factories\ActivityFactoryTests\CreateActivity_Should.cs" />
+    <Compile Include="Factories\GoalFactoryTests\CreateGoal_Should.cs" />
+    <Compile Include="Factories\ProductFactoryTests\CreateDrink_Should.cs" />
+    <Compile Include="Factories\ProductFactoryTests\CreateFoodProduct_Should.cs" />
     <Compile Include="Models\ActivityModel\ActivityTests\Constructor_Should.cs" />
     <Compile Include="Models\ActivityModel\ActivityTests\CalculateBurnedCalories_Should.cs" />
     <Compile Include="Models\DrinksModel\CustomDrinkTests\Constructor_Should.cs" />
