@@ -70,6 +70,14 @@
     <Compile Include="Models\FoodModel\CustomFoodProductTests\Constructor_Should.cs" />
     <Compile Include="Models\GoalModel\GoalTests\Constructor_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\DailyNutriCalcTests\CalculateCurrentSugars_Should.cs" />
+    <Compile Include="Utils\DailyNutriCalcTests\CalculateCurrentFibers_Should.cs" />
+    <Compile Include="Utils\DailyNutriCalcTests\RemainingProteinIntake_Should.cs" />
+    <Compile Include="Utils\DailyNutriCalcTests\RemainingCarbsIntake_Should.cs" />
+    <Compile Include="Utils\DailyNutriCalcTests\RemainingFatsIntake_Should.cs" />
+    <Compile Include="Utils\DailyNutriCalcTests\RemainingCaloriesIntake_Should.cs" />
+    <Compile Include="Utils\DailyNutriCalcTests\RemainingWaterIntake_Should.cs" />
+    <Compile Include="Utils\DailyNutriCalcTests\CurrentDayMacrosRatio_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

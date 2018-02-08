@@ -194,7 +194,7 @@ namespace CalorieCounter
             sb.AppendLine(((int)dailyNutriCalc.RemainingWaterIntake(this.suggestedDailyNutrientsIntakeCalc.CalculateSuggestedWaterIntake(), this.currentDayCalorieTracker.Water)).ToString());
             sb.Append("Current day macros ratio: ");
 
-            if (this.currentDayCalorieTracker.ProductsConsumed.Count == 0)
+            if (this.currentDayCalorieTracker.ProductsConsumed == null || this.currentDayCalorieTracker.ProductsConsumed.Count == 0)
             {
                 sb.AppendLine(this.suggestedDailyNutrientsIntakeCalc.CalculateSuggestedMacrosRatio());
             }
