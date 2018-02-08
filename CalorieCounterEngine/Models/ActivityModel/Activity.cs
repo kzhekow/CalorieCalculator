@@ -1,7 +1,7 @@
-﻿using System;
-using CalorieCounter.Models.Contracts;
+﻿using CalorieCounter.Models.Contracts;
+using System;
 
-namespace CalorieCounter.Models.Activity
+namespace CalorieCounter.Models.ActivityModel
 {
     public class Activity : IActivity
     {
@@ -28,7 +28,7 @@ namespace CalorieCounter.Models.Activity
 
         public int CalculateBurnedCalories()
         {
-            return (int) this.Type * (this.Time / 60);
+            return (int)((int)this.Type * (this.Time / 60.0));
         }
     }
 }

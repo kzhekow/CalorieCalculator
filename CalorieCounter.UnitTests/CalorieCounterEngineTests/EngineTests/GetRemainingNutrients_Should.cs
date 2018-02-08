@@ -9,7 +9,7 @@ namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
     public class GetRemainingNutrients_Should
     {
         [TestMethod]
-        public void ReturnGoalNotSetMessage_GoalHadNotBeenSet()
+        public void ReturnGoalNotSetMessage_WhenGoalHadNotBeenSet()
         {
             // Assert
             var productFactoryMock = new Mock<IProductFactory>();

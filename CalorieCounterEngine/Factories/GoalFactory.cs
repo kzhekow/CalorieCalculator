@@ -1,6 +1,6 @@
 ﻿using CalorieCounter.Factories.Contracts;
 using CalorieCounter.Models.Contracts;
-using CalorieCounter.Models.Goal;
+using CalorieCounter.Models.GoalModel;
 
 namespace CalorieCounter.Factories
 {

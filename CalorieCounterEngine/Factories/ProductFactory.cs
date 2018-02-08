@@ -2,8 +2,8 @@
 using CalorieCounter.Contracts;
 using CalorieCounter.Factories.Contracts;
 using CalorieCounter.Models;
-using CalorieCounter.Models.Drinks;
-using CalorieCounter.Models.Food;
+using CalorieCounter.Models.DrinksModel;
+using CalorieCounter.Models.FoodModel;
 
 namespace CalorieCounter.Factories
 {

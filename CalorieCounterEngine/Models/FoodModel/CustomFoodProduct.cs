@@ -1,4 +1,4 @@
-﻿namespace CalorieCounter.Models.Food
+﻿namespace CalorieCounter.Models.FoodModel
 {
     public class CustomFoodProduct : Product
     {

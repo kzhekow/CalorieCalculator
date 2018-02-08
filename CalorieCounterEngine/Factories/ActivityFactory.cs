@@ -1,5 +1,5 @@
 ﻿using CalorieCounter.Factories.Contracts;
-using CalorieCounter.Models.Activity;
+using CalorieCounter.Models.ActivityModel;
 using CalorieCounter.Models.Contracts;
 
 namespace CalorieCounter.Factories

@@ -1,7 +1,7 @@
 ﻿using System;
 using CalorieCounter.Models.Contracts;
 
-namespace CalorieCounter.Models.Food
+namespace CalorieCounter.Models.DrinksModel
 {
     public struct Water : IWater
     {

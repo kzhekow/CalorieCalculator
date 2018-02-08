@@ -1,4 +1,4 @@
-﻿namespace CalorieCounter.Models.Drinks
+﻿namespace CalorieCounter.Models.DrinksModel
 {
     /// <summary>
     ///     CustomDrink class inherits from IFood, because custom drink can have nutrition values.

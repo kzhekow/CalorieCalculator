@@ -1,7 +1,7 @@
-﻿using System;
-using CalorieCounter.Models.Contracts;
+﻿using CalorieCounter.Models.Contracts;
+using System;
 
-namespace CalorieCounter.Models.Goal
+namespace CalorieCounter.Models.GoalModel
 {
     public class Goal : IGoal
     {
