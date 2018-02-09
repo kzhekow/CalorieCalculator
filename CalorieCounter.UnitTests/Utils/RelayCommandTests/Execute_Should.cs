@@ -9,7 +9,7 @@ namespace CalorieCounter.UnitTests.Utils.RelayCommandTests
     public class Execute_Should
     {
         [TestMethod]
-        public void ExecuteDelegate()
+        public void ExecuteDelegate_WhenExecuteMethodIsCalled()
         {
             // Arrange
             //var action = new Mock<Action<object>>();
