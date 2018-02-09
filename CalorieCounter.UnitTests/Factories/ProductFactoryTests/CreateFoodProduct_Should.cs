@@ -1,5 +1,5 @@
 ﻿using CalorieCounter.Contracts;
-using CalorieCounter.Models.FoodModel;
+using CalorieCounter.Factories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CalorieCounter.UnitTests.Factories.ProductFactoryTests
@@ -19,12 +19,14 @@ namespace CalorieCounter.UnitTests.Factories.ProductFactoryTests
             var sugar = 3;
             var fiber = 0;
 
+            var productFactory = new ProductFactory();
+
             // Act
-            var drink = new CustomFoodProduct(name, calories, protein, carbs, fat, sugar, fiber);
+            var foodProduct = productFactory.CreateFoodProduct(name, calories, protein, carbs, fat, sugar, fiber);
 
             // Assert
-            Assert.IsNotNull(drink);
-            Assert.IsInstanceOfType(drink, typeof(IProduct));
+            Assert.IsNotNull(foodProduct);
+            Assert.IsInstanceOfType(foodProduct, typeof(IProduct));
         }
     }
 }

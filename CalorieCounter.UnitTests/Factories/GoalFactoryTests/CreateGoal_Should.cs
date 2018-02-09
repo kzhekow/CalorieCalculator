@@ -1,5 +1,5 @@
-﻿using CalorieCounter.Models.Contracts;
-using CalorieCounter.Models.GoalModel;
+﻿using CalorieCounter.Factories;
+using CalorieCounter.Models.Contracts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CalorieCounter.UnitTests.Factories.GoalFactoryTests
@@ -19,8 +19,9 @@ namespace CalorieCounter.UnitTests.Factories.GoalFactoryTests
             var goalType = GoalType.loseweight;
             var activityLevel = ActivityLevel.heavy;
 
+            var goalFactory = new GoalFactory();
             // Act
-            var goal = new Goal(startingWeight, goalWeight, height, age, gender, goalType, activityLevel);
+            var goal = goalFactory.CreateGoal(startingWeight, goalWeight, height, age, gender, goalType, activityLevel);
 
             // Assert
             Assert.IsNotNull(goal);
