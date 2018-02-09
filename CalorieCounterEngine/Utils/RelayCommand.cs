@@ -11,6 +11,11 @@ namespace CalorieCounter.Utils
 
         public RelayCommand(Action<object> methodToExecute, Func<object, bool> canExecuteEvaluator)
         {
+            if (methodToExecute == null)
+            {
+                throw new ArgumentNullException("The method for execution cannot be null!");
+            }
+
             this.methodToExecute = methodToExecute;
             this.canExecuteEvaluator = canExecuteEvaluator;
         }

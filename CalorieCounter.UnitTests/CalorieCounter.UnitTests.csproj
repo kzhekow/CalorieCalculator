@@ -82,6 +82,9 @@
     <Compile Include="Utils\DailyNutriCalcTests\RemainingCaloriesIntake_Should.cs" />
     <Compile Include="Utils\DailyNutriCalcTests\RemainingWaterIntake_Should.cs" />
     <Compile Include="Utils\DailyNutriCalcTests\CurrentDayMacrosRatio_Should.cs" />
+    <Compile Include="Utils\RelayCommandTests\CanExecute_Should.cs" />
+    <Compile Include="Utils\RelayCommandTests\Constructor_Should.cs" />
+    <Compile Include="Utils\RelayCommandTests\Execute_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
