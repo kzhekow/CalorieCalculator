@@ -17,7 +17,7 @@ namespace CalorieCounter.UnitTests.Utils
             var expectedResult = "Carbs:Protein:Fat = 25:40:35";
 
             var goalMock = new Mock<IGoal>();
-            var restingEnergyMock = new Mock<IRestingEnergy>();
+            var restingEnergyMock = new Mock<IRestingEnergyCalculator>();
 
             goalMock
                 .SetupGet(m => m.Type)

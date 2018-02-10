@@ -31,7 +31,7 @@ namespace CalorieCounter.UnitTests.Utils.RestingEnergyTests
                 .SetupGet(m => m.Age)
                 .Returns(25);
 
-            var restingEnergy = new RestingEnergy(goalMock.Object);
+            var restingEnergy = new RestingEnergyCalculator(goalMock.Object);
 
             // Act
             var actualResult = restingEnergy.CalculateRestingEnergy();
@@ -63,7 +63,7 @@ namespace CalorieCounter.UnitTests.Utils.RestingEnergyTests
                 .SetupGet(m => m.Age)
                 .Returns(25);
 
-            var restingEnergy = new RestingEnergy(goalMock.Object);
+            var restingEnergy = new RestingEnergyCalculator(goalMock.Object);
 
             // Act
             var actualResult = restingEnergy.CalculateRestingEnergy();
