@@ -4,11 +4,11 @@ using CalorieCounterEngine.Contracts;
 
 namespace CalorieCounterEngine.Utils
 {
-    public class RestingEnergy : IRestingEnergy
+    public class RestingEnergyCalculator : IRestingEnergyCalculator
     {
         private readonly IGoal currentGoal;
 
-        public RestingEnergy(IGoal currentGoal)
+        public RestingEnergyCalculator(IGoal currentGoal)
         {
             Guard.WhenArgument(currentGoal, "Goal").IsNull().Throw();
             this.currentGoal = currentGoal;

@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\EngineBuilder.cs" />
     <Compile Include="CalorieCounterEngineTests\EngineTests\Constructor_Should.cs" />
     <Compile Include="CalorieCounterEngineTests\EngineTests\GetRemainingNutrients_Should.cs" />
     <Compile Include="Factories\ActivityFactoryTests\CreateActivity_Should.cs" />

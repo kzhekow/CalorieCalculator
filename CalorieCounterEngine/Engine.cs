@@ -21,7 +21,7 @@ namespace CalorieCounter
         private readonly IGoalFactory goalFactory;
         private readonly IDailyNutriCalc dailyNutriCalc;
         private ISuggestedDailyNutrientsIntakeCalc suggestedDailyNutrientsIntakeCalc;
-        private IRestingEnergy restingEnergy;
+        private IRestingEnergyCalculator restingEnergy;
         private readonly DirectoryInfo dailyProgressDirectory;
 
         //private readonly IGoalFactory goalFactory;
@@ -46,7 +46,7 @@ namespace CalorieCounter
             IActivityFactory activityFactory, 
             IGoalFactory goalFactory,
             IDailyNutriCalc dailyNutriCalc,
-            IRestingEnergy restingEnergy)
+            IRestingEnergyCalculator restingEnergyCalculator)
         {
             this.products = new Dictionary<string, IProduct>(StringComparer.InvariantCultureIgnoreCase);
             this.dailyProgressDirectory = Directory.CreateDirectory(EngineConstants.DailyProgressDirectoryName);
@@ -60,17 +60,17 @@ namespace CalorieCounter
             Guard.WhenArgument(activityFactory, "Activity factory can not be null").IsNull().Throw();
             Guard.WhenArgument(goalFactory, "Goal factory can not be null").IsNull().Throw();
             Guard.WhenArgument(dailyNutriCalc, "DailyNutriCalc can not be null").IsNull().Throw();
-            Guard.WhenArgument(restingEnergy, "RestingEnergy can not be null").IsNull().Throw();
+            Guard.WhenArgument(restingEnergyCalculator, "RestingEnergyCalculator can not be null").IsNull().Throw();
 
             this.productFactory = productFactory;
             this.activityFactory = activityFactory;
             this.goalFactory = goalFactory;
             this.dailyNutriCalc = dailyNutriCalc;
-            this.restingEnergy = restingEnergy;
+            this.restingEnergy = restingEnergyCalculator;
 
             if (suggestedDailyNutrientsIntakeCalc == null && currentDayCalorieTracker.Goal != null)
             {
-                suggestedDailyNutrientsIntakeCalc = new SuggestedDailyNutrientsIntakeCalc(currentDayCalorieTracker.Goal, restingEnergy);
+                suggestedDailyNutrientsIntakeCalc = new SuggestedDailyNutrientsIntakeCalc(currentDayCalorieTracker.Goal, restingEnergyCalculator);
             }
             //TODO: Deserialize and load all products from the local directory into the list.
         }

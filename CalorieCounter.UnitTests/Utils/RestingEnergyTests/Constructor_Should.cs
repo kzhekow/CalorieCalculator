@@ -17,11 +17,11 @@ namespace CalorieCounter.UnitTests.Utils.RestingEnergyTests
             var goalMock = new Mock<IGoal>();
 
             // Act
-            var restingEnergy = new RestingEnergy(goalMock.Object);
+            var restingEnergy = new RestingEnergyCalculator(goalMock.Object);
 
             // Assert
             Assert.IsNotNull(restingEnergy);
-            Assert.IsInstanceOfType(restingEnergy, typeof(IRestingEnergy));
+            Assert.IsInstanceOfType(restingEnergy, typeof(IRestingEnergyCalculator));
         }
 
         [TestMethod]
@@ -31,7 +31,7 @@ namespace CalorieCounter.UnitTests.Utils.RestingEnergyTests
             //var goalMock = new Mock<IGoal>();
 
             // Act
-            Assert.ThrowsException<ArgumentNullException>(() => new RestingEnergy(null));
+            Assert.ThrowsException<ArgumentNullException>(() => new RestingEnergyCalculator(null));
         }
     }
 }

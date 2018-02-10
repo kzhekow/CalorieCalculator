@@ -8,15 +8,15 @@ namespace CalorieCounter.Utils
     public class SuggestedDailyNutrientsIntakeCalc : ISuggestedDailyNutrientsIntakeCalc
     {
         private IGoal currentGoal;
-        private readonly IRestingEnergy restingEnergy;
+        private readonly IRestingEnergyCalculator restingEnergy;
 
-        public SuggestedDailyNutrientsIntakeCalc(IGoal currentGoal, IRestingEnergy restingEnergy)
+        public SuggestedDailyNutrientsIntakeCalc(IGoal currentGoal, IRestingEnergyCalculator restingEnergyCalculator)
         {
             Guard.WhenArgument(currentGoal, "Goal").IsNull().Throw();
-            Guard.WhenArgument(restingEnergy, "RestingEnergy").IsNull().Throw();
+            Guard.WhenArgument(restingEnergyCalculator, "RestingEnergyCalculator").IsNull().Throw();
 
             this.currentGoal = currentGoal;
-            this.restingEnergy = restingEnergy;
+            this.restingEnergy = restingEnergyCalculator;
         }
         public double DailyCalorieIntake { get; private set; }
 

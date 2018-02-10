@@ -18,7 +18,7 @@ namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
             var activityFactoryMock = new Mock<IActivityFactory>();
             var goalFactoryMock = new Mock<IGoalFactory>();
             var dailyNutriCalcMock = new Mock<IDailyNutriCalc>();
-            var restingEnergyMock = new Mock<IRestingEnergy>();
+            var restingEnergyMock = new Mock<IRestingEnergyCalculator>();
 
             var engine = new Engine
                 (productFactoryMock.Object,
