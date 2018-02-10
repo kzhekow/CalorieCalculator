@@ -65,9 +65,9 @@
     <Compile Include="Factories\Contracts\IProductFactory.cs" />
     <Compile Include="Factories\ActivityFactory.cs" />
     <Compile Include="Factories\GoalFactory.cs" />
-    <Compile Include="Models\Contracts\ICurrentDayCalorieTracker.cs" />
+    <Compile Include="Models\Contracts\IDailyIntake.cs" />
     <Compile Include="Models\Contracts\IGoal.cs" />
-    <Compile Include="DailyIntake.cs" />
+    <Compile Include="Models\DailyIntake.cs" />
     <Compile Include="Utils\DailyNutriCalc.cs" />
     <Compile Include="Factories\ProductFactory.cs" />
     <Compile Include="Models\ActivityModel\Activity.cs" />

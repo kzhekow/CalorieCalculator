@@ -22,6 +22,11 @@ namespace CalorieCounter.Models
                 throw new ArgumentException("Water can not be a negative number!");
             }
 
+            if (int.MaxValue - this.Water < water)
+            {
+                throw new OverflowException();
+            }
+
             //Guard.WhenArgument(water, "Water can not be a negative number!").IsLessThan(0).Throw();
             this.Water += water;
         }
@@ -33,6 +38,11 @@ namespace CalorieCounter.Models
                 throw new ArgumentException("Water can not be a negative number!");
             }
 
+            if (water > this.Water)
+            {
+                throw new ArgumentException();
+            }
+
             //Guard.WhenArgument(water, "Water can not be a negative number!").IsLessThan(0).Throw();
             this.Water -= water;
         }
@@ -41,7 +51,7 @@ namespace CalorieCounter.Models
         {
             if (product == null)
             {
-                throw new ArgumentException("Product can not be null!");
+                throw new ArgumentNullException("Product can not be null!");
             }
 
             //Guard.WhenArgument(product, "Product can not be null!").IsNull().Throw();
@@ -52,7 +62,7 @@ namespace CalorieCounter.Models
         {
             if (product == null)
             {
-                throw new ArgumentException("Product can not be null!");
+                throw new ArgumentNullException("Product can not be null!");
             }
 
             if (this.ProductsConsumed == null)
@@ -69,7 +79,7 @@ namespace CalorieCounter.Models
         {
             if (activity == null)
             {
-                throw new ArgumentException("Activity can not be null!");
+                throw new ArgumentNullException("Activity can not be null!");
             }
 
             //Guard.WhenArgument(activity, "Activity can not be null!").IsNull().Throw();
@@ -80,7 +90,7 @@ namespace CalorieCounter.Models
         {
             if (activity == null)
             {
-                throw new ArgumentException("Activity can not be null!");
+                throw new ArgumentNullException("Activity can not be null!");
             }
 
             if (this.ActivitiesPerformed == null)
