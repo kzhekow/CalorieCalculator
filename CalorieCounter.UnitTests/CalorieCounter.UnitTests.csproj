@@ -67,6 +67,7 @@
     <Compile Include="Factories\GoalFactoryTests\CreateGoal_Should.cs" />
     <Compile Include="Factories\ProductFactoryTests\CreateDrink_Should.cs" />
     <Compile Include="Factories\ProductFactoryTests\CreateFoodProduct_Should.cs" />
+    <Compile Include="Mocks\SuggestedDailyNutrientsIntakeCalcFake.cs" />
     <Compile Include="Models\ActivityModel\ActivityTests\Constructor_Should.cs" />
     <Compile Include="Models\ActivityModel\ActivityTests\CalculateBurnedCalories_Should.cs" />
     <Compile Include="Models\DailyIntakeTests\AddActivity_Should.cs" />
@@ -94,7 +95,12 @@
     <Compile Include="Utils\RestingEnergyTests\Constructor_Should.cs" />
     <Compile Include="Utils\RestingEnergyTests\CalculateRestingEnergy_Should.cs" />
     <Compile Include="Utils\SuggestedDailyNutrientsIntakeCalcTests\CalculateSuggestedDailyCalorieIntake_Should.cs" />
-    <Compile Include="Utils\CalculateSuggestedMacrosRation_Should.cs" />
+    <Compile Include="Utils\SuggestedDailyNutrientsIntakeCalcTests\CalculateSuggestedMacrosRation_Should.cs" />
+    <Compile Include="Utils\SuggestedDailyNutrientsIntakeCalcTests\CalculateSuggestedWaterIntake_Should.cs" />
+    <Compile Include="Utils\SuggestedDailyNutrientsIntakeCalcTests\Constructor_Should.cs" />
+    <Compile Include="Utils\SuggestedDailyNutrientsIntakeCalcTests\CalculateSuggestedDailyCarbsIntake_Should.cs" />
+    <Compile Include="Utils\SuggestedDailyNutrientsIntakeCalcTests\CalculateSuggesetdDailyProteinIntake_Should.cs" />
+    <Compile Include="Utils\SuggestedDailyNutrientsIntakeCalcTests\CalculateSuggestedDailyFatIntake_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

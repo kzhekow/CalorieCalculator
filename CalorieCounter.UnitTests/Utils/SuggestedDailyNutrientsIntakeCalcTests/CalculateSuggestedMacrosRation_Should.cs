@@ -1,5 +1,4 @@
 ﻿using System;
-using CalorieCounter.Contracts;
 using CalorieCounter.Models.Contracts;
 using CalorieCounter.Utils;
 using CalorieCounterEngine.Contracts;
@@ -9,78 +8,69 @@ using Moq;
 namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
 {
     [TestClass]
-    public class CalculateSuggestedDailyCalorieIntake_Should
+    public class CalculateSuggestedMacrosRation_Should
     {
         [TestMethod]
-        public void ReturnTheCorrectValue_WhenActivityLevelIsSetToLight()
+        public void ReturnCorrectValue_WhenGoalTypeIsSetToLoseweight()
         {
             // Arrange
-            var expectedResult = 2750;
+            var expectedResult = "Carbs:Protein:Fat = 25:40:35";
+
             var goalMock = new Mock<IGoal>();
             var restingEnergyMock = new Mock<IRestingEnergy>();
 
-            restingEnergyMock
-                .Setup(m => m.CalculateRestingEnergy())
-                .Returns(2000);
-
             goalMock
-                .SetupGet(m => m.Level)
-                .Returns(ActivityLevel.light);
+                .SetupGet(m => m.Type)
+                .Returns(GoalType.loseweight);
 
             var calc = new SuggestedDailyNutrientsIntakeCalc(goalMock.Object, restingEnergyMock.Object);
 
             // Act
-            var actualResult = calc.CalculateSuggestedDailyCalorieIntake();
+            var actualResult = calc.CalculateSuggestedMacrosRatio();
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult);
         }
 
         [TestMethod]
-        public void ReturnTheCorrectValue_WhenActivityLevelIsSetToModerate()
+        public void ReturnCorrectValue_WhenGoalTypeIsSetToMaintainWeight()
         {
             // Arrange
-            var expectedResult = 3100;
+            var expectedResult = "Carbs:Protein:Fat = 40:30:30";
+
             var goalMock = new Mock<IGoal>();
             var restingEnergyMock = new Mock<IRestingEnergy>();
 
-            restingEnergyMock
-                .Setup(m => m.CalculateRestingEnergy())
-                .Returns(2000);
-
             goalMock
-                .SetupGet(m => m.Level)
-                .Returns(ActivityLevel.moderate);
+                .SetupGet(m => m.Type)
+                .Returns(GoalType.maintainweight);
 
             var calc = new SuggestedDailyNutrientsIntakeCalc(goalMock.Object, restingEnergyMock.Object);
 
             // Act
-            var actualResult = calc.CalculateSuggestedDailyCalorieIntake();
+            var actualResult = calc.CalculateSuggestedMacrosRatio();
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult);
         }
 
         [TestMethod]
-        public void ReturnTheCorrectValue_WhenActivityLevelIsSetToHeavy()
+        public void ReturnCorrectValue_WhenGoalTypeIsSetToGainweight()
         {
             // Arrange
-            var expectedResult = 3450;
+            var expectedResult = "Carbs:Protein:Fat = 50:30:20";
+
             var goalMock = new Mock<IGoal>();
             var restingEnergyMock = new Mock<IRestingEnergy>();
 
-            restingEnergyMock
-                .Setup(m => m.CalculateRestingEnergy())
-                .Returns(2000);
-
             goalMock
-                .SetupGet(m => m.Level)
-                .Returns(ActivityLevel.heavy);
+                .SetupGet(m => m.Type)
+                .Returns(GoalType.gainweight);
 
             var calc = new SuggestedDailyNutrientsIntakeCalc(goalMock.Object, restingEnergyMock.Object);
 
             // Act
-            var actualResult = calc.CalculateSuggestedDailyCalorieIntake();
+            var actualResult = calc.CalculateSuggestedMacrosRatio();
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult);
