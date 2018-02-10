@@ -12,17 +12,20 @@ namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
         public void ReturnGoalNotSetMessage_WhenGoalHadNotBeenSet()
         {
             // Assert
+            var expectedMessage = "Goal has not been set!";
+
             var productFactoryMock = new Mock<IProductFactory>();
             var activityFactoryMock = new Mock<IActivityFactory>();
             var goalFactoryMock = new Mock<IGoalFactory>();
             var dailyNutriCalcMock = new Mock<IDailyNutriCalc>();
-            var expectedMessage = "Goal has not been set!";
+            var restingEnergyMock = new Mock<IRestingEnergy>();
 
             var engine = new Engine
                 (productFactoryMock.Object,
                 activityFactoryMock.Object,
                 goalFactoryMock.Object,
-                dailyNutriCalcMock.Object);
+                dailyNutriCalcMock.Object,
+                restingEnergyMock.Object);
 
             // Act && Assert
             Assert.AreEqual(expectedMessage, engine.GetRemainingNutrients());

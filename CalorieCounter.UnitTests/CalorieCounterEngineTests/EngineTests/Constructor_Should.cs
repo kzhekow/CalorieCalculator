@@ -18,13 +18,16 @@ namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
             var activityFactoryMock = new Mock<IActivityFactory>();
             var goalFactoryMock = new Mock<IGoalFactory>();
             var dailyNutriCalcMock = new Mock<IDailyNutriCalc>();
+            var restingEnergyMock = new Mock<IRestingEnergy>();
 
             // Act
             var engine = new Engine
                 (productFactoryMock.Object,
                 activityFactoryMock.Object,
                 goalFactoryMock.Object,
-                dailyNutriCalcMock.Object);
+                dailyNutriCalcMock.Object,
+                restingEnergyMock.Object
+                );
 
             // Assert
             Assert.IsInstanceOfType(engine, typeof(IEngine));
@@ -38,13 +41,15 @@ namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
             var activityFactoryMock = new Mock<IActivityFactory>();
             var goalFactoryMock = new Mock<IGoalFactory>();
             var dailyNutriCalcMock = new Mock<IDailyNutriCalc>();
+            var restingEnergyMock = new Mock<IRestingEnergy>();
 
             // Act && Assert
             Assert.ThrowsException<ArgumentNullException>(() => new Engine
                 (null,
                 activityFactoryMock.Object,
                 goalFactoryMock.Object,
-                dailyNutriCalcMock.Object));
+                dailyNutriCalcMock.Object,
+                restingEnergyMock.Object));
         }
 
         [TestMethod]
@@ -55,13 +60,15 @@ namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
            //var activityFactoryMock = new Mock<IActivityFactory>();
             var goalFactoryMock = new Mock<IGoalFactory>();
             var dailyNutriCalcMock = new Mock<IDailyNutriCalc>();
+            var restingEnergyMock = new Mock<IRestingEnergy>();
 
             // Act && Assert
             Assert.ThrowsException<ArgumentNullException>(() => new Engine
                 (productFactoryMock.Object,
                 null,
                 goalFactoryMock.Object,
-                dailyNutriCalcMock.Object));
+                dailyNutriCalcMock.Object,
+                restingEnergyMock.Object));
         }
 
         [TestMethod]
@@ -72,13 +79,15 @@ namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
             var activityFactoryMock = new Mock<IActivityFactory>();
             //var goalFactoryMock = new Mock<IGoalFactory>();
             var dailyNutriCalcMock = new Mock<IDailyNutriCalc>();
+            var restingEnergyMock = new Mock<IRestingEnergy>();
 
             // Act && Assert
             Assert.ThrowsException<ArgumentNullException>(() => new Engine
                 (productFactoryMock.Object,
                 activityFactoryMock.Object,
                 null,
-                dailyNutriCalcMock.Object));
+                dailyNutriCalcMock.Object,
+                restingEnergyMock.Object));
         }
 
         [TestMethod]
@@ -89,12 +98,33 @@ namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
             var activityFactoryMock = new Mock<IActivityFactory>();
             var goalFactoryMock = new Mock<IGoalFactory>();
             //var dailyNutriCalcMock = new Mock<IDailyNutriCalc>();
+            var restingEnergyMock = new Mock<IRestingEnergy>();
 
             // Act && Assert
             Assert.ThrowsException<ArgumentNullException>(() => new Engine
                 (productFactoryMock.Object,
                 activityFactoryMock.Object,
                 goalFactoryMock.Object,
+                null,
+                restingEnergyMock.Object));
+        }
+
+        [TestMethod]
+        public void ThrowArgumentsNullException_WhenRestingEnergyIsNull()
+        {
+            // Arrange
+            var productFactoryMock = new Mock<IProductFactory>();
+            var activityFactoryMock = new Mock<IActivityFactory>();
+            var goalFactoryMock = new Mock<IGoalFactory>();
+            var dailyNutriCalcMock = new Mock<IDailyNutriCalc>();
+            //var restingEnergyMock = new Mock<IRestingEnergy>();
+
+            // Act && Assert
+            Assert.ThrowsException<ArgumentNullException>(() => new Engine
+                (productFactoryMock.Object,
+                activityFactoryMock.Object,
+                goalFactoryMock.Object,
+                dailyNutriCalcMock.Object,
                 null));
         }
     }

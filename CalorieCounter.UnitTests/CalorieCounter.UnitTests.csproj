@@ -94,7 +94,7 @@
     <Compile Include="Utils\RestingEnergyTests\Constructor_Should.cs" />
     <Compile Include="Utils\RestingEnergyTests\CalculateRestingEnergy_Should.cs" />
     <Compile Include="Utils\SuggestedDailyNutrientsIntakeCalcTests\CalculateSuggestedDailyCalorieIntake_Should.cs" />
-    <Compile Include="Utils\UnitTest1.cs" />
+    <Compile Include="Utils\CalculateSuggestedMacrosRation_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
