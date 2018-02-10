@@ -16,7 +16,7 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
             var expectedResult = 3700;
 
             var goalMock = new Mock<IGoal>();
-            var restingEnergyMock = new Mock<IRestingEnergy>();
+            var restingEnergyMock = new Mock<IRestingEnergyCalculator>();
 
             goalMock
                 .SetupGet(m => m.Gender)
@@ -38,7 +38,7 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
             var expectedResult = 2600;
 
             var goalMock = new Mock<IGoal>();
-            var restingEnergyMock = new Mock<IRestingEnergy>();
+            var restingEnergyMock = new Mock<IRestingEnergyCalculator>();
 
             goalMock
                 .SetupGet(m => m.Gender)

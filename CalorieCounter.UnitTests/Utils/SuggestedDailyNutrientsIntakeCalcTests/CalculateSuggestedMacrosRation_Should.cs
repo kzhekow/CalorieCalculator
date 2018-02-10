@@ -1,5 +1,4 @@
-﻿using System;
-using CalorieCounter.Models.Contracts;
+﻿using CalorieCounter.Models.Contracts;
 using CalorieCounter.Utils;
 using CalorieCounterEngine.Contracts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -17,7 +16,7 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
             var expectedResult = "Carbs:Protein:Fat = 25:40:35";
 
             var goalMock = new Mock<IGoal>();
-            var restingEnergyMock = new Mock<IRestingEnergy>();
+            var restingEnergyMock = new Mock<IRestingEnergyCalculator>();
 
             goalMock
                 .SetupGet(m => m.Type)
@@ -39,7 +38,7 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
             var expectedResult = "Carbs:Protein:Fat = 40:30:30";
 
             var goalMock = new Mock<IGoal>();
-            var restingEnergyMock = new Mock<IRestingEnergy>();
+            var restingEnergyMock = new Mock<IRestingEnergyCalculator>();
 
             goalMock
                 .SetupGet(m => m.Type)
@@ -61,7 +60,7 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
             var expectedResult = "Carbs:Protein:Fat = 50:30:20";
 
             var goalMock = new Mock<IGoal>();
-            var restingEnergyMock = new Mock<IRestingEnergy>();
+            var restingEnergyMock = new Mock<IRestingEnergyCalculator>();
 
             goalMock
                 .SetupGet(m => m.Type)

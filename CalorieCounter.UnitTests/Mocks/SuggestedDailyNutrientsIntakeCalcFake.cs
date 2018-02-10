@@ -8,9 +8,9 @@ namespace CalorieCounter.UnitTests.Mocks
     internal class SuggestedDailyNutrientsIntakeCalcFake : ISuggestedDailyNutrientsIntakeCalc
     {
         private readonly IGoal currentGoal;
-        private readonly IRestingEnergy restingEnergy;
+        private readonly IRestingEnergyCalculator restingEnergy;
 
-        public SuggestedDailyNutrientsIntakeCalcFake(IGoal currentGoal, IRestingEnergy restingEnergy)
+        public SuggestedDailyNutrientsIntakeCalcFake(IGoal currentGoal, IRestingEnergyCalculator restingEnergy)
         {
             this.currentGoal = currentGoal;
             this.restingEnergy = restingEnergy;
