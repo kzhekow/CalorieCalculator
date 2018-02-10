@@ -3,6 +3,16 @@
     public interface ISuggestedDailyNutrientsIntakeCalc
     {
         /// <summary>
+        /// Stores suggested daily calorie intake
+        /// </summary>
+        double DailyCalorieIntake { get; }
+
+        /// <summary>
+        /// Stores resting energy value
+        /// </summary>
+        double RestingEnergy { get; }
+       
+        /// <summary>
         ///     Calcultates the suggested macros ratio of the user, taking in mind his goal.
         /// </summary>
         /// <returns>
@@ -25,14 +35,6 @@
         ///     Returns a double of the number.
         /// </returns>
         int CalculateSuggestedWaterIntake();
-
-        /// <summary>
-        ///     Calculates resting calories of the user - energy his body expends just to keep him alive.
-        /// </summary>
-        /// <returns>
-        ///     Returns a double of the number.
-        /// </returns>
-        double CalculateRestingEnergy();
 
         /// <summary>
         ///     Calculates Suggested daily protein intake.

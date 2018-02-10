@@ -20,10 +20,10 @@ namespace CalorieCounter.UnitTests.Factories.ProductFactoryTests
             var sugar = 1;
             var fiber = 0;
 
-            var poductFactory = new ProductFactory();
+            var productFactory = new ProductFactory();
 
             // Act
-            var drink = poductFactory.CreateDrink(name, calories, protein, carbs, fat, sugar, fiber);
+            var drink = productFactory.CreateDrink(name, calories, protein, carbs, fat, sugar, fiber);
 
             // Assert
             Assert.IsNotNull(drink);

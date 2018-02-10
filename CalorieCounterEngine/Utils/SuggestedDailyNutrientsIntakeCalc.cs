@@ -1,56 +1,45 @@
 ﻿using CalorieCounter.Models.Contracts;
 using CalorieCounter.Contracts;
+using Bytes2you.Validation;
+using CalorieCounterEngine.Contracts;
 
 namespace CalorieCounter.Utils
 {
     public class SuggestedDailyNutrientsIntakeCalc : ISuggestedDailyNutrientsIntakeCalc
     {
         private IGoal currentGoal;
+        private readonly IRestingEnergy restingEnergy;
 
-        public SuggestedDailyNutrientsIntakeCalc(IGoal currentGoal)
+        public SuggestedDailyNutrientsIntakeCalc(IGoal currentGoal, IRestingEnergy restingEnergy)
         {
+            Guard.WhenArgument(currentGoal, "Goal").IsNull().Throw();
+            Guard.WhenArgument(restingEnergy, "RestingEnergy").IsNull().Throw();
+
             this.currentGoal = currentGoal;
+            this.restingEnergy = restingEnergy;
         }
+        public double DailyCalorieIntake { get; private set; }
 
-        public double CalculateRestingEnergy()
-        {
-            double bmr = 0;
-
-            switch (this.currentGoal.Gender)
-            {
-                case GenderType.male:
-                    bmr = 10 * this.currentGoal.StartingWeight + 6.25 * this.currentGoal.Height - 5 * this.currentGoal.Age + 5;
-                    break;
-                case GenderType.female:
-                    bmr = 10 * this.currentGoal.StartingWeight + 6.25 * this.currentGoal.Height - 5 * this.currentGoal.Age - 161;
-                    break;
-                default:
-                    break;
-            }
-
-            return bmr;
-        }
+        public double RestingEnergy => this.restingEnergy.CalculateRestingEnergy();
 
         public double CalculateSuggestedDailyCalorieIntake()
         {
-            var dailyCalorieIntake = this.CalculateRestingEnergy();
-
             switch (this.currentGoal.Level)
             {
                 case ActivityLevel.light:
-                    dailyCalorieIntake *= 1.375;
+                    this.DailyCalorieIntake = RestingEnergy * 1.375;
                     break;
                 case ActivityLevel.moderate:
-                    dailyCalorieIntake *= 1.55;
+                    this.DailyCalorieIntake = RestingEnergy * 1.55;
                     break;
                 case ActivityLevel.heavy:
-                    dailyCalorieIntake *= 1.725;
+                    this.DailyCalorieIntake = RestingEnergy * 1.725;
                     break;
                 default:
                     break;
             }
 
-            return dailyCalorieIntake;
+            return this.DailyCalorieIntake;
         }
 
         public string CalculateSuggestedMacrosRatio()

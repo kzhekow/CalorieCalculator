@@ -20,6 +20,7 @@ namespace CalorieCounter
         private readonly IGoalFactory goalFactory;
         private readonly IDailyNutriCalc dailyNutriCalc;
         private ISuggestedDailyNutrientsIntakeCalc suggestedDailyNutrientsIntakeCalc;
+        private IRestingEnergy restingEnergy;
         private readonly DirectoryInfo dailyProgressDirectory;
 
         //private readonly IGoalFactory goalFactory;
@@ -65,7 +66,7 @@ namespace CalorieCounter
 
             if (suggestedDailyNutrientsIntakeCalc == null && currentDayCalorieTracker.Goal != null)
             {
-                suggestedDailyNutrientsIntakeCalc = new SuggestedDailyNutrientsIntakeCalc(currentDayCalorieTracker.Goal);
+                suggestedDailyNutrientsIntakeCalc = new SuggestedDailyNutrientsIntakeCalc(currentDayCalorieTracker.Goal, restingEnergy);
             }
             //TODO: Deserialize and load all products from the local directory into the list.
         }
@@ -337,7 +338,7 @@ namespace CalorieCounter
             var goal = goalFactory.CreateGoal(startingWeight, goalWeight, height, age, gender, goalType, activityLevel);
             this.currentDayCalorieTracker.Goal = goal;
 
-            this.suggestedDailyNutrientsIntakeCalc = new SuggestedDailyNutrientsIntakeCalc(goal);
+            this.suggestedDailyNutrientsIntakeCalc = new SuggestedDailyNutrientsIntakeCalc(goal, restingEnergy);
         }
 
         private void LoadProgress()

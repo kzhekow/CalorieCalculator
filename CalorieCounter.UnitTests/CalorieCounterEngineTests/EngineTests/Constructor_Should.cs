@@ -1,4 +1,4 @@
-﻿using CalorieCounter.Contracts;
+﻿ using CalorieCounter.Contracts;
 using CalorieCounter.Factories.Contracts;
 using CalorieCounterEngine.Contracts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
