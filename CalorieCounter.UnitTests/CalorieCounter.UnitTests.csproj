@@ -78,6 +78,7 @@
     <Compile Include="Models\DailyIntakeTests\RemoveProduct.cs" />
     <Compile Include="Models\DailyIntakeTests\RemoveWater_Should.cs" />
     <Compile Include="Models\DrinksModel\CustomDrinkTests\Constructor_Should.cs" />
+    <Compile Include="Models\DrinksModel\CustomDrinkTests\ToStringMethod_Should.cs" />
     <Compile Include="Models\DrinksModel\WaterTests\Constructor_Should.cs" />
     <Compile Include="Models\FoodModel\CustomFoodProductTests\Constructor_Should.cs" />
     <Compile Include="Models\FoodModel\ToString_Should.cs" />
