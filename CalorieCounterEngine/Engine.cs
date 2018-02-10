@@ -4,6 +4,7 @@ using CalorieCounter.Factories.Contracts;
 using CalorieCounter.Models.Contracts;
 using CalorieCounter.Utils;
 using CalorieCounterEngine.Contracts;
+using CalorieCounterEngine.Utils;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -44,7 +45,8 @@ namespace CalorieCounter
             IProductFactory productFactory, 
             IActivityFactory activityFactory, 
             IGoalFactory goalFactory,
-            IDailyNutriCalc dailyNutriCalc)
+            IDailyNutriCalc dailyNutriCalc,
+            IRestingEnergy restingEnergy)
         {
             this.products = new Dictionary<string, IProduct>(StringComparer.InvariantCultureIgnoreCase);
             this.dailyProgressDirectory = Directory.CreateDirectory(EngineConstants.DailyProgressDirectoryName);
@@ -58,11 +60,13 @@ namespace CalorieCounter
             Guard.WhenArgument(activityFactory, "Activity factory can not be null").IsNull().Throw();
             Guard.WhenArgument(goalFactory, "Goal factory can not be null").IsNull().Throw();
             Guard.WhenArgument(dailyNutriCalc, "DailyNutriCalc can not be null").IsNull().Throw();
+            Guard.WhenArgument(restingEnergy, "RestingEnergy can not be null").IsNull().Throw();
 
             this.productFactory = productFactory;
             this.activityFactory = activityFactory;
             this.goalFactory = goalFactory;
             this.dailyNutriCalc = dailyNutriCalc;
+            this.restingEnergy = restingEnergy;
 
             if (suggestedDailyNutrientsIntakeCalc == null && currentDayCalorieTracker.Goal != null)
             {
