@@ -34,7 +34,6 @@ namespace CalorieCounter
         private ICommand addWaterCommand;
 
         private ICommand createDrinkCommand;
-        private ICommand createMealCommand;
         private ICommand createProductCommand;
         private ICommand setGoalCommand;
 
@@ -98,19 +97,6 @@ namespace CalorieCounter
                 }
 
                 return this.createDrinkCommand;
-            }
-        }
-
-        public ICommand CreateMealCommand
-        {
-            get
-            {
-                if (this.createMealCommand == null)
-                {
-                    this.createMealCommand = new RelayCommand(this.CreateMeal);
-                }
-
-                return this.createMealCommand;
             }
         }
 

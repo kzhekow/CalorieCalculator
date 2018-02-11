@@ -5,7 +5,7 @@ namespace CalorieCounter.Models.GoalModel
 {
     public class Goal : IGoal
     {
-        public Goal(double startingWeight, double goalWeight, double height, int age, GenderType gender, GoalType type,
+        public Goal(double startingWeight, double goalWeight, double height, int age, GenderType gender, GoalType goalType,
             ActivityLevel level)
         {
             if (startingWeight < 0)
@@ -30,12 +30,12 @@ namespace CalorieCounter.Models.GoalModel
 
             if (!Enum.IsDefined(typeof(GenderType), gender))
             {
-                throw new ArgumentException("The provided gender type is not valid!");
+                throw new ArgumentException("The provided gender goalType is not valid!");
             }
 
-            if (!Enum.IsDefined(typeof(GoalType), type))
+            if (!Enum.IsDefined(typeof(GoalType), goalType))
             {
-                throw new ArgumentException("The provided goal type is not valid!");
+                throw new ArgumentException("The provided goal goalType is not valid!");
             }
 
             if (!Enum.IsDefined(typeof(ActivityLevel), level))
@@ -53,8 +53,8 @@ namespace CalorieCounter.Models.GoalModel
             this.Height = height;
             this.Age = age;
             this.Gender = gender;
-            this.Type = type;
-            this.Level = level;
+            this.GoalType = goalType;
+            this.ActivityLevel = level;
         }
 
         public double StartingWeight { get; }
@@ -67,8 +67,8 @@ namespace CalorieCounter.Models.GoalModel
 
         public GenderType Gender { get; }
 
-        public GoalType Type { get; }
+        public GoalType GoalType { get; }
 
-        public ActivityLevel Level { get; }
+        public ActivityLevel ActivityLevel { get; }
     }
 }

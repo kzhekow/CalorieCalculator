@@ -24,7 +24,7 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
                 .Returns(2000);
 
             goalMock
-                .SetupGet(m => m.Level)
+                .SetupGet(m => m.ActivityLevel)
                 .Returns(ActivityLevel.light);
 
             var calc = new SuggestedDailyNutrientsIntakeCalc(goalMock.Object, restingEnergyMock.Object);
@@ -49,7 +49,7 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
                 .Returns(2000);
 
             goalMock
-                .SetupGet(m => m.Level)
+                .SetupGet(m => m.ActivityLevel)
                 .Returns(ActivityLevel.moderate);
 
             var calc = new SuggestedDailyNutrientsIntakeCalc(goalMock.Object, restingEnergyMock.Object);
@@ -74,7 +74,7 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
                 .Returns(2000);
 
             goalMock
-                .SetupGet(m => m.Level)
+                .SetupGet(m => m.ActivityLevel)
                 .Returns(ActivityLevel.heavy);
 
             var calc = new SuggestedDailyNutrientsIntakeCalc(goalMock.Object, restingEnergyMock.Object);

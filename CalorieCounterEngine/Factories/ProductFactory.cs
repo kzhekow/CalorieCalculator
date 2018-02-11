@@ -15,12 +15,6 @@ namespace CalorieCounter.Factories
             return new CustomDrink(name, caloriesPer100g, proteinPer100g, carbsPer100g, fatPer100g, sugar, fiber);
         }
 
-        public IProduct CreateMeal(ICollection<IProduct> products, MealType type, string name)
-        {
-            var productssStr = string.Join(", ", products);
-            return new CustomMeal(productssStr, type, name);
-        }
-
         public IProduct CreateFoodProduct(string name, int caloriesPer100g, int proteinPer100g, int carbsPer100g,
             int fatPer100g, int sugar = 0, int fiber = 0)
         {

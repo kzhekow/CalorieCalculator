@@ -8,8 +8,6 @@ namespace CalorieCounter.Contracts
 
         ICommand CreateDrinkCommand { get; }
 
-        ICommand CreateMealCommand { get; }
-
         ICommand SetGoalCommand { get; }
 
         ICommand AddConsumedProductCommand { get; }

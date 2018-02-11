@@ -2,6 +2,7 @@
 using CalorieCounter.Models.GoalModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using CalorieCounter.UnitTests.Builders;
 
 namespace CalorieCounter.UnitTests.Models.GoalModel.GoalTests
 {
@@ -11,17 +12,8 @@ namespace CalorieCounter.UnitTests.Models.GoalModel.GoalTests
         [TestMethod]
         public void CreateInstance_WhenInvokedWithValidParameters()
         {
-            // Arrange
-            var startingWeight = 82;
-            var goalWeight = 78;
-            var height = 177;
-            var age = 25;
-            var gender = GenderType.male;
-            var goalType = GoalType.loseweight;
-            var activityLevel = ActivityLevel.heavy;
-
-            // Act
-            var goal = new Goal(startingWeight, goalWeight, height, age, gender, goalType, activityLevel);
+            // Arrange & Act
+            var goal = new GoalBuilder().Build();
 
             // Assert
             Assert.IsNotNull(goal);
@@ -31,65 +23,29 @@ namespace CalorieCounter.UnitTests.Models.GoalModel.GoalTests
         [TestMethod]
         public void ThrowArgumentException_WhenStartingWeightIsNegative()
         {
-            // Arrange
-            var startingWeight = -5;
-            var goalWeight = 78;
-            var height = 177;
-            var age = 25;
-            var gender = GenderType.male;
-            var goalType = GoalType.loseweight;
-            var activityLevel = ActivityLevel.heavy;
-
-            // Act
-            Assert.ThrowsException<ArgumentException>(() => new Goal(startingWeight, goalWeight, height, age, gender, goalType, activityLevel));
+            // Arrange, Act & Assert
+            Assert.ThrowsException<ArgumentException>(() => new GoalBuilder().WithStartingWeight(-5).Build());
         }
 
         [TestMethod]
         public void ThrowArgumentException_WhenGoalWeightIsNegative()
         {
-            // Arrange
-            var startingWeight = 82;
-            var goalWeight = -5;
-            var height = 177;
-            var age = 25;
-            var gender = GenderType.male;
-            var goalType = GoalType.loseweight;
-            var activityLevel = ActivityLevel.heavy;
-
-            // Act
-            Assert.ThrowsException<ArgumentException>(() => new Goal(startingWeight, goalWeight, height, age, gender, goalType, activityLevel));
+            // Arrange, Act & Assert
+            Assert.ThrowsException<ArgumentException>(() => new GoalBuilder().WithGoalWeight(-5).Build());
         }
 
         [TestMethod]
         public void ThrowArgumentException_WhenHeightIsNegative()
         {
-            // Arrange
-            var startingWeight = 82;
-            var goalWeight = 78;
-            var height = -5;
-            var age = 25;
-            var gender = GenderType.male;
-            var goalType = GoalType.loseweight;
-            var activityLevel = ActivityLevel.heavy;
-
-            // Act
-            Assert.ThrowsException<ArgumentException>(() => new Goal(startingWeight, goalWeight, height, age, gender, goalType, activityLevel));
+            // Arrange, Act & Assert
+            Assert.ThrowsException<ArgumentException>(() => new GoalBuilder().WithHeight(-5).Build());
         }
 
         [TestMethod]
         public void ThrowArgumentException_WhenAgeIsNegative()
         {
-            // Arrange
-            var startingWeight = 82;
-            var goalWeight = 78;
-            var height = 177;
-            var age = -5;
-            var gender = GenderType.male;
-            var goalType = GoalType.loseweight;
-            var activityLevel = ActivityLevel.heavy;
-
-            // Act
-            Assert.ThrowsException<ArgumentException>(() => new Goal(startingWeight, goalWeight, height, age, gender, goalType, activityLevel));
+            // Arrange, Act & Assert
+            Assert.ThrowsException<ArgumentException>(() => new GoalBuilder().WithAge(-5).Build());
         }
     }
 }

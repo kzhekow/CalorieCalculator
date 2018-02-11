@@ -31,5 +31,16 @@ namespace CalorieCounter.UnitTests.Models.ActivityModel.ActivityTests
             // Act && Assert
             Assert.ThrowsException<ArgumentException>(() => new Activity(time, activityType));
         }
+
+        [TestMethod]
+        public void ThrowArgumentException_WhenInvokedWithInvalidActivityTypeParameter()
+        {
+            // Arrange
+            var time = 5;
+            var activityType = (ActivityType) 3;
+
+            // Act && Assert
+            Assert.ThrowsException<ArgumentException>(() => new Activity(time, activityType));
+        }
     }
 }

@@ -24,7 +24,7 @@ namespace CalorieCounter.Utils
 
         public double CalculateSuggestedDailyCalorieIntake()
         {
-            switch (this.currentGoal.Level)
+            switch (this.currentGoal.ActivityLevel)
             {
                 case ActivityLevel.light:
                     this.DailyCalorieIntake = RestingEnergy * 1.375;
@@ -46,7 +46,7 @@ namespace CalorieCounter.Utils
         {
             var macrosRatio = string.Empty;
 
-            switch (this.currentGoal.Type)
+            switch (this.currentGoal.GoalType)
             {
                 case GoalType.loseweight:
                     macrosRatio = "Carbs:Protein:Fat = 25:40:35";
@@ -87,7 +87,7 @@ namespace CalorieCounter.Utils
         {
             double suggestCarbsIntake = 0;
 
-            switch (this.currentGoal.Type)
+            switch (this.currentGoal.GoalType)
             {
                 case GoalType.loseweight:
                     suggestCarbsIntake = 0.25 * this.CalculateSuggestedDailyCalorieIntake() / 4;
@@ -109,7 +109,7 @@ namespace CalorieCounter.Utils
         {
             double suggestProteinIntake = 0;
 
-            switch (this.currentGoal.Type)
+            switch (this.currentGoal.GoalType)
             {
                 case GoalType.loseweight:
                     suggestProteinIntake = 0.4 * this.CalculateSuggestedDailyCalorieIntake() / 4;
@@ -131,7 +131,7 @@ namespace CalorieCounter.Utils
         {
             double suggestFatIntake = 0;
 
-            switch (this.currentGoal.Type)
+            switch (this.currentGoal.GoalType)
             {
                 case GoalType.loseweight:
                     suggestFatIntake = 0.35 * this.CalculateSuggestedDailyCalorieIntake() / 9;

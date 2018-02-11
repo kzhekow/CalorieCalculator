@@ -30,12 +30,12 @@
         /// <summary>
         ///     Goals can be 3 types - lost weight, maintain weight and gain weight.
         /// </summary>
-        GoalType Type { get; }
+        GoalType GoalType { get; }
 
         /// <summary>
         ///     Activity can have 3 types: light, moderate, heavy.
         /// </summary>
-        ActivityLevel Level { get; }
+        ActivityLevel ActivityLevel { get; }
 
 
     }

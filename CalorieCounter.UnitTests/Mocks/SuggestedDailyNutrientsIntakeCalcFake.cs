@@ -31,7 +31,7 @@ namespace CalorieCounter.UnitTests.Mocks
         {
             double suggestCarbsIntake = 0;
 
-            switch (this.currentGoal.Type)
+            switch (this.currentGoal.GoalType)
             {
                 case GoalType.loseweight:
                     suggestCarbsIntake = 0.25 * SuggestedDailyCalorieIntakeExposed / 4;
@@ -53,7 +53,7 @@ namespace CalorieCounter.UnitTests.Mocks
         {
             double suggestProteinIntake = 0;
 
-            switch (this.currentGoal.Type)
+            switch (this.currentGoal.GoalType)
             {
                 case GoalType.loseweight:
                     suggestProteinIntake = 0.4 * SuggestedDailyCalorieIntakeExposed / 4;
@@ -75,7 +75,7 @@ namespace CalorieCounter.UnitTests.Mocks
         {
             double suggestFatIntake = 0;
 
-            switch (this.currentGoal.Type)
+            switch (this.currentGoal.GoalType)
             {
                 case GoalType.loseweight:
                     suggestFatIntake = Math.Round(0.35 * SuggestedDailyCalorieIntakeExposed / 9);

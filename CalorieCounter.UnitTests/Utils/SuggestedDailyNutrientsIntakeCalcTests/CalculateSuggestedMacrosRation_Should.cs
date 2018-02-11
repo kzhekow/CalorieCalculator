@@ -19,7 +19,7 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
             var restingEnergyMock = new Mock<IRestingEnergyCalculator>();
 
             goalMock
-                .SetupGet(m => m.Type)
+                .SetupGet(m => m.GoalType)
                 .Returns(GoalType.loseweight);
 
             var calc = new SuggestedDailyNutrientsIntakeCalc(goalMock.Object, restingEnergyMock.Object);
@@ -41,7 +41,7 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
             var restingEnergyMock = new Mock<IRestingEnergyCalculator>();
 
             goalMock
-                .SetupGet(m => m.Type)
+                .SetupGet(m => m.GoalType)
                 .Returns(GoalType.maintainweight);
 
             var calc = new SuggestedDailyNutrientsIntakeCalc(goalMock.Object, restingEnergyMock.Object);
@@ -63,7 +63,7 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
             var restingEnergyMock = new Mock<IRestingEnergyCalculator>();
 
             goalMock
-                .SetupGet(m => m.Type)
+                .SetupGet(m => m.GoalType)
                 .Returns(GoalType.gainweight);
 
             var calc = new SuggestedDailyNutrientsIntakeCalc(goalMock.Object, restingEnergyMock.Object);

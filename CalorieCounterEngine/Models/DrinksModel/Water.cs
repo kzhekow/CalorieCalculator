@@ -5,8 +5,6 @@ namespace CalorieCounter.Models.DrinksModel
 {
     public struct Water : IWater
     {
-        private const string DrinkName = "Water";
-
         public Water(decimal weightInMl)
         {
             if (weightInMl < 0)
@@ -17,8 +15,6 @@ namespace CalorieCounter.Models.DrinksModel
             // Guard.WhenArgument(weightInMl, "Weight can not be a negative number!").IsLessThan(0).Throw();
             this.Weight = weightInMl;
         }
-
-        public string Name => DrinkName;
 
         public decimal Weight { get; }
     }

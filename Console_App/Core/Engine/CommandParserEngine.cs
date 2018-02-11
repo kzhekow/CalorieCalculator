@@ -28,7 +28,7 @@ namespace Console_App.Core.Engine
             {
                 try
                 {
-                    var commandAsString = this.reader.ReadLine();
+                    var commandAsString = this.reader.ReadLine().ToLower();
 
                     if (commandAsString.ToLower() == TerminationCommand.ToLower())
                     {
@@ -54,7 +54,6 @@ namespace Console_App.Core.Engine
             sb.AppendLine($"- {EngineConstants.SetGoal} [startingWeight] [goalWeight] [height] [age] [gender: male/female] [goalType: LoseWeight/MaintainWeight/GainWeight] [activityLevel: Light/Moderate/Heavy]");
             sb.AppendLine($"- {EngineConstants.CreateFoodProduct} [name] [caloriesPer100g] [protPer100g] [carbPer100g] [fatPer100g] [sugarPer100g] [fiberPer100g]");
             sb.AppendLine($"- {EngineConstants.CreateDrink} [name] [caloriesPer100g] [protPer100g] [carbPer100g] [fatPer100g] [sugarPer100g] [fiberPer100g]");
-            sb.AppendLine($"- {EngineConstants.CreateMeal} [product1] [prod1Weight] [product2] [prod2Weight] ... [productn] [prodnWeight]");
             sb.AppendLine($"- {EngineConstants.AddConsumedProduct} [name] [weight/ml]");
             sb.AppendLine($"- {EngineConstants.AddWater} [ml]");
             sb.AppendLine($"- {EngineConstants.AddActivity} [cardio/strength] [time]");

@@ -3,7 +3,7 @@
     public interface IActivity
     {
         /// <summary>
-        ///     Type of physical activity.
+        ///     GoalType of physical activity.
         /// </summary>
         ActivityType Type { get; }
 
