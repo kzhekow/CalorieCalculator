@@ -21,7 +21,7 @@ namespace CalorieCounter
         private readonly IGoalFactory goalFactory;
         private readonly IDailyNutriCalc dailyNutriCalc;
         private ISuggestedDailyNutrientsIntakeCalc suggestedDailyNutrientsIntakeCalc;
-        private IRestingEnergyCalculator restingEnergy;
+        private IRestingEnergyCalculator restingEnergyCalculator;
         private readonly DirectoryInfo dailyProgressDirectory;
 
         //private readonly IGoalFactory goalFactory;
@@ -66,7 +66,7 @@ namespace CalorieCounter
             this.activityFactory = activityFactory;
             this.goalFactory = goalFactory;
             this.dailyNutriCalc = dailyNutriCalc;
-            this.restingEnergy = restingEnergyCalculator;
+            this.restingEnergyCalculator = restingEnergyCalculator;
 
             if (suggestedDailyNutrientsIntakeCalc == null && currentDayCalorieTracker.Goal != null)
             {
@@ -342,7 +342,7 @@ namespace CalorieCounter
             var goal = goalFactory.CreateGoal(startingWeight, goalWeight, height, age, gender, goalType, activityLevel);
             this.currentDayCalorieTracker.Goal = goal;
 
-            this.suggestedDailyNutrientsIntakeCalc = new SuggestedDailyNutrientsIntakeCalc(goal, restingEnergy);
+            this.suggestedDailyNutrientsIntakeCalc = new SuggestedDailyNutrientsIntakeCalc(goal, restingEnergyCalculator);
         }
 
         private void LoadProgress()

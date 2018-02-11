@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CalorieCounter.Contracts;
 using CalorieCounter.Factories.Contracts;
 using CalorieCounterEngine.Contracts;
 using Moq;
@@ -56,7 +57,7 @@ namespace CalorieCounter.UnitTests.Builders
             return this;
         }
 
-        internal Engine Build()
+        internal IEngine Build()
         {
             return new Engine(this.productFactory, this.activityFactory, this.goalFactory, this.dailyNutriCalc, this.restingEnergyCalculator);
         }

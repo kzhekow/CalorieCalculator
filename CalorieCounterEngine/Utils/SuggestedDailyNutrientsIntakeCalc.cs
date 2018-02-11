@@ -20,7 +20,7 @@ namespace CalorieCounter.Utils
         }
         public double DailyCalorieIntake { get; private set; }
 
-        public double RestingEnergy => this.restingEnergy.CalculateRestingEnergy();
+        public double RestingEnergy => this.restingEnergy.CalculateRestingEnergy(currentGoal);
 
         public double CalculateSuggestedDailyCalorieIntake()
         {

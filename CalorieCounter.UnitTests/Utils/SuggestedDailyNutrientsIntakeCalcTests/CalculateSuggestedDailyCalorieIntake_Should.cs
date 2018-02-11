@@ -20,7 +20,7 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
             var restingEnergyMock = new Mock<IRestingEnergyCalculator>();
 
             restingEnergyMock
-                .Setup(m => m.CalculateRestingEnergy())
+                .Setup(m => m.CalculateRestingEnergy(It.IsAny<IGoal>()))
                 .Returns(2000);
 
             goalMock
@@ -45,7 +45,7 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
             var restingEnergyMock = new Mock<IRestingEnergyCalculator>();
 
             restingEnergyMock
-                .Setup(m => m.CalculateRestingEnergy())
+                .Setup(m => m.CalculateRestingEnergy(It.IsAny<IGoal>()))
                 .Returns(2000);
 
             goalMock
@@ -70,7 +70,7 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
             var restingEnergyMock = new Mock<IRestingEnergyCalculator>();
 
             restingEnergyMock
-                .Setup(m => m.CalculateRestingEnergy())
+                .Setup(m => m.CalculateRestingEnergy(It.IsAny<IGoal>()))
                 .Returns(2000);
 
             goalMock

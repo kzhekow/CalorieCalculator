@@ -1,7 +1,9 @@
-﻿namespace CalorieCounterEngine.Contracts
+﻿using CalorieCounter.Models.Contracts;
+
+namespace CalorieCounterEngine.Contracts
 {
     public interface IRestingEnergyCalculator
     {
-        double CalculateRestingEnergy();
+        double CalculateRestingEnergy(IGoal goal);
     }
 }
