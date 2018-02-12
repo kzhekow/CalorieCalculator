@@ -259,11 +259,6 @@ namespace CalorieCounter
             this.SaveProgress();
         }
 
-        private void CreateMeal(object parameter)
-        {
-            throw new NotImplementedException();
-        }
-
         private void AddConsumedProduct(object parameter)
         {
             var args = parameter as object[];
