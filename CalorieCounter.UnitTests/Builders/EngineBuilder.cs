@@ -19,6 +19,7 @@ namespace CalorieCounter.UnitTests.Builders
         private IRestingEnergyCalculator restingEnergyCalculator;
         private IJsonSerializer jsonSerializer;
         private IDataRepository dataRepository;
+        private ISuggestedDailyNutrientsIntakeCalc suggestedDailyNutrientsIntakeCalc;
 
         internal EngineBuilder()
         {
@@ -29,6 +30,7 @@ namespace CalorieCounter.UnitTests.Builders
             this.restingEnergyCalculator = new Mock<IRestingEnergyCalculator>().Object;
             this.jsonSerializer = new Mock<IJsonSerializer>().Object;
             this.dataRepository = new Mock<IDataRepository>().Object;
+            this.suggestedDailyNutrientsIntakeCalc = new Mock<ISuggestedDailyNutrientsIntakeCalc>().Object;
         }
 
         internal EngineBuilder WithProductFactory(IProductFactory productFactory)
@@ -75,7 +77,9 @@ namespace CalorieCounter.UnitTests.Builders
 
         internal IEngine Build()
         {
-            return new Engine(this.productFactory, this.activityFactory, this.goalFactory, this.dailyNutriCalc, this.restingEnergyCalculator, this.jsonSerializer, this.dataRepository);
+            return new Engine(this.productFactory, this.activityFactory, this.goalFactory, this.dailyNutriCalc,
+                this.restingEnergyCalculator, this.jsonSerializer, this.dataRepository,
+                this.suggestedDailyNutrientsIntakeCalc);
         }
     }
 }

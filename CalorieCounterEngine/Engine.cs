@@ -272,6 +272,7 @@ namespace CalorieCounter
             var weightVolume = (int)args[0]; //grams or mililiters (depending on the product type)
 
             this.currentDayCalorieTracker.AddWater(weightVolume);
+            this.SaveProgress();
         }
 
         private void AddActivity(object parameter)
@@ -288,6 +289,7 @@ namespace CalorieCounter
 
             var activity = this.activityFactory.CreateActivity(time, activityType);
             this.currentDayCalorieTracker.AddActivity(activity);
+            this.SaveProgress();
         }
 
         private void GetAllProducts(object parameter)
@@ -315,12 +317,14 @@ namespace CalorieCounter
 
             var goal = goalFactory.CreateGoal(startingWeight, goalWeight, height, age, gender, goalType, activityLevel);
             this.currentDayCalorieTracker.Goal = goal;
+            this.SaveProgress();
         }
 
 
         private void LoadProgress()
         {
             var products = this.jsonSerializer.GetProducts();
+            if(products != null)
             foreach (var product in products)
             {
                 if (!this.dataRepository.Products.ContainsKey(product.Name))

@@ -27,10 +27,10 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
                 .SetupGet(m => m.ActivityLevel)
                 .Returns(ActivityLevel.light);
 
-            var calc = new SuggestedDailyNutrientsIntakeCalc(goalMock.Object, restingEnergyMock.Object);
+            var calc = new SuggestedDailyNutrientsIntakeCalc();
 
             // Act
-            var actualResult = calc.CalculateSuggestedDailyCalorieIntake();
+            var actualResult = calc.CalculateSuggestedDailyCalorieIntake(goalMock.Object, restingEnergyMock.Object);
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult);
@@ -52,10 +52,10 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
                 .SetupGet(m => m.ActivityLevel)
                 .Returns(ActivityLevel.moderate);
 
-            var calc = new SuggestedDailyNutrientsIntakeCalc(goalMock.Object, restingEnergyMock.Object);
+            var calc = new SuggestedDailyNutrientsIntakeCalc();
 
             // Act
-            var actualResult = calc.CalculateSuggestedDailyCalorieIntake();
+            var actualResult = calc.CalculateSuggestedDailyCalorieIntake(goalMock.Object, restingEnergyMock.Object);
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult);
@@ -77,10 +77,10 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
                 .SetupGet(m => m.ActivityLevel)
                 .Returns(ActivityLevel.heavy);
 
-            var calc = new SuggestedDailyNutrientsIntakeCalc(goalMock.Object, restingEnergyMock.Object);
+            var calc = new SuggestedDailyNutrientsIntakeCalc();
 
             // Act
-            var actualResult = calc.CalculateSuggestedDailyCalorieIntake();
+            var actualResult = calc.CalculateSuggestedDailyCalorieIntake(goalMock.Object, restingEnergyMock.Object);
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult);

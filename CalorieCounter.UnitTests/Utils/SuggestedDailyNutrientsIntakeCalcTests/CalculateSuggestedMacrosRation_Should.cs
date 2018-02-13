@@ -22,10 +22,10 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
                 .SetupGet(m => m.GoalType)
                 .Returns(GoalType.loseweight);
 
-            var calc = new SuggestedDailyNutrientsIntakeCalc(goalMock.Object, restingEnergyMock.Object);
+            var calc = new SuggestedDailyNutrientsIntakeCalc();
 
             // Act
-            var actualResult = calc.CalculateSuggestedMacrosRatio();
+            var actualResult = calc.CalculateSuggestedMacrosRatio(goalMock.Object);
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult);
@@ -44,10 +44,10 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
                 .SetupGet(m => m.GoalType)
                 .Returns(GoalType.maintainweight);
 
-            var calc = new SuggestedDailyNutrientsIntakeCalc(goalMock.Object, restingEnergyMock.Object);
+            var calc = new SuggestedDailyNutrientsIntakeCalc();
 
             // Act
-            var actualResult = calc.CalculateSuggestedMacrosRatio();
+            var actualResult = calc.CalculateSuggestedMacrosRatio(goalMock.Object);
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult);
@@ -66,10 +66,10 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
                 .SetupGet(m => m.GoalType)
                 .Returns(GoalType.gainweight);
 
-            var calc = new SuggestedDailyNutrientsIntakeCalc(goalMock.Object, restingEnergyMock.Object);
+            var calc = new SuggestedDailyNutrientsIntakeCalc();
 
             // Act
-            var actualResult = calc.CalculateSuggestedMacrosRatio();
+            var actualResult = calc.CalculateSuggestedMacrosRatio(goalMock.Object);
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult);

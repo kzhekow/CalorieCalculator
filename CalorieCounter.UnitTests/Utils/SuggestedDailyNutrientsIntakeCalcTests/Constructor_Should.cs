@@ -19,33 +19,11 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
             var restingEnergyMock = new Mock<IRestingEnergyCalculator>();
 
             // Act
-            var calc = new SuggestedDailyNutrientsIntakeCalc(goalMock.Object, restingEnergyMock.Object);
+            var calc = new SuggestedDailyNutrientsIntakeCalc();
 
             // Assert
             Assert.IsNotNull(calc);
             Assert.IsInstanceOfType(calc, typeof(ISuggestedDailyNutrientsIntakeCalc));
-        }
-
-        [TestMethod]
-        public void ThrowArgumentNullException_WhenInvokedWithNullGoalParameter()
-        {
-            // Arrange
-            //var goalMock = new Mock<IGoal>();
-            var restingEnergyMock = new Mock<IRestingEnergyCalculator>();
-
-            // Act && Assert
-            Assert.ThrowsException<ArgumentNullException>(() => new SuggestedDailyNutrientsIntakeCalc(null, restingEnergyMock.Object));
-        }
-
-        [TestMethod]
-        public void ThrowArgumentNullException_WhenInvokedWithNullRestingEnergyParameter()
-        {
-            // Arrange
-            var goalMock = new Mock<IGoal>();
-            //var restingEnergyMock = new Mock<IRestingEnergy>();
-
-            // Act && Assert
-            Assert.ThrowsException<ArgumentNullException>(() => new SuggestedDailyNutrientsIntakeCalc(goalMock.Object, null));
         }
     }
 }

@@ -71,6 +71,7 @@ namespace CalorieCounterEngine.Utils
         public void SaveAllProducts(IDictionary<string, IProduct> products)
         {
             var settings = new JsonSerializerSettings();
+            settings.TypeNameHandling = TypeNameHandling.Auto;
             // Iterate through all the products and serialize those that are not saved already.
             var files = this.productsDirectory.GetFiles("*.*");
             foreach (var product in products)

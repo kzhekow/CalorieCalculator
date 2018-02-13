@@ -22,10 +22,10 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
                 .SetupGet(m => m.Gender)
                 .Returns(GenderType.male);
 
-            var calc = new SuggestedDailyNutrientsIntakeCalc(goalMock.Object, restingEnergyMock.Object);
+            var calc = new SuggestedDailyNutrientsIntakeCalc();
 
             // Act
-            var actualResult = calc.CalculateSuggestedWaterIntake();
+            var actualResult = calc.CalculateSuggestedWaterIntake(goalMock.Object);
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult);
@@ -44,10 +44,10 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
                 .SetupGet(m => m.Gender)
                 .Returns(GenderType.female);
 
-            var calc = new SuggestedDailyNutrientsIntakeCalc(goalMock.Object, restingEnergyMock.Object);
+            var calc = new SuggestedDailyNutrientsIntakeCalc();
 
             // Act
-            var actualResult = calc.CalculateSuggestedWaterIntake();
+            var actualResult = calc.CalculateSuggestedWaterIntake(goalMock.Object);
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult);

@@ -1,5 +1,4 @@
 ﻿using CalorieCounter.Models.Contracts;
-using CalorieCounter.UnitTests.Mocks;
 using CalorieCounter.Utils;
 using CalorieCounterEngine.Contracts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -27,11 +26,11 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
                 .Setup(m => m.CalculateRestingEnergy(It.IsAny<IGoal>()))
                 .Returns(2000);
 
-            var calc = new SuggestedDailyNutrientsIntakeCalc(goalMock.Object, restingEnergyMock.Object);
+            var calc = new SuggestedDailyNutrientsIntakeCalc();
             
 
             // Act
-            var actualResult = calc.CalculateSuggestedDailyCarbsIntake();
+            var actualResult = calc.CalculateSuggestedDailyCarbsIntake(goalMock.Object, restingEnergyMock.Object);
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult);
@@ -54,11 +53,11 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
                 .Setup(m => m.CalculateRestingEnergy(It.IsAny<IGoal>()))
                 .Returns(2000);
 
-            var calc = new SuggestedDailyNutrientsIntakeCalc(goalMock.Object, restingEnergyMock.Object);
+            var calc = new SuggestedDailyNutrientsIntakeCalc();
             
 
             // Act
-            var actualResult = calc.CalculateSuggestedDailyCarbsIntake();
+            var actualResult = calc.CalculateSuggestedDailyCarbsIntake(goalMock.Object, restingEnergyMock.Object);
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult);
@@ -81,11 +80,11 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
                 .Setup(m => m.CalculateRestingEnergy(It.IsAny<IGoal>()))
                 .Returns(2000);
 
-            var calc = new SuggestedDailyNutrientsIntakeCalc(goalMock.Object, restingEnergyMock.Object);
+            var calc = new SuggestedDailyNutrientsIntakeCalc();
             
 
             // Act
-            var actualResult = calc.CalculateSuggestedDailyCarbsIntake();
+            var actualResult = calc.CalculateSuggestedDailyCarbsIntake(goalMock.Object, restingEnergyMock.Object);
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult);
