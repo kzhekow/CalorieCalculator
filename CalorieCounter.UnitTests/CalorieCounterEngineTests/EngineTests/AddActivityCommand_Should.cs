@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CalorieCounter.Factories.Contracts;
-using CalorieCounter.Models;
-using CalorieCounter.Models.ActivityModel;
+﻿using CalorieCounter.Factories.Contracts;
 using CalorieCounter.Models.Contracts;
 using CalorieCounter.UnitTests.Builders;
 using CalorieCounterEngine.Contracts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using System;
 
 namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
 {

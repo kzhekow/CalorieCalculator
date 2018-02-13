@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using CalorieCounter.Contracts;
+﻿using CalorieCounter.Contracts;
 using CalorieCounter.UnitTests.Builders;
 using CalorieCounterEngine.Contracts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using System;
+using System.Collections.Generic;
 
 namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
 {
@@ -14,27 +14,13 @@ namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
         [TestMethod]
         public void ReturnInstance_WhenParametersAreCorrect()
         {
-            //// Arrange
-            //var productFactoryMock = new Mock<IProductFactory>();
-            //var activityFactoryMock = new Mock<IActivityFactory>();
-            //var goalFactoryMock = new Mock<IGoalFactory>();
-            //var dailyNutriCalcMock = new Mock<IDailyNutriCalc>();
-            //var restingEnergyMock = new Mock<IRestingEnergyCalculator>();
-
-            //// Act
-            //var engine = new Engine
-            //    (productFactoryMock.Object,
-            //    activityFactoryMock.Object,
-            //    goalFactoryMock.Object,
-            //    dailyNutriCalcMock.Object,
-            //    restingEnergyMock.Object
-            //    );
-
-            //// Assert
-            //Assert.IsInstanceOfType(engine, typeof(IEngine));
-
+            // Arrange
             var jsonSerializerMock = new Mock<IJsonSerializer>();
+
+            // Act
             jsonSerializerMock.Setup(x => x.GetProducts()).Returns(new List<IProduct>());
+
+            // Assert
             Assert.IsInstanceOfType(new EngineBuilder().WithJsonSerializer(jsonSerializerMock.Object).Build(),
                 typeof(IEngine));
         }
@@ -42,21 +28,6 @@ namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
         [TestMethod]
         public void ThrowArgumentsNullException_WhenProductFactoryIsNull()
         {
-            // Arrange
-            //var productFactoryMock = new Mock<IProductFactory>();
-            //var activityFactoryMock = new Mock<IActivityFactory>();
-            //var goalFactoryMock = new Mock<IGoalFactory>();
-            //var dailyNutriCalcMock = new Mock<IDailyNutriCalc>();
-            //var restingEnergyMock = new Mock<IRestingEnergyCalculator>();
-
-            //// Act && Assert
-            //Assert.ThrowsException<ArgumentNullException>(() => new Engine
-            //    (null,
-            //    activityFactoryMock.Object,
-            //    goalFactoryMock.Object,
-            //    dailyNutriCalcMock.Object,
-            //    restingEnergyMock.Object));
-
             // Arrange, Act & Assert
             Assert.ThrowsException<ArgumentNullException>(() => new EngineBuilder().WithProductFactory(null).Build());
         }
@@ -64,21 +35,6 @@ namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
         [TestMethod]
         public void ThrowArgumentsNullException_WhenActivityFactoryIsNull()
         {
-            // // Arrange
-            // var productFactoryMock = new Mock<IProductFactory>();
-            ////var activityFactoryMock = new Mock<IActivityFactory>();
-            // var goalFactoryMock = new Mock<IGoalFactory>();
-            // var dailyNutriCalcMock = new Mock<IDailyNutriCalc>();
-            // var restingEnergyMock = new Mock<IRestingEnergyCalculator>();
-
-            // // Act && Assert
-            // Assert.ThrowsException<ArgumentNullException>(() => new Engine
-            //     (productFactoryMock.Object,
-            //     null,
-            //     goalFactoryMock.Object,
-            //     dailyNutriCalcMock.Object,
-            //     restingEnergyMock.Object));
-
             // Arrange, Act & Assert
             Assert.ThrowsException<ArgumentNullException>(() => new EngineBuilder().WithActivityFactory(null).Build());
         }
@@ -86,21 +42,6 @@ namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
         [TestMethod]
         public void ThrowArgumentsNullException_WhenGoalFactoryIsNull()
         {
-            //// Arrange
-            //var productFactoryMock = new Mock<IProductFactory>();
-            //var activityFactoryMock = new Mock<IActivityFactory>();
-            ////var goalFactoryMock = new Mock<IGoalFactory>();
-            //var dailyNutriCalcMock = new Mock<IDailyNutriCalc>();
-            //var restingEnergyMock = new Mock<IRestingEnergyCalculator>();
-
-            //// Act && Assert
-            //Assert.ThrowsException<ArgumentNullException>(() => new Engine
-            //    (productFactoryMock.Object,
-            //    activityFactoryMock.Object,
-            //    null,
-            //    dailyNutriCalcMock.Object,
-            //    restingEnergyMock.Object));
-
             // Arrange, Act & Assert
             Assert.ThrowsException<ArgumentNullException>(() => new EngineBuilder().WithGoalFactory(null).Build());
         }
@@ -108,21 +49,6 @@ namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
         [TestMethod]
         public void ThrowArgumentsNullException_WhenDailyNutriCalcIsNull()
         {
-            //// Arrange
-            //var productFactoryMock = new Mock<IProductFactory>();
-            //var activityFactoryMock = new Mock<IActivityFactory>();
-            //var goalFactoryMock = new Mock<IGoalFactory>();
-            ////var dailyNutriCalcMock = new Mock<IDailyNutriCalc>();
-            //var restingEnergyMock = new Mock<IRestingEnergyCalculator>();
-
-            //// Act && Assert
-            //Assert.ThrowsException<ArgumentNullException>(() => new Engine
-            //    (productFactoryMock.Object,
-            //    activityFactoryMock.Object,
-            //    goalFactoryMock.Object,
-            //    null,
-            //    restingEnergyMock.Object));
-
             // Arrange, Act & Assert
             Assert.ThrowsException<ArgumentNullException>(() => new EngineBuilder().WithDailyNutriCalc(null).Build());
         }
@@ -130,21 +56,6 @@ namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
         [TestMethod]
         public void ThrowArgumentsNullException_WhenRestingEnergyIsNull()
         {
-            //// Arrange
-            //var productFactoryMock = new Mock<IProductFactory>();
-            //var activityFactoryMock = new Mock<IActivityFactory>();
-            //var goalFactoryMock = new Mock<IGoalFactory>();
-            //var dailyNutriCalcMock = new Mock<IDailyNutriCalc>();
-            ////var restingEnergyMock = new Mock<IRestingEnergyCalculator>();
-
-            //// Act && Assert
-            //Assert.ThrowsException<ArgumentNullException>(() => new Engine
-            //    (productFactoryMock.Object,
-            //    activityFactoryMock.Object,
-            //    goalFactoryMock.Object,
-            //    dailyNutriCalcMock.Object,
-            //    null));
-
             // Arrange, Act & Assert
             Assert.ThrowsException<ArgumentNullException>(() =>
                 new EngineBuilder().WithRestingEnergyCalculator(null).Build());

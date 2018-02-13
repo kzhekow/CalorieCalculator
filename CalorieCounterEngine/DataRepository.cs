@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using CalorieCounter.Contracts;
+﻿using CalorieCounter.Contracts;
 using CalorieCounterEngine.Contracts;
+using System;
+using System.Collections.Generic;
 
 namespace CalorieCounterEngine
 {

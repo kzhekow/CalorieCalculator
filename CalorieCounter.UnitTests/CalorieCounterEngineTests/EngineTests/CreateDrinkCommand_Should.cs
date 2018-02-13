@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using CalorieCounter.Contracts;
+﻿using CalorieCounter.Contracts;
 using CalorieCounter.Factories.Contracts;
 using CalorieCounter.UnitTests.Builders;
 using CalorieCounterEngine.Contracts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using System.Collections.Generic;
 
 namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
 {

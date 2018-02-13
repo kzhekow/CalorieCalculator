@@ -1,5 +1,4 @@
-﻿using System;
-using CalorieCounter.Models.Contracts;
+﻿using CalorieCounter.Models.Contracts;
 using CalorieCounter.UnitTests.Builders;
 using CalorieCounterEngine.Contracts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -8,7 +7,7 @@ using Moq;
 namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
 {
     [TestClass]
-    public class AddWaterr_Should
+    public class AddWater_Should
     {
         [TestMethod]
         public void CallsAddWater_WhenInvokedWithCorrectParams()
