@@ -21,8 +21,7 @@ namespace CalorieCounterEngine.Utils
                 case GenderType.female:
                     bmr = 10 * currentGoal.StartingWeight + 6.25 * currentGoal.Height - 5 * currentGoal.Age - 161;
                     break;
-                default:
-                    break;
+              
             }
 
             return bmr;

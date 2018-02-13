@@ -1,6 +1,7 @@
 ﻿using System;
 using CalorieCounter.Models.Contracts;
 using CalorieCounter.UnitTests.Mocks;
+using CalorieCounter.Utils;
 using CalorieCounterEngine.Contracts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -23,8 +24,12 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
            .SetupGet(m => m.GoalType)
            .Returns(GoalType.loseweight);
 
-            var calc = new SuggestedDailyNutrientsIntakeCalcFake(goalMock.Object, restingEnergyMock.Object);
-            calc.SuggestedDailyCalorieIntakeExposed = 2750;
+            restingEnergyMock
+                .Setup(m => m.CalculateRestingEnergy(It.IsAny<IGoal>()))
+                .Returns(2000);
+
+            var calc = new SuggestedDailyNutrientsIntakeCalc(goalMock.Object, restingEnergyMock.Object);
+            
 
             // Act
             var actualResult = calc.CalculateSuggestedDailyProteinIntake();
@@ -46,8 +51,12 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
                 .SetupGet(m => m.GoalType)
                 .Returns(GoalType.maintainweight);
 
-            var calc = new SuggestedDailyNutrientsIntakeCalcFake(goalMock.Object, restingEnergyMock.Object);
-            calc.SuggestedDailyCalorieIntakeExposed = 2750;
+            restingEnergyMock
+                .Setup(m => m.CalculateRestingEnergy(It.IsAny<IGoal>()))
+                .Returns(2000);
+
+            var calc = new SuggestedDailyNutrientsIntakeCalc(goalMock.Object, restingEnergyMock.Object);
+            
 
             // Act
             var actualResult = calc.CalculateSuggestedDailyProteinIntake();
@@ -69,9 +78,12 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
            .SetupGet(m => m.GoalType)
            .Returns(GoalType.gainweight);
 
-            var calc = new SuggestedDailyNutrientsIntakeCalcFake(goalMock.Object, restingEnergyMock.Object);
-            calc.SuggestedDailyCalorieIntakeExposed = 2750;
+            restingEnergyMock
+                .Setup(m => m.CalculateRestingEnergy(It.IsAny<IGoal>()))
+                .Returns(2000);
 
+            var calc = new SuggestedDailyNutrientsIntakeCalc(goalMock.Object, restingEnergyMock.Object);
+            
             // Act
             var actualResult = calc.CalculateSuggestedDailyProteinIntake();
 

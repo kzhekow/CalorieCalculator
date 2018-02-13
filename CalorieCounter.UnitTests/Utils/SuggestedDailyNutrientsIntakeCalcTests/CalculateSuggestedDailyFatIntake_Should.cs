@@ -1,6 +1,7 @@
 ﻿using System;
 using CalorieCounter.Models.Contracts;
 using CalorieCounter.UnitTests.Mocks;
+using CalorieCounter.Utils;
 using CalorieCounterEngine.Contracts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -14,7 +15,7 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
         public void ReturnCorrectValue_WhenInvokedWithGoalTypeLoseweightParameter()
         {
             // Arrange
-            var expectedResult = 107;
+            var expectedResult = 106;
 
             var goalMock = new Mock<IGoal>();
             var restingEnergyMock = new Mock<IRestingEnergyCalculator>();
@@ -23,8 +24,12 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
            .SetupGet(m => m.GoalType)
            .Returns(GoalType.loseweight);
 
-            var calc = new SuggestedDailyNutrientsIntakeCalcFake(goalMock.Object, restingEnergyMock.Object);
-            calc.SuggestedDailyCalorieIntakeExposed = 2750;
+            restingEnergyMock
+                .Setup(m => m.CalculateRestingEnergy(It.IsAny<IGoal>()))
+                .Returns(2000);
+
+            var calc = new SuggestedDailyNutrientsIntakeCalc(goalMock.Object, restingEnergyMock.Object);
+            
 
             // Act
             var actualResult = calc.CalculateSuggestedDailyFatIntake();
@@ -37,7 +42,7 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
         public void ReturnCorrectValue_WhenInvokedWithGoalTypeMaintainweightParameter()
         {
             // Arrange
-            var expectedResult = 92;
+            var expectedResult = 91;
 
             var goalMock = new Mock<IGoal>();
             var restingEnergyMock = new Mock<IRestingEnergyCalculator>();
@@ -46,14 +51,17 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
                 .SetupGet(m => m.GoalType)
                 .Returns(GoalType.maintainweight);
 
-            var calc = new SuggestedDailyNutrientsIntakeCalcFake(goalMock.Object, restingEnergyMock.Object);
-            calc.SuggestedDailyCalorieIntakeExposed = 2750;
+            restingEnergyMock
+                .Setup(m => m.CalculateRestingEnergy(It.IsAny<IGoal>()))
+                .Returns(2000);
 
+            var calc = new SuggestedDailyNutrientsIntakeCalc(goalMock.Object, restingEnergyMock.Object);
+          
             // Act
             var actualResult = calc.CalculateSuggestedDailyFatIntake();
 
             // Assert
-            Assert.AreEqual(expectedResult, actualResult);
+            Assert.AreEqual(expectedResult, (int)actualResult);
         }
 
         [TestMethod]
@@ -69,14 +77,18 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
            .SetupGet(m => m.GoalType)
            .Returns(GoalType.gainweight);
 
-            var calc = new SuggestedDailyNutrientsIntakeCalcFake(goalMock.Object, restingEnergyMock.Object);
-            calc.SuggestedDailyCalorieIntakeExposed = 2750;
+            restingEnergyMock
+                .Setup(m => m.CalculateRestingEnergy(It.IsAny<IGoal>()))
+                .Returns(2000);
+
+            var calc = new SuggestedDailyNutrientsIntakeCalc(goalMock.Object, restingEnergyMock.Object);
+            
 
             // Act
             var actualResult = calc.CalculateSuggestedDailyFatIntake();
 
             // Assert
-            Assert.AreEqual(expectedResult, actualResult);
+            Assert.AreEqual(expectedResult, (int)actualResult);
         }
     }
 }

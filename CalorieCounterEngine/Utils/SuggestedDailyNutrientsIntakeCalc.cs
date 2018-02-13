@@ -35,8 +35,7 @@ namespace CalorieCounter.Utils
                 case ActivityLevel.heavy:
                     this.DailyCalorieIntake = RestingEnergy * 1.725;
                     break;
-                default:
-                    break;
+             
             }
 
             return this.DailyCalorieIntake;
@@ -57,8 +56,7 @@ namespace CalorieCounter.Utils
                 case GoalType.gainweight:
                     macrosRatio = "Carbs:Protein:Fat = 50:30:20";
                     break;
-                default:
-                    break;
+            
             }
 
             return macrosRatio;
@@ -76,8 +74,7 @@ namespace CalorieCounter.Utils
                 case GenderType.female:
                     dailyWaterIntake = 2600;
                     break;
-                default:
-                    break;
+           
             }
 
             return dailyWaterIntake;
@@ -98,8 +95,7 @@ namespace CalorieCounter.Utils
                 case GoalType.gainweight:
                     suggestCarbsIntake = 0.5 * this.CalculateSuggestedDailyCalorieIntake() / 4;
                     break;
-                default:
-                    break;
+           
             }
 
             return suggestCarbsIntake;
@@ -120,8 +116,7 @@ namespace CalorieCounter.Utils
                 case GoalType.gainweight:
                     suggestProteinIntake = 0.3 * this.CalculateSuggestedDailyCalorieIntake() / 4;
                     break;
-                default:
-                    break;
+               
             }
 
             return suggestProteinIntake;
@@ -134,16 +129,15 @@ namespace CalorieCounter.Utils
             switch (this.currentGoal.GoalType)
             {
                 case GoalType.loseweight:
-                    suggestFatIntake = 0.35 * this.CalculateSuggestedDailyCalorieIntake() / 9;
+                    suggestFatIntake =(int) (0.35 * this.CalculateSuggestedDailyCalorieIntake() / 9);
                     break;
                 case GoalType.maintainweight:
-                    suggestFatIntake = 0.3 * this.CalculateSuggestedDailyCalorieIntake() / 9;
+                    suggestFatIntake =(int)( 0.3 * this.CalculateSuggestedDailyCalorieIntake() / 9);
                     break;
                 case GoalType.gainweight:
-                    suggestFatIntake = 0.2 * this.CalculateSuggestedDailyCalorieIntake() / 9;
+                    suggestFatIntake = (int)(0.2 * this.CalculateSuggestedDailyCalorieIntake() / 9);
                     break;
-                default:
-                    break;
+          
             }
 
             return suggestFatIntake;
