@@ -1,7 +1,7 @@
-﻿using CalorieCounter.Contracts;
+﻿using System;
+using CalorieCounter.Contracts;
 using CalorieCounter.Models.DrinksModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 
 namespace CalorieCounter.UnitTests.Models.DrinksModel.CustomDrinkTests
 {
@@ -41,7 +41,8 @@ namespace CalorieCounter.UnitTests.Models.DrinksModel.CustomDrinkTests
             var fiber = 0;
 
             // Act && Assert
-            Assert.ThrowsException<ArgumentNullException>(() => new CustomDrink(name, calories, protein, carbs, fat, sugar, fiber));
+            Assert.ThrowsException<ArgumentNullException>(() =>
+                new CustomDrink(name, calories, protein, carbs, fat, sugar, fiber));
         }
 
         [TestMethod]
@@ -49,7 +50,7 @@ namespace CalorieCounter.UnitTests.Models.DrinksModel.CustomDrinkTests
         {
             // Arrange
             var name = "ProteinShake";
-            var calories = - 5;
+            var calories = -5;
             var protein = 25;
             var carbs = 0;
             var fat = 1;
@@ -57,7 +58,8 @@ namespace CalorieCounter.UnitTests.Models.DrinksModel.CustomDrinkTests
             var fiber = 0;
 
             // Act && Assert
-            Assert.ThrowsException<ArgumentException>(() => new CustomDrink(name, calories, protein, carbs, fat, sugar, fiber));
+            Assert.ThrowsException<ArgumentException>(() =>
+                new CustomDrink(name, calories, protein, carbs, fat, sugar, fiber));
         }
 
         [TestMethod]
@@ -73,7 +75,8 @@ namespace CalorieCounter.UnitTests.Models.DrinksModel.CustomDrinkTests
             var fiber = 0;
 
             // Act && Assert
-            Assert.ThrowsException<ArgumentException>(() => new CustomDrink(name, calories, protein, carbs, fat, sugar, fiber));
+            Assert.ThrowsException<ArgumentException>(() =>
+                new CustomDrink(name, calories, protein, carbs, fat, sugar, fiber));
         }
 
         [TestMethod]
@@ -89,7 +92,8 @@ namespace CalorieCounter.UnitTests.Models.DrinksModel.CustomDrinkTests
             var fiber = 0;
 
             // Act && Assert
-            Assert.ThrowsException<ArgumentException>(() => new CustomDrink(name, calories, protein, carbs, fat, sugar, fiber));
+            Assert.ThrowsException<ArgumentException>(() =>
+                new CustomDrink(name, calories, protein, carbs, fat, sugar, fiber));
         }
 
         [TestMethod]
@@ -105,7 +109,8 @@ namespace CalorieCounter.UnitTests.Models.DrinksModel.CustomDrinkTests
             var fiber = 0;
 
             // Act && Assert
-            Assert.ThrowsException<ArgumentException>(() => new CustomDrink(name, calories, protein, carbs, fat, sugar, fiber));
+            Assert.ThrowsException<ArgumentException>(() =>
+                new CustomDrink(name, calories, protein, carbs, fat, sugar, fiber));
         }
 
         [TestMethod]
@@ -121,7 +126,8 @@ namespace CalorieCounter.UnitTests.Models.DrinksModel.CustomDrinkTests
             var fiber = 0;
 
             // Act && Assert
-            Assert.ThrowsException<ArgumentException>(() => new CustomDrink(name, calories, protein, carbs, fat, sugar, fiber));
+            Assert.ThrowsException<ArgumentException>(() =>
+                new CustomDrink(name, calories, protein, carbs, fat, sugar, fiber));
         }
 
         [TestMethod]
@@ -137,7 +143,8 @@ namespace CalorieCounter.UnitTests.Models.DrinksModel.CustomDrinkTests
             var fiber = -5;
 
             // Act && Assert
-            Assert.ThrowsException<ArgumentException>(() => new CustomDrink(name, calories, protein, carbs, fat, sugar, fiber));
+            Assert.ThrowsException<ArgumentException>(() =>
+                new CustomDrink(name, calories, protein, carbs, fat, sugar, fiber));
         }
     }
 }

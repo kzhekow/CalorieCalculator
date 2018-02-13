@@ -98,7 +98,7 @@ namespace CalorieCounter.Models
 
         public IProduct Clone()
         {
-            return (IProduct) this.MemberwiseClone();
+            return (IProduct) MemberwiseClone();
         }
 
         public string Name { get; }
@@ -126,7 +126,8 @@ namespace CalorieCounter.Models
 
         public override string ToString()
         {
-            return $"{this.Name} {this.Calories} kcal {(this.Weight == 0 ? 100 : this.Weight)} gr/ml {this.Protein} protein {this.Carbs} carbs {this.Fat} fat {this.Sugar} sugar {this.Fiber} fiber";
+            return
+                $"{this.Name} {this.Calories} kcal {(this.Weight == 0 ? 100 : this.Weight)} gr/ml {this.Protein} protein {this.Carbs} carbs {this.Fat} fat {this.Sugar} sugar {this.Fiber} fiber";
         }
     }
 }

@@ -1,25 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CalorieCounter.Factories.Contracts;
-using CalorieCounter.Models.Contracts;
+﻿using CalorieCounter.Models.Contracts;
 using CalorieCounter.Models.GoalModel;
-using CalorieCounterEngine.Contracts;
-using Moq;
 
 namespace CalorieCounter.UnitTests.Builders
 {
     internal class GoalBuilder
     {
-        private double startingWeight;
-        private double goalWeight;
-        private double height;
+        private ActivityLevel activityLevel;
         private int age;
         private GenderType genderType;
         private GoalType goalType;
-        private ActivityLevel activityLevel;
+        private double goalWeight;
+        private double height;
+        private double startingWeight;
 
         internal GoalBuilder()
         {
@@ -76,7 +68,8 @@ namespace CalorieCounter.UnitTests.Builders
 
         internal IGoal Build()
         {
-            return new Goal(this.startingWeight, this.goalWeight, this.height, this.age, this.genderType, this.goalType, this.activityLevel);
+            return new Goal(this.startingWeight, this.goalWeight, this.height, this.age, this.genderType, this.goalType,
+                this.activityLevel);
         }
     }
 }

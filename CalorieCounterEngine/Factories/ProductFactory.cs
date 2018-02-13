@@ -1,9 +1,7 @@
 ﻿using CalorieCounter.Contracts;
 using CalorieCounter.Factories.Contracts;
-using CalorieCounter.Models;
 using CalorieCounter.Models.DrinksModel;
 using CalorieCounter.Models.FoodModel;
-using System.Collections.Generic;
 
 namespace CalorieCounter.Factories
 {

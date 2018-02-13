@@ -29,12 +29,13 @@ namespace CalorieCounter.UnitTests.Utils.DailyNutriCalcTests
         {
             // Assert
             var suggestedWaterIntake = 3700;
-            var waterConsumed = - 1000;
+            var waterConsumed = -1000;
 
             var dailyNutriCal = new DailyNutriCalc();
 
             // Act
-            Assert.ThrowsException<ArgumentException>(() => dailyNutriCal.RemainingWaterIntake(suggestedWaterIntake, waterConsumed));
+            Assert.ThrowsException<ArgumentException>(() =>
+                dailyNutriCal.RemainingWaterIntake(suggestedWaterIntake, waterConsumed));
         }
     }
 }

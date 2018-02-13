@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CalorieCounter.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -14,17 +10,17 @@ namespace CalorieCounter.UnitTests.Models.DailyIntakeTests
         [TestMethod]
         public void ReduceQuantity_WhenParameterIsPositiveAndWithinRange()
         {
-                // Arrange
-                var dailyIntake = new DailyIntake();
-                var waterAdded = 1000;
-                var waterRemoved = 500;
-                dailyIntake.AddWater(waterAdded);
+            // Arrange
+            var dailyIntake = new DailyIntake();
+            var waterAdded = 1000;
+            var waterRemoved = 500;
+            dailyIntake.AddWater(waterAdded);
 
-                // Act 
-                dailyIntake.RemoveWater(waterRemoved);
+            // Act 
+            dailyIntake.RemoveWater(waterRemoved);
 
-                // Assert
-                Assert.AreEqual(dailyIntake.Water, waterAdded - waterRemoved);
+            // Assert
+            Assert.AreEqual(dailyIntake.Water, waterAdded - waterRemoved);
         }
 
         [TestMethod]

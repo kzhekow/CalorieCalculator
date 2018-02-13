@@ -1,5 +1,4 @@
-﻿using System;
-using CalorieCounter.Models.Contracts;
+﻿using CalorieCounter.Models.Contracts;
 using CalorieCounter.Utils;
 using CalorieCounterEngine.Contracts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -20,15 +19,15 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
             var restingEnergyMock = new Mock<IRestingEnergyCalculator>();
 
             goalMock
-           .SetupGet(m => m.GoalType)
-           .Returns(GoalType.loseweight);
+                .SetupGet(m => m.GoalType)
+                .Returns(GoalType.loseweight);
 
             restingEnergyMock
                 .Setup(m => m.CalculateRestingEnergy(It.IsAny<IGoal>()))
                 .Returns(2000);
 
             var calc = new SuggestedDailyNutrientsIntakeCalc();
-            
+
 
             // Act
             var actualResult = calc.CalculateSuggestedDailyProteinIntake(goalMock.Object, restingEnergyMock.Object);
@@ -55,7 +54,7 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
                 .Returns(2000);
 
             var calc = new SuggestedDailyNutrientsIntakeCalc();
-            
+
 
             // Act
             var actualResult = calc.CalculateSuggestedDailyProteinIntake(goalMock.Object, restingEnergyMock.Object);
@@ -74,15 +73,15 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
             var restingEnergyMock = new Mock<IRestingEnergyCalculator>();
 
             goalMock
-           .SetupGet(m => m.GoalType)
-           .Returns(GoalType.gainweight);
+                .SetupGet(m => m.GoalType)
+                .Returns(GoalType.gainweight);
 
             restingEnergyMock
                 .Setup(m => m.CalculateRestingEnergy(It.IsAny<IGoal>()))
                 .Returns(2000);
 
             var calc = new SuggestedDailyNutrientsIntakeCalc();
-            
+
             // Act
             var actualResult = calc.CalculateSuggestedDailyProteinIntake(goalMock.Object, restingEnergyMock.Object);
 

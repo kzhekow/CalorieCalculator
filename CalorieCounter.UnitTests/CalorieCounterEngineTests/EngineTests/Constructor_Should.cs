@@ -1,11 +1,10 @@
-﻿ using CalorieCounter.Contracts;
-using CalorieCounter.Factories.Contracts;
+﻿using System;
+using System.Collections.Generic;
+using CalorieCounter.Contracts;
+using CalorieCounter.UnitTests.Builders;
 using CalorieCounterEngine.Contracts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System;
- using System.Collections.Generic;
- using CalorieCounter.UnitTests.Builders;
 
 namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
 {
@@ -36,7 +35,8 @@ namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
 
             var jsonSerializerMock = new Mock<IJsonSerializer>();
             jsonSerializerMock.Setup(x => x.GetProducts()).Returns(new List<IProduct>());
-            Assert.IsInstanceOfType(new EngineBuilder().WithJsonSerializer(jsonSerializerMock.Object).Build(), typeof(IEngine));
+            Assert.IsInstanceOfType(new EngineBuilder().WithJsonSerializer(jsonSerializerMock.Object).Build(),
+                typeof(IEngine));
         }
 
         [TestMethod]
@@ -146,7 +146,8 @@ namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
             //    null));
 
             // Arrange, Act & Assert
-            Assert.ThrowsException<ArgumentNullException>(() => new EngineBuilder().WithRestingEnergyCalculator(null).Build());
+            Assert.ThrowsException<ArgumentNullException>(() =>
+                new EngineBuilder().WithRestingEnergyCalculator(null).Build());
         }
     }
 }

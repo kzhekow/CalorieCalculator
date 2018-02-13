@@ -1,6 +1,5 @@
 ﻿using CalorieCounter.Contracts;
 using CalorieCounter.Factories;
-using CalorieCounter.Models.DrinksModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CalorieCounter.UnitTests.Factories.ProductFactoryTests

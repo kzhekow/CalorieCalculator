@@ -1,9 +1,9 @@
-﻿using CalorieCounter.Models.Contracts;
+﻿using System;
+using CalorieCounter.Models.Contracts;
 using CalorieCounterEngine.Contracts;
 using CalorieCounterEngine.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System;
 
 namespace CalorieCounter.UnitTests.Utils.RestingEnergyTests
 {
@@ -31,7 +31,8 @@ namespace CalorieCounter.UnitTests.Utils.RestingEnergyTests
             //var goalMock = new Mock<IGoal>();
 
             // Act
-            Assert.ThrowsException<ArgumentNullException>(() => new RestingEnergyCalculator().CalculateRestingEnergy(null));
+            Assert.ThrowsException<ArgumentNullException>(() =>
+                new RestingEnergyCalculator().CalculateRestingEnergy(null));
         }
     }
 }

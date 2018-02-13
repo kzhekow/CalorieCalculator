@@ -19,15 +19,15 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
             var restingEnergyMock = new Mock<IRestingEnergyCalculator>();
 
             goalMock
-           .SetupGet(m => m.GoalType)
-           .Returns(GoalType.loseweight);
+                .SetupGet(m => m.GoalType)
+                .Returns(GoalType.loseweight);
 
             restingEnergyMock
                 .Setup(m => m.CalculateRestingEnergy(It.IsAny<IGoal>()))
                 .Returns(2000);
 
             var calc = new SuggestedDailyNutrientsIntakeCalc();
-            
+
 
             // Act
             var actualResult = calc.CalculateSuggestedDailyCarbsIntake(goalMock.Object, restingEnergyMock.Object);
@@ -54,7 +54,7 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
                 .Returns(2000);
 
             var calc = new SuggestedDailyNutrientsIntakeCalc();
-            
+
 
             // Act
             var actualResult = calc.CalculateSuggestedDailyCarbsIntake(goalMock.Object, restingEnergyMock.Object);
@@ -73,15 +73,15 @@ namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
             var restingEnergyMock = new Mock<IRestingEnergyCalculator>();
 
             goalMock
-           .SetupGet(m => m.GoalType)
-           .Returns(GoalType.gainweight);
+                .SetupGet(m => m.GoalType)
+                .Returns(GoalType.gainweight);
 
             restingEnergyMock
                 .Setup(m => m.CalculateRestingEnergy(It.IsAny<IGoal>()))
                 .Returns(2000);
 
             var calc = new SuggestedDailyNutrientsIntakeCalc();
-            
+
 
             // Act
             var actualResult = calc.CalculateSuggestedDailyCarbsIntake(goalMock.Object, restingEnergyMock.Object);

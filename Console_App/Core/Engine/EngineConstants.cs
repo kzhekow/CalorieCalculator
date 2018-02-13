@@ -1,13 +1,10 @@
-﻿using System;
-using Console_App.Core.Commands.Creating;
-
-namespace Console_App.Core.Engine
+﻿namespace Console_App.Core.Engine
 {
     public static class EngineConstants
     {
         // Commands
         internal const string CreateFoodProduct = "CreateFoodProduct";
-        
+
         internal const string CreateDrink = "CreateDrink";
         internal const string AddConsumedProduct = "AddConsumedProduct";
         internal const string AddWater = "AddWater";
@@ -18,7 +15,7 @@ namespace Console_App.Core.Engine
         internal const string ShowDailyReport = "ShowDailyReport";
         internal const string SetGoal = "SetGoal";
 
-        internal const string HelpMenu = "Available commands: \r\n" ;
+        internal const string HelpMenu = "Available commands: \r\n";
 
         // Activity levels
         internal const string Light = "Light";

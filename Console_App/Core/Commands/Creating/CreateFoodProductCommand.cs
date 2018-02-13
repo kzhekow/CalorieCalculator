@@ -37,7 +37,7 @@ namespace Console_App.Core.Commands.Creating
                     "The correct format for CreateFoodProduct is {name}{caloriePer100g}{proteinPer100g}{carbsPer100g}{fatPer100g}{sugar}{fiber}");
             }
 
-            object[] args = { name, calories, protein, carbs, fat, sugar, fiber };
+            object[] args = {name, calories, protein, carbs, fat, sugar, fiber};
             if (this.CalorieCounterEngine.CreateFoodProductCommand.CanExecute(args))
             {
                 this.CalorieCounterEngine.CreateFoodProductCommand.Execute(args);

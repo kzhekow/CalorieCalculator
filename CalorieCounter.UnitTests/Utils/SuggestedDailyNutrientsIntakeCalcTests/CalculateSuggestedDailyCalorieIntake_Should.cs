@@ -1,6 +1,4 @@
-﻿using System;
-using CalorieCounter.Contracts;
-using CalorieCounter.Models.Contracts;
+﻿using CalorieCounter.Models.Contracts;
 using CalorieCounter.Utils;
 using CalorieCounterEngine.Contracts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

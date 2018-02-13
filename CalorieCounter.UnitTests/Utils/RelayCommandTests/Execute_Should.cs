@@ -1,7 +1,7 @@
-﻿using CalorieCounter.Utils;
+﻿using System;
+using CalorieCounter.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System;
 
 namespace CalorieCounter.UnitTests.Utils.RelayCommandTests
 {
@@ -23,7 +23,7 @@ namespace CalorieCounter.UnitTests.Utils.RelayCommandTests
             //});
 
             // grozna shema
-            bool executed = false;
+            var executed = false;
             Action<object> action = o => { executed = true; };
 
             var relayCommand = new RelayCommand(action);

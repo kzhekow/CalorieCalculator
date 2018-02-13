@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CalorieCounter.Contracts;
 using CalorieCounter.Models;
 using CalorieCounter.Models.Contracts;
@@ -15,8 +13,8 @@ namespace CalorieCounterEngine.Utils
 {
     public class JsonSerializer : IJsonSerializer
     {
-        private readonly DirectoryInfo productsDirectory;
         private readonly DirectoryInfo dailyProgressDirectory;
+        private readonly DirectoryInfo productsDirectory;
 
         public JsonSerializer()
         {
@@ -34,7 +32,7 @@ namespace CalorieCounterEngine.Utils
             foreach (var fileInfo in files)
             {
                 var jsonVal = File.ReadAllText(fileInfo.DirectoryName + "\\\\" + fileInfo.Name);
-                var product = (IProduct)JsonConvert.DeserializeObject(jsonVal, settings);
+                var product = (IProduct) JsonConvert.DeserializeObject(jsonVal, settings);
                 products.Add(product);
             }
 
@@ -51,12 +49,10 @@ namespace CalorieCounterEngine.Utils
                 var jsonVal = File.ReadAllText(this.dailyProgressDirectory.FullName + "\\\\" +
                                                DateTime.Now.Date.ToString("dd-MM-yyyy"));
                 var curDay = JsonConvert.DeserializeObject(jsonVal, settings);
-                return (IDailyIntake)curDay;
+                return (IDailyIntake) curDay;
             }
-            else
-            {
-                return new DailyIntake();
-            }
+
+            return new DailyIntake();
         }
 
         public void SaveDailyIntake(IDailyIntake dailyIntake)

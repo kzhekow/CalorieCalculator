@@ -1,6 +1,6 @@
-﻿using CalorieCounter.Models.ActivityModel;
+﻿using System;
+using CalorieCounter.Models.ActivityModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 
 namespace CalorieCounter.UnitTests.Models.ActivityModel.ActivityTests
 {

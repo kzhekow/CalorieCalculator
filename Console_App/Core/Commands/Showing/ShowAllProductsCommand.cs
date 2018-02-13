@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
 using CalorieCounter.Contracts;
-using Console_App.Core.Contracts;
 
 namespace Console_App.Core.Commands.Showing
 {
@@ -16,7 +14,7 @@ namespace Console_App.Core.Commands.Showing
         public override string Execute(IList<string> parameters)
         {
             var list = new List<IProduct>();
-            var args = new object[] { list };
+            var args = new object[] {list};
             if (this.CalorieCounterEngine.GetAllProductsCommand.CanExecute(args))
             {
                 this.CalorieCounterEngine.GetAllProductsCommand.Execute(args);
@@ -35,7 +33,7 @@ namespace Console_App.Core.Commands.Showing
             }
 
             //Trim the last end line.
-            return sb.ToString().Substring(0, sb.ToString().Length -1);
+            return sb.ToString().Substring(0, sb.ToString().Length - 1);
         }
     }
 }

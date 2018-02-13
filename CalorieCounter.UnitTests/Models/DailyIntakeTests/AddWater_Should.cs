@@ -1,6 +1,6 @@
-﻿using CalorieCounter.Models;
+﻿using System;
+using CalorieCounter.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 
 namespace CalorieCounter.UnitTests.Models.DailyIntakeTests
 {

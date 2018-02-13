@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using CalorieCounter.Contracts;
+﻿using CalorieCounter.Contracts;
 
 namespace CalorieCounter.Factories.Contracts
 {

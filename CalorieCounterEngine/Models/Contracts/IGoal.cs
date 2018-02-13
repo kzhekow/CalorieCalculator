@@ -36,7 +36,5 @@
         ///     Activity can have 3 types: light, moderate, heavy.
         /// </summary>
         ActivityLevel ActivityLevel { get; }
-
-
     }
 }

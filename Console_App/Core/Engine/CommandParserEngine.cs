@@ -8,9 +8,9 @@ namespace Console_App.Core.Engine
     {
         private const string TerminationCommand = "Exit";
         private const string NullProvidersExceptionMessage = "cannot be null.";
-        private IConsoleReader reader;
-        private IConsoleWriter writer;
-        private ICommandParser parser;
+        private readonly ICommandParser parser;
+        private readonly IConsoleReader reader;
+        private readonly IConsoleWriter writer;
 
         public CommandParserEngine(IConsoleReader reader, IConsoleWriter writer, ICommandParser parser)
         {
@@ -35,7 +35,7 @@ namespace Console_App.Core.Engine
                         break;
                     }
 
-                    this.ProcessCommand(commandAsString);
+                    ProcessCommand(commandAsString);
                 }
                 catch (Exception ex)
                 {
@@ -51,9 +51,12 @@ namespace Console_App.Core.Engine
 
             sb.AppendLine("Please enter one of the following commands: ");
             sb.AppendLine();
-            sb.AppendLine($"- {EngineConstants.SetGoal} [startingWeight] [goalWeight] [height] [age] [gender: male/female] [goalType: LoseWeight/MaintainWeight/GainWeight] [activityLevel: Light/Moderate/Heavy]");
-            sb.AppendLine($"- {EngineConstants.CreateFoodProduct} [name] [caloriesPer100g] [protPer100g] [carbPer100g] [fatPer100g] [sugarPer100g] [fiberPer100g]");
-            sb.AppendLine($"- {EngineConstants.CreateDrink} [name] [caloriesPer100g] [protPer100g] [carbPer100g] [fatPer100g] [sugarPer100g] [fiberPer100g]");
+            sb.AppendLine(
+                $"- {EngineConstants.SetGoal} [startingWeight] [goalWeight] [height] [age] [gender: male/female] [goalType: LoseWeight/MaintainWeight/GainWeight] [activityLevel: Light/Moderate/Heavy]");
+            sb.AppendLine(
+                $"- {EngineConstants.CreateFoodProduct} [name] [caloriesPer100g] [protPer100g] [carbPer100g] [fatPer100g] [sugarPer100g] [fiberPer100g]");
+            sb.AppendLine(
+                $"- {EngineConstants.CreateDrink} [name] [caloriesPer100g] [protPer100g] [carbPer100g] [fatPer100g] [sugarPer100g] [fiberPer100g]");
             sb.AppendLine($"- {EngineConstants.AddConsumedProduct} [name] [weight/ml]");
             sb.AppendLine($"- {EngineConstants.AddWater} [ml]");
             sb.AppendLine($"- {EngineConstants.AddActivity} [cardio/strength] [time]");

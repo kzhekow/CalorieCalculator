@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CalorieCounter.UnitTests.Builders;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -59,7 +55,7 @@ namespace CalorieCounter.UnitTests.Models.GoalModel.GoalTests
         public void GenderTypeShouldReturnTheSettedValue_WhenParameterIsValid()
         {
             // Arrange & Act
-            var array = (GenderType[])Enum.GetValues(typeof(GenderType));
+            var array = (GenderType[]) Enum.GetValues(typeof(GenderType));
             var rndNum = new Random().Next(0, array.Length);
             var goal = new GoalBuilder().WithGenderType(array[rndNum]).Build();
 
@@ -71,7 +67,7 @@ namespace CalorieCounter.UnitTests.Models.GoalModel.GoalTests
         public void GoalTypeShouldReturnTheSettedValue_WhenParameterIsValid()
         {
             // Arrange & Act
-            var array = (GoalType[])Enum.GetValues(typeof(GoalType));
+            var array = (GoalType[]) Enum.GetValues(typeof(GoalType));
             var rndNum = new Random().Next(0, array.Length);
             var goal = new GoalBuilder().WithGoalType(array[rndNum]).Build();
 
@@ -83,7 +79,7 @@ namespace CalorieCounter.UnitTests.Models.GoalModel.GoalTests
         public void ActivityLevelShouldReturnTheSettedValue_WhenParameterIsValid()
         {
             // Arrange & Act
-            var array = (ActivityLevel[])Enum.GetValues(typeof(ActivityLevel));
+            var array = (ActivityLevel[]) Enum.GetValues(typeof(ActivityLevel));
             var rndNum = new Random().Next(0, array.Length);
             var goal = new GoalBuilder().WithActivityLevel(array[rndNum]).Build();
 

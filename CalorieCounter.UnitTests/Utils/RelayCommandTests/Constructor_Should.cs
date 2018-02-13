@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using CalorieCounter.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -23,7 +19,7 @@ namespace CalorieCounter.UnitTests.Utils.RelayCommandTests
         public void CreateInstance_WhenInvokedWithValidParameters()
         {
             // Arrange & Act
-            var rc = new RelayCommand(a => {});
+            var rc = new RelayCommand(a => { });
 
             // Assert
             Assert.IsNotNull(rc);

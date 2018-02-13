@@ -1,6 +1,6 @@
-﻿using CalorieCounter.Contracts;
+﻿using System.Collections.Generic;
+using CalorieCounter.Contracts;
 using CalorieCounter.Models.Contracts;
-using System.Collections.Generic;
 
 namespace CalorieCounterEngine.Contracts
 {

@@ -1,11 +1,12 @@
-﻿using CalorieCounter.Models.Contracts;
-using System;
+﻿using System;
+using CalorieCounter.Models.Contracts;
 
 namespace CalorieCounter.Models.GoalModel
 {
     public class Goal : IGoal
     {
-        public Goal(double startingWeight, double goalWeight, double height, int age, GenderType gender, GoalType goalType,
+        public Goal(double startingWeight, double goalWeight, double height, int age, GenderType gender,
+            GoalType goalType,
             ActivityLevel level)
         {
             if (startingWeight < 0)

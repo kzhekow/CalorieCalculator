@@ -1,7 +1,7 @@
-﻿using CalorieCounter.Contracts;
+﻿using System;
+using CalorieCounter.Contracts;
 using CalorieCounter.Models.FoodModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 
 namespace CalorieCounter.UnitTests.Models.FoodModel.CustomFoodProductTests
 {
@@ -41,7 +41,8 @@ namespace CalorieCounter.UnitTests.Models.FoodModel.CustomFoodProductTests
             var fiber = 0;
 
             // Act && Assert
-            Assert.ThrowsException<ArgumentNullException>(() => new CustomFoodProduct(name, calories, protein, carbs, fat, sugar, fiber));
+            Assert.ThrowsException<ArgumentNullException>(() =>
+                new CustomFoodProduct(name, calories, protein, carbs, fat, sugar, fiber));
         }
 
         [TestMethod]
@@ -58,7 +59,8 @@ namespace CalorieCounter.UnitTests.Models.FoodModel.CustomFoodProductTests
 
 
             // Act && Assert
-            Assert.ThrowsException<ArgumentException>(() => new CustomFoodProduct(name, calories, protein, carbs, fat, sugar, fiber));
+            Assert.ThrowsException<ArgumentException>(() =>
+                new CustomFoodProduct(name, calories, protein, carbs, fat, sugar, fiber));
         }
 
         [TestMethod]
@@ -74,7 +76,8 @@ namespace CalorieCounter.UnitTests.Models.FoodModel.CustomFoodProductTests
             var fiber = 0;
 
             // Act && Assert
-            Assert.ThrowsException<ArgumentException>(() => new CustomFoodProduct(name, calories, protein, carbs, fat, sugar, fiber));
+            Assert.ThrowsException<ArgumentException>(() =>
+                new CustomFoodProduct(name, calories, protein, carbs, fat, sugar, fiber));
         }
 
         [TestMethod]
@@ -90,7 +93,8 @@ namespace CalorieCounter.UnitTests.Models.FoodModel.CustomFoodProductTests
             var fiber = 0;
 
             // Act && Assert
-            Assert.ThrowsException<ArgumentException>(() => new CustomFoodProduct(name, calories, protein, carbs, fat, sugar, fiber));
+            Assert.ThrowsException<ArgumentException>(() =>
+                new CustomFoodProduct(name, calories, protein, carbs, fat, sugar, fiber));
         }
 
         [TestMethod]
@@ -106,7 +110,8 @@ namespace CalorieCounter.UnitTests.Models.FoodModel.CustomFoodProductTests
             var fiber = 0;
 
             // Act && Assert
-            Assert.ThrowsException<ArgumentException>(() => new CustomFoodProduct(name, calories, protein, carbs, fat, sugar, fiber));
+            Assert.ThrowsException<ArgumentException>(() =>
+                new CustomFoodProduct(name, calories, protein, carbs, fat, sugar, fiber));
         }
 
         [TestMethod]
@@ -122,7 +127,8 @@ namespace CalorieCounter.UnitTests.Models.FoodModel.CustomFoodProductTests
             var fiber = 0;
 
             // Act && Assert
-            Assert.ThrowsException<ArgumentException>(() => new CustomFoodProduct(name, calories, protein, carbs, fat, sugar, fiber));
+            Assert.ThrowsException<ArgumentException>(() =>
+                new CustomFoodProduct(name, calories, protein, carbs, fat, sugar, fiber));
         }
 
         [TestMethod]
@@ -138,7 +144,8 @@ namespace CalorieCounter.UnitTests.Models.FoodModel.CustomFoodProductTests
             var fiber = -5;
 
             // Act && Assert
-            Assert.ThrowsException<ArgumentException>(() => new CustomFoodProduct(name, calories, protein, carbs, fat, sugar, fiber));
+            Assert.ThrowsException<ArgumentException>(() =>
+                new CustomFoodProduct(name, calories, protein, carbs, fat, sugar, fiber));
         }
     }
 }

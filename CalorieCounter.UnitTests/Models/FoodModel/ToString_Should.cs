@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CalorieCounter.Models.FoodModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using CalorieCounter.Models.FoodModel;
 
 namespace CalorieCounter.UnitTests.Models.FoodModel.CustomFoodProductTests
 {

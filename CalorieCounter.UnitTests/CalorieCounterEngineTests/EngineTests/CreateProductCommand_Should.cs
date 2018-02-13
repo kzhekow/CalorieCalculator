@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using CalorieCounter.Contracts;
 using CalorieCounter.Factories.Contracts;
 using CalorieCounter.UnitTests.Builders;
@@ -16,10 +12,10 @@ namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
     public class CreateProductCommand_Should
     {
         private Mock<IDataRepository> dataRepositoryMock;
-        private Mock<IProductFactory> productFactoryMock;
-        private Mock<IProduct> productMock;
         private Mock<IJsonSerializer> jsonSerializerMock;
         private Dictionary<string, IProduct> productCollection;
+        private Mock<IProductFactory> productFactoryMock;
+        private Mock<IProduct> productMock;
 
         [TestInitialize]
         public void Setup()
@@ -28,7 +24,7 @@ namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
             this.jsonSerializerMock = new Mock<IJsonSerializer>();
             this.dataRepositoryMock = new Mock<IDataRepository>();
             this.dataRepositoryMock.Setup(x => x.Products).Returns(this.productCollection);
-            this.productFactoryMock= new Mock<IProductFactory>();
+            this.productFactoryMock = new Mock<IProductFactory>();
             this.productMock = new Mock<IProduct>();
             this.productMock.Setup(x => x.Name).Returns("mockedName");
         }
@@ -50,7 +46,8 @@ namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
                 .WithProductFactory(this.productFactoryMock.Object).Build();
             var args = new object[] {name, caloriesPer100g, proteinPer100g, carbsPer100g, fatsPer100g};
             engine.CreateFoodProductCommand.Execute(args);
-            this.productFactoryMock.Verify(x => x.CreateFoodProduct(name, caloriesPer100g, proteinPer100g, carbsPer100g, 0, 0, 0), Times.Once);
+            this.productFactoryMock.Verify(
+                x => x.CreateFoodProduct(name, caloriesPer100g, proteinPer100g, carbsPer100g, 0, 0, 0), Times.Once);
         }
 
         [TestMethod]
@@ -66,9 +63,10 @@ namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
             this.productFactoryMock
                 .Setup(x => x.CreateFoodProduct(name, caloriesPer100g, proteinPer100g, carbsPer100g, 0, 0, 0))
                 .Returns(this.productMock.Object);
-            var engine = new EngineBuilder().WithJsonSerializer(this.jsonSerializerMock.Object).WithDataRepository(this.dataRepositoryMock.Object)
+            var engine = new EngineBuilder().WithJsonSerializer(this.jsonSerializerMock.Object)
+                .WithDataRepository(this.dataRepositoryMock.Object)
                 .WithProductFactory(this.productFactoryMock.Object).Build();
-            var args = new object[] { name, caloriesPer100g, proteinPer100g, carbsPer100g, fatsPer100g };
+            var args = new object[] {name, caloriesPer100g, proteinPer100g, carbsPer100g, fatsPer100g};
             engine.CreateFoodProductCommand.Execute(args);
             this.jsonSerializerMock.Verify(x => x.SaveAllProducts(this.productCollection), Times.Once);
         }

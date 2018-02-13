@@ -11,10 +11,7 @@ namespace Console_App.Core.Commands
             this.CalorieCounterEngine = calorieCounterEngine;
         }
 
-        protected IEngine CalorieCounterEngine
-        {
-            get;
-        }
+        protected IEngine CalorieCounterEngine { get; }
 
         public abstract string Execute(IList<string> parameters);
     }

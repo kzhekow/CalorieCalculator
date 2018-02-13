@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CalorieCounter.Contracts;
+﻿using CalorieCounter.Contracts;
 using CalorieCounter.Factories.Contracts;
 using CalorieCounterEngine.Contracts;
 using Moq;
@@ -12,14 +7,14 @@ namespace CalorieCounter.UnitTests.Builders
 {
     internal class EngineBuilder
     {
-        private IProductFactory productFactory;
         private IActivityFactory activityFactory;
-        private IGoalFactory goalFactory;
         private IDailyNutriCalc dailyNutriCalc;
-        private IRestingEnergyCalculator restingEnergyCalculator;
-        private IJsonSerializer jsonSerializer;
         private IDataRepository dataRepository;
-        private ISuggestedDailyNutrientsIntakeCalc suggestedDailyNutrientsIntakeCalc;
+        private IGoalFactory goalFactory;
+        private IJsonSerializer jsonSerializer;
+        private IProductFactory productFactory;
+        private IRestingEnergyCalculator restingEnergyCalculator;
+        private readonly ISuggestedDailyNutrientsIntakeCalc suggestedDailyNutrientsIntakeCalc;
 
         internal EngineBuilder()
         {
@@ -62,7 +57,7 @@ namespace CalorieCounter.UnitTests.Builders
             this.restingEnergyCalculator = restingEnergyCalculator;
             return this;
         }
-        
+
         internal EngineBuilder WithJsonSerializer(IJsonSerializer jsonSerializer)
         {
             this.jsonSerializer = jsonSerializer;

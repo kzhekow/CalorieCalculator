@@ -16,6 +16,5 @@ namespace Console_App.Core.Commands.Showing
 
             return dailyReport;
         }
-
     }
 }

@@ -1,51 +1,47 @@
-﻿using Bytes2you.Validation;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Windows.Input;
+using Bytes2you.Validation;
 using CalorieCounter.Contracts;
 using CalorieCounter.Factories.Contracts;
 using CalorieCounter.Models.Contracts;
 using CalorieCounter.Utils;
 using CalorieCounterEngine.Contracts;
-using CalorieCounterEngine.Utils;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Windows.Input;
 
 namespace CalorieCounter
 {
     public sealed class Engine : IEngine
     {
         private readonly IActivityFactory activityFactory;
-        private readonly IGoalFactory goalFactory;
         private readonly IDailyNutriCalc dailyNutriCalc;
-        private ISuggestedDailyNutrientsIntakeCalc suggestedDailyNutrientsIntakeCalc;
-        private IRestingEnergyCalculator restingEnergyCalculator;
-        private readonly IProductFactory productFactory;
 
         private readonly IDataRepository dataRepository;
+        private readonly IGoalFactory goalFactory;
+
+        private readonly IJsonSerializer jsonSerializer;
+        private readonly IProductFactory productFactory;
         private ICommand addActivityCommand;
         private ICommand addConsumedProductCommand;
         private ICommand addWaterCommand;
 
         private ICommand createDrinkCommand;
         private ICommand createProductCommand;
-        private ICommand setGoalCommand;
 
         private IDailyIntake currentDayCalorieTracker;
         private ICommand getAllProductsCommand;
-
-        private readonly IJsonSerializer jsonSerializer;
+        private readonly IRestingEnergyCalculator restingEnergyCalculator;
+        private ICommand setGoalCommand;
+        private readonly ISuggestedDailyNutrientsIntakeCalc suggestedDailyNutrientsIntakeCalc;
 
         public Engine(
-            IProductFactory productFactory, 
-            IActivityFactory activityFactory, 
+            IProductFactory productFactory,
+            IActivityFactory activityFactory,
             IGoalFactory goalFactory,
             IDailyNutriCalc dailyNutriCalc,
             IRestingEnergyCalculator restingEnergyCalculator,
-            IJsonSerializer jsonSerializer, 
-            IDataRepository dataRepository, 
+            IJsonSerializer jsonSerializer,
+            IDataRepository dataRepository,
             ISuggestedDailyNutrientsIntakeCalc suggestedDailyNutrientsIntakeCalc)
         {
             Guard.WhenArgument(productFactory, "Product factory can not be null").IsNull().Throw();
@@ -64,7 +60,7 @@ namespace CalorieCounter
             this.suggestedDailyNutrientsIntakeCalc = suggestedDailyNutrientsIntakeCalc;
 
             // JSON deserialization for current date.
-            this.LoadProgress();
+            LoadProgress();
         }
 
         public ICommand CreateFoodProductCommand
@@ -73,7 +69,7 @@ namespace CalorieCounter
             {
                 if (this.createProductCommand == null)
                 {
-                    this.createProductCommand = new RelayCommand(this.CreateProduct);
+                    this.createProductCommand = new RelayCommand(CreateProduct);
                 }
 
                 return this.createProductCommand;
@@ -86,7 +82,7 @@ namespace CalorieCounter
             {
                 if (this.createDrinkCommand == null)
                 {
-                    this.createDrinkCommand = new RelayCommand(this.CreateDrink);
+                    this.createDrinkCommand = new RelayCommand(CreateDrink);
                 }
 
                 return this.createDrinkCommand;
@@ -99,7 +95,7 @@ namespace CalorieCounter
             {
                 if (this.addConsumedProductCommand == null)
                 {
-                    this.addConsumedProductCommand = new RelayCommand(this.AddConsumedProduct);
+                    this.addConsumedProductCommand = new RelayCommand(AddConsumedProduct);
                 }
 
                 return this.addConsumedProductCommand;
@@ -112,7 +108,7 @@ namespace CalorieCounter
             {
                 if (this.addWaterCommand == null)
                 {
-                    this.addWaterCommand = new RelayCommand(this.AddWater);
+                    this.addWaterCommand = new RelayCommand(AddWater);
                 }
 
                 return this.addWaterCommand;
@@ -125,7 +121,7 @@ namespace CalorieCounter
             {
                 if (this.addActivityCommand == null)
                 {
-                    this.addActivityCommand = new RelayCommand(this.AddActivity);
+                    this.addActivityCommand = new RelayCommand(AddActivity);
                 }
 
                 return this.addActivityCommand;
@@ -138,7 +134,7 @@ namespace CalorieCounter
             {
                 if (this.getAllProductsCommand == null)
                 {
-                    this.getAllProductsCommand = new RelayCommand(this.GetAllProducts);
+                    this.getAllProductsCommand = new RelayCommand(GetAllProducts);
                 }
 
                 return this.getAllProductsCommand;
@@ -151,7 +147,7 @@ namespace CalorieCounter
             {
                 if (this.setGoalCommand == null)
                 {
-                    this.setGoalCommand = new RelayCommand(this.SetGoal);
+                    this.setGoalCommand = new RelayCommand(SetGoal);
                 }
 
                 return this.setGoalCommand;
@@ -167,24 +163,44 @@ namespace CalorieCounter
 
             var sb = new StringBuilder();
             sb.Append("Remaining calories intake: ");
-            sb.AppendLine(((int)dailyNutriCalc.RemainingCaloriesIntake(this.suggestedDailyNutrientsIntakeCalc.CalculateSuggestedDailyCalorieIntake(this.currentDayCalorieTracker.Goal, this.restingEnergyCalculator), this.currentDayCalorieTracker.ProductsConsumed, this.currentDayCalorieTracker.ActivitiesPerformed)).ToString());
+            sb.AppendLine(((int) this.dailyNutriCalc.RemainingCaloriesIntake(
+                    this.suggestedDailyNutrientsIntakeCalc.CalculateSuggestedDailyCalorieIntake(
+                        this.currentDayCalorieTracker.Goal, this.restingEnergyCalculator),
+                    this.currentDayCalorieTracker.ProductsConsumed, this.currentDayCalorieTracker.ActivitiesPerformed))
+                .ToString());
             sb.Append("Remaining protein intake: ");
-            sb.AppendLine(((int)dailyNutriCalc.RemainingProteinIntake(this.suggestedDailyNutrientsIntakeCalc.CalculateSuggestedDailyProteinIntake(this.currentDayCalorieTracker.Goal, this.restingEnergyCalculator), this.currentDayCalorieTracker.ProductsConsumed)).ToString());
+            sb.AppendLine(((int) this.dailyNutriCalc.RemainingProteinIntake(
+                this.suggestedDailyNutrientsIntakeCalc.CalculateSuggestedDailyProteinIntake(
+                    this.currentDayCalorieTracker.Goal, this.restingEnergyCalculator),
+                this.currentDayCalorieTracker.ProductsConsumed)).ToString());
             sb.Append("Remaining carbs intake: ");
-            sb.AppendLine(((int)dailyNutriCalc.RemainingCarbsIntake(this.suggestedDailyNutrientsIntakeCalc.CalculateSuggestedDailyCarbsIntake(this.currentDayCalorieTracker.Goal, this.restingEnergyCalculator), this.currentDayCalorieTracker.ProductsConsumed)).ToString());
+            sb.AppendLine(((int) this.dailyNutriCalc.RemainingCarbsIntake(
+                this.suggestedDailyNutrientsIntakeCalc.CalculateSuggestedDailyCarbsIntake(
+                    this.currentDayCalorieTracker.Goal, this.restingEnergyCalculator),
+                this.currentDayCalorieTracker.ProductsConsumed)).ToString());
             sb.Append("Remaining fat intake: ");
-            sb.AppendLine(((int)dailyNutriCalc.RemainingFatsIntake(this.suggestedDailyNutrientsIntakeCalc.CalculateSuggestedDailyFatIntake(this.currentDayCalorieTracker.Goal, this.restingEnergyCalculator), this.currentDayCalorieTracker.ProductsConsumed)).ToString());
+            sb.AppendLine(((int) this.dailyNutriCalc.RemainingFatsIntake(
+                this.suggestedDailyNutrientsIntakeCalc.CalculateSuggestedDailyFatIntake(
+                    this.currentDayCalorieTracker.Goal, this.restingEnergyCalculator),
+                this.currentDayCalorieTracker.ProductsConsumed)).ToString());
             sb.Append("Remaining water intake: ");
-            sb.AppendLine(((int)dailyNutriCalc.RemainingWaterIntake(this.suggestedDailyNutrientsIntakeCalc.CalculateSuggestedWaterIntake(this.currentDayCalorieTracker.Goal), this.currentDayCalorieTracker.Water)).ToString());
+            sb.AppendLine(this.dailyNutriCalc
+                .RemainingWaterIntake(
+                    this.suggestedDailyNutrientsIntakeCalc.CalculateSuggestedWaterIntake(this.currentDayCalorieTracker
+                        .Goal), this.currentDayCalorieTracker.Water).ToString());
             sb.Append("Current day macros ratio: ");
 
-            if (this.currentDayCalorieTracker.ProductsConsumed == null || this.currentDayCalorieTracker.ProductsConsumed.Count == 0)
+            if (this.currentDayCalorieTracker.ProductsConsumed == null ||
+                this.currentDayCalorieTracker.ProductsConsumed.Count == 0)
             {
-                sb.AppendLine(this.suggestedDailyNutrientsIntakeCalc.CalculateSuggestedMacrosRatio(this.currentDayCalorieTracker.Goal));
+                sb.AppendLine(
+                    this.suggestedDailyNutrientsIntakeCalc.CalculateSuggestedMacrosRatio(this.currentDayCalorieTracker
+                        .Goal));
             }
             else
             {
-                sb.AppendLine(dailyNutriCalc.CurrentDayMacrosRatio(this.currentDayCalorieTracker.ProductsConsumed));
+                sb.AppendLine(
+                    this.dailyNutriCalc.CurrentDayMacrosRatio(this.currentDayCalorieTracker.ProductsConsumed));
             }
 
             return sb.ToString().TrimEnd();
@@ -220,66 +236,67 @@ namespace CalorieCounter
 
             //unboxing the values
             var args = parameter as object[];
-            var name = (string)args[0];
-            var caloriesPer100g = (int)args[1];
-            var proteinPer100g = (int)args[2];
-            var carbsPer100g = (int)args[3];
-            var fatsPer100g = (int)args[4];
-            var sugar = args.Length > 5 ? (int)args[5] : 0;
-            var fiber = args.Length > 6 ? (int)args[6] : 0;
+            var name = (string) args[0];
+            var caloriesPer100g = (int) args[1];
+            var proteinPer100g = (int) args[2];
+            var carbsPer100g = (int) args[3];
+            var fatsPer100g = (int) args[4];
+            var sugar = args.Length > 5 ? (int) args[5] : 0;
+            var fiber = args.Length > 6 ? (int) args[6] : 0;
 
             var product = this.productFactory.CreateFoodProduct(name, caloriesPer100g, proteinPer100g, carbsPer100g,
                 fatsPer100g, sugar, fiber);
             this.dataRepository.Products.Add(product.Name, product);
 
-            this.SaveProgress();
+            SaveProgress();
         }
 
         private void CreateDrink(object parameter)
         {
             var args = parameter as object[];
-            var name = (string)args[0];
-            var caloriesPer100g = (int)args[1];
-            var proteinPer100g = (int)args[2];
-            var carbsPer100g = (int)args[3];
-            var fatsPer100g = (int)args[4];
-            var sugar = (int)args[5];
-            var fiber = (int)args[6];
+            var name = (string) args[0];
+            var caloriesPer100g = (int) args[1];
+            var proteinPer100g = (int) args[2];
+            var carbsPer100g = (int) args[3];
+            var fatsPer100g = (int) args[4];
+            var sugar = (int) args[5];
+            var fiber = (int) args[6];
 
             var drink = this.productFactory.CreateDrink(name, caloriesPer100g, proteinPer100g, carbsPer100g,
                 fatsPer100g, sugar, fiber);
             this.dataRepository.Products.Add(drink.Name, drink);
-            this.SaveProgress();
+            SaveProgress();
         }
 
         private void AddConsumedProduct(object parameter)
         {
             var args = parameter as object[];
-            var name = (string)args[0];
-            var weightVolume = (int)args[1]; //grams or mililiters (depending on the product type)
+            var name = (string) args[0];
+            var weightVolume = (int) args[1]; //grams or mililiters (depending on the product type)
 
-            Guard.WhenArgument(this.dataRepository.Products.ContainsKey(name), "There is no product with that name.").IsFalse()
+            Guard.WhenArgument(this.dataRepository.Products.ContainsKey(name), "There is no product with that name.")
+                .IsFalse()
                 .Throw();
             var productCopy = this.dataRepository.Products[name].Clone();
             productCopy.Weight = weightVolume;
             this.currentDayCalorieTracker.AddProduct(productCopy);
-            this.SaveProgress();
+            SaveProgress();
         }
 
         private void AddWater(object parameter)
         {
             var args = parameter as object[];
-            var weightVolume = (int)args[0]; //grams or mililiters (depending on the product type)
+            var weightVolume = (int) args[0]; //grams or mililiters (depending on the product type)
 
             this.currentDayCalorieTracker.AddWater(weightVolume);
-            this.SaveProgress();
+            SaveProgress();
         }
 
         private void AddActivity(object parameter)
         {
             var args = parameter as object[];
-            var activityTypeString = (string)args[0];
-            var time = (int)args[1];
+            var activityTypeString = (string) args[0];
+            var time = (int) args[1];
 
             Guard.WhenArgument(time, "Time cannot be negative value.").IsLessThan(0).Throw();
             if (!Enum.TryParse(activityTypeString.ToLower(), true, out ActivityType activityType))
@@ -289,13 +306,13 @@ namespace CalorieCounter
 
             var activity = this.activityFactory.CreateActivity(time, activityType);
             this.currentDayCalorieTracker.AddActivity(activity);
-            this.SaveProgress();
+            SaveProgress();
         }
 
         private void GetAllProducts(object parameter)
         {
             var args = parameter as object[];
-            var listToBeFilled = (ICollection<IProduct>)args[0];
+            var listToBeFilled = (ICollection<IProduct>) args[0];
 
             listToBeFilled.Clear();
             foreach (var product in this.dataRepository.Products)
@@ -307,29 +324,32 @@ namespace CalorieCounter
         private void SetGoal(object parameter)
         {
             var args = parameter as object[];
-            var startingWeight = (double)args[0];
-            var goalWeight = (double)args[1];
-            var height = (double)args[2];
-            var age = (int)args[3];
-            var gender = (GenderType)args[4];
-            var goalType = (GoalType)args[5];
-            var activityLevel = (ActivityLevel)args[6];
+            var startingWeight = (double) args[0];
+            var goalWeight = (double) args[1];
+            var height = (double) args[2];
+            var age = (int) args[3];
+            var gender = (GenderType) args[4];
+            var goalType = (GoalType) args[5];
+            var activityLevel = (ActivityLevel) args[6];
 
-            var goal = goalFactory.CreateGoal(startingWeight, goalWeight, height, age, gender, goalType, activityLevel);
+            var goal = this.goalFactory.CreateGoal(startingWeight, goalWeight, height, age, gender, goalType,
+                activityLevel);
             this.currentDayCalorieTracker.Goal = goal;
-            this.SaveProgress();
+            SaveProgress();
         }
 
 
         private void LoadProgress()
         {
             var products = this.jsonSerializer.GetProducts();
-            if(products != null)
-            foreach (var product in products)
+            if (products != null)
             {
-                if (!this.dataRepository.Products.ContainsKey(product.Name))
+                foreach (var product in products)
                 {
-                    this.dataRepository.Products.Add(product.Name, product);
+                    if (!this.dataRepository.Products.ContainsKey(product.Name))
+                    {
+                        this.dataRepository.Products.Add(product.Name, product);
+                    }
                 }
             }
 
@@ -339,7 +359,7 @@ namespace CalorieCounter
         private void SaveProgress()
         {
             this.jsonSerializer.SaveAllProducts(this.dataRepository.Products);
-            this.jsonSerializer.SaveDailyIntake(this.currentDayCalorieTracker); 
+            this.jsonSerializer.SaveDailyIntake(this.currentDayCalorieTracker);
         }
     }
 }

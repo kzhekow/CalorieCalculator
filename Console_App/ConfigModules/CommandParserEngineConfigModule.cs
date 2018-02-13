@@ -1,4 +1,5 @@
-﻿using Autofac;
+﻿using System.Configuration;
+using Autofac;
 using Console_App.Contracts;
 using Console_App.Core.Commands.Adding;
 using Console_App.Core.Commands.Creating;
@@ -8,7 +9,6 @@ using Console_App.Core.Contracts;
 using Console_App.Core.Engine;
 using Console_App.Core.Providers;
 using Console_App.Factories;
-using System.Configuration;
 
 namespace Console_App.ConfigModules
 {
@@ -33,30 +33,34 @@ namespace Console_App.ConfigModules
 
             if (isTestEnv)
             {
-                builder.RegisterType<ShowAllProductsCommand>().Named<ICommand>("showallproductsTestEnv").SingleInstance();
-                builder.RegisterType<ShowDailyReportCommand>().Named<ICommand>("showdailyreportTestEnv").SingleInstance();
-                builder.RegisterType<ShowRemainingNutrientsCommand>().Named<ICommand>("showremainingnutrientsTestEnv").SingleInstance();
+                builder.RegisterType<ShowAllProductsCommand>().Named<ICommand>("showallproductsTestEnv")
+                    .SingleInstance();
+                builder.RegisterType<ShowDailyReportCommand>().Named<ICommand>("showdailyreportTestEnv")
+                    .SingleInstance();
+                builder.RegisterType<ShowRemainingNutrientsCommand>().Named<ICommand>("showremainingnutrientsTestEnv")
+                    .SingleInstance();
 
                 builder.RegisterType<LoggerCommandDecorator>().Named<ICommand>("showallproducts")
                     .WithParameter(
-                    (pi, ctx) => pi.Name == "command",
-                    (pi, ctx) => ctx.ResolveNamed<ICommand>("showallproductsTestEnv")).SingleInstance();
+                        (pi, ctx) => pi.Name == "command",
+                        (pi, ctx) => ctx.ResolveNamed<ICommand>("showallproductsTestEnv")).SingleInstance();
 
                 builder.RegisterType<LoggerCommandDecorator>().Named<ICommand>("showdailyreport")
-                   .WithParameter(
-                   (pi, ctx) => pi.Name == "command",
-                   (pi, ctx) => ctx.ResolveNamed<ICommand>("showdailyreportTestEnv")).SingleInstance();
+                    .WithParameter(
+                        (pi, ctx) => pi.Name == "command",
+                        (pi, ctx) => ctx.ResolveNamed<ICommand>("showdailyreportTestEnv")).SingleInstance();
 
                 builder.RegisterType<LoggerCommandDecorator>().Named<ICommand>("showremainingnutrients")
-                   .WithParameter(
-                   (pi, ctx) => pi.Name == "command",
-                   (pi, ctx) => ctx.ResolveNamed<ICommand>("showremainingnutrientsTestEnv")).SingleInstance();
+                    .WithParameter(
+                        (pi, ctx) => pi.Name == "command",
+                        (pi, ctx) => ctx.ResolveNamed<ICommand>("showremainingnutrientsTestEnv")).SingleInstance();
             }
             else
             {
                 builder.RegisterType<ShowAllProductsCommand>().Named<ICommand>("showallproducts").SingleInstance();
                 builder.RegisterType<ShowDailyReportCommand>().Named<ICommand>("showdailyreport").SingleInstance();
-                builder.RegisterType<ShowRemainingNutrientsCommand>().Named<ICommand>("showremainingnutrients").SingleInstance();
+                builder.RegisterType<ShowRemainingNutrientsCommand>().Named<ICommand>("showremainingnutrients")
+                    .SingleInstance();
             }
         }
     }

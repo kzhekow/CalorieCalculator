@@ -1,5 +1,5 @@
-﻿using Console_App.Core.Contracts;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Console_App.Core.Contracts;
 
 namespace Console_App.Core.Commands.Decorators
 {
@@ -16,7 +16,7 @@ namespace Console_App.Core.Commands.Decorators
 
         public string Execute(IList<string> parameters)
         {
-            writer.WriteLine("DECORATOR: We currently are in Test Environment!");
+            this.writer.WriteLine("DECORATOR: We currently are in Test Environment!");
             return this.command.Execute(parameters);
         }
     }

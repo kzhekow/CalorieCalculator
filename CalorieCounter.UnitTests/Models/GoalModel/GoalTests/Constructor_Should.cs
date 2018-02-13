@@ -1,8 +1,7 @@
-﻿using CalorieCounter.Models.Contracts;
-using CalorieCounter.Models.GoalModel;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
+using CalorieCounter.Models.Contracts;
 using CalorieCounter.UnitTests.Builders;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CalorieCounter.UnitTests.Models.GoalModel.GoalTests
 {

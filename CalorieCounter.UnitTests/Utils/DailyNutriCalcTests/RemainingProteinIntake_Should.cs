@@ -1,8 +1,8 @@
-﻿using CalorieCounter.Contracts;
+﻿using System.Collections.Generic;
+using CalorieCounter.Contracts;
 using CalorieCounter.Models.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System.Collections.Generic;
 
 namespace CalorieCounter.UnitTests.Utils.DailyNutriCalcTests
 {
@@ -23,13 +23,13 @@ namespace CalorieCounter.UnitTests.Utils.DailyNutriCalcTests
                 .Returns(20);
 
             secondProduct
-               .SetupGet(m => m.Protein)
-               .Returns(25);
+                .SetupGet(m => m.Protein)
+                .Returns(25);
 
             var expectedResult = 54; // 99 - 45
-            ICollection<IProduct> productConsumed = new List<IProduct>() { firstProduct.Object, secondProduct.Object };
+            ICollection<IProduct> productConsumed = new List<IProduct> {firstProduct.Object, secondProduct.Object};
             var dailyNutriCalcMock = new DailyNutriCalc();
-            
+
             // Act
             var actualResult = dailyNutriCalcMock.RemainingProteinIntake(suggestedDailyProteinIntake, productConsumed);
 

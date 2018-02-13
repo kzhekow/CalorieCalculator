@@ -1,7 +1,7 @@
-﻿using CalorieCounter.Models.Contracts;
+﻿using System;
+using CalorieCounter.Models.Contracts;
 using CalorieCounter.Models.DrinksModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 
 namespace CalorieCounter.UnitTests.Models.DrinksModel.WaterTests
 {

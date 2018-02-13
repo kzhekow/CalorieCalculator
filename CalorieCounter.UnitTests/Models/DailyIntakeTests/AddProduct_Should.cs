@@ -1,8 +1,8 @@
-﻿using CalorieCounter.Contracts;
+﻿using System;
+using CalorieCounter.Contracts;
 using CalorieCounter.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System;
 
 namespace CalorieCounter.UnitTests.Models.DailyIntakeTests
 {

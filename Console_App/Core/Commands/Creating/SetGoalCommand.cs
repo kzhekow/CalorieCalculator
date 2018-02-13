@@ -2,18 +2,14 @@
 using System.Collections.Generic;
 using CalorieCounter.Contracts;
 using CalorieCounter.CustomException;
-using Console_App.Core.Contracts;
-using Console_App.Core.Engine;
 
 namespace Console_App.Core.Commands.Creating
 {
     internal class SetGoalCommand : BaseCommand
     {
-
-        public SetGoalCommand(IEngine calorieCounterEngine) 
+        public SetGoalCommand(IEngine calorieCounterEngine)
             : base(calorieCounterEngine)
         {
-
         }
 
         public override string Execute(IList<string> parameters)
@@ -27,7 +23,7 @@ namespace Console_App.Core.Commands.Creating
             ActivityLevel acitvityLevel;
 
             //sb.AppendLine($"- {EngineConstants.CreateGoal} [startingWeight] [goalWeight] [height] [age] [gender] [goalType] [activityLevel]");
-            
+
             try
 
             {
@@ -35,9 +31,9 @@ namespace Console_App.Core.Commands.Creating
                 goalWeight = double.Parse(parameters[1]);
                 height = double.Parse(parameters[2]);
                 age = int.Parse(parameters[3]);
-                gender = (GenderType)Enum.Parse(typeof(GenderType), parameters[4].ToLower());
-                goalType = (GoalType)Enum.Parse(typeof(GoalType), parameters[5].ToLower());
-                acitvityLevel = (ActivityLevel)Enum.Parse(typeof(ActivityLevel), parameters[6].ToLower());
+                gender = (GenderType) Enum.Parse(typeof(GenderType), parameters[4].ToLower());
+                goalType = (GoalType) Enum.Parse(typeof(GoalType), parameters[5].ToLower());
+                acitvityLevel = (ActivityLevel) Enum.Parse(typeof(ActivityLevel), parameters[6].ToLower());
             }
             catch
             {
@@ -45,7 +41,7 @@ namespace Console_App.Core.Commands.Creating
                     "[startingWeight] [goalWeight] [height] [age] [gender: male/female] [goalType: LoseWeight/MaintainWeight/GainWeight] [activityLevel: Light/Moderate/Heavy]");
             }
 
-            object[] args = { startingWeight, goalWeight, height, age, gender, goalType, acitvityLevel };
+            object[] args = {startingWeight, goalWeight, height, age, gender, goalType, acitvityLevel};
             if (this.CalorieCounterEngine.SetGoalCommand.CanExecute(args))
             {
                 this.CalorieCounterEngine.SetGoalCommand.Execute(args);

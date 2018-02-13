@@ -6,10 +6,10 @@ namespace CalorieCounter.Contracts
     public interface ISuggestedDailyNutrientsIntakeCalc
     {
         /// <summary>
-        /// Stores suggested daily calorie intake
+        ///     Stores suggested daily calorie intake
         /// </summary>
         double DailyCalorieIntake { get; }
-       
+
         /// <summary>
         ///     Calcultates the suggested macros ratio of the user, taking in mind his goal.
         /// </summary>
@@ -24,7 +24,8 @@ namespace CalorieCounter.Contracts
         /// <returns>
         ///     Returns integer of the number.
         /// </returns>
-        double CalculateSuggestedDailyCalorieIntake(IGoal currentGoal, IRestingEnergyCalculator restingEnergyCalculator);
+        double CalculateSuggestedDailyCalorieIntake(IGoal currentGoal,
+            IRestingEnergyCalculator restingEnergyCalculator);
 
         /// <summary>
         ///     Calculates the suggested daily water intake of the user.
@@ -40,7 +41,8 @@ namespace CalorieCounter.Contracts
         /// <returns>
         ///     Returns a double of the number.
         /// </returns>
-        double CalculateSuggestedDailyProteinIntake(IGoal currentGoal, IRestingEnergyCalculator restingEnergyCalculator);
+        double CalculateSuggestedDailyProteinIntake(IGoal currentGoal,
+            IRestingEnergyCalculator restingEnergyCalculator);
 
         /// <summary>
         ///     Calculates Suggested daily carbs intake.

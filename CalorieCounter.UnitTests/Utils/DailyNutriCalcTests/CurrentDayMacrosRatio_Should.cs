@@ -1,8 +1,8 @@
-﻿using CalorieCounter.Contracts;
+﻿using System.Collections.Generic;
+using CalorieCounter.Contracts;
 using CalorieCounter.Models.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System.Collections.Generic;
 
 namespace CalorieCounter.UnitTests.Utils.DailyNutriCalcTests
 {
@@ -26,12 +26,12 @@ namespace CalorieCounter.UnitTests.Utils.DailyNutriCalcTests
                 .Returns(20);
 
             firstProduct
-               .SetupGet(m => m.Carbs)
-               .Returns(25);
+                .SetupGet(m => m.Carbs)
+                .Returns(25);
 
             firstProduct
-               .SetupGet(m => m.Fat)
-               .Returns(1);
+                .SetupGet(m => m.Fat)
+                .Returns(1);
 
             secondProduct
                 .SetupGet(m => m.Calories)
@@ -42,12 +42,12 @@ namespace CalorieCounter.UnitTests.Utils.DailyNutriCalcTests
                 .Returns(25);
 
             secondProduct
-               .SetupGet(m => m.Carbs)
-               .Returns(40);
+                .SetupGet(m => m.Carbs)
+                .Returns(40);
 
             secondProduct
-               .SetupGet(m => m.Fat)
-               .Returns(5);
+                .SetupGet(m => m.Fat)
+                .Returns(5);
 
             thirdProduct
                 .SetupGet(m => m.Calories)
@@ -58,15 +58,16 @@ namespace CalorieCounter.UnitTests.Utils.DailyNutriCalcTests
                 .Returns(8);
 
             thirdProduct
-               .SetupGet(m => m.Carbs)
-               .Returns(70);
+                .SetupGet(m => m.Carbs)
+                .Returns(70);
 
             thirdProduct
-               .SetupGet(m => m.Fat)
-               .Returns(10);
+                .SetupGet(m => m.Fat)
+                .Returns(10);
 
             var dailyNutriCalc = new DailyNutriCalc();
-            ICollection<IProduct> productsConsumed = new List<IProduct>() { firstProduct.Object, secondProduct.Object, thirdProduct.Object };
+            ICollection<IProduct> productsConsumed =
+                new List<IProduct> {firstProduct.Object, secondProduct.Object, thirdProduct.Object};
 
             var carbsCalories = 540;
             var proteinCalories = 212;

@@ -1,7 +1,7 @@
-﻿using Console_App.Contracts;
-using Console_App.Core.Contracts;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Console_App.Contracts;
+using Console_App.Core.Contracts;
 
 namespace Console_App.Core.Providers
 {

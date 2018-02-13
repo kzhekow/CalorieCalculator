@@ -4,7 +4,6 @@ using CalorieCounter.Utils;
 using CalorieCounterEngine.Contracts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System;
 
 namespace CalorieCounter.UnitTests.Utils.SuggestedDailyNutrientsIntakeCalcTests
 {

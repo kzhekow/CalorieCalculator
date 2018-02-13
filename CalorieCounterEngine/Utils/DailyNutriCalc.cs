@@ -1,9 +1,9 @@
-﻿using CalorieCounter.Contracts;
-using CalorieCounter.Models.Contracts;
-using CalorieCounterEngine.Contracts;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using CalorieCounter.Contracts;
+using CalorieCounter.Models.Contracts;
+using CalorieCounterEngine.Contracts;
 
 namespace CalorieCounter.Models.Utils
 {
@@ -51,6 +51,7 @@ namespace CalorieCounter.Models.Utils
 
                 return suggestedCarbsDailyIntake - currentCarbIntake;
             }
+
             return suggestedCarbsDailyIntake;
         }
 
@@ -62,6 +63,7 @@ namespace CalorieCounter.Models.Utils
                 double currentFatIntake = productsConsumed.Sum(p => p.Fat);
                 return suggestedFatsDailyIntake - currentFatIntake;
             }
+
             return suggestedFatsDailyIntake;
         }
 
@@ -101,11 +103,11 @@ namespace CalorieCounter.Models.Utils
             double totalCarbsCalories = productsConsumed.Sum(p => p.Carbs) * 4;
             double totalProteinsCalories = productsConsumed.Sum(p => p.Protein) * 4;
             double totalFatCalories = productsConsumed.Sum(p => p.Fat) * 9;
-            double totalCalories = totalCarbsCalories + totalProteinsCalories + totalFatCalories;
+            var totalCalories = totalCarbsCalories + totalProteinsCalories + totalFatCalories;
 
-            var carbsRatio = Math.Round((totalCarbsCalories / totalCalories) * 100);
-            var proteinRatio = Math.Round((totalProteinsCalories / totalCalories) * 100);
-            var fatRatio = Math.Round((totalFatCalories / totalCalories) * 100);
+            var carbsRatio = Math.Round(totalCarbsCalories / totalCalories * 100);
+            var proteinRatio = Math.Round(totalProteinsCalories / totalCalories * 100);
+            var fatRatio = Math.Round(totalFatCalories / totalCalories * 100);
 
             return $"Carbs:Protein:Fat = {carbsRatio}:{proteinRatio}:{fatRatio}";
         }

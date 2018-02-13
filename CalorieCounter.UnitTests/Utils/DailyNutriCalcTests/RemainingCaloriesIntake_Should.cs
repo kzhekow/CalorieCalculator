@@ -1,9 +1,9 @@
-﻿using CalorieCounter.Contracts;
+﻿using System.Collections.Generic;
+using CalorieCounter.Contracts;
 using CalorieCounter.Models.Contracts;
 using CalorieCounter.Models.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System.Collections.Generic;
 
 namespace CalorieCounter.UnitTests.Utils.DailyNutriCalcTests
 {
@@ -25,8 +25,8 @@ namespace CalorieCounter.UnitTests.Utils.DailyNutriCalcTests
                 .Returns(320);
 
             secondProduct
-               .SetupGet(m => m.Calories)
-               .Returns(450);
+                .SetupGet(m => m.Calories)
+                .Returns(450);
 
             activityMock
                 .Setup(m => m.CalculateBurnedCalories())
@@ -34,13 +34,14 @@ namespace CalorieCounter.UnitTests.Utils.DailyNutriCalcTests
 
             var expectedResult = 2000; // 2500 - 770  + 270
 
-            ICollection<IProduct> productConsumed = new List<IProduct>() { firstProduct.Object, secondProduct.Object };
-            ICollection<IActivity> activities = new List<IActivity>() { activityMock.Object };
+            ICollection<IProduct> productConsumed = new List<IProduct> {firstProduct.Object, secondProduct.Object};
+            ICollection<IActivity> activities = new List<IActivity> {activityMock.Object};
 
             var dailyNutriCalcMock = new DailyNutriCalc();
 
             // Act
-            var actualResult = dailyNutriCalcMock.RemainingCaloriesIntake(suggestedDailyCaloriesIntake, productConsumed, activities);
+            var actualResult =
+                dailyNutriCalcMock.RemainingCaloriesIntake(suggestedDailyCaloriesIntake, productConsumed, activities);
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult);
@@ -60,17 +61,18 @@ namespace CalorieCounter.UnitTests.Utils.DailyNutriCalcTests
                 .Returns(320);
 
             secondProduct
-               .SetupGet(m => m.Calories)
-               .Returns(450);
+                .SetupGet(m => m.Calories)
+                .Returns(450);
 
             var expectedResult = 1730; // 2500 - 770 
 
-            ICollection<IProduct> productConsumed = new List<IProduct>() { firstProduct.Object, secondProduct.Object };
+            ICollection<IProduct> productConsumed = new List<IProduct> {firstProduct.Object, secondProduct.Object};
 
             var dailyNutriCalcMock = new DailyNutriCalc();
 
             // Act
-            var actualResult = dailyNutriCalcMock.RemainingCaloriesIntake(suggestedDailyCaloriesIntake, productConsumed);
+            var actualResult =
+                dailyNutriCalcMock.RemainingCaloriesIntake(suggestedDailyCaloriesIntake, productConsumed);
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult);
@@ -106,11 +108,12 @@ namespace CalorieCounter.UnitTests.Utils.DailyNutriCalcTests
 
             var expectedResult = 2770; // 2500 + 270
 
-            ICollection<IActivity> activities = new List<IActivity>() { activityMock.Object };
+            ICollection<IActivity> activities = new List<IActivity> {activityMock.Object};
             var dailyNutriCalcMock = new DailyNutriCalc();
 
             // Act
-            var actualResult = dailyNutriCalcMock.RemainingCaloriesIntake(suggestedDailyCaloriesIntake, null, activities);
+            var actualResult =
+                dailyNutriCalcMock.RemainingCaloriesIntake(suggestedDailyCaloriesIntake, null, activities);
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult);
