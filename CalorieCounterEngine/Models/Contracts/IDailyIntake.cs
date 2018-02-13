@@ -5,7 +5,7 @@ namespace CalorieCounter.Models.Contracts
 {
     public interface IDailyIntake
     {
-        int Water { get; }
+        int Water { get; set; }
         ICollection<IProduct> ProductsConsumed { get; }
         ICollection<IActivity> ActivitiesPerformed { get; }
         IGoal Goal { get; set; }

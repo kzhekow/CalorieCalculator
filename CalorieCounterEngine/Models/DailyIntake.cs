@@ -7,7 +7,7 @@ namespace CalorieCounter.Models
 {
     public class DailyIntake : IDailyIntake
     {
-        public int Water { get; private set; }
+        public int Water { get; set; }
 
         public ICollection<IProduct> ProductsConsumed { get; } = new List<IProduct>();
 
