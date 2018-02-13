@@ -22,7 +22,7 @@ namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
             var args = new object[] {mililiters};
             engine.AddWaterCommand.Execute(args);
 
-            dailyIntakeMock.Verify(x=>x.AddWater(mililiters),Times.Once);
+            dailyIntakeMock.Verify(x => x.AddWater(mililiters), Times.Once);
         }
     }
 }

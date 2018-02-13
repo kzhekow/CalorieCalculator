@@ -1,10 +1,10 @@
-﻿using CalorieCounter.Factories.Contracts;
+﻿using System;
+using CalorieCounter.Factories.Contracts;
 using CalorieCounter.Models.Contracts;
 using CalorieCounter.UnitTests.Builders;
 using CalorieCounterEngine.Contracts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System;
 
 namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
 {
@@ -42,7 +42,7 @@ namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
             var time = 123;
             var activityMock = new Mock<IActivity>();
             activityFactoryMock.Setup(x => x.CreateActivity(time, activityType)).Returns(activityMock.Object);
-            var args = new object[] { activityType.ToString(), time };
+            var args = new object[] {activityType.ToString(), time};
             var engine = new EngineBuilder().WithJsonSerializer(jsonSerializerMock.Object)
                 .WithActivityFactory(activityFactoryMock.Object).Build();
             engine.AddActivityCommand.Execute(args);
@@ -61,7 +61,7 @@ namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
             var time = 123;
             var activityMock = new Mock<IActivity>();
             activityFactoryMock.Setup(x => x.CreateActivity(time, activityType)).Returns(activityMock.Object);
-            var args = new object[] { activityType.ToString(), time };
+            var args = new object[] {activityType.ToString(), time};
             var engine = new EngineBuilder().WithJsonSerializer(jsonSerializerMock.Object)
                 .WithActivityFactory(activityFactoryMock.Object).Build();
             engine.AddActivityCommand.Execute(args);
@@ -80,7 +80,7 @@ namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
             var time = -123;
             var activityMock = new Mock<IActivity>();
             activityFactoryMock.Setup(x => x.CreateActivity(time, activityType)).Returns(activityMock.Object);
-            var args = new object[] { activityType.ToString(), time };
+            var args = new object[] {activityType.ToString(), time};
             var engine = new EngineBuilder().WithJsonSerializer(jsonSerializerMock.Object)
                 .WithActivityFactory(activityFactoryMock.Object).Build();
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => engine.AddActivityCommand.Execute(args));
@@ -99,7 +99,7 @@ namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
             var time = 123;
             var activityMock = new Mock<IActivity>();
             activityFactoryMock.Setup(x => x.CreateActivity(time, activityType)).Returns(activityMock.Object);
-            var args = new object[] { "incorrect activity type", time };
+            var args = new object[] {"incorrect activity type", time};
             var engine = new EngineBuilder().WithJsonSerializer(jsonSerializerMock.Object)
                 .WithActivityFactory(activityFactoryMock.Object).Build();
             Assert.ThrowsException<ArgumentException>(() => engine.AddActivityCommand.Execute(args));

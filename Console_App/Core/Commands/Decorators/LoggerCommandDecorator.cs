@@ -1,6 +1,6 @@
-﻿using Console_App.Core.Contracts;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Console_App.Core.Contracts;
 
 namespace Console_App.Core.Commands.Decorators
 {

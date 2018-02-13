@@ -7,6 +7,7 @@ namespace CalorieCounter.UnitTests.Builders
 {
     internal class EngineBuilder
     {
+        private readonly ISuggestedDailyNutrientsIntakeCalc suggestedDailyNutrientsIntakeCalc;
         private IActivityFactory activityFactory;
         private IDailyNutriCalc dailyNutriCalc;
         private IDataRepository dataRepository;
@@ -14,7 +15,6 @@ namespace CalorieCounter.UnitTests.Builders
         private IJsonSerializer jsonSerializer;
         private IProductFactory productFactory;
         private IRestingEnergyCalculator restingEnergyCalculator;
-        private readonly ISuggestedDailyNutrientsIntakeCalc suggestedDailyNutrientsIntakeCalc;
 
         internal EngineBuilder()
         {

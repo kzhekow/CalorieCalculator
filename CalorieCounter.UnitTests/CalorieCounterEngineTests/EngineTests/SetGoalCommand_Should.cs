@@ -17,21 +17,25 @@ namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
             var dailyIntakeMock = new Mock<IDailyIntake>();
             jsonSerializerMock.Setup(x => x.GetDailyIntake()).Returns(dailyIntakeMock.Object);
             var goalFactoryMock = new Mock<IGoalFactory>();
-            var startingWeight = (double)68;
-            var goalWeight = (double)80;
-            var height = (double)178;
-            var age = (int)21;
+            var startingWeight = (double) 68;
+            var goalWeight = (double) 80;
+            var height = (double) 178;
+            var age = 21;
             var gender = GenderType.male;
             var goalType = GoalType.gainweight;
             var activityLevel = ActivityLevel.moderate;
 
             var goalmockMock = new Mock<IGoal>();
-            goalFactoryMock.Setup(x => x.CreateGoal(startingWeight, goalWeight, height, age, gender, goalType, activityLevel)).Returns(goalmockMock.Object);
+            goalFactoryMock
+                .Setup(x => x.CreateGoal(startingWeight, goalWeight, height, age, gender, goalType, activityLevel))
+                .Returns(goalmockMock.Object);
             var args = new object[] {startingWeight, goalWeight, height, age, gender, goalType, activityLevel};
             var engine = new EngineBuilder().WithJsonSerializer(jsonSerializerMock.Object)
                 .WithGoalFactory(goalFactoryMock.Object).Build();
             engine.SetGoalCommand.Execute(args);
-            goalFactoryMock.Verify(x => x.CreateGoal(startingWeight, goalWeight, height, age, gender, goalType, activityLevel), Times.Once);
+            goalFactoryMock.Verify(
+                x => x.CreateGoal(startingWeight, goalWeight, height, age, gender, goalType, activityLevel),
+                Times.Once);
         }
 
         [TestMethod]
@@ -41,17 +45,19 @@ namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
             var dailyIntakeMock = new Mock<IDailyIntake>();
             jsonSerializerMock.Setup(x => x.GetDailyIntake()).Returns(dailyIntakeMock.Object);
             var goalFactoryMock = new Mock<IGoalFactory>();
-            var startingWeight = (double)68;
-            var goalWeight = (double)80;
-            var height = (double)178;
-            var age = (int)21;
+            var startingWeight = (double) 68;
+            var goalWeight = (double) 80;
+            var height = (double) 178;
+            var age = 21;
             var gender = GenderType.male;
             var goalType = GoalType.gainweight;
             var activityLevel = ActivityLevel.moderate;
 
             var goalMock = new Mock<IGoal>();
-            goalFactoryMock.Setup(x => x.CreateGoal(startingWeight, goalWeight, height, age, gender, goalType, activityLevel)).Returns(goalMock.Object);
-            var args = new object[] { startingWeight, goalWeight, height, age, gender, goalType, activityLevel };
+            goalFactoryMock
+                .Setup(x => x.CreateGoal(startingWeight, goalWeight, height, age, gender, goalType, activityLevel))
+                .Returns(goalMock.Object);
+            var args = new object[] {startingWeight, goalWeight, height, age, gender, goalType, activityLevel};
             var engine = new EngineBuilder().WithJsonSerializer(jsonSerializerMock.Object)
                 .WithGoalFactory(goalFactoryMock.Object).Build();
             dailyIntakeMock.SetupSet(x => x.Goal = goalMock.Object).Verifiable();
@@ -66,17 +72,19 @@ namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
             var dailyIntakeMock = new Mock<IDailyIntake>();
             jsonSerializerMock.Setup(x => x.GetDailyIntake()).Returns(dailyIntakeMock.Object);
             var goalFactoryMock = new Mock<IGoalFactory>();
-            var startingWeight = (double)68;
-            var goalWeight = (double)80;
-            var height = (double)178;
-            var age = (int)21;
+            var startingWeight = (double) 68;
+            var goalWeight = (double) 80;
+            var height = (double) 178;
+            var age = 21;
             var gender = GenderType.male;
             var goalType = GoalType.gainweight;
             var activityLevel = ActivityLevel.moderate;
 
             var goalMock = new Mock<IGoal>();
-            goalFactoryMock.Setup(x => x.CreateGoal(startingWeight, goalWeight, height, age, gender, goalType, activityLevel)).Returns(goalMock.Object);
-            var args = new object[] { startingWeight, goalWeight, height, age, gender, goalType, activityLevel };
+            goalFactoryMock
+                .Setup(x => x.CreateGoal(startingWeight, goalWeight, height, age, gender, goalType, activityLevel))
+                .Returns(goalMock.Object);
+            var args = new object[] {startingWeight, goalWeight, height, age, gender, goalType, activityLevel};
             var engine = new EngineBuilder().WithJsonSerializer(jsonSerializerMock.Object)
                 .WithGoalFactory(goalFactoryMock.Object).Build();
             engine.SetGoalCommand.Execute(args);

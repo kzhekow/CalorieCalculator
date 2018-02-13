@@ -1,10 +1,10 @@
-﻿using CalorieCounter.Contracts;
+﻿using System.Collections.Generic;
+using CalorieCounter.Contracts;
 using CalorieCounter.Factories.Contracts;
 using CalorieCounter.UnitTests.Builders;
 using CalorieCounterEngine.Contracts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System.Collections.Generic;
 
 namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
 {
@@ -12,10 +12,10 @@ namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
     public class CreateDrinkCommand_Should
     {
         private Mock<IDataRepository> dataRepositoryMock;
+        private Mock<IProduct> drinkMock;
         private Mock<IJsonSerializer> jsonSerializerMock;
         private Dictionary<string, IProduct> productCollection;
         private Mock<IProductFactory> productFactoryMock;
-        private Mock<IProduct> drinkMock;
 
         [TestInitialize]
         public void Setup()
@@ -41,10 +41,10 @@ namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
 
             this.productFactoryMock
                 .Setup(x => x.CreateDrink(name, caloriesPer100g, proteinPer100g, carbsPer100g, fatsPer100g, 0, 0))
-                .Returns(drinkMock.Object);
+                .Returns(this.drinkMock.Object);
             var engine = new EngineBuilder().WithDataRepository(this.dataRepositoryMock.Object)
                 .WithProductFactory(this.productFactoryMock.Object).Build();
-            var args = new object[] { name, caloriesPer100g, proteinPer100g, carbsPer100g, fatsPer100g };
+            var args = new object[] {name, caloriesPer100g, proteinPer100g, carbsPer100g, fatsPer100g};
 
             //Act
 
@@ -71,7 +71,7 @@ namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
             var engine = new EngineBuilder().WithJsonSerializer(this.jsonSerializerMock.Object)
                 .WithDataRepository(this.dataRepositoryMock.Object)
                 .WithProductFactory(this.productFactoryMock.Object).Build();
-            var args = new object[] { name, caloriesPer100g, proteinPer100g, carbsPer100g, fatsPer100g };
+            var args = new object[] {name, caloriesPer100g, proteinPer100g, carbsPer100g, fatsPer100g};
             //Act
             engine.CreateDrinkCommand.Execute(args);
             //Assert

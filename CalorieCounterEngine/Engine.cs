@@ -21,6 +21,8 @@ namespace CalorieCounter
 
         private readonly IJsonSerializer jsonSerializer;
         private readonly IProductFactory productFactory;
+        private readonly IRestingEnergyCalculator restingEnergyCalculator;
+        private readonly ISuggestedDailyNutrientsIntakeCalc suggestedDailyNutrientsIntakeCalc;
         private ICommand addActivityCommand;
         private ICommand addConsumedProductCommand;
         private ICommand addWaterCommand;
@@ -30,9 +32,7 @@ namespace CalorieCounter
 
         private IDailyIntake currentDayCalorieTracker;
         private ICommand getAllProductsCommand;
-        private readonly IRestingEnergyCalculator restingEnergyCalculator;
         private ICommand setGoalCommand;
-        private readonly ISuggestedDailyNutrientsIntakeCalc suggestedDailyNutrientsIntakeCalc;
 
         public Engine(
             IProductFactory productFactory,
@@ -259,8 +259,8 @@ namespace CalorieCounter
             var proteinPer100g = (int) args[2];
             var carbsPer100g = (int) args[3];
             var fatsPer100g = (int) args[4];
-            var sugar = args.Length > 5 ? (int)args[5] : 0;
-            var fiber = args.Length > 6 ? (int)args[6] : 0;
+            var sugar = args.Length > 5 ? (int) args[5] : 0;
+            var fiber = args.Length > 6 ? (int) args[6] : 0;
 
             var drink = this.productFactory.CreateDrink(name, caloriesPer100g, proteinPer100g, carbsPer100g,
                 fatsPer100g, sugar, fiber);

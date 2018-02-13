@@ -1,4 +1,5 @@
-﻿using Autofac;
+﻿using System.Configuration;
+using Autofac;
 using Console_App.Contracts;
 using Console_App.Core.Commands.Adding;
 using Console_App.Core.Commands.Creating;
@@ -8,7 +9,6 @@ using Console_App.Core.Contracts;
 using Console_App.Core.Engine;
 using Console_App.Core.Providers;
 using Console_App.Factories;
-using System.Configuration;
 
 namespace Console_App.ConfigModules
 {
