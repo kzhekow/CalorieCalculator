@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-using Console_App.Core.Contracts;
+﻿using Console_App.Core.Contracts;
+using System;
+using System.Collections.Generic;
 
 namespace Console_App.Core.Commands.Decorators
 {
@@ -16,7 +17,7 @@ namespace Console_App.Core.Commands.Decorators
 
         public string Execute(IList<string> parameters)
         {
-            this.writer.WriteLine("DECORATOR: We currently are in Test Environment!");
+            this.writer.WriteLine($"Report for {DateTime.Now.Date.ToShortDateString()}");
             return this.command.Execute(parameters);
         }
     }
