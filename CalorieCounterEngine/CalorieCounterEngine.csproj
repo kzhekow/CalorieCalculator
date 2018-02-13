@@ -57,6 +57,7 @@
     <Compile Include="Common\GoalType.cs" />
     <Compile Include="Common\MealType.cs" />
     <Compile Include="Contracts\IDailyNutriCalc.cs" />
+    <Compile Include="Contracts\IJsonSerializer.cs" />
     <Compile Include="Contracts\IRestingEnergyCalculator.cs" />
     <Compile Include="Contracts\ISuggestedDailyNutrientsIntakeCalc.cs" />
     <Compile Include="Engine.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="Models\Contracts\IProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\EngineConstants.cs" />
+    <Compile Include="Utils\JsonSerializer.cs" />
     <Compile Include="Utils\RelayCommand.cs" />
     <Compile Include="Utils\RestingEnergyCalculator.cs" />
     <Compile Include="Utils\SuggestedDailyNutrientsIntakeCalc.cs" />

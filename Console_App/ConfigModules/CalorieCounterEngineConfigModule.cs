@@ -18,6 +18,7 @@ namespace Console_App.ConfigModules
             builder.RegisterType<ActivityFactory>().As<IActivityFactory>().SingleInstance();
             builder.RegisterType<DailyNutriCalc>().As<IDailyNutriCalc>().SingleInstance();
             builder.RegisterType<RestingEnergyCalculator>().As<IRestingEnergyCalculator>().SingleInstance();
+            builder.RegisterType<JsonSerializer>().As<IJsonSerializer>().SingleInstance();
             builder.RegisterType<Engine>().As<IEngine>().SingleInstance();
         }
     }
