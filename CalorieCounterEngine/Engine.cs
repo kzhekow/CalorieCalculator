@@ -259,8 +259,8 @@ namespace CalorieCounter
             var proteinPer100g = (int) args[2];
             var carbsPer100g = (int) args[3];
             var fatsPer100g = (int) args[4];
-            var sugar = (int) args[5];
-            var fiber = (int) args[6];
+            var sugar = args.Length > 5 ? (int)args[5] : 0;
+            var fiber = args.Length > 6 ? (int)args[6] : 0;
 
             var drink = this.productFactory.CreateDrink(name, caloriesPer100g, proteinPer100g, carbsPer100g,
                 fatsPer100g, sugar, fiber);
