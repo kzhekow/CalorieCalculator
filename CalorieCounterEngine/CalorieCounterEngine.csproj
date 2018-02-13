@@ -57,9 +57,11 @@
     <Compile Include="Common\GoalType.cs" />
     <Compile Include="Common\MealType.cs" />
     <Compile Include="Contracts\IDailyNutriCalc.cs" />
+    <Compile Include="Contracts\IDataRepository.cs" />
     <Compile Include="Contracts\IJsonSerializer.cs" />
     <Compile Include="Contracts\IRestingEnergyCalculator.cs" />
     <Compile Include="Contracts\ISuggestedDailyNutrientsIntakeCalc.cs" />
+    <Compile Include="DataRepository.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Factories\Contracts\IActivityFactory.cs" />
     <Compile Include="Contracts\IEngine.cs" />

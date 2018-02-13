@@ -7,24 +7,12 @@ namespace CalorieCounter.Utils
 {
     public class SuggestedDailyNutrientsIntakeCalc : ISuggestedDailyNutrientsIntakeCalc
     {
-        private IGoal currentGoal;
-        private readonly IRestingEnergyCalculator restingEnergy;
-
-        public SuggestedDailyNutrientsIntakeCalc(IGoal currentGoal, IRestingEnergyCalculator restingEnergyCalculator)
-        {
-            Guard.WhenArgument(currentGoal, "Goal").IsNull().Throw();
-            Guard.WhenArgument(restingEnergyCalculator, "RestingEnergyCalculator").IsNull().Throw();
-
-            this.currentGoal = currentGoal;
-            this.restingEnergy = restingEnergyCalculator;
-        }
         public double DailyCalorieIntake { get; private set; }
 
-        public double RestingEnergy => this.restingEnergy.CalculateRestingEnergy(currentGoal);
-
-        public double CalculateSuggestedDailyCalorieIntake()
+        public double CalculateSuggestedDailyCalorieIntake(IGoal goal, IRestingEnergyCalculator restingEnergyCalculator)
         {
-            switch (this.currentGoal.ActivityLevel)
+            var RestingEnergy = restingEnergyCalculator.CalculateRestingEnergy(goal);
+            switch (goal.ActivityLevel)
             {
                 case ActivityLevel.light:
                     this.DailyCalorieIntake = RestingEnergy * 1.375;
@@ -41,11 +29,11 @@ namespace CalorieCounter.Utils
             return this.DailyCalorieIntake;
         }
 
-        public string CalculateSuggestedMacrosRatio()
+        public string CalculateSuggestedMacrosRatio(IGoal currentGoal)
         {
             var macrosRatio = string.Empty;
 
-            switch (this.currentGoal.GoalType)
+            switch (currentGoal.GoalType)
             {
                 case GoalType.loseweight:
                     macrosRatio = "Carbs:Protein:Fat = 25:40:35";
@@ -62,11 +50,11 @@ namespace CalorieCounter.Utils
             return macrosRatio;
         }
 
-        public int CalculateSuggestedWaterIntake()
+        public int CalculateSuggestedWaterIntake(IGoal currentGoal)
         {
             var dailyWaterIntake = 0;
 
-            switch (this.currentGoal.Gender)
+            switch (currentGoal.Gender)
             {
                 case GenderType.male:
                     dailyWaterIntake = 3700;
@@ -80,20 +68,20 @@ namespace CalorieCounter.Utils
             return dailyWaterIntake;
         }
 
-        public double CalculateSuggestedDailyCarbsIntake()
+        public double CalculateSuggestedDailyCarbsIntake(IGoal currentGoal, IRestingEnergyCalculator restingEnergyCalculator)
         {
             double suggestCarbsIntake = 0;
 
-            switch (this.currentGoal.GoalType)
+            switch (currentGoal.GoalType)
             {
                 case GoalType.loseweight:
-                    suggestCarbsIntake = 0.25 * this.CalculateSuggestedDailyCalorieIntake() / 4;
+                    suggestCarbsIntake = 0.25 * this.CalculateSuggestedDailyCalorieIntake(currentGoal, restingEnergyCalculator) / 4;
                     break;
                 case GoalType.maintainweight:
-                    suggestCarbsIntake = 0.4 * this.CalculateSuggestedDailyCalorieIntake() / 4;
+                    suggestCarbsIntake = 0.4 * this.CalculateSuggestedDailyCalorieIntake(currentGoal, restingEnergyCalculator) / 4;
                     break;
                 case GoalType.gainweight:
-                    suggestCarbsIntake = 0.5 * this.CalculateSuggestedDailyCalorieIntake() / 4;
+                    suggestCarbsIntake = 0.5 * this.CalculateSuggestedDailyCalorieIntake(currentGoal, restingEnergyCalculator) / 4;
                     break;
            
             }
@@ -101,20 +89,20 @@ namespace CalorieCounter.Utils
             return suggestCarbsIntake;
         }
 
-        public double CalculateSuggestedDailyProteinIntake()
+        public double CalculateSuggestedDailyProteinIntake(IGoal currentGoal, IRestingEnergyCalculator restingEnergyCalculator)
         {
             double suggestProteinIntake = 0;
 
-            switch (this.currentGoal.GoalType)
+            switch (currentGoal.GoalType)
             {
                 case GoalType.loseweight:
-                    suggestProteinIntake = 0.4 * this.CalculateSuggestedDailyCalorieIntake() / 4;
+                    suggestProteinIntake = 0.4 * this.CalculateSuggestedDailyCalorieIntake(currentGoal, restingEnergyCalculator) / 4;
                     break;
                 case GoalType.maintainweight:
-                    suggestProteinIntake = 0.3 * this.CalculateSuggestedDailyCalorieIntake() / 4;
+                    suggestProteinIntake = 0.3 * this.CalculateSuggestedDailyCalorieIntake(currentGoal, restingEnergyCalculator) / 4;
                     break;
                 case GoalType.gainweight:
-                    suggestProteinIntake = 0.3 * this.CalculateSuggestedDailyCalorieIntake() / 4;
+                    suggestProteinIntake = 0.3 * this.CalculateSuggestedDailyCalorieIntake(currentGoal, restingEnergyCalculator) / 4;
                     break;
                
             }
@@ -122,20 +110,20 @@ namespace CalorieCounter.Utils
             return suggestProteinIntake;
         }
 
-        public double CalculateSuggestedDailyFatIntake()
+        public double CalculateSuggestedDailyFatIntake(IGoal currentGoal, IRestingEnergyCalculator restingEnergyCalculator)
         {
             double suggestFatIntake = 0;
 
-            switch (this.currentGoal.GoalType)
+            switch (currentGoal.GoalType)
             {
                 case GoalType.loseweight:
-                    suggestFatIntake =(int) (0.35 * this.CalculateSuggestedDailyCalorieIntake() / 9);
+                    suggestFatIntake =(int) (0.35 * this.CalculateSuggestedDailyCalorieIntake(currentGoal, restingEnergyCalculator) / 9);
                     break;
                 case GoalType.maintainweight:
-                    suggestFatIntake =(int)( 0.3 * this.CalculateSuggestedDailyCalorieIntake() / 9);
+                    suggestFatIntake =(int)( 0.3 * this.CalculateSuggestedDailyCalorieIntake(currentGoal, restingEnergyCalculator) / 9);
                     break;
                 case GoalType.gainweight:
-                    suggestFatIntake = (int)(0.2 * this.CalculateSuggestedDailyCalorieIntake() / 9);
+                    suggestFatIntake = (int)(0.2 * this.CalculateSuggestedDailyCalorieIntake(currentGoal, restingEnergyCalculator) / 9);
                     break;
           
             }

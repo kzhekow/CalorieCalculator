@@ -4,6 +4,7 @@ using CalorieCounterEngine.Contracts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
+ using System.Collections.Generic;
  using CalorieCounter.UnitTests.Builders;
 
 namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
@@ -33,8 +34,9 @@ namespace CalorieCounter.UnitTests.CalorieCounterEngineTests.EngineTests
             //// Assert
             //Assert.IsInstanceOfType(engine, typeof(IEngine));
 
-            // Arrange, Act & Assert
-            Assert.IsInstanceOfType(new EngineBuilder().Build(), typeof(IEngine));
+            var jsonSerializerMock = new Mock<IJsonSerializer>();
+            jsonSerializerMock.Setup(x => x.GetProducts()).Returns(new List<IProduct>());
+            Assert.IsInstanceOfType(new EngineBuilder().WithJsonSerializer(jsonSerializerMock.Object).Build(), typeof(IEngine));
         }
 
         [TestMethod]
