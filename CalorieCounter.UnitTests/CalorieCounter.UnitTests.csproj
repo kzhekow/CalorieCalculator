@@ -67,6 +67,7 @@
     <Compile Include="CalorieCounterEngineTests\EngineTests\Constructor_Should.cs" />
     <Compile Include="CalorieCounterEngineTests\EngineTests\CreateProductCommand_Should.cs" />
     <Compile Include="CalorieCounterEngineTests\EngineTests\GetRemainingNutrients_Should.cs" />
+    <Compile Include="CalorieCounterEngineTests\EngineTests\SetGoalCommand_Should.cs" />
     <Compile Include="Factories\ActivityFactoryTests\CreateActivity_Should.cs" />
     <Compile Include="Factories\GoalFactoryTests\CreateGoal_Should.cs" />
     <Compile Include="Factories\ProductFactoryTests\CreateDrink_Should.cs" />
