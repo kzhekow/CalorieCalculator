@@ -9,6 +9,7 @@ namespace Console_App
         private static void Main(string[] args)
         {
             var builder = new ContainerBuilder();
+
             builder.RegisterModule<CalorieCounterEngineConfigModule>();
             builder.RegisterModule<CommandParserEngineConfigModule>();
 
